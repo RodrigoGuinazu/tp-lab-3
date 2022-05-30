@@ -22,7 +22,7 @@ public class Tratamiento {
     public void realizarAcciones (){
 
         if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()){
-            RegistroDiario aux = listaRegistrosDiarios.pop();
+            RegistroDiario aux = listaRegistrosDiarios.peek();
             for (Accion a : listaAcciones){
                 aux.agregarRegistro(a.accionar());
             }
@@ -31,7 +31,7 @@ public class Tratamiento {
             for (Accion a : listaAcciones){
                 aux.agregarRegistro(a.accionar());
             }
-            listaRegistrosDiarios.add(aux);
+            listaRegistrosDiarios.push(aux);
         }
 
     }
@@ -43,7 +43,7 @@ public class Tratamiento {
             return "Se a modificado el registro diario con exito";
         }else{
             return "No hay geistro diario que Modificar";
-            // lka logica del menu deberia indicarle que realice las acciones
+            // la logica del menu deberia indicarle que realice las acciones
         }
 
     }
