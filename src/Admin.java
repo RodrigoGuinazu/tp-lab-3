@@ -9,7 +9,17 @@ public class Admin extends Usuario implements Tratamientos{
 
     //Metodos
 
+    public void registrarPaciente(){
 
+    }
+
+    public void registrarMedico(){
+
+    }
+
+    public void agregarEnfermedad(){
+
+    }
     @Override
     public void crearTratamiento() {
 
