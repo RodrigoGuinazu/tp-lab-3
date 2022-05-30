@@ -17,7 +17,9 @@ public class Medico extends Usuario implements Tratamientos{
     }
 
     //Metodos
+    public void verHistoriales() {
 
+    }
 
     @Override
     public void crearTratamiento() {
