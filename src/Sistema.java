@@ -68,6 +68,27 @@ public class Sistema { // deberia ser static/abstract/final?
         }while(opcion != 0);
     }
 
+    public void menuMedico(){
+        int opcion;
+        do{
+            System.out.println("[1] Ver notificaciones");
+            System.out.println("[1] Log Out");
+
+            System.out.println("Ingrese una opcion o 0 para salir: ");
+            opcion = scan.nextInt();
+
+            switch(opcion){
+                case 1 : {
+                    //notificarMedicos();
+                }break;
+
+                case 2 : {
+                    //logout();
+                }break;
+            }
+        }while(opcion != 0);
+    }
+
     public void login(String mail, String pass){
 
     }
