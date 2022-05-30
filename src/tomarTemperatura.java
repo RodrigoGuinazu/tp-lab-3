@@ -8,7 +8,7 @@ public class tomarTemperatura extends Accion{
 
     // Metodos
     @Override
-    public void accionar() {
-
+    public Registro accionar() {
+        return null;
     }
 }

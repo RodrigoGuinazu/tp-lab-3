@@ -16,6 +16,5 @@ public abstract class Accion {
     }
 
     // Metodos
-    public abstract void accionar();
-    //accionar debe devolver el registro ya creado
+    public abstract Registro accionar(); //accionar debe devolver el registro ya creado
 }
