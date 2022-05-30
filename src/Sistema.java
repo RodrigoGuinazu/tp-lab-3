@@ -13,6 +13,10 @@ public class Sistema { // deberia ser static/abstract/final?
     protected Usuario usuarioLogueado;
 
     // Constructores
+
+    public Sistema() {
+    }
+
     public Sistema(ArrayList<Usuario> usuarios, ArrayList<Tratamiento> tratamientos, ArrayList<Accion> acciones, ArrayList<Enfermedad> enfermedades, LocalDate fechaDelDia) {
         this.usuarios = usuarios;
         this.tratamientos = tratamientos;
@@ -33,13 +37,17 @@ public class Sistema { // deberia ser static/abstract/final?
 
             switch(opcion){
                 case 1 : {
-                    //login();
+                    System.out.println("Ingrese el mail: ");
+                    String mail = scan.nextLine();
+                    System.out.println("Ingrese la password: ");
+                    String pass = scan.nextLine();
+                    login(mail, pass);
                     if(this.usuarioLogueado instanceof Paciente){
-                        menuPaciente();
+                        this.menuPaciente();
                     }else if(this.usuarioLogueado instanceof Medico){
-                        menuMedico();
+                        this.menuMedico();
                     }else{
-                        menuAdmin();
+                        this.menuAdmin();
                     }
                 }break;
             }
@@ -50,7 +58,7 @@ public class Sistema { // deberia ser static/abstract/final?
         int opcion;
         do{
             System.out.println("[1] Ver notificaciones");
-            System.out.println("[1] Log Out");
+            System.out.println("[2] Log Out");
 
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
@@ -61,7 +69,8 @@ public class Sistema { // deberia ser static/abstract/final?
                 }break;
 
                 case 2 : {
-                    //logout();
+                    logout();
+                    opcion = 0;
                 }break;
             }
         }while(opcion != 0);
@@ -97,7 +106,8 @@ public class Sistema { // deberia ser static/abstract/final?
                 }break;
 
                 case 5 : {
-                    //logout();
+                    logout();
+                    opcion = 0;
                 }break;
             }
         }while(opcion != 0);
@@ -138,7 +148,8 @@ public class Sistema { // deberia ser static/abstract/final?
                 }break;
 
                 case 6 : {
-                    //logout();
+                    logout();
+                    opcion = 0;
                 }break;
             }
         }while(opcion != 0);
@@ -146,11 +157,13 @@ public class Sistema { // deberia ser static/abstract/final?
 
 
     public void login(String mail, String pass){
-
+        // buscar mail y password
+        // ver si coinciden
+        this.usuarioLogueado = new Admin("Prueba", "Paciente", "prueba@hotmail.com", "123456");
     }
 
     public void logout(){
-
+        this.usuarioLogueado = null;
     }
 
     public void notificarMedicos(){
