@@ -6,11 +6,11 @@ public class Sistema { // deberia ser static/abstract/final?
     protected ArrayList<Usuario> usuarios;
     protected ArrayList<Tratamiento> tratamientos;
     protected ArrayList<Accion> acciones;
-    protected ArrayList<Enfremedad> enfermedades;
+    protected ArrayList<Enfermedad> enfermedades;
     protected LocalDate fechaDelDia;
 
     // Constructores
-    public Sistema(ArrayList<Usuario> usuarios, ArrayList<Tratamiento> tratamientos, ArrayList<Accion> acciones, ArrayList<Enfremedad> enfermedades, LocalDate fechaDelDia) {
+    public Sistema(ArrayList<Usuario> usuarios, ArrayList<Tratamiento> tratamientos, ArrayList<Accion> acciones, ArrayList<Enfermedad> enfermedades, LocalDate fechaDelDia) {
         this.usuarios = usuarios;
         this.tratamientos = tratamientos;
         this.acciones = acciones;
