@@ -1,10 +1,11 @@
-public class tomarTemperatura extends Accion{
+public class TomarPresion extends Accion{
     // Atributos
 
     // Constructores
-    public tomarTemperatura(int duracion, int cadaCuanto, int vecesPorDia) {
+    public TomarPresion(int duracion, int cadaCuanto, int vecesPorDia) {
         super(duracion, cadaCuanto, vecesPorDia);
     }
+
 
     // Metodos
     @Override
