@@ -71,18 +71,33 @@ public class Sistema { // deberia ser static/abstract/final?
     public void menuMedico(){
         int opcion;
         do{
-            System.out.println("[1] Ver notificaciones");
-            System.out.println("[1] Log Out");
+            System.out.println("[1] Asingar tratamiento");
+            System.out.println("[2] Crear un nuevo tratamiento");
+            System.out.println("[3] Editar un tratamiento");
+            System.out.println("[4] Ver historiales de los pacientes");
+            System.out.println("[5] Log Out");
 
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
             switch(opcion){
                 case 1 : {
-                    //notificarMedicos();
+                    //this.usuarioLogueado.asignarTratamiento();
                 }break;
 
                 case 2 : {
+                    //this.usuarioLogueado.crearTratamiento();
+                }break;
+
+                case 3 : {
+                    //this.usuarioLogueado.editarTratamiento();
+                }break;
+
+                case 4 : {
+                    //this.usuarioLogueado.verHistoriales();
+                }break;
+
+                case 5 : {
                     //logout();
                 }break;
             }
@@ -95,7 +110,7 @@ public class Sistema { // deberia ser static/abstract/final?
             System.out.println("[1] Registrar un nuevo paciente");
             System.out.println("[2] Registrar un nuevo medico");
             System.out.println("[3] Agregar una nueva enfermedad");
-            System.out.println("[4] Agregar un nuevo tratamiento");
+            System.out.println("[4] Crear un nuevo tratamiento");
             System.out.println("[5] Editar un tratamiento");
             System.out.println("[6] Log Out");
 
