@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Sistema { // deberia ser static/abstract/final?
     Scanner scan = new Scanner(System.in);
     // Atributos
-    protected ArrayList<Usuario> usuarios;
-    protected ArrayList<Tratamiento> tratamientos;
-    protected ArrayList<Accion> acciones;
-    protected ArrayList<Enfermedad> enfermedades;
-    protected LocalDate fechaDelDia;
-    protected Usuario usuarioLogueado;
+    private ArrayList<Usuario> usuarios;
+    private ArrayList<Tratamiento> tratamientos;
+    private ArrayList<Accion> acciones;
+    private ArrayList<Enfermedad> enfermedades;
+    private LocalDate fechaDelDia;
+    private Usuario usuarioLogueado;
 
     // Constructores
 

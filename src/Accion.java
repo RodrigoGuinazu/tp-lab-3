@@ -2,11 +2,11 @@ import java.time.LocalDate;
 
 public abstract class Accion {
     // Atributos
-    protected int duracion; // en dias
-    protected LocalDate ultimaNoti; // ultima vez que se le notifico la accion
-    protected int cadaCuanto; // cada cuanto dias tiene que hacer la accion
-    protected int vecesPorDia; // cuantas veces por dia tiene que hacer la accion
-    protected String nombre;
+    private int duracion; // en dias
+    private LocalDate ultimaNoti; // ultima vez que se le notifico la accion
+    private int cadaCuanto; // cada cuanto dias tiene que hacer la accion
+    private int vecesPorDia; // cuantas veces por dia tiene que hacer la accion
+    private String nombre;
 
     // Constructores
     public Accion(int duracion, int cadaCuanto, int vecesPorDia, String nombre) {
