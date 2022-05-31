@@ -20,7 +20,6 @@ public class Tratamiento {
     }
 
     public void realizarAcciones (){
-
         if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()){
             RegistroDiario aux = listaRegistrosDiarios.peek();
             for (Accion a : listaAcciones){
@@ -33,7 +32,6 @@ public class Tratamiento {
             }
             listaRegistrosDiarios.push(aux);
         }
-
     }
 
     public String modificarRegistros (){

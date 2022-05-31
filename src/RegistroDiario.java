@@ -11,7 +11,6 @@ public class RegistroDiario {
     }
 
 
-
     public LocalDate getFecha() {
         return fecha;
     }

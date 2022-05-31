@@ -3,7 +3,7 @@ public class Nebulizarce extends Accion{
 
     // Constructores
     public Nebulizarce(int duracion, int cadaCuanto, int vecesPorDia) {
-        super(duracion, cadaCuanto, vecesPorDia);
+        super(duracion, cadaCuanto, vecesPorDia,"Nebulizarse");
     }
 
     // Metodos

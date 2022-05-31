@@ -23,7 +23,7 @@ public class Main {
         Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
         System.out.println(paciente1);
 
-        //Sistema sistema = new Sistema();
-        //sistema.menu();
+        Sistema sistema = new Sistema();
+        sistema.menu();
     }
 }

@@ -9,6 +9,11 @@ public class Registro {
         this.seHizo = seHizo;
     }
 
+    public Registro(String nombreAccion, Boolean seHizo) {
+        this.nombreAccion = nombreAccion;
+        this.seHizo = seHizo;
+    }
+
     public String mostrarNombresRegistros(){
         return this.nombreAccion;
     }

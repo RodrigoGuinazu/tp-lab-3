@@ -3,7 +3,7 @@ public class TomarTemperatura extends Accion{
 
     // Constructores
     public TomarTemperatura(int duracion, int cadaCuanto, int vecesPorDia) {
-        super(duracion, cadaCuanto, vecesPorDia);
+        super(duracion, cadaCuanto, vecesPorDia,"Tomar Temperatura");
     }
 
     // Metodos

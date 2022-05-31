@@ -1,12 +1,16 @@
+import java.util.ArrayList;
+
 public class Paciente extends Usuario{
 
     //Atributos
-    private Boolean conTratamiento = false;
-//    ArrayList<Tratamientos> historialClinico = new ArrayList<Tratamientos>();
-//    private Tratamiento tratamientoActual;
+
+    private ArrayList<Tratamiento> historialClinico = new ArrayList<Tratamiento>();
+    private Tratamiento tratamientoActual;
     private Integer idMedicoAsignado;
 
     //Constructores
+
+
 
     //con medico asignado
     public Paciente(String nombre, String apellido, String mail, String password, Integer idMedicoAsignado) {
@@ -16,11 +20,12 @@ public class Paciente extends Usuario{
 
     //Metodos
 
+
+
     @Override
     public String toString() {
         return super.toString() +
                 "Paciente{" +
-                "conTratamiento=" + conTratamiento +
                 ", idMedicoAsignado=" + idMedicoAsignado +
                 '}';
     }

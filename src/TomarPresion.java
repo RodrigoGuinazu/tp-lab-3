@@ -3,7 +3,7 @@ public class TomarPresion extends Accion{
 
     // Constructores
     public TomarPresion(int duracion, int cadaCuanto, int vecesPorDia) {
-        super(duracion, cadaCuanto, vecesPorDia);
+        super(duracion, cadaCuanto, vecesPorDia,"Tomar Presion");
     }
 
 
