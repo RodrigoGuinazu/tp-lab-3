@@ -1,8 +1,8 @@
-public class Nebulizarce extends Accion{
+public class TomarPastilla extends Accion{
     // Atributos
 
     // Constructores
-    public Nebulizarce(int duracion, int cadaCuanto, int vecesPorDia) {
+    public TomarPastilla(int duracion, int cadaCuanto, int vecesPorDia) {
         super(duracion, cadaCuanto, vecesPorDia);
     }
 

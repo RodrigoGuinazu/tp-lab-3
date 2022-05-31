@@ -12,7 +12,7 @@ public class Main {
         System.out.println(admin2);
 
         //Crear 1 medico
-        ArrayList <Integer> listaIds = new ArrayList<>();
+        ArrayList<Integer> listaIds = new ArrayList<>();
         listaIds.add(7);
         listaIds.add(3);
         listaIds.add(1);
@@ -23,6 +23,7 @@ public class Main {
         Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
         System.out.println(paciente1);
 
-
+        //Sistema sistema = new Sistema();
+        //sistema.menu();
     }
 }
