@@ -17,5 +17,9 @@ public abstract class Accion {
     }
 
     // Metodos
-    public abstract Registro accionar(); //accionar debe devolver el registro ya creado
+    public abstract Registro accionar() throws AccionFallidaException; //accionar debe devolver el registro ya creado
+
+    public String getNombre() {
+        return nombre;
+    }
 }

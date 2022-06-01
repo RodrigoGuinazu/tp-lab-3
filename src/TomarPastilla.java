@@ -11,7 +11,7 @@ public class TomarPastilla extends Accion{
 
     // Metodos
     @Override
-    public Registro accionar() {
+    public Registro accionar()  throws AccionFallidaException{
         return null;
     }
 }

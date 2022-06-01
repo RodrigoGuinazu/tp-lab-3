@@ -9,7 +9,7 @@ public class TomarPresion extends Accion{
 
     // Metodos
     @Override
-    public Registro accionar() {
+    public Registro accionar()  throws AccionFallidaException{
         return null;
     }
 }

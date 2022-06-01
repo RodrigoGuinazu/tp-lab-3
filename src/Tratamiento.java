@@ -23,12 +23,12 @@ public class Tratamiento {
         if (listaRegistrosDiarios.peek().getFecha() == LocalDate.now()){
             RegistroDiario aux = listaRegistrosDiarios.peek();
             for (Accion a : listaAcciones){
-                aux.agregarRegistro(a.accionar());
+                aux.agregarRegistro(a.accionar()); // agregar catch de AccionFallidaException
             }
         }else{
             RegistroDiario aux = new RegistroDiario();
             for (Accion a : listaAcciones){
-                aux.agregarRegistro(a.accionar());
+                aux.agregarRegistro(a.accionar());  // agregar catch de AccionFallidaException
             }
             listaRegistrosDiarios.push(aux);
         }
