@@ -20,15 +20,19 @@ public class Tratamiento {
     }
 
     public void realizarAcciones (){
-        if (listaRegistrosDiarios.peek().getFecha() == LocalDate.now()){
-            RegistroDiario aux = listaRegistrosDiarios.peek();
-            for (Accion a : listaAcciones){
-                aux.agregarRegistro(a.accionar()); // agregar catch de AccionFallidaException
-            }
+        RegistroDiario aux;
+        if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()){
+            aux = listaRegistrosDiarios.peek();
         }else{
-            RegistroDiario aux = new RegistroDiario();
-            for (Accion a : listaAcciones){
+            aux = new RegistroDiario();
+        }
+
+        for (Accion a : listaAcciones){
+            try{
                 aux.agregarRegistro(a.accionar());  // agregar catch de AccionFallidaException
+            }
+            catch (AccionFallidaException e){
+                System.out.println(e);
             }
             listaRegistrosDiarios.push(aux);
         }
