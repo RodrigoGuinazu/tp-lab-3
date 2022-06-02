@@ -22,7 +22,7 @@ public class Tratamiento {
     public void realizarAcciones (){
         RegistroDiario aux;
         if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()){
-            aux = listaRegistrosDiarios.peek();
+            aux = listaRegistrosDiarios.pop();
         }else{
             aux = new RegistroDiario();
         }
@@ -34,8 +34,10 @@ public class Tratamiento {
             catch (AccionFallidaException e){
                 System.out.println(e);
             }
-            listaRegistrosDiarios.push(aux);
+
         }
+
+        listaRegistrosDiarios.push(aux);
     }
 
     public String modificarRegistros (){
