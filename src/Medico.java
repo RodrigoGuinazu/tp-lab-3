@@ -20,6 +20,21 @@ public class Medico extends Usuario implements Tratamientos{
     public void verHistoriales() {
 
     }
+    public ArrayList<Integer> obtenerIDsPacientes() {
+        ArrayList <Integer> aux = new ArrayList();
+        for (Integer a : pacientesDelMedico){
+            aux.add(a);
+        }
+        return pacientesDelMedico;
+    }
+
+    public void diagnosticarPacientes() {
+
+    }
+
+    public void verHistorialPaciente() {
+
+    }
 
     @Override
     public void crearTratamiento() {

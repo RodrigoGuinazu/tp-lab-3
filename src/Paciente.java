@@ -20,6 +20,24 @@ public class Paciente extends Usuario{
 
     //Metodos
 
+    public void notificarPaciente(){
+
+    }
+
+    public void realizarAcciones(){
+
+        this.tratamientoActual.realizarAcciones();
+
+    }
+
+    public void getId(){
+
+        this.tratamientoActual.realizarAcciones();
+
+    }
+
+
+
 
 
     @Override

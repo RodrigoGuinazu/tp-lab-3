@@ -57,18 +57,21 @@ public class Sistema { // deberia ser static/abstract/final?
     public void menuPaciente(){
         int opcion;
         do{
-            System.out.println("[1] Ver notificaciones");
-            System.out.println("[2] Log Out");
-
+            ((Paciente)usuarioLogueado).notificarPaciente();
+            System.out.println("[1] Realizar acciones del dia\"");
+            System.out.println("[1] Modificar acciones del dia\"");
+            System.out.println("[3] Log Out");
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
             switch(opcion){
-                case 1 : {
-                    //notificarPacientes();
-                }break;
+                case 1 :  //preguntar si asi enta con 1 o con 2  al mismo case
 
                 case 2 : {
+                    ((Paciente)usuarioLogueado).realizarAcciones();
+                }break;
+
+                case 3 : {
                     logout();
                     opcion = 0;
                 }break;
@@ -79,33 +82,32 @@ public class Sistema { // deberia ser static/abstract/final?
     public void menuMedico(){
         int opcion;
         do{
+            ArrayList<Integer> listaIdPacientes = new ArrayList<>();
+            listaIdPacientes = ((Medico)usuarioLogueado).obtenerIDsPacientes(); // el medico esta obligado a diagnoticar apenas abre?
+            for(Integer a : listaIdPacientes){
+            }
+
+
+
+
+
             System.out.println("[1] Asingar tratamiento");
-            System.out.println("[2] Crear un nuevo tratamiento");
-            System.out.println("[3] Editar un tratamiento");
-            System.out.println("[4] Ver historiales de los pacientes");
-            System.out.println("[5] Log Out");
+            System.out.println("[2] Ver historiales de los pacientes");
+            System.out.println("[3] Log Out");
 
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
             switch(opcion){
                 case 1 : {
-                    //this.usuarioLogueado.asignarTratamiento();
+                    ((Medico)usuarioLogueado).diagnosticarPacientes();
                 }break;
 
                 case 2 : {
-                    //this.usuarioLogueado.crearTratamiento();
+                    ((Medico)usuarioLogueado).verHistorialPaciente();
                 }break;
 
                 case 3 : {
-                    //this.usuarioLogueado.editarTratamiento();
-                }break;
-
-                case 4 : {
-                    //this.usuarioLogueado.verHistoriales();
-                }break;
-
-                case 5 : {
                     logout();
                     opcion = 0;
                 }break;
@@ -172,5 +174,9 @@ public class Sistema { // deberia ser static/abstract/final?
 
     public void notificarPacientes(){
 
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
     }
 }
