@@ -59,22 +59,22 @@ public class Sistema { // deberia ser static/abstract/final?
         do{
             ((Paciente)usuarioLogueado).notificarPaciente();
             System.out.println("[1] Realizar acciones del dia\"");
-            System.out.println("[1] Modificar acciones del dia\"");
+            System.out.println("[2] Modificar acciones del dia\"");
             System.out.println("[3] Log Out");
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
             switch(opcion){
-                case 1 :  //preguntar si asi enta con 1 o con 2  al mismo case
+                case 1 :
 
-                case 2 : {
+                case 2 :
                     ((Paciente)usuarioLogueado).realizarAcciones();
-                }break;
+                    break;//preguntar si asi enta con 1 o con 2  al mismo case
 
-                case 3 : {
+                case 3 :
                     logout();
                     opcion = 0;
-                }break;
+                    break;
             }
         }while(opcion != 0);
     }
@@ -99,18 +99,18 @@ public class Sistema { // deberia ser static/abstract/final?
             opcion = scan.nextInt();
 
             switch(opcion){
-                case 1 : {
+                case 1 :
                     ((Medico)usuarioLogueado).diagnosticarPacientes();
-                }break;
+                break;
 
-                case 2 : {
+                case 2 :
                     ((Medico)usuarioLogueado).verHistorialPaciente();
-                }break;
+                break;
 
-                case 3 : {
+                case 3 :
                     logout();
                     opcion = 0;
-                }break;
+                break;
             }
         }while(opcion != 0);
     }
