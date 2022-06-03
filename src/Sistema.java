@@ -19,6 +19,8 @@ public class Sistema { // deberia ser static/abstract/final?
     public Sistema() {
     }
 
+    //solo usuarios lo demas cuando entra admin o medico
+    //cargar con metodos
     public Sistema(ArrayList<Usuario> usuarios, ArrayList<Tratamiento> tratamientos, ArrayList<Accion> acciones, ArrayList<Enfermedad> enfermedades, LocalDate fechaDelDia) {
         this.usuarios = usuarios;
         this.tratamientos = tratamientos;
@@ -41,8 +43,6 @@ public class Sistema { // deberia ser static/abstract/final?
             this.menuAdmin();
         }
     }
-
-
 
 
     public void menuPaciente() { //
@@ -74,6 +74,7 @@ public class Sistema { // deberia ser static/abstract/final?
     public void menuMedico() {
         int opcion;
         do {
+//            ((Medico) usuarioLogueado).setup(); levanta info lista
 
             ((Medico) usuarioLogueado).notificarMedico();
             System.out.println("[1] Asingar tratamiento");
@@ -146,7 +147,6 @@ public class Sistema { // deberia ser static/abstract/final?
                 break;
             }
         } while (opcion != 0);
-
     }
 
 

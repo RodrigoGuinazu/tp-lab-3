@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Medico extends Usuario implements Tratamientos{
 
-    private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();
+    private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();  //ids paciente
 
     //Constructores
     //sin parametro lista de ids
@@ -35,6 +35,8 @@ public class Medico extends Usuario implements Tratamientos{
         }
         return pacientesDelMedico;
     }
+
+    //metodo configuracion con ids y llenar su propai lista
 
     public void diagnosticarPacientes() {
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
