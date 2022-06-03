@@ -19,7 +19,7 @@ public class Tratamiento {
         finalizado = false;
     }
 
-    public void realizarAcciones (){
+    public void realizarAcciones (){        //CAMBIAR (tiene que poder elegir que accion cambiar)
         RegistroDiario aux;
         if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()){
             aux = listaRegistrosDiarios.pop();

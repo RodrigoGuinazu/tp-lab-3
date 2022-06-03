@@ -1,4 +1,4 @@
-public class Registro {
+public class Registro {     //
     private String nombreAccion;
     private String rta;
     private Boolean seHizo;

@@ -2,6 +2,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// archivos qeu van a existir: admin,medico,paciente,tratamientos,acciones,enfermedades
+
 public class Sistema { // deberia ser static/abstract/final?
     Scanner scan = new Scanner(System.in);
     // Atributos
@@ -10,7 +12,7 @@ public class Sistema { // deberia ser static/abstract/final?
     private ArrayList<Accion> acciones;
     private ArrayList<Enfermedad> enfermedades;
     private LocalDate fechaDelDia;
-    private Usuario usuarioLogueado;
+    private Usuario usuarioLogueado;    //solo uno a la vez
 
     // Constructores
 
@@ -22,75 +24,58 @@ public class Sistema { // deberia ser static/abstract/final?
         this.tratamientos = tratamientos;
         this.acciones = acciones;
         this.enfermedades = enfermedades;
-        this.fechaDelDia = fechaDelDia;
+        this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
     }
 
     // Metodos
-    public void menu() {
-        int opcion;
-        do{
-            System.out.println("[1] Log In");
+    public void menu() {    //ASIGNAR LOGIN (quitar menu y que lo haga de una)
 
-            System.out.println("Ingrese una opcion o 0 para salir: ");
-            opcion = scan.nextInt();
+        this.usuarioLogueado = login();
 
-            switch(opcion){
-                case 1 : {
-                    System.out.println("Ingrese el mail: ");
-                    String mail = scan.nextLine();
-                    System.out.println("Ingrese la password: ");
-                    String pass = scan.nextLine();
-                    login(mail, pass);
-                    if(this.usuarioLogueado instanceof Paciente){
-                        this.menuPaciente();
-                    }else if(this.usuarioLogueado instanceof Medico){
-                        this.menuMedico();
-                    }else{
-                        this.menuAdmin();
-                    }
-                }break;
-            }
-        }while(opcion != 0);
+        if (this.usuarioLogueado instanceof Paciente) {
+            this.menuPaciente();
+        } else if (this.usuarioLogueado instanceof Medico) {
+            this.menuMedico();
+        } else {
+            this.menuAdmin();
+        }
     }
 
-    public void menuPaciente(){
+
+
+
+    public void menuPaciente() { //
         int opcion;
-        do{
-            ((Paciente)usuarioLogueado).notificarPaciente();
+        do {
+            ((Paciente) usuarioLogueado).notificarPaciente();
             System.out.println("[1] Realizar acciones del dia\"");
             System.out.println("[2] Modificar acciones del dia\"");
+            //mostrar devuelta las acciones del dia para hacer
             System.out.println("[3] Log Out");
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
-            switch(opcion){
-                case 1 :
+            switch (opcion) {
+                case 1:
 
-                case 2 :
-                    ((Paciente)usuarioLogueado).realizarAcciones();
-                    break;//preguntar si asi enta con 1 o con 2  al mismo case
+                case 2:
+                    ((Paciente) usuarioLogueado).realizarAcciones();
+                    break;
 
-                case 3 :
+                case 3:
                     logout();
                     opcion = 0;
                     break;
             }
-        }while(opcion != 0);
+        } while (opcion != 0);
     }
 
-    public void menuMedico(){
+    public void menuMedico() {
         int opcion;
-        do{
-            ArrayList<Integer> listaIdPacientes = new ArrayList<>();
-            listaIdPacientes = ((Medico)usuarioLogueado).obtenerIDsPacientes(); // el medico esta obligado a diagnoticar apenas abre?
-            for(Integer a : listaIdPacientes){
-            }
+        do {
 
-
-
-
-
+            ((Medico) usuarioLogueado).notificarMedico();
             System.out.println("[1] Asingar tratamiento");
             System.out.println("[2] Ver historiales de los pacientes");
             System.out.println("[3] Log Out");
@@ -98,26 +83,26 @@ public class Sistema { // deberia ser static/abstract/final?
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
-            switch(opcion){
-                case 1 :
-                    ((Medico)usuarioLogueado).diagnosticarPacientes();
-                break;
+            switch (opcion) {
+                case 1:
+                    ((Medico) usuarioLogueado).diagnosticarPacientes();
+                    break;
 
-                case 2 :
-                    ((Medico)usuarioLogueado).verHistorialPaciente();
-                break;
+                case 2:
+                    ((Medico) usuarioLogueado).verHistorialPaciente();
+                    break;
 
-                case 3 :
+                case 3:
                     logout();
                     opcion = 0;
-                break;
+                    break;
             }
-        }while(opcion != 0);
+        } while (opcion != 0);
     }
 
-    public void menuAdmin(){
+    public void menuAdmin() {
         int opcion;
-        do{
+        do {
             System.out.println("[1] Registrar un nuevo paciente");
             System.out.println("[2] Registrar un nuevo medico");
             System.out.println("[3] Agregar una nueva enfermedad");
@@ -128,51 +113,62 @@ public class Sistema { // deberia ser static/abstract/final?
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
-            switch(opcion){
-                case 1 : {
-                    //this.usuarioLogueado.registrarPaciente();
-                }break;
+            switch (opcion) {
+                case 1: {
+                    ((Admin) usuarioLogueado).registrarPaciente();
+                }
+                break;
 
-                case 2 : {
-                    //this.usuarioLogueado.registrarMedico();
-                }break;
+                case 2: {
+                    ((Admin) usuarioLogueado).registrarMedico();
+                }
+                break;
 
-                case 3 : {
-                    //this.usuarioLogueado.agregarEnfermedad();
-                }break;
+                case 3: {
+                    ((Admin) usuarioLogueado).agregarEnfermedad();
+                }
+                break;
 
-                case 4 : {
-                    //this.usuarioLogueado.crearTratamiento();
-                }break;
+                case 4: {
+                    ((Admin) usuarioLogueado).crearTratamiento();
+                }
+                break;
 
-                case 5 : {
-                    //this.usuarioLogueado.editarTratamiento();
-                }break;
+                case 5: {
+                    ((Admin) usuarioLogueado).editarTratamiento();
+                }
+                break;
 
-                case 6 : {
+                case 6: {
                     logout();
                     opcion = 0;
-                }break;
+                }
+                break;
             }
-        }while(opcion != 0);
+        } while (opcion != 0);
+
     }
 
 
-    public void login(String mail, String pass){
-        // buscar mail y password
-        // ver si coinciden
-        this.usuarioLogueado = new Admin("Prueba", "Paciente", "prueba@hotmail.com", "123456");
+    public Usuario login() {
+        //pedir lso datos
+        //recorrer la lsita y validar
+        // ver si coinciden (try / catch) buscando por mail en lista de usuario y le decimos hola "nombre" y que ingrese la pass
+        Usuario user = new Usuario("Carlos", "tikiti", "adsa", "asd");
+        return user;
     }
 
-    public void logout(){
+    public void logout() {
         this.usuarioLogueado = null;
     }
 
-    public void notificarMedicos(){
+
+    //metodos sistema para cada menu y l oqeu tenga qeu hacer (cargar, mostrar)
+    public void notificarMedicos() {
 
     }
 
-    public void notificarPacientes(){
+    public void notificarPacientes() {
 
     }
 
