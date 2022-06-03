@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class AccionFloat extends Accion{
+public class AccionDouble extends Accion{
     private float rta;
 
-    public AccionFloat(int duracion, int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
+    public AccionDouble(int duracion, int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
         super(duracion, cadaCuanto, vecesPorDia, nombr, textoPregunta);
     }
 
