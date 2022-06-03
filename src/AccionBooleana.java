@@ -17,7 +17,7 @@ public class AccionBooleana extends Accion{
         if(opcion != 's'){
             throw new AccionFallidaException();
         }else{
-            Registro registro = new Registro(super.getNombre(), null , true);
+            Registro registro = new Registro(super.getNombre(), 0 , true);
             return registro;
         }
     }
