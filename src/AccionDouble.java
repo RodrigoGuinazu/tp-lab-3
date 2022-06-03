@@ -10,7 +10,7 @@ public class AccionDouble extends Accion{
     @Override
     public Registro accionar() throws AccionFallidaException{
         Scanner scan = new Scanner(System.in);
-        double rta;
+        String rta;
         Character opcion;
         System.out.println(super.getTextoPregunta());
         opcion = scan.nextLine().charAt(0);
@@ -18,7 +18,7 @@ public class AccionDouble extends Accion{
             throw new AccionFallidaException();
         }else{
             System.out.println("Ingrese el resultado: ");
-            rta = scan.nextDouble();
+            rta = scan.nextLine();
             Registro registro = new Registro(super.getNombre(), rta, true);
             return registro;
         }

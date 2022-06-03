@@ -1,9 +1,9 @@
 public class Registro {
     private String nombreAccion;
-    private double rta;
+    private String rta;
     private Boolean seHizo;
 
-    public Registro(String nombre,double rta, Boolean seHizo){
+    public Registro(String nombre,String rta, Boolean seHizo){
         this.nombreAccion  = nombre;
         this.rta = rta;
         this.seHizo = seHizo;
