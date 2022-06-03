@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
 
@@ -17,9 +19,15 @@ public class Main {
 //        Medico medico1 = new Medico("Carlos","Maslaton","lorem@outlook","Cotorra",listaIds);
 //        System.out.println(medico1);
 //
-//        //Crear 1 paciente
-//        Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
-//        System.out.println(paciente1);
+        //Crear 1 paciente
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
+        System.out.println(paciente1);
+        Paciente paciente2 = new Paciente("TUMAMA","Vargas","lorem@hotmail.com","Cocodrilo",14);
+        System.out.println(paciente2);
+        pacientes.add(paciente1);
+        pacientes.add(paciente2);
+        Persistencia.escribirPacientes(pacientes);
 //
 //        Sistema sistema = new Sistema();
 //        sistema.menu();

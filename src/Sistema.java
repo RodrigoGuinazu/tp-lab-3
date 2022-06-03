@@ -8,11 +8,8 @@ public class Sistema { // deberia ser static/abstract/final?
     Scanner scan = new Scanner(System.in);
     // Atributos
     private ArrayList<Usuario> usuarios;
-    private ArrayList<Tratamiento> tratamientos;
-    private ArrayList<Accion> acciones;
-    private ArrayList<Enfermedad> enfermedades;
     private LocalDate fechaDelDia;
-    private Usuario usuarioLogueado;    //solo uno a la vez
+    private Usuario usuarioLogueado; //solo uno a la vez
 
     // Constructores
 
@@ -21,11 +18,8 @@ public class Sistema { // deberia ser static/abstract/final?
 
     //solo usuarios lo demas cuando entra admin o medico
     //cargar con metodos
-    public Sistema(ArrayList<Usuario> usuarios, ArrayList<Tratamiento> tratamientos, ArrayList<Accion> acciones, ArrayList<Enfermedad> enfermedades, LocalDate fechaDelDia) {
+    public Sistema(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
-        this.tratamientos = tratamientos;
-        this.acciones = acciones;
-        this.enfermedades = enfermedades;
         this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
     }
