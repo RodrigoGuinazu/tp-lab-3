@@ -20,16 +20,19 @@ public class Main {
 //        System.out.println(medico1);
 //
         //Crear 1 paciente
-        ArrayList<Usuario> pacientes = new ArrayList<>();
+        ArrayList<Paciente> pacientes = new ArrayList<>();
         Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
         //System.out.println(paciente1);
-        Paciente paciente2 = new Paciente("TUMAMA","Vargas","loremipsum@hotmail.com","abc123",14);
+        Paciente paciente2 = new Paciente("pedrito","Vargas","loremipsum@hotmail.com","abc123",14);
+        Paciente paciente3 = new Paciente("probando","agregar","nuevo@hotmail.com","hola",9);
         //System.out.println(paciente2);
         pacientes.add(paciente1);
         pacientes.add(paciente2);
+        pacientes.add(paciente3);
+        Persistencia.escribirPacientes(pacientes);
 
-        Sistema sistema = new Sistema(pacientes);
-        sistema.menu();
+        //Sistema sistema = new Sistema(pacientes);
+        //sistema.menu();
 
 //        LocalDate dia = LocalDate.now();
 //        System.out.println(dia.toString());

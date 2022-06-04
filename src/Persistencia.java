@@ -1,8 +1,8 @@
 import com.google.gson.Gson;
 
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +21,7 @@ import java.util.ArrayList;
  System.out.println(persona);
  */
 
-public abstract class Persistencia {
+public abstract class Persistencia { // deberiamos hacerlo generico
     // Metodos
 
     // lectura
@@ -51,13 +51,12 @@ public abstract class Persistencia {
 
     // escritura
     public static void escribirPacientes(ArrayList<Paciente> pacientes){ // no deberia ser lista de usuario?
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(pacientes);
         try{
             // el LocalDate de los atributos Tratamiento en Paciente generan los warning en consola
-            File file = new File("pacientes.json");
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-        }catch(Exception e){
+            Writer writer = new FileWriter("pacientes.json");
+            new Gson().toJson(pacientes, writer);
+            writer.close();
+        }catch(IOException e){
             System.out.println(e);
         }
     }
