@@ -26,16 +26,23 @@ public class Sistema { // deberia ser static/abstract/final?
 
     // Metodos
     public void menu() {    //ASIGNAR LOGIN (quitar menu y que lo haga de una)
+        Scanner scan = new Scanner(System.in);
+        int salir = 1;
+        while(salir != 0){
+            this.usuarioLogueado = this.login();
 
-        this.usuarioLogueado = this.login();
+            if (this.usuarioLogueado instanceof Paciente) {
+                this.menuPaciente();
+            } else if (this.usuarioLogueado instanceof Medico) {
+                this.menuMedico();
+            } else {
+                this.menuAdmin();
+            }
 
-        if (this.usuarioLogueado instanceof Paciente) {
-            this.menuPaciente();
-        } else if (this.usuarioLogueado instanceof Medico) {
-            this.menuMedico();
-        } else {
-            this.menuAdmin();
+            System.out.println("Ingresa 0 para salir del programa, cualquier otro numero para seguir");
+            salir = scan.nextInt();
         }
+
     }
 
 
