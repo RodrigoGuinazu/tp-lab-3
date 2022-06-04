@@ -26,6 +26,14 @@ public class Usuario {
         return ID;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
