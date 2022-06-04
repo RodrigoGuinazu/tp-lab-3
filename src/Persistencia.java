@@ -2,31 +2,28 @@ import com.google.gson.Gson;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-
-/**
- * escribir:
- File file = new File(“mi_archivo.json”);
- BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
- Persona persona = new Persona("Juan", "Gson");
- Gson gson = new Gson();
- gson.toJson(persona, Persona.class, bufferedWriter);
-
- - Leer desde archivo:
- File file = new File(“mi_archivo.json”);
- BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
- Gson gson = new Gson();
- Persona persona = gson.fromJson(bufferedReader, Persona.class);
- System.out.println(persona);
- */
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class Persistencia { // deberiamos hacerlo generico
     // Metodos
 
     // lectura
-    public static void leerPacientes(ArrayList<Paciente> pacientes){
-
+    public static List<Paciente> leerPacientes(List<Paciente> pacientes){
+        try{
+            Gson gson = new Gson();
+            Reader reader = Files.newBufferedReader(Paths.get("pacientes.json"));
+            pacientes = Arrays.asList(gson.fromJson(reader, Paciente[].class));
+            reader.close();
+        }catch(IOException e){
+            System.out.println(e);
+        }
+        return pacientes;
     }
 
     public static void leerMedico(ArrayList<Medico> medicos){
