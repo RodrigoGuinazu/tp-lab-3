@@ -50,11 +50,11 @@ public abstract class Persistencia {
     }
 
     // escritura
-    public static void escribirPacientes(ArrayList<Paciente> pacientes){
+    public static void escribirPacientes(ArrayList<Paciente> pacientes){ // no deberia ser lista de usuario?
         Gson gson = new Gson();
         String jsonString = gson.toJson(pacientes);
         try{
-
+            // el LocalDate de los atributos Tratamiento en Paciente generan los warning en consola
             File file = new File("pacientes.json");
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
         }catch(Exception e){
