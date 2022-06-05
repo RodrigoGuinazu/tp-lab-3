@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,18 +13,13 @@ public abstract class Persistencia {
     // Metodos
 
     // lectura
-    public static <T> ArrayList<T> deserializacion(String archivo){ // tener arreglos de clases dentro de la clase va ser un problema?
+    public static <T> ArrayList<T> deserializacion(String archivo, Class<T> type){ // tener arreglos de clases dentro de la clase va ser un problema?
         ArrayList<T> rta = new ArrayList<T>();
         try{
             Gson gson = new Gson();
             Reader reader = Files.newBufferedReader(Paths.get(archivo));
-            // https://stackoverflow.com/questions/5554217/deserialize-a-listt-object-with-gson/5554296#5554296
-            //rta = Arrays.asList(gson.fromJson(reader, T[].class));
-            //rta.add((T)gson.fromJson(reader,Object.class));
-
-            //Type userListType = new TypeToken<ArrayList<T>>(){}.getType(); // Due to type erasure, the TypeToken class is only able to capture types that are fully known at compile time. (That is, you can't do new TypeToken<List<T>>() {}.getType() for a type parameter T.)
-            //rta = gson.fromJson(reader, userListType);
-
+            System.out.println(reader);
+            rta = gson.fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType()); //
             reader.close();
         }catch(IOException e){
             System.out.println(e);
@@ -35,7 +31,6 @@ public abstract class Persistencia {
     public static <T> void serializacion(ArrayList<T> list, String archivo){
         try{
             // el LocalDate de los atributos Tratamiento en Paciente generan los warning en consola
-            System.out.println(list.get(0).getClass());
             Writer writer = new FileWriter(archivo);
             new Gson().toJson(list, writer);
             writer.close();

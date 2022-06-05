@@ -4,8 +4,8 @@ public class AccionBooleana extends Accion{
 
     private boolean seHizo = false;
 
-    public AccionBooleana(int duracion, int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
-        super(duracion, cadaCuanto, vecesPorDia, nombr, textoPregunta);
+    public AccionBooleana(int duracion, int cadaCuanto, int vecesPorDia, String nombre, String textoPregunta) {
+        super(duracion, cadaCuanto, vecesPorDia, nombre, textoPregunta);
     }
 
     @Override
