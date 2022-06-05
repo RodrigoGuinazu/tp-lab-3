@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
 
@@ -16,18 +18,35 @@ public class Main {
 //        listaIds.add(1);
 //        Medico medico1 = new Medico("Carlos","Maslaton","lorem@outlook","Cotorra",listaIds);
 //        System.out.println(medico1);
-//
-//        //Crear 1 paciente
+
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+//        ArrayList<Accion> acciones = new ArrayList<Accion>();
+//        AccionBooleana accion = new AccionBooleana(5, 1, 1, "tomar temperatura", "cual es la temperatura?");
+//        acciones.add(accion);
 //        Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
-//        System.out.println(paciente1);
+//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+//        tratamientos.add(new Tratamiento(new Enfermedad("Fiebre"), LocalDate.now(), LocalDate.now().plusDays(5), acciones));
+//        paciente1.setHistorialClinico(tratamientos);
+//        pacientes.add(paciente1);
+//        Paciente paciente2 = new Paciente("pedrito","Vargas","loremipsum@hotmail.com","abc123",14);
+//        Paciente paciente3 = new Paciente("probando","agregar","nuevo@hotmail.com","hola",9);
+//        pacientes.add(paciente2);
+//        pacientes.add(paciente3);
 //
-//        Sistema sistema = new Sistema();
-//        sistema.menu();
+       ArrayList<Medico> medicos = new ArrayList<>();
+//        Medico medico1 = new Medico("Elena medico","Vargas","lorem@hotmailmedico.com","Cocodrilo", new ArrayList<Integer>());
+//        Medico medico2 = new Medico("pedrito medico","Vargas","loremipsum@hotmailmedico.com","abc123",new ArrayList<Integer>());
+//        Medico medico3 = new Medico("probando medico","agregar","nuevo@hotmailmedico.com","hola",new ArrayList<Integer>());
+//        medicos.add(medico1);
+//        medicos.add(medico2);
+//        medicos.add(medico3);
 
-//        LocalDate dia = LocalDate.now();
-//        System.out.println(dia.toString());
-
-
-
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        
+        pacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        //medicos = Persistencia.deserializacion("medicos.json", Medico.class);
+        for(Paciente p : pacientes){
+            System.out.println(p + "\n");
+        }
     }
 }

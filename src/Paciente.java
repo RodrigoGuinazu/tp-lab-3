@@ -37,6 +37,10 @@ public class Paciente extends Usuario{
 
     }
 
+    public void setHistorialClinico(ArrayList<Tratamiento> historialClinico) {
+        this.historialClinico = historialClinico;
+    }
+
     public void getId(){
 
         this.tratamientoActual.realizarAcciones();

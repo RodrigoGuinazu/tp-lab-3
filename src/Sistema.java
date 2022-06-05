@@ -8,11 +8,8 @@ public class Sistema { // deberia ser static/abstract/final?
     Scanner scan = new Scanner(System.in);
     // Atributos
     private ArrayList<Usuario> usuarios;
-    private ArrayList<Tratamiento> tratamientos;
-    private ArrayList<Accion> acciones;
-    private ArrayList<Enfermedad> enfermedades;
     private LocalDate fechaDelDia;
-    private Usuario usuarioLogueado;    //solo uno a la vez
+    private Usuario usuarioLogueado; //solo uno a la vez
 
     // Constructores
 
@@ -21,27 +18,31 @@ public class Sistema { // deberia ser static/abstract/final?
 
     //solo usuarios lo demas cuando entra admin o medico
     //cargar con metodos
-    public Sistema(ArrayList<Usuario> usuarios, ArrayList<Tratamiento> tratamientos, ArrayList<Accion> acciones, ArrayList<Enfermedad> enfermedades, LocalDate fechaDelDia) {
+    public Sistema(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
-        this.tratamientos = tratamientos;
-        this.acciones = acciones;
-        this.enfermedades = enfermedades;
         this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
     }
 
     // Metodos
     public void menu() {    //ASIGNAR LOGIN (quitar menu y que lo haga de una)
+        Scanner scan = new Scanner(System.in);
+        int salir = 1;
+        while(salir != 0){
+            this.usuarioLogueado = this.login();
 
-        this.usuarioLogueado = login();
+            if (this.usuarioLogueado instanceof Paciente) {
+                this.menuPaciente();
+            } else if (this.usuarioLogueado instanceof Medico) {
+                this.menuMedico();
+            } else {
+                this.menuAdmin();
+            }
 
-        if (this.usuarioLogueado instanceof Paciente) {
-            this.menuPaciente();
-        } else if (this.usuarioLogueado instanceof Medico) {
-            this.menuMedico();
-        } else {
-            this.menuAdmin();
+            System.out.println("Ingresa 0 para salir del programa, cualquier otro numero para seguir");
+            salir = scan.nextInt();
         }
+
     }
 
 
@@ -149,13 +150,37 @@ public class Sistema { // deberia ser static/abstract/final?
         } while (opcion != 0);
     }
 
-
     public Usuario login() {
-        //pedir lso datos
-        //recorrer la lsita y validar
-        // ver si coinciden (try / catch) buscando por mail en lista de usuario y le decimos hola "nombre" y que ingrese la pass
-        Usuario user = new Usuario("Carlos", "tikiti", "adsa", "asd");
-        return user;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Bienvenido al TP LAB III\n");
+        System.out.println("Log In\n");
+        Usuario rta = null;
+        while (rta == null){
+            System.out.println("Mail: ");
+            String mail = scan.nextLine();
+            System.out.println("Contraseña: ");
+            String pass = scan.nextLine();
+            try{
+                rta = validarCredenciales(mail, pass);
+            }catch(CredencialesIncorrectasException e){
+                System.out.println(e);
+            }
+        }
+        System.out.println(rta);
+        return rta;
+    }
+
+    public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException{
+        for(Usuario u : this.usuarios){
+            if(u.getMail().equals(mail)){
+                if(u.getPassword().equals(pass)){
+                    return u;
+                }else{
+                    throw new CredencialesIncorrectasException(mail);
+                }
+            }
+        }
+        throw new CredencialesIncorrectasException();
     }
 
     public void logout() {
