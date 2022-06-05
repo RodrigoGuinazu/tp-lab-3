@@ -30,10 +30,11 @@ public class Admin extends Usuario implements Tratamientos{
     }
 
     @Override
-    public void crearTratamiento() {
+    public Tratamiento crearTratamiento() {
         // levantar archivo Tratameintos
         // agregar tratemiento
         //persistir
+        return null;
     }
 
     @Override

@@ -5,13 +5,16 @@ public class Paciente extends Usuario{
     //Atributos
 
     private ArrayList<Tratamiento> historialClinico = new ArrayList<Tratamiento>();
-    private Tratamiento tratamientoActual;
+    protected Tratamiento tratamientoActual;
     private Integer idMedicoAsignado;
     private Boolean debeSerAtendido;
 
     //Constructores
 
+    public Paciente() {
+        super();
 
+    }
 
     //con medico asignado
     public Paciente(String nombre, String apellido, String mail, String password, Integer idMedicoAsignado) {
@@ -37,11 +40,28 @@ public class Paciente extends Usuario{
 
     }
 
+    public void setDebeSerAtendido(Boolean debeSerAtendido) {
+        this.debeSerAtendido = debeSerAtendido;
+    }
+
+
+
+    public String getinfoPaciente (){
+
+        return super.toStringInfoNoSensible();
+    }
+
+    public Integer getId(){
+
+        return super.getId();
+    }
+
+
     public void setHistorialClinico(ArrayList<Tratamiento> historialClinico) {
         this.historialClinico = historialClinico;
     }
 
-    public void getId(){
+    public void asdasd(){
 
         this.tratamientoActual.realizarAcciones();
 
@@ -49,7 +69,9 @@ public class Paciente extends Usuario{
 
 
 
-
+    public Boolean getDebeSerAtendido() {
+        return debeSerAtendido;
+    }
 
     @Override
     public String toString() {

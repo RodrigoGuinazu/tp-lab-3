@@ -4,11 +4,16 @@ import java.util.Stack;
 
 public class Tratamiento {
     private Enfermedad enfermedad;
+    private int duracion;
     private LocalDate incioDate;
     private LocalDate finDate;
-    private ArrayList<Accion> listaAcciones;
+    protected ArrayList<Accion> listaAcciones;
     private Stack<RegistroDiario> listaRegistrosDiarios;
     private boolean finalizado;
+
+    public Tratamiento(){
+
+    }
 
     public Tratamiento(Enfermedad enfermedad, LocalDate inicio, LocalDate fin, ArrayList<Accion> acciones){
         this.enfermedad = enfermedad;
@@ -17,6 +22,47 @@ public class Tratamiento {
         this.listaAcciones  = acciones;
         this.listaRegistrosDiarios = new Stack<RegistroDiario>();
         finalizado = false;
+    }
+
+    public void setEnfermedad(Enfermedad enfermedad) {
+        this.enfermedad = enfermedad;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
+    public void setIncioDate(LocalDate incioDate) {
+        this.incioDate = incioDate;
+    }
+
+    public void setFinDate(LocalDate finDate) {
+        this.finDate = finDate;
+    }
+
+    public void setListaAcciones(ArrayList<Accion> listaAcciones) {
+        this.listaAcciones = listaAcciones;
+    }
+
+    public void setListaRegistrosDiarios(Stack<RegistroDiario> listaRegistrosDiarios) {
+        this.listaRegistrosDiarios = listaRegistrosDiarios;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
+
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public boolean existeRegistroDiario(LocalDate fecha){
+        for (RegistroDiario a : listaRegistrosDiarios){
+            if (a.getFecha().equals(fecha)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void realizarAcciones (){        //CAMBIAR (tiene que poder elegir que accion cambiar)
@@ -50,6 +96,23 @@ public class Tratamiento {
             // la logica del menu deberia indicarle que realice las acciones
         }
 
+    }
+
+    public String toStringListaAcciones(){
+        String rta = "";
+        for (Accion a: listaAcciones){
+            rta  += a.toString();
+        }
+
+        return rta;
+    }
+
+    @Override
+    public String toString() {
+        return "Tratamiento{" +
+                "enfermedad=" + enfermedad +
+                ", duracion=" + duracion + "Lista de acciones del tratamiento:" + toStringListaAcciones() +
+                '}';
     }
 }
 

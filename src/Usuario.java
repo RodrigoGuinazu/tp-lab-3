@@ -5,10 +5,15 @@ public class Usuario {
     private String apellido;
     private String mail;
     private String password;
+    private int dni;
     private static Integer ID=0;
     private Integer id;
 
     //Constructores
+
+    public Usuario() {
+
+    }
 
     public Usuario(String nombre, String apellido, String mail, String password) {
         this.nombre = nombre;
@@ -16,6 +21,7 @@ public class Usuario {
         this.mail = mail;
         this.password = password;
         this.id = idAutoincremental();
+
     }
 
     //Metodos
@@ -32,6 +38,21 @@ public class Usuario {
 
     public String getPassword() {
         return password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+    public int getDni(){
+        return dni;
+    }
+
+    public String toStringInfoNoSensible() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                '}';
     }
 
     @Override

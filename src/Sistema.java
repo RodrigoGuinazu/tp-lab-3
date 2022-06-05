@@ -75,9 +75,7 @@ public class Sistema { // deberia ser static/abstract/final?
     public void menuMedico() {
         int opcion;
         do {
-//            ((Medico) usuarioLogueado).setup(); levanta info lista
-
-            ((Medico) usuarioLogueado).notificarMedico();
+            System.out.println(((Medico) usuarioLogueado).notificarMedico());
             System.out.println("[1] Asingar tratamiento");
             System.out.println("[2] Ver historiales de los pacientes");
             System.out.println("[3] Log Out");

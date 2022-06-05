@@ -28,4 +28,11 @@ public abstract class Accion {
     public String getTextoPregunta() {
         return textoPregunta;
     }
+
+    @Override
+    public String toString() {
+        return "Accion{" +
+                "nombre='" + nombre + '\'' +
+                '}';
+    }
 }

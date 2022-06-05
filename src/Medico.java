@@ -1,4 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Medico extends Usuario implements Tratamientos{
 
@@ -18,10 +20,25 @@ public class Medico extends Usuario implements Tratamientos{
 
     //Metodos
 
-    public void notificarMedico() {
+    public String notificarMedico() {
         //levantar el archivo de pacientes
         //entra paciente por paciente por id y verifica qeu tratamiento
+        ArrayList<Paciente> aux = Persistencia.deserializacion("Pacientes.json",Paciente.class);
+        String rta = "";
+        rta += "Pacientes que deben ser atendidos hoy:=" +   '\'' ;
+        for (Paciente a : aux) {
+            if (a.getDebeSerAtendido()){
+                rta += a.getinfoPaciente();
+            }
+        }
+        rta += "Pacientes que no registraron informacion ayer:='" +   '\'' ;
 
+        for (Paciente a : aux) {
+            if (! a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1))){
+                rta += a.getinfoPaciente();
+            }
+        }
+        return rta;
     }
 
 
@@ -39,11 +56,69 @@ public class Medico extends Usuario implements Tratamientos{
     //metodo configuracion con ids y llenar su propai lista
 
     public void diagnosticarPacientes() {
+
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
-        // buscamos por id de paciente en la lista auxiliar
-        // modificamos en paciente aca podria elegir modificarlo
-        //setear debe ser atendido como false
-        // persistimso en archivo
+
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("Pacientes.json",Paciente.class);
+        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("Tratamientos.json",Tratamiento.class);
+
+
+        // mostramos al medico todos sus pacientes sin tratamiento
+
+        String rta = "Pacientes que deben ser atendidos hoy:=" +   '\'' ;
+        for (Paciente pacientegeneral : listaPacientes) {
+            if (pacientegeneral.getDebeSerAtendido()){
+                for(Integer a : pacientesDelMedico){
+                    if (pacientegeneral.getId().equals(a));
+                }
+                rta += pacientegeneral.getinfoPaciente();
+            }
+        }
+        System.out.println(rta);
+        System.out.println("Ingrese el dni del paciente que desea diagnosticar");
+        Scanner scan = new Scanner(System.in);
+        int dni = scan.nextInt();
+        Paciente pacienteAux = new Paciente();
+        for (Paciente a : listaPacientes){
+            if (a.getDni()==dni){
+                pacienteAux = a;
+            }
+        }
+
+        //mostramos al medico la lista de tratamientos
+
+        int x = 0;
+        for(Tratamiento a : listaTratamientosGenericos){
+            System.out.println(x + a.toString());
+            x++;
+        }
+
+        // preguntamos al medico si queire elegir uno existente o crear uno nuevo
+
+        System.out.println("quiere legir uno de lso tratamientos ya existentes? s/n");
+        String option = scan.nextLine();
+
+        if (option.equals("s")){
+            System.out.println("ingrese el numero del tratamiento elegido");
+            pacienteAux.tratamientoActual = listaTratamientosGenericos.get(scan.nextInt());
+
+        }
+        else{
+            pacienteAux.tratamientoActual = crearTratamiento();
+        }
+
+        // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
+
+        pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
+        pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
+        pacienteAux.setDebeSerAtendido(false);
+
+        // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
+
+        Persistencia.serializacion(listaPacientes,"Pacientes.jason");
+
+
+
     }
 
     public void verHistorialPaciente() {
@@ -51,9 +126,24 @@ public class Medico extends Usuario implements Tratamientos{
     }
 
     @Override
-    public void crearTratamiento() {
-        //llamar a cosntreuctor de tratamiento
-        //no se persiste
+    public Tratamiento crearTratamiento() {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("Acciones.json",Accion.class);
+        Tratamiento nuevoTratamiento = new Tratamiento();
+        System.out.println("Ingrese la duracion del tratamiento");
+        nuevoTratamiento.setDuracion(scan.nextInt());
+        System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
+        int aux = scan.nextInt();
+
+       for (int i = 0; i<aux; i++){
+           for (Accion a :  listaAcciones){
+               System.out.println(a.toString());
+           }
+           System.out.println("elija el numero de de la accion que escoja para el tratamiento:");
+           nuevoTratamiento.listaAcciones.add(listaAcciones.get(scan.nextInt()));
+       }
+
+        return nuevoTratamiento;
     }
 
     @Override
