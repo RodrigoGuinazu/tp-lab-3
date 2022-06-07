@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args){
 
-        //prueba nueva pc 2
 
         ArrayList<Paciente> pacientes = new ArrayList<>();
 //        ArrayList<Accion> acciones = new ArrayList<Accion>();

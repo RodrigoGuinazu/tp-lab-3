@@ -2,10 +2,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// archivos qeu van a existir: admin,medico,paciente,tratamientos,acciones,enfermedades
 
-public class Sistema { // deberia ser static/abstract/final?
-    Scanner scan = new Scanner(System.in);
+public class Sistema {
+    Scanner scan = new Scanner(System.in);  //no se puede scan.close(); pero en Main si
+
     // Atributos
     private ArrayList<Usuario> usuarios;
     private LocalDate fechaDelDia;
@@ -205,4 +205,5 @@ public class Sistema { // deberia ser static/abstract/final?
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
     }
+
 }
