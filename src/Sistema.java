@@ -2,51 +2,83 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Sistema {
     Scanner scan = new Scanner(System.in);  //no se puede scan.close(); pero en Main si
 
     // Atributos
     private ArrayList<Usuario> usuarios;
-    private LocalDate fechaDelDia;
+    private LocalDate fechaDelDia;      //No se esta usando
     private Usuario usuarioLogueado; //solo uno a la vez
 
     // Constructores
 
+    //Constructor 1
     public Sistema() {
         this.usuarios = new ArrayList<>();
-    }
-
-    //solo usuarios lo demas cuando entra admin o medico
-    //cargar con metodos
-    public Sistema(ArrayList<Usuario> usuarios) {
-        this.usuarios = usuarios;
         this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
     }
 
+
+    //Constructor 2 cargar con metodos
+//    public Sistema(ArrayList<Usuario> usuarios) {
+//        this.usuarios = usuarios;
+//        this.fechaDelDia = LocalDate.now();
+//        this.usuarioLogueado = null;
+//    }
+
     // Metodos
-    public void menu() {    //ASIGNAR LOGIN (quitar menu y que lo haga de una)
+    public void menu() {
         ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Paciente> pacientesAux = Persistencia.deserializacion("pacientes.json", Paciente.class);
         this.usuarios.addAll(medicosAux);
         this.usuarios.addAll(pacientesAux);
         Scanner scan = new Scanner(System.in);
-        int salir = 1;
-        while(salir != 0){
-            this.usuarioLogueado = this.login();
 
-            if (this.usuarioLogueado instanceof Paciente) {
-                this.menuPaciente();
-            } else if (this.usuarioLogueado instanceof Medico) {
-                this.menuMedico();
-            } else {
-                this.menuAdmin();
+        int opcionMenu = 0;
+        do {
+            System.out.println("[1] Log In");
+            System.out.println("[2] Salir del programa");
+            System.out.println("Ingrese una opcion");
+//            scan.nextInt();
+            opcionMenu = scan.nextInt();
+
+            switch (opcionMenu) {
+                case 1: //log in
+                    this.usuarioLogueado = this.login();
+                    if (this.usuarioLogueado instanceof Paciente) {
+                        this.menuPaciente();
+                    } else if (this.usuarioLogueado instanceof Medico) {
+                        this.menuMedico();
+                    } else {
+                        this.menuAdmin();
+                    }
+                    break;
+                case 2: //salir del programa
+                    System.out.println("Cerrando...Adios");
+                    break;
+
+                default:
+                    System.out.println("Opcion incorrecta, ingrese otra");
             }
 
-            System.out.println("Ingresa 0 para salir del programa, cualquier otro numero para seguir");
-            salir = scan.nextInt();
-        }
+        } while (opcionMenu != 2);
+
+
+//        int salir = 1;
+//        while(salir != 0){
+//            this.usuarioLogueado = this.login();
+//            if (this.usuarioLogueado instanceof Paciente) {
+//                this.menuPaciente();
+//            } else if (this.usuarioLogueado instanceof Medico) {
+//                this.menuMedico();
+//            } else {
+//                this.menuAdmin();
+//            }
+//
+//            System.out.println("Volviendo al login.Ingresa 0 para salir del programa, cualquier otro numero para volver a loguearse");  //cambiar a s/n (desea salir) algo asi
+//            salir = scan.nextInt();
+//        }
 
     }
 
@@ -73,7 +105,12 @@ public class Sistema {
                     logout();
                     opcion = 0;
                     break;
+
+//                default:
+//                    System.out.println("Opcion incorrecta vuelva a intentar");
+//                    break;
             }
+
         } while (opcion != 0);
     }
 
@@ -155,32 +192,38 @@ public class Sistema {
         } while (opcion != 0);
     }
 
-    public Usuario login() { // revisar
+    public Usuario login() { // Si entra mal pass mantener el mail, no volver a pedirlo
         Scanner scan = new Scanner(System.in);
         System.out.println("Bienvenido al TP LAB III\n");
         System.out.println("Log In\n");
         Usuario rta = null;
-        while (rta == null){
+        while (rta == null) {
+
             System.out.println("Mail: ");
-            String mail = scan.nextLine();
+            String mail = "lorem@hotmail.com";
+//            String mail = scan.nextLine();
+
+
             System.out.println("Contraseña: ");
-            String pass = scan.nextLine();
-            try{
+//            String pass = scan.nextLine();
+            String pass = "Cocodrilo";
+
+
+            try {
                 rta = validarCredenciales(mail, pass);
-            }catch(CredencialesIncorrectasException e){
+            } catch (CredencialesIncorrectasException e) {
                 System.out.println(e);
             }
         }
-        System.out.println(rta);
         return rta;
     }
 
-    public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException{
-        for(Usuario u : this.usuarios){
-            if(u.getMail().equals(mail)){
-                if(u.getPassword().equals(pass)){
+    public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException {
+        for (Usuario u : this.usuarios) {
+            if (u.getMail().equals(mail)) {
+                if (u.getPassword().equals(pass)) {
                     return u;
-                }else{
+                } else {
                     throw new CredencialesIncorrectasException(mail);
                 }
             }
