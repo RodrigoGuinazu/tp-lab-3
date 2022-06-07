@@ -31,19 +31,20 @@ public class Sistema {
     public void menu() {
         ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Paciente> pacientesAux = Persistencia.deserializacion("pacientes.json", Paciente.class);
+
         this.usuarios.addAll(medicosAux);
         this.usuarios.addAll(pacientesAux);
         Scanner scan = new Scanner(System.in);
 
         int opcionMenu = 0;
         do {
-            System.out.println("[1] Log In");
-            System.out.println("[2] Salir del programa");
+            System.out.println("[1] Log In");   //ok
+            System.out.println("[2] Salir del programa");   //ok
             System.out.println("Ingrese una opcion");
-//            scan.nextInt();
             opcionMenu = scan.nextInt();
 
             switch (opcionMenu) {
+
                 case 1: //log in
                     this.usuarioLogueado = this.login();
                     if (this.usuarioLogueado instanceof Paciente) {
@@ -54,6 +55,7 @@ public class Sistema {
                         this.menuAdmin();
                     }
                     break;
+
                 case 2: //salir del programa
                     System.out.println("Cerrando...Adios");
                     break;
@@ -61,25 +63,7 @@ public class Sistema {
                 default:
                     System.out.println("Opcion incorrecta, ingrese otra");
             }
-
         } while (opcionMenu != 2);
-
-
-//        int salir = 1;
-//        while(salir != 0){
-//            this.usuarioLogueado = this.login();
-//            if (this.usuarioLogueado instanceof Paciente) {
-//                this.menuPaciente();
-//            } else if (this.usuarioLogueado instanceof Medico) {
-//                this.menuMedico();
-//            } else {
-//                this.menuAdmin();
-//            }
-//
-//            System.out.println("Volviendo al login.Ingresa 0 para salir del programa, cualquier otro numero para volver a loguearse");  //cambiar a s/n (desea salir) algo asi
-//            salir = scan.nextInt();
-//        }
-
     }
 
 
@@ -87,10 +71,10 @@ public class Sistema {
         int opcion;
         do {
             ((Paciente) usuarioLogueado).notificarPaciente();
-            System.out.println("[1] Realizar acciones del dia\"");
-            System.out.println("[2] Modificar acciones del dia\"");
-            //mostrar devuelta las acciones del dia para hacer
-            System.out.println("[3] Log Out");
+            System.out.println("[1] Realizar acciones del dia");    //TO DO
+            System.out.println("[2] Modificar acciones del dia");   //TO DO
+            System.out.println("[3] Mostrar acciones del dia");     //ok
+            System.out.println("[4] Log Out");                      //ok
             System.out.println("Ingrese una opcion o 0 para salir: ");
             opcion = scan.nextInt();
 
@@ -98,19 +82,22 @@ public class Sistema {
                 case 1:
 
                 case 2:
-                    ((Paciente) usuarioLogueado).realizarAcciones();
+                    ((Paciente) usuarioLogueado).realizarAcciones();    //ERROR
                     break;
 
                 case 3:
+                    ((Paciente) usuarioLogueado).notificarPaciente();   //no hace nada
+                    break;
+
+                case 4:
                     logout();
                     opcion = 0;
                     break;
 
-//                default:
-//                    System.out.println("Opcion incorrecta vuelva a intentar");
-//                    break;
+                default:
+                    if(opcion != 0)
+                    System.out.println("Opcion incorrecta, ingrese otra");
             }
-
         } while (opcion != 0);
     }
 
