@@ -14,6 +14,7 @@ public class Sistema { // deberia ser static/abstract/final?
     // Constructores
 
     public Sistema() {
+        this.usuarios = new ArrayList<>();
     }
 
     //solo usuarios lo demas cuando entra admin o medico
@@ -26,6 +27,10 @@ public class Sistema { // deberia ser static/abstract/final?
 
     // Metodos
     public void menu() {    //ASIGNAR LOGIN (quitar menu y que lo haga de una)
+        ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
+        ArrayList<Paciente> pacientesAux = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        this.usuarios.addAll(medicosAux);
+        this.usuarios.addAll(pacientesAux);
         Scanner scan = new Scanner(System.in);
         int salir = 1;
         while(salir != 0){
@@ -46,7 +51,7 @@ public class Sistema { // deberia ser static/abstract/final?
     }
 
 
-    public void menuPaciente() { //
+    public void menuPaciente() {
         int opcion;
         do {
             ((Paciente) usuarioLogueado).notificarPaciente();
@@ -75,7 +80,9 @@ public class Sistema { // deberia ser static/abstract/final?
     public void menuMedico() {
         int opcion;
         do {
+            System.out.println("hola1");
             System.out.println(((Medico) usuarioLogueado).notificarMedico());
+            System.out.println("hola2");
             System.out.println("[1] Asingar tratamiento");
             System.out.println("[2] Ver historiales de los pacientes");
             System.out.println("[3] Log Out");
@@ -148,7 +155,7 @@ public class Sistema { // deberia ser static/abstract/final?
         } while (opcion != 0);
     }
 
-    public Usuario login() {
+    public Usuario login() { // revisar
         Scanner scan = new Scanner(System.in);
         System.out.println("Bienvenido al TP LAB III\n");
         System.out.println("Log In\n");

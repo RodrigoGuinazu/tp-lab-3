@@ -17,19 +17,35 @@ public class Main {
 //        pacientes.add(paciente3);
 //
        ArrayList<Medico> medicos = new ArrayList<>();
-//        Medico medico1 = new Medico("Elena medico","Vargas","lorem@hotmailmedico.com","Cocodrilo", new ArrayList<Integer>());
+       ArrayList<Integer> pacienteDelMedico = new ArrayList<>();
+        pacienteDelMedico.add(1);
+        Medico medico1 = new Medico("Elena medico","Vargas","lorem@hotmailmedico.com","Cocodrilo", pacienteDelMedico);
 //        Medico medico2 = new Medico("pedrito medico","Vargas","loremipsum@hotmailmedico.com","abc123",new ArrayList<Integer>());
 //        Medico medico3 = new Medico("probando medico","agregar","nuevo@hotmailmedico.com","hola",new ArrayList<Integer>());
 //        medicos.add(medico1);
 //        medicos.add(medico2);
 //        medicos.add(medico3);
 
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-        
+//        ArrayList<Usuario> usuarios = new ArrayList<>();
+//
         pacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
-        //medicos = Persistencia.deserializacion("medicos.json", Medico.class);
-        for(Paciente p : pacientes){
-            System.out.println(p + "\n");
-        }
+//        //medicos = Persistencia.deserializacion("medicos.json", Medico.class);
+//        for(Paciente p : pacientes){
+//            System.out.println(p + "\n");
+//        }
+
+//        ArrayList<Accion> listaAcciones = new ArrayList<Accion>();
+//        listaAcciones.add(new AccionBooleana(1, 1, "Tomar Pastilla", "Debe tomar la pastilla"));
+//        listaAcciones.add(new AccionDouble(1, 1, "Tomarse la fiebre", "Debe tomarse la fiebre"));
+//        Persistencia.serializacion(listaAcciones, "acciones.json");
+//
+//        Enfermedad enfermedad1 = new Enfermedad("Fiebre");
+//
+//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+//        tratamientos.add(new Tratamiento(enfermedad1, null, null, listaAcciones));
+//        Persistencia.serializacion(tratamientos, "tratamientos.json");
+
+        Sistema sistema = new Sistema();
+        sistema.menu();
     }
 }

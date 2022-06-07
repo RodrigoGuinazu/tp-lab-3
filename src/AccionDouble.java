@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class AccionDouble extends Accion{
     private float rta;
 
-    public AccionDouble(int duracion, int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
-        super(duracion, cadaCuanto, vecesPorDia, nombr, textoPregunta);
+    public AccionDouble(int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
+        super(cadaCuanto, vecesPorDia, nombr, textoPregunta);
     }
 
     @Override
