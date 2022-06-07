@@ -31,9 +31,10 @@ public class Sistema {
 
         int opcionMenu = 0;
         do {
+            System.out.println("Bienvenido al TP LAB III\n");
             System.out.println("[1] Log In");   //ok
             System.out.println("[2] Salir del programa");   //ok
-            System.out.println("Ingrese una opcion");
+            System.out.println("Ingrese una opcion:");
             opcionMenu = scan.nextInt();
 
             switch (opcionMenu) {
@@ -50,7 +51,7 @@ public class Sistema {
                     break;
 
                 case 2: //salir del programa
-                    System.out.println("Cerrando...Adios");
+                    System.out.println("Cerrando el programa...");
                     break;
 
                 default:
@@ -68,7 +69,7 @@ public class Sistema {
             System.out.println("[2] Modificar acciones del dia");   //TO DO
             System.out.println("[3] Mostrar acciones del dia");     //ok
             System.out.println("[4] Log Out");                      //ok
-            System.out.println("Ingrese una opcion o 0 para salir: ");
+            System.out.println("Ingrese una opcion:");
             opcionPaciente = scan.nextInt();
 
             switch (opcionPaciente) {
@@ -83,27 +84,26 @@ public class Sistema {
                     break;
 
                 case 4:
-                    logout();
-                    opcionPaciente = 0;
+                    this.logout();
                     break;
 
                 default:
-                    if (opcionPaciente != 0)
-                        System.out.println("Opcion incorrecta, ingrese otra");
+                    System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcionPaciente != 0);
+        } while (opcionPaciente != 4);
     }
 
 
     public void menuMedico() {
         int opcionMedico;
         do {
-            System.out.println(((Medico) usuarioLogueado).notificarMedico());   //mostrar mejor
+            System.out.println(((Medico) usuarioLogueado).notificarMedico());   //mostrar mejor y que cuando oprima una tecla siga con el menu
             System.out.println("[1] Asignar tratamiento");
+            // ver notificaciones de vuelta
             System.out.println("[2] Ver historiales de los pacientes");
             System.out.println("[3] Log Out");
 
-            System.out.println("Ingrese una opcion o 0 para salir: ");
+            System.out.println("Ingrese una opcion:");
             opcionMedico = scan.nextInt();
 
             switch (opcionMedico) {
@@ -116,16 +116,13 @@ public class Sistema {
                     break;
 
                 case 3:
-                    logout();
-                    opcionMedico = 0;
+                    this.logout();
                     break;
 
                 default:
-                    if(opcionMedico != 0){
-                        System.out.println("Opcion incorrecta, ingrese nuevamente");
-                    }
+                    System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcionMedico != 0);
+        } while (opcionMedico != 3);
     }
 
 
@@ -139,7 +136,7 @@ public class Sistema {
             System.out.println("[5] Editar un tratamiento");
             System.out.println("[6] Log Out");
 
-            System.out.println("Ingrese una opcion o 0 para salir: ");
+            System.out.println("Ingrese una opcion:");
             opcion = scan.nextInt();
 
             switch (opcion) {
@@ -169,23 +166,19 @@ public class Sistema {
                 break;
 
                 case 6: {
-                    logout();
-                    opcion = 0;
+                    this.logout();
                 }
                 break;
 
                 default:
-                    if(opcion != 0){
-                        System.out.println("Opcion incorrecta, ingrese nuevamente");
-                    }
+                    System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcion != 0);
+        } while (opcion != 6);
     }
 
     public Usuario login() { // Si entra mal pass mantener el mail, no volver a pedirlo
         Scanner scan = new Scanner(System.in);
-        System.out.println("Bienvenido al TP LAB III\n");
-        System.out.println("Log In\n");
+        System.out.println("Log In");
         Usuario rta = null;
         while (rta == null) {
 
@@ -228,19 +221,4 @@ public class Sistema {
     public void logout() {
         this.usuarioLogueado = null;
     }
-
-
-    //metodos sistema para cada menu y l oqeu tenga qeu hacer (cargar, mostrar)
-    public void notificarMedicos() {
-
-    }
-
-    public void notificarPacientes() {
-
-    }
-
-    public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
 }
