@@ -38,49 +38,4 @@ public abstract class Persistencia {
             System.out.println(e);
         }
     }
-
-    /**
-     // lectura
-    public static void leerMedico(ArrayList<Medico> medicos){
-
-    }
-
-    public static void leerAdmins(ArrayList<Admin> admins){
-
-    }
-
-    public static void leerEnfermedades(ArrayList<Enfermedad> enfermedades){
-
-    }
-
-    public static void leerTratamientos(ArrayList<Tratamiento> tratamientos){
-
-    }
-
-    public static void leerAcciones(ArrayList<Accion> acciones){
-
-    }
-
-    // escritura
-    public static void escribirMedico(ArrayList<Medico> medicos){
-
-    }
-
-    public static void escribirAdmins(ArrayList<Admin> admins){
-
-    }
-
-    public static void escribirEnfermedades(ArrayList<Enfermedad> enfermedades){
-
-    }
-
-    public static void escribirTratamientos(ArrayList<Tratamiento> tratamientos){
-
-    }
-
-    public static void escribirAcciones(ArrayList<Accion> acciones){
-
-    }
-
-     */
 }
