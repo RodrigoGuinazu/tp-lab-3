@@ -8,9 +8,7 @@ public class Sistema {
     // Atributos
     private ArrayList<Usuario> usuarios;
     private LocalDate fechaDelDia;      //No se esta usando
-    private Usuario usuarioLogueado; //solo uno a la vez
-
-    // Constructores
+    private Usuario usuarioLogueado;
 
     //Constructor 1
     public Sistema() {
@@ -19,21 +17,16 @@ public class Sistema {
         this.usuarioLogueado = null;
     }
 
-
-    //Constructor 2 cargar con metodos
-//    public Sistema(ArrayList<Usuario> usuarios) {
-//        this.usuarios = usuarios;
-//        this.fechaDelDia = LocalDate.now();
-//        this.usuarioLogueado = null;
-//    }
-
     // Metodos
     public void menu() {
         ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Paciente> pacientesAux = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        //despersistir array list admins
 
+        //agregar array list admins a usuarios
         this.usuarios.addAll(medicosAux);
         this.usuarios.addAll(pacientesAux);
+
         Scanner scan = new Scanner(System.in);
 
         int opcionMenu = 0;
@@ -68,7 +61,7 @@ public class Sistema {
 
 
     public void menuPaciente() {
-        int opcion;
+        int opcionPaciente;
         do {
             ((Paciente) usuarioLogueado).notificarPaciente();
             System.out.println("[1] Realizar acciones del dia");    //TO DO
@@ -76,9 +69,9 @@ public class Sistema {
             System.out.println("[3] Mostrar acciones del dia");     //ok
             System.out.println("[4] Log Out");                      //ok
             System.out.println("Ingrese una opcion o 0 para salir: ");
-            opcion = scan.nextInt();
+            opcionPaciente = scan.nextInt();
 
-            switch (opcion) {
+            switch (opcionPaciente) {
                 case 1:
 
                 case 2:
@@ -91,30 +84,29 @@ public class Sistema {
 
                 case 4:
                     logout();
-                    opcion = 0;
+                    opcionPaciente = 0;
                     break;
 
                 default:
-                    if(opcion != 0)
-                    System.out.println("Opcion incorrecta, ingrese otra");
+                    if (opcionPaciente != 0)
+                        System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcion != 0);
+        } while (opcionPaciente != 0);
     }
 
+
     public void menuMedico() {
-        int opcion;
+        int opcionMedico;
         do {
-            System.out.println("hola1");
-            System.out.println(((Medico) usuarioLogueado).notificarMedico());
-            System.out.println("hola2");
-            System.out.println("[1] Asingar tratamiento");
+            System.out.println(((Medico) usuarioLogueado).notificarMedico());   //mostrar mejor
+            System.out.println("[1] Asignar tratamiento");
             System.out.println("[2] Ver historiales de los pacientes");
             System.out.println("[3] Log Out");
 
             System.out.println("Ingrese una opcion o 0 para salir: ");
-            opcion = scan.nextInt();
+            opcionMedico = scan.nextInt();
 
-            switch (opcion) {
+            switch (opcionMedico) {
                 case 1:
                     ((Medico) usuarioLogueado).diagnosticarPacientes();
                     break;
@@ -125,11 +117,17 @@ public class Sistema {
 
                 case 3:
                     logout();
-                    opcion = 0;
+                    opcionMedico = 0;
                     break;
+
+                default:
+                    if(opcionMedico != 0){
+                        System.out.println("Opcion incorrecta, ingrese nuevamente");
+                    }
             }
-        } while (opcion != 0);
+        } while (opcionMedico != 0);
     }
+
 
     public void menuAdmin() {
         int opcion;
@@ -187,13 +185,17 @@ public class Sistema {
         while (rta == null) {
 
             System.out.println("Mail: ");
-            String mail = "lorem@hotmail.com";
-//            String mail = scan.nextLine();
+
+//            String mail = scan.nextLine();    // sin harcodeo
+//            String mail = "lorem@hotmail.com";  //Harcodeo paciente
+            String mail = "lorem@hotmailmedico.com";  //Harcodeo medico
 
 
             System.out.println("Contraseña: ");
-//            String pass = scan.nextLine();
-            String pass = "Cocodrilo";
+
+//            String pass = scan.nextLine();    // sin harcodeo
+//            String pass = "Cocodrilo";          //Harcodeo paciente
+            String pass = "Cocodrilo";          //Harcodeo medico
 
 
             try {

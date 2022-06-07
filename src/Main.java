@@ -1,8 +1,36 @@
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
+
+        //crear un sistema con listas ya cargadas
         Sistema sistema = new Sistema();
         sistema.menu();
+
+
+
+        // pacientes
+//        ArrayList<Paciente> pacientes = new ArrayList<>();
+//        Paciente paciente1 = new Paciente("Elena","Vargas","paciente1@hotmail.com","Coco",14);
+//        Paciente paciente2 = new Paciente("pedrito","Vargas","paciente2@gmail.com","Casa",14);
+//        Paciente paciente3 = new Paciente("probando","agregar","paciente3@outlook.com","Cubo",9);
+
+
+        // medicos
+
+        // admins
+
+        //acciones
+//        ArrayList<Accion> acciones = new ArrayList<>();
+//
+//        //tratamientos
+//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+//
+//        //enfermedades
+//        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
+//
+//
+
+
 
 //        ArrayList<Paciente> pacientes = new ArrayList<>();
 ////        ArrayList<Accion> acciones = new ArrayList<Accion>();

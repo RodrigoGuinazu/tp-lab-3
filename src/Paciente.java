@@ -33,12 +33,11 @@ public class Paciente extends Usuario{
 
     public void realizarAcciones(){
 
-        //cheqeuar fecha finalizacion menor o igual a actual
+        // cheqeuar fecha finalizacion menor o igual a actual
         // si es mayor pasar el tratamiento al historial clinico y setear tratamiento como null
         // recibir lista de acciones y modificar aca dentro y qeu get acciones devuelva una lista de acciones
 
         this.tratamientoActual.realizarAcciones();
-
     }
 
     public void setDebeSerAtendido(Boolean debeSerAtendido) {
