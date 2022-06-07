@@ -2,6 +2,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
+
+        //prueba nueva pc
+
         ArrayList<Paciente> pacientes = new ArrayList<>();
 //        ArrayList<Accion> acciones = new ArrayList<Accion>();
 //        AccionBooleana accion = new AccionBooleana(5, 1, 1, "tomar temperatura", "cual es la temperatura?");
