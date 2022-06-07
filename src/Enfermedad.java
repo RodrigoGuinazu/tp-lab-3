@@ -4,4 +4,11 @@ public class Enfermedad {
     public Enfermedad(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return "Enfermedad{" +
+                "nombre='" + nombre + '\'' +
+                '}';
+    }
 }

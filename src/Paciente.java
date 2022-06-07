@@ -73,11 +73,21 @@ public class Paciente extends Usuario{
         return debeSerAtendido;
     }
 
+    public String toStringHistorial(){
+        StringBuilder string = new StringBuilder();
+        for(Tratamiento t : this.historialClinico){
+            string.append(t.getEnfermedad().toString() + "\n");
+        }
+        return string.toString();
+    }
+
     @Override
     public String toString() {
-        return super.toString() +
-                "Paciente{" +
+        return "Paciente{" +
+                "historialClinico=" + (this.historialClinico != null ? toStringHistorial() : "sin historial") +
+                ", tratamientoActual=" + (this.tratamientoActual != null ? this.tratamientoActual.toString() : "sin tratamiento") +
                 ", idMedicoAsignado=" + idMedicoAsignado +
+                ", debeSerAtendido=" + debeSerAtendido +
                 '}';
     }
 }

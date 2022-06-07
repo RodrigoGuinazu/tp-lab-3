@@ -13,13 +13,12 @@ public abstract class Persistencia {
     // Metodos
 
     // lectura
-    public static <T> ArrayList<T> deserializacion(String archivo, Class<T> type){ // tener arreglos de clases dentro de la clase va ser un problema?
+    public static <T> ArrayList<T> deserializacion(String archivo, Class<T> type){
         ArrayList<T> rta = new ArrayList<T>();
         try{
             Gson gson = new Gson();
             Reader reader = Files.newBufferedReader(Paths.get(archivo));
-            System.out.println(reader);
-            rta = gson.fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType()); //
+            rta = gson.fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType());
             reader.close();
         }catch(IOException e){
             System.out.println(e);

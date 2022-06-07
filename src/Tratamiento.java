@@ -107,6 +107,10 @@ public class Tratamiento {
         return rta;
     }
 
+    public Enfermedad getEnfermedad() {
+        return enfermedad;
+    }
+
     @Override
     public String toString() {
         return "Tratamiento{" +

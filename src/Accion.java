@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public abstract class Accion {
+public class Accion{ // no puede ser abstract por el deserializador
     // Atributos
     private int duracion; // en dias
     private LocalDate ultimaNoti; // ultima vez que se le notifico la accion
@@ -19,7 +19,9 @@ public abstract class Accion {
     }
 
     // Metodos
-    public abstract Registro accionar() throws AccionFallidaException; //accionar debe devolver el registro ya creado
+    public Registro accionar() throws AccionFallidaException{
+        return null; // por default
+    }//accionar debe devolver el registro ya creado
 
     public String getNombre() {
         return nombre;
