@@ -173,6 +173,11 @@ public class Sistema {
                     opcion = 0;
                 }
                 break;
+
+                default:
+                    if(opcion != 0){
+                        System.out.println("Opcion incorrecta, ingrese nuevamente");
+                    }
             }
         } while (opcion != 0);
     }
@@ -186,16 +191,16 @@ public class Sistema {
 
             System.out.println("Mail: ");
 
-//            String mail = scan.nextLine();    // sin harcodeo
+            String mail = scan.nextLine();    // sin harcodeo
 //            String mail = "lorem@hotmail.com";  //Harcodeo paciente
-            String mail = "lorem@hotmailmedico.com";  //Harcodeo medico
+//            String mail = "lorem@hotmailmedico.com";  //Harcodeo medico
 
 
             System.out.println("Contraseña: ");
 
-//            String pass = scan.nextLine();    // sin harcodeo
+            String pass = scan.nextLine();    // sin harcodeo
 //            String pass = "Cocodrilo";          //Harcodeo paciente
-            String pass = "Cocodrilo";          //Harcodeo medico
+//            String pass = "Cocodrilo";          //Harcodeo medico
 
 
             try {
