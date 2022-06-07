@@ -2,7 +2,6 @@ import java.time.LocalDate;
 
 public class Accion{ // no puede ser abstract por el deserializador
     // Atributos
-    private int duracion; // en dias
     private LocalDate ultimaNoti; // ultima vez que se le notifico la accion
     private String textoPregunta;
     private int cadaCuanto; // cada cuanto dias tiene que hacer la accion
@@ -10,9 +9,8 @@ public class Accion{ // no puede ser abstract por el deserializador
     private String nombre;
 
     // Constructores
-    public Accion(int duracion, int cadaCuanto, int vecesPorDia, String nombr,String textoPregunta) {
+    public Accion(int cadaCuanto, int vecesPorDia, String nombre, String textoPregunta) {
         this.textoPregunta = textoPregunta;
-        this.duracion = duracion;
         this.cadaCuanto = cadaCuanto;
         this.vecesPorDia = vecesPorDia;
         this.nombre = nombre;
