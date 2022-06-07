@@ -7,16 +7,13 @@ public class Medico extends Usuario implements Tratamientos{
     private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();  //ids paciente
 
     //Constructores
-    //sin parametro lista de ids
-    public Medico(String nombre, String apellido, String mail, String password) {
-        super(nombre, apellido, mail, password);
-    }
 
-    //Recibe lista de ids
-    public Medico(String nombre, String apellido, String mail, String password, ArrayList<Integer> pacientesDelMedico) {
-        super(nombre, apellido, mail, password);
+
+    public Medico(String nombre, String apellido, String dni, String mail, String password, ArrayList<Integer> pacientesDelMedico) {
+        super(nombre, apellido, dni, mail, password);
         this.pacientesDelMedico = pacientesDelMedico;
     }
+
 
     //Metodos
 
@@ -79,7 +76,7 @@ public class Medico extends Usuario implements Tratamientos{
         System.out.println(rta);
         System.out.println("Ingrese el dni del paciente que desea diagnosticar");
         Scanner scan = new Scanner(System.in);
-        int dni = scan.nextInt();
+        String dni = scan.nextLine();
         Paciente pacienteAux = new Paciente();
         for (Paciente a : listaPacientes){
             if (a.getDni()==dni){

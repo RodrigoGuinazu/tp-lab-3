@@ -3,9 +3,9 @@ public class Usuario {
     //Atributos
     private String nombre;
     private String apellido;
+    private String dni;
     private String mail;
     private String password;
-    private int dni;
     private static Integer ID=0;
     private Integer id;
 
@@ -15,13 +15,13 @@ public class Usuario {
 
     }
 
-    public Usuario(String nombre, String apellido, String mail, String password) {
+    public Usuario(String nombre, String apellido, String dni, String mail, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.dni = dni;
         this.mail = mail;
         this.password = password;
         this.id = idAutoincremental();
-
     }
 
     //Metodos
@@ -43,7 +43,7 @@ public class Usuario {
     public Integer getId() {
         return id;
     }
-    public int getDni(){
+    public String getDni(){
         return dni;
     }
 

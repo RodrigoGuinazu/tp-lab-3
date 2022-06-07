@@ -2,10 +2,12 @@ public class Admin extends Usuario implements Tratamientos{
 
     //Atributos
 
+
     //Constructor
-    public Admin(String nombre, String apellido, String mail, String password) {
-        super(nombre, apellido, mail, password);
+    public Admin(String nombre, String apellido, String dni, String mail, String password) {
+        super(nombre, apellido, dni, mail, password);
     }
+
 
     //Metodos
 

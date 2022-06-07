@@ -1,42 +1,54 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
 
-        //crear un sistema con listas ya cargadas
-        Sistema sistema = new Sistema();
-        sistema.menu();
-
-
-
         // pacientes
-//        ArrayList<Paciente> pacientes = new ArrayList<>();
-//        Paciente paciente1 = new Paciente("Elena","Vargas","paciente1@hotmail.com","Coco",14);
-//        Paciente paciente2 = new Paciente("pedrito","Vargas","paciente2@gmail.com","Casa",14);
-//        Paciente paciente3 = new Paciente("probando","agregar","paciente3@outlook.com","Cubo",9);
+        ArrayList<Paciente> pacientesMain = new ArrayList<>();
+
+        Paciente paciente3 = new Paciente("Elena","Vargas","40347821","paciente1@hotmail.com","Coco",14);
+        pacientesMain.add(paciente3);   //con medico asignado
+
+        System.out.println(pacientesMain);
+
+        Persistencia.serializacion(pacientesMain, "pacientes2.0.json");
+
+
 
 
         // medicos
 
+
         // admins
+
 
         //acciones
 //        ArrayList<Accion> acciones = new ArrayList<>();
 //
+
 //        //tratamientos
 //        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
 //
+
 //        //enfermedades
 //        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
 //
 //
 
 
+//        //crear un sistema con listas ya cargadas
+//        Sistema sistema = new Sistema();
+//        sistema.menu();
+
+
+
 
 //        ArrayList<Paciente> pacientes = new ArrayList<>();
-////        ArrayList<Accion> acciones = new ArrayList<Accion>();
+
 ////        AccionBooleana accion = new AccionBooleana(5, 1, 1, "tomar temperatura", "cual es la temperatura?");
 ////        acciones.add(accion);
-////        Paciente paciente1 = new Paciente("Elena","Vargas","lorem@hotmail.com","Cocodrilo",14);
+
 ////        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
 ////        tratamientos.add(new Tratamiento(new Enfermedad("Fiebre"), LocalDate.now(), LocalDate.now().plusDays(5), acciones));
 ////        paciente1.setHistorialClinico(tratamientos);

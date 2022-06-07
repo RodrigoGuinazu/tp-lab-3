@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class Paciente extends Usuario{
+public class Paciente extends Usuario {
 
     //Atributos
 
-    private ArrayList<Tratamiento> historialClinico = new ArrayList<Tratamiento>();
+    private ArrayList<Tratamiento> historialClinico = new ArrayList<>();
     protected Tratamiento tratamientoActual;
     private Integer idMedicoAsignado;
     private Boolean debeSerAtendido;
@@ -16,22 +16,23 @@ public class Paciente extends Usuario{
 
     }
 
+
     //con medico asignado
-    public Paciente(String nombre, String apellido, String mail, String password, Integer idMedicoAsignado) {
-        super(nombre, apellido, mail, password);
+    public Paciente(String nombre, String apellido, String dni, String mail, String password, Integer idMedicoAsignado) {
+        super(nombre, apellido, dni, mail, password);
         this.idMedicoAsignado = idMedicoAsignado;
         this.debeSerAtendido = true;
     }
 
     //Metodos
 
-    public void notificarPaciente(){
+    public void notificarPaciente() {
         //recorrer lista de acciones y llamar funcion notificar en accion
         // mostrar solamente las accioens que no esten hechas
     }
 
 
-    public void realizarAcciones(){
+    public void realizarAcciones() {
 
         // cheqeuar fecha finalizacion menor o igual a actual
         // si es mayor pasar el tratamiento al historial clinico y setear tratamiento como null
@@ -45,13 +46,12 @@ public class Paciente extends Usuario{
     }
 
 
-
-    public String getinfoPaciente (){
+    public String getinfoPaciente() {
 
         return super.toStringInfoNoSensible();
     }
 
-    public Integer getId(){
+    public Integer getId() {
 
         return super.getId();
     }
@@ -61,21 +61,20 @@ public class Paciente extends Usuario{
         this.historialClinico = historialClinico;
     }
 
-    public void asdasd(){
+    public void asdasd() {
 
         this.tratamientoActual.realizarAcciones();
 
     }
 
 
-
     public Boolean getDebeSerAtendido() {
         return debeSerAtendido;
     }
 
-    public String toStringHistorial(){
+    public String toStringHistorial() {
         StringBuilder string = new StringBuilder();
-        for(Tratamiento t : this.historialClinico){
+        for (Tratamiento t : this.historialClinico) {
             string.append(t.getEnfermedad().toString() + "\n");
         }
         return string.toString();
