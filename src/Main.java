@@ -7,14 +7,20 @@ public class Main {
         // pacientes
         ArrayList<Paciente> pacientesMain = new ArrayList<>();
 
-        Paciente paciente3 = new Paciente("Elena","Vargas","40347821","paciente1@hotmail.com","Coco",14);
-        pacientesMain.add(paciente3);   //con medico asignado
+        Paciente paciente1 = new Paciente("Elena","Vargas","40347821","paciente1@hotmail.com","Coco",14);
+        pacientesMain.add(paciente1);   //con medico asignado
+
+        Paciente paciente2 = new Paciente();
+        pacientesMain.add(paciente2);   //sin nada
 
         System.out.println(pacientesMain);
 
-        Persistencia.serializacion(pacientesMain, "pacientes2.0.json");
+        Persistencia.serializacion(pacientesMain, "pacientes.json");
 
 
+
+//        Sistema sistema = new Sistema();    //falta crear sistema con listas ya cargadas
+//        sistema.menu();
 
 
         // medicos
@@ -37,9 +43,7 @@ public class Main {
 //
 
 
-//        //crear un sistema con listas ya cargadas
-//        Sistema sistema = new Sistema();
-//        sistema.menu();
+
 
 
 

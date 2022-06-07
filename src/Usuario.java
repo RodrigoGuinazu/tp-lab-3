@@ -11,10 +11,18 @@ public class Usuario {
 
     //Constructores
 
-    public Usuario() {
 
+    // Vacio
+    public Usuario() {
+        this.nombre = "Generico";
+        this.apellido = null;
+        this.dni = null;
+        this.mail = null;
+        this.password = null;
+        this.id = idAutoincremental();
     }
 
+    // Completo
     public Usuario(String nombre, String apellido, String dni, String mail, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -55,11 +63,13 @@ public class Usuario {
                 '}';
     }
 
+
     @Override
     public String toString() {
         return "Usuario{" +
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", id=" + id +

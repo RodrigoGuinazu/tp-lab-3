@@ -9,15 +9,20 @@ public class Paciente extends Usuario {
     private Integer idMedicoAsignado;
     private Boolean debeSerAtendido;
 
-    //Constructores
 
     public Paciente() {
         super();
-
+        this.historialClinico = null;
+        this.tratamientoActual = null;
+        this.idMedicoAsignado = null;
+        this.debeSerAtendido = null;
     }
 
+    // Vacio
 
-    //con medico asignado
+
+
+    // Completo
     public Paciente(String nombre, String apellido, String dni, String mail, String password, Integer idMedicoAsignado) {
         super(nombre, apellido, dni, mail, password);
         this.idMedicoAsignado = idMedicoAsignado;
@@ -80,13 +85,15 @@ public class Paciente extends Usuario {
         return string.toString();
     }
 
+
     @Override
     public String toString() {
         return "Paciente{" +
-                "historialClinico=" + (this.historialClinico != null ? toStringHistorial() : "sin historial") +
-                ", tratamientoActual=" + (this.tratamientoActual != null ? this.tratamientoActual.toString() : "sin tratamiento") +
+                super.toString() + " " +
                 ", idMedicoAsignado=" + idMedicoAsignado +
+                ", tratamientoActual=" + tratamientoActual +
                 ", debeSerAtendido=" + debeSerAtendido +
+                ", historialClinico=" + historialClinico +
                 '}';
     }
 }

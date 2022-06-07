@@ -1,82 +1,17 @@
 [
   {
-    "historialClinico": [
-      {
-        "enfermedad": {
-          "nombre": "Fiebre"
-        },
-        "duracion": 0,
-        "incioDate": {
-          "year": 2022,
-          "month": 6,
-          "day": 5
-        },
-        "finDate": {
-          "year": 2022,
-          "month": 6,
-          "day": 10
-        },
-        "listaAcciones": [
-          {
-            "textoPregunta": "cual es la temperatura?",
-            "cadaCuanto": 1,
-            "vecesPorDia": 1
-          }
-        ],
-        "listaRegistrosDiarios": [],
-        "finalizado": false
-      }
-    ],
-    "tratamientoActual": {
-      "enfermedad": {
-        "nombre": "Fiebre"
-      },
-      "duracion": 0,
-      "incioDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 7
-      },
-      "finDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 7
-      },
-      "listaAcciones": [
-        {
-          "textoPregunta": "Debe tomar la pastilla",
-          "cadaCuanto": 1,
-          "vecesPorDia": 1,
-          "nombre": "Tomar Pastilla"
-        },
-        {
-          "textoPregunta": "Debe tomarse la fiebre",
-          "cadaCuanto": 1,
-          "vecesPorDia": 1,
-          "nombre": "Tomarse la fiebre"
-        }
-      ],
-      "listaRegistrosDiarios": [],
-      "finalizado": false
-    },
-    "idMedicoAsignado": 14,
-    "debeSerAtendido": false,
-    "nombre": "Elena",
-    "apellido": "Vargas",
-    "mail": "lorem@hotmail.com",
-    "password": "Cocodrilo",
-    "dni": 1234,
-    "id": 1
-  },
-  {
     "historialClinico": [],
     "idMedicoAsignado": 14,
     "debeSerAtendido": true,
-    "nombre": "pedrito",
+    "nombre": "Elena",
     "apellido": "Vargas",
-    "mail": "loremipsum@hotmail.com",
-    "password": "abc123",
-    "dni": 2,
+    "dni": "40347821",
+    "mail": "paciente1@hotmail.com",
+    "password": "Coco",
+    "id": 1
+  },
+  {
+    "nombre": "Generico",
     "id": 2
   }
 ]
