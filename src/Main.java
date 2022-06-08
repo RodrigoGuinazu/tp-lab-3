@@ -1,23 +1,21 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
         Sistema sistema = new Sistema();
         sistema.menu();
-
-        // pacientes
-        ArrayList<Paciente> pacientesMain = new ArrayList<>();
-
-        Paciente paciente1 = new Paciente("Elena","Vargas","40347821","paciente1@hotmail.com","Coco",14);
-        pacientesMain.add(paciente1);   //con medico asignado
-
-        Paciente paciente2 = new Paciente();
-        pacientesMain.add(paciente2);   //sin nada
-
-        System.out.println(pacientesMain);
-
-        Persistencia.serializacion(pacientesMain, "pacientes.json");
+//
+//        // pacientes
+//        ArrayList<Paciente> pacientesMain = new ArrayList<>();
+//
+//        Paciente paciente1 = new Paciente("Elena","Vargas","40347821","paciente1@hotmail.com","Coco",14);
+//        pacientesMain.add(paciente1);   //con medico asignado
+//
+//        Paciente paciente2 = new Paciente();
+//        pacientesMain.add(paciente2);   //sin nada
+//
+//        System.out.println(pacientesMain);
+//
+//        Persistencia.serializacion(pacientesMain, "pacientes.json");
 
 
 

@@ -21,11 +21,13 @@ public class Sistema {
     public void menu() {
         ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Paciente> pacientesAux = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        ArrayList<Admin> adminsAux = Persistencia.deserializacion("admins.json", Admin.class);
         //despersistir array list admins
 
         //agregar array list admins a usuarios
         this.usuarios.addAll(medicosAux);
         this.usuarios.addAll(pacientesAux);
+        this.usuarios.addAll(adminsAux);
 
         Scanner scan = new Scanner(System.in);
 
@@ -207,7 +209,7 @@ public class Sistema {
 
     public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException {
         for (Usuario u : this.usuarios) {
-            if (u.getMail().equals(mail)) {
+            if(u.getMail().equals(mail)) {
                 if (u.getPassword().equals(pass)) {
                     return u;
                 } else {

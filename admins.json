@@ -1,0 +1,10 @@
+[
+    {
+        "nombre": "Admin",
+        "apellido": "Sistema",
+        "dni": "11111111",
+        "mail": "admin@hotmail.com",
+        "password": "admin",
+        "id": 1
+    }
+]

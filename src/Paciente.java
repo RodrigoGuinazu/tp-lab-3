@@ -61,6 +61,9 @@ public class Paciente extends Usuario {
         return super.getId();
     }
 
+    public Tratamiento getTratamientoActual() {
+        return tratamientoActual;
+    }
 
     public void setHistorialClinico(ArrayList<Tratamiento> historialClinico) {
         this.historialClinico = historialClinico;
