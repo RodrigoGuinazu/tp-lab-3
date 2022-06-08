@@ -26,6 +26,7 @@ public class Admin extends Usuario implements Tratamientos{
             rta = (Paciente) this.buscarUsuario(aux, dni);
             // verifico que no tenga un tratamiento en curso
             if(rta.getTratamientoActual() == null){
+                System.out.println("El paciente ya existe, se le notificara al medico con disponibildad que lo atienda");
                 rta.setDebeSerAtendido(true);
             }else{
                 System.out.println("El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita");
@@ -36,8 +37,16 @@ public class Admin extends Usuario implements Tratamientos{
             int flag = 0;
             while(flag == 0){
                 try{
-                    rta = (Paciente) this.cargarDatosBasicos(dni);
+                    System.out.println("Nombre: ");
+                    String nombre = scan.nextLine();
+                    System.out.println("Apellido: ");
+                    String apellido = scan.nextLine();
+                    System.out.println("Mail: ");
+                    String mail = scan.nextLine();
+                    System.out.println("Password: ");
+                    String password = scan.nextLine();
                     flag = 1;
+                    rta = new Paciente(nombre, apellido, dni, mail, password, 1); // por ahora hardcodeado, deberia llamar al metodo asignar medico
                     pacientes.add(rta);
                 }catch (InputMismatchException f){
                     System.out.println(f);
@@ -67,23 +76,6 @@ public class Admin extends Usuario implements Tratamientos{
             }
         }
         throw new UsuarioInexistenteException();
-    }
-
-    private Usuario cargarDatosBasicos(String dni) throws InputMismatchException {
-        Scanner scan = new Scanner(System.in);
-        try{
-            System.out.println("Nombre: ");
-            String nombre = scan.nextLine();
-            System.out.println("Apellido: ");
-            String apellido = scan.nextLine();
-            System.out.println("Mail: ");
-            String mail = scan.nextLine();
-            System.out.println("Password: ");
-            String password = scan.nextLine();
-            return new Usuario(nombre, apellido, dni, mail, password);
-        }catch (InputMismatchException e){
-            throw new InputMismatchException();
-        }
     }
 
     public void agregarEnfermedad(){

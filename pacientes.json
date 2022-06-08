@@ -1,17 +1,1 @@
-[
-  {
-    "historialClinico": [],
-    "idMedicoAsignado": 14,
-    "debeSerAtendido": true,
-    "nombre": "Elena",
-    "apellido": "Vargas",
-    "dni": "40347821",
-    "mail": "paciente1@hotmail.com",
-    "password": "Coco",
-    "id": 1
-  },
-  {
-    "nombre": "Generico",
-    "id": 2
-  }
-]
+[{"historialClinico":[],"idMedicoAsignado":14,"debeSerAtendido":true,"nombre":"Elena","apellido":"Vargas","dni":"40347821","mail":"paciente1@hotmail.com","password":"Coco","id":1},{"historialClinico":[],"idMedicoAsignado":1,"debeSerAtendido":true,"nombre":"Prueba","apellido":"registrarPaciente","dni":"1111111","mail":"prueba@registrarpaciente.com","password":"123","id":1}]

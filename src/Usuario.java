@@ -14,12 +14,6 @@ public class Usuario {
 
     // Vacio
     public Usuario() {
-        this.nombre = "Generico";
-        this.apellido = null;
-        this.dni = null;
-        this.mail = null;
-        this.password = null;
-        this.id = idAutoincremental();
     }
 
     // Completo

@@ -79,7 +79,7 @@ public class Medico extends Usuario implements Tratamientos{
         String dni = scan.nextLine();
         Paciente pacienteAux = new Paciente();
         for (Paciente a : listaPacientes){
-            if (a.getDni()==dni){
+            if (a.getDni().equals(dni)){
                 pacienteAux = a;
             }
         }

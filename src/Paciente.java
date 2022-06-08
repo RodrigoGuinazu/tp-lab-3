@@ -11,11 +11,6 @@ public class Paciente extends Usuario {
 
 
     public Paciente() {
-        super();
-        this.historialClinico = null;
-        this.tratamientoActual = null;
-        this.idMedicoAsignado = null;
-        this.debeSerAtendido = null;
     }
 
     // Vacio
@@ -31,7 +26,7 @@ public class Paciente extends Usuario {
 
     //Metodos
 
-    public void notificarPaciente() {
+    public void notificarPaciente() { // parecido a notificarMedico(); clase Medico linea 20
         //recorrer lista de acciones y llamar funcion notificar en accion
         // mostrar solamente las accioens que no esten hechas
     }
