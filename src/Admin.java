@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class Admin extends Usuario implements Tratamientos {
 
-    // Sin atributos
-
+    //Sin atributos
 
     //Constructor
     public Admin(String nombre, String apellido, String dni, String mail, String password) {
@@ -151,21 +150,13 @@ public class Admin extends Usuario implements Tratamientos {
 
     public void agregarEnfermedad() {
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
-        System.out.println("Enfermedades actuales : ");
-        for (Enfermedad e : enfermedades) {
-            System.out.println(e.mostrarEnfermedad());
-        }
-        Scanner scan = new Scanner(System.in);
+        mostrarEnfermedadesArchivo();
+
         System.out.println("Ingrese nueva enfermedad : ");
-        String nuevoNombre = scan.nextLine();
-        for (Enfermedad e : enfermedades) {
-            while (nuevoNombre.equalsIgnoreCase(e.getNombre())) {
-                System.out.println("Enfermedad ya cargada, ingrese otra");
-                nuevoNombre = scan.nextLine();
-            }
-        }
-        Enfermedad enfermedadNueva = new Enfermedad(nuevoNombre);
-        enfermedades.add(enfermedadNueva);
+        Scanner scan = new Scanner(System.in);
+        String nombreValido = nombreRepetido(scan.nextLine());
+
+        enfermedades.add(new Enfermedad(nombreValido));
         Persistencia.serializacion(enfermedades, "enfermedades.json");
     }
 
@@ -243,6 +234,27 @@ public class Admin extends Usuario implements Tratamientos {
         // editar tratamiento
         //persistir
         return null;
+    }
+
+
+    public String nombreRepetido(String nuevoNombre){
+        ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
+        Scanner scan = new Scanner(System.in);
+        for (Enfermedad e : enfermedades) {
+            while (nuevoNombre.equalsIgnoreCase(e.getNombre())) {
+                System.out.println("Enfermedad ya cargada, ingrese otra");
+                nuevoNombre = scan.nextLine();
+            }
+        }
+        return nuevoNombre;
+    }
+
+    public void mostrarEnfermedadesArchivo(){
+        ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
+        System.out.println("Enfermedades persistidas : ");
+        for (Enfermedad e : enfermedades) {
+            System.out.println(e.mostrarEnfermedad());
+        }
     }
 
     @Override

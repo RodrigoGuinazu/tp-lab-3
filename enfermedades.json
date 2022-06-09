@@ -31,5 +31,14 @@
   },
   {
     "nombre": "Golpeada"
+  },
+  {
+    "nombre": "Susto"
+  },
+  {
+    "nombre": "Hechizado"
+  },
+  {
+    "nombre": "caida"
   }
 ]
