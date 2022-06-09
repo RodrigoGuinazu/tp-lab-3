@@ -6,8 +6,9 @@ public class Main {
 
         //falta crear sistema con listas ya cargadas
 
-//        Sistema sistema = new Sistema();
-//        sistema.menu();
+
+        Sistema sistema = new Sistema();
+        sistema.menu();
 
 
         // Pacientes
@@ -30,19 +31,18 @@ public class Main {
 
         // admins
         ArrayList<Admin> admins = new ArrayList<>();
-        admins.add(new Admin("Rene","Favaloro","16703723","admin@hotmail.com","Cusco"));
-        admins.add(new Admin("Roberto","Estévez","19594105","admin@gmail.com","Caña"));
-        Persistencia.serializacion(admins,"admins.json");
+        admins.add(new Admin("Rene", "Favaloro", "16703723", "admin@hotmail.com", "Cusco"));
+        admins.add(new Admin("Roberto", "Estévez", "19594105", "admin@gmail.com", "Caña"));
+        Persistencia.serializacion(admins, "admins.json");
 
 
         // Acciones
         ArrayList<Accion> acciones = new ArrayList<>();
         acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
         acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
-        acciones.add(new AccionDouble(1,3,"Temperatura","Tomar Temperatura"));
-        acciones.add(new AccionDouble(2,1,"Densiometria","Tomar Densidad"));
+        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
+        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
         Persistencia.serializacion(acciones, "acciones.json");
-
 
 
         // Enfermedades
@@ -52,21 +52,14 @@ public class Main {
         enfermedades.add(new Enfermedad("Alergia"));
         enfermedades.add(new Enfermedad("Amiloidosis"));
         enfermedades.add(new Enfermedad("Encondroma"));
-        Persistencia.serializacion(enfermedades,"enfermedades.json");
+        Persistencia.serializacion(enfermedades, "enfermedades.json");
 
 
-
-        //tratamientos
+        // Tratamientos
         ArrayList<Tratamiento> tratamientos = new ArrayList<>();
         tratamientos.add(new Tratamiento(enfermedades.get(3))); // Vacio
-        tratamientos.add(new Tratamiento(enfermedades.get(4), LocalDate.now(),acciones));   //con acciones
+        tratamientos.add(new Tratamiento(enfermedades.get(4), LocalDate.now(), acciones));   //con acciones
         Persistencia.serializacion(tratamientos, "tratamientos.json");
-
-
-
-
-
-
 
     }
 }

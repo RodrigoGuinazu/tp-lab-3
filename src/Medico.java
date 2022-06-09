@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Medico extends Usuario implements Tratamientos{
+public class Medico extends Usuario implements Tratamientos {
 
     private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();  //ids paciente
 
@@ -24,19 +24,19 @@ public class Medico extends Usuario implements Tratamientos{
     public String notificarMedico() {
         //levantar el archivo de pacientes
         //entra paciente por paciente por id y verifica qeu tratamiento
-        ArrayList<Paciente> aux = Persistencia.deserializacion("pacientes.json",Paciente.class);
+        ArrayList<Paciente> aux = Persistencia.deserializacion("pacientes.json", Paciente.class);
         String rta = "";
-        rta += "Pacientes que deben ser atendidos hoy:=" +   '\'' ;
+        rta += "Pacientes que deben ser atendidos hoy:=" + '\'';
         for (Paciente a : aux) {
-            if (a.getDebeSerAtendido()){
+            if (a.getDebeSerAtendido()) {
                 rta += a.getinfoPaciente();
             }
         }
-        rta += "Pacientes que no registraron informacion ayer:='" +   '\'' ;
+        rta += "Pacientes que no registraron informacion ayer:='" + '\'';
 
         for (Paciente a : aux) {
-            if(a.tratamientoActual != null){
-                if (! a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1))){
+            if (a.tratamientoActual != null) {
+                if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1))) {
                     rta += a.getinfoPaciente();
                 }
             }
@@ -48,9 +48,10 @@ public class Medico extends Usuario implements Tratamientos{
     public void verHistoriales() {
 
     }
+
     public ArrayList<Integer> obtenerIDsPacientes() {
-        ArrayList <Integer> aux = new ArrayList();
-        for (Integer a : pacientesDelMedico){
+        ArrayList<Integer> aux = new ArrayList();
+        for (Integer a : pacientesDelMedico) {
             aux.add(a);
         }
         return pacientesDelMedico;
@@ -62,17 +63,17 @@ public class Medico extends Usuario implements Tratamientos{
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
 
-        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json",Paciente.class);
-        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json",Tratamiento.class);
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
 
 
         // mostramos al medico todos sus pacientes sin tratamiento
 
-        String rta = "Pacientes que deben ser atendidos hoy:=" +   '\'' ;
+        String rta = "Pacientes que deben ser atendidos hoy:=" + '\'';
         for (Paciente pacientegeneral : listaPacientes) {
-            if (pacientegeneral.getDebeSerAtendido()){
-                for(Integer a : pacientesDelMedico){
-                    if (pacientegeneral.getId().equals(a));
+            if (pacientegeneral.getDebeSerAtendido()) {
+                for (Integer a : pacientesDelMedico) {
+                    if (pacientegeneral.getId().equals(a)) ;
                 }
                 rta += pacientegeneral.getinfoPaciente();
             }
@@ -82,8 +83,8 @@ public class Medico extends Usuario implements Tratamientos{
         Scanner scan = new Scanner(System.in);
         String dni = scan.nextLine();
         Paciente pacienteAux = new Paciente();
-        for (Paciente a : listaPacientes){
-            if (a.getDni().equals(dni)){
+        for (Paciente a : listaPacientes) {
+            if (a.getDni().equals(dni)) {
                 pacienteAux = a;
             }
         }
@@ -104,7 +105,7 @@ public class Medico extends Usuario implements Tratamientos{
             switch (opcionMenu) {
                 case 1:
                     x = 0;
-                    for(Tratamiento a : listaTratamientosGenericos){
+                    for (Tratamiento a : listaTratamientosGenericos) {
                         System.out.println(x + a.toString());
                         x++;
                     }
@@ -115,7 +116,7 @@ public class Medico extends Usuario implements Tratamientos{
                 case 2:
 
                     x = 0;
-                    for(Tratamiento a : listaTratamientosGenericos){
+                    for (Tratamiento a : listaTratamientosGenericos) {
                         System.out.println(x + a.toString());
                         x++;
                     }
@@ -133,9 +134,7 @@ public class Medico extends Usuario implements Tratamientos{
                 default:
                     System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcionMenu < 1 & opcionMenu > 3 );
-
-
+        } while (opcionMenu < 1 & opcionMenu > 3);
 
 
         // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
@@ -146,8 +145,7 @@ public class Medico extends Usuario implements Tratamientos{
 
         // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
 
-        Persistencia.serializacion(listaPacientes,"pacientes.json");
-
+        Persistencia.serializacion(listaPacientes, "pacientes.json");
 
 
     }
@@ -159,27 +157,27 @@ public class Medico extends Usuario implements Tratamientos{
 
     @Override
     public Tratamiento crearTratamiento() {
-        int accionIndex ;
+        int accionIndex;
         Accion accionAux = new Accion();
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json",Accion.class);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
         Tratamiento nuevoTratamiento = new Tratamiento();
         System.out.println("Ingrese la duracion del tratamiento");
         nuevoTratamiento.setDuracion(scan.nextInt());
         System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
         int aux = scan.nextInt();
 
-       for (int i = 0; i<aux; i++){
-           for (Accion a :  listaAcciones){
-               System.out.println(i + a.toString());
-           }
-           System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
-           accionIndex = scan.nextInt();
-           accionAux = listaAcciones.get(accionIndex).clonarAccion();
-           System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-           accionAux.setCadaCuanto(scan.nextInt());
-           nuevoTratamiento.listaAcciones.add(accionAux);
-       }
+        for (int i = 0; i < aux; i++) {
+            for (Accion a : listaAcciones) {
+                System.out.println(i + a.toString());
+            }
+            System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
+            accionIndex = scan.nextInt();
+            accionAux = listaAcciones.get(accionIndex).clonarAccion();
+            System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+            accionAux.setCadaCuanto(scan.nextInt());
+            nuevoTratamiento.listaAcciones.add(accionAux);
+        }
 
         return nuevoTratamiento;
     }

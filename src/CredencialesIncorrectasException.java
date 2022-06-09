@@ -1,4 +1,4 @@
-public class CredencialesIncorrectasException extends Exception{
+public class CredencialesIncorrectasException extends Exception {
     public CredencialesIncorrectasException() {
         System.out.println("Credenciales Incorrectas");
     }

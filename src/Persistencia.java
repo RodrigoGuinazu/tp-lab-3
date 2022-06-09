@@ -13,27 +13,27 @@ public abstract class Persistencia {
     // Metodos
 
     // lectura
-    public static <T> ArrayList<T> deserializacion(String archivo, Class<T> type){
+    public static <T> ArrayList<T> deserializacion(String archivo, Class<T> type) {
         ArrayList<T> rta = new ArrayList<T>();
-        try{
+        try {
             Gson gson = new Gson();
             Reader reader = Files.newBufferedReader(Paths.get(archivo));
             rta = gson.fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType());
             reader.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
         return rta;
     }
 
     // escritura
-    public static <T> void serializacion(ArrayList<T> list, String archivo){
-        try{
+    public static <T> void serializacion(ArrayList<T> list, String archivo) {
+        try {
             // el LocalDate de los atributos Tratamiento en Paciente generan los warning en consola
             Writer writer = new FileWriter(archivo);
             new Gson().toJson(list, writer);
             writer.close();
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
     }

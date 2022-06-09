@@ -6,7 +6,7 @@ public class Usuario {
     private String dni;
     private String mail;
     private String password;
-    private static Integer ID=0;
+    private static Integer ID = 0;
     private Integer id;
 
     //Constructores
@@ -29,8 +29,8 @@ public class Usuario {
     //Metodos
 
     //id autoincremental
-    private Integer idAutoincremental(){
-        ID+=1;
+    private Integer idAutoincremental() {
+        ID += 1;
         return ID;
     }
 
@@ -45,7 +45,8 @@ public class Usuario {
     public Integer getId() {
         return id;
     }
-    public String getDni(){
+
+    public String getDni() {
         return dni;
     }
 

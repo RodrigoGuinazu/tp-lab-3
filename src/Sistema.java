@@ -209,7 +209,7 @@ public class Sistema {
 
     public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException {
         for (Usuario u : this.usuarios) {
-            if(u.getMail().equals(mail)) {
+            if (u.getMail().equals(mail)) {
                 if (u.getPassword().equals(pass)) {
                     return u;
                 } else {

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Admin extends Usuario implements Tratamientos{
+public class Admin extends Usuario implements Tratamientos {
 
     // Sin atributos
 
@@ -14,7 +14,7 @@ public class Admin extends Usuario implements Tratamientos{
 
 
     //Metodos
-    public void registrarPaciente(){
+    public void registrarPaciente() {
         Scanner scan = new Scanner(System.in);
         Paciente rta;
         // levantar archivo usuarios
@@ -25,22 +25,22 @@ public class Admin extends Usuario implements Tratamientos{
         System.out.println("Ingrese el dni del paciente");
         String dni = scan.nextLine();
         //fijarse que exista el usuario
-        try{
+        try {
             // si existe le cambio el atributo debeSerAtendido a true
             rta = (Paciente) this.buscarUsuario(aux, dni);
             // verifico que no tenga un tratamiento en curso
-            if(rta.getTratamientoActual() == null){
+            if (rta.getTratamientoActual() == null) {
                 System.out.println("El paciente ya existe, se le notificara al medico con disponibildad que lo atienda");
                 rta.setDebeSerAtendido(true);
-            }else{
+            } else {
                 System.out.println("El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita");
             }
-        }catch (UsuarioInexistenteException e){
+        } catch (UsuarioInexistenteException e) {
             // si no lo creo y lo agrego
             System.out.println(e);
             int flag = 0;
-            while(flag == 0){
-                try{
+            while (flag == 0) {
+                try {
                     System.out.println("Nombre: ");
                     String nombre = scan.nextLine();
                     System.out.println("Apellido: ");
@@ -52,7 +52,7 @@ public class Admin extends Usuario implements Tratamientos{
                     flag = 1;
                     rta = new Paciente(nombre, apellido, dni, mail, password, 1); // por ahora hardcodeado, deberia llamar al metodo asignar medico
                     pacientes.add(rta);
-                }catch (InputMismatchException f){
+                } catch (InputMismatchException f) {
                     System.out.println(f);
                 }
             }
@@ -61,28 +61,28 @@ public class Admin extends Usuario implements Tratamientos{
         Persistencia.serializacion(pacientes, "pacientes.json");
     }
 
-    public void registrarMedico(){
+    public void registrarMedico() {
         // levantar archivo medico
         // agregar medico
         // persistir
     }
 
-    public void registrarAdmin(){
+    public void registrarAdmin() {
         // levantar archivo admin
         // agregar admin
         // persistir
     }
 
-    private Usuario buscarUsuario(ArrayList<Usuario> listado, String dni) throws UsuarioInexistenteException{
-        for(Usuario u : listado){
-            if(u.getDni().equals(dni)){
+    private Usuario buscarUsuario(ArrayList<Usuario> listado, String dni) throws UsuarioInexistenteException {
+        for (Usuario u : listado) {
+            if (u.getDni().equals(dni)) {
                 return u;
             }
         }
         throw new UsuarioInexistenteException();
     }
 
-    public void agregarEnfermedad(){
+    public void agregarEnfermedad() {
         // levantar archivo enfermedad
         // agregar enfermedad
         // persistir

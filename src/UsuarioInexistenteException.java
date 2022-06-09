@@ -1,4 +1,4 @@
-public class UsuarioInexistenteException extends Exception{
+public class UsuarioInexistenteException extends Exception {
     public UsuarioInexistenteException() {
         System.out.println("No existe el usuario, creando un nuevo...");
     }

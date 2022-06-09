@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Tratamiento implements Cloneable {
     private Enfermedad enfermedad;
-    private Integer duracion ;
+    private Integer duracion;
     private LocalDate inicioDate;
     private LocalDate finDate;
     protected ArrayList<Accion> listaAcciones;
@@ -14,7 +14,7 @@ public class Tratamiento implements Cloneable {
 
     // Constructores
 
-    public Tratamiento(){
+    public Tratamiento() {
 
     }
 
@@ -24,7 +24,7 @@ public class Tratamiento implements Cloneable {
         this.finalizado = false;
     }
 
-    public Tratamiento(Enfermedad enfermedad,LocalDate inicioDate, ArrayList<Accion> listaAcciones) {
+    public Tratamiento(Enfermedad enfermedad, LocalDate inicioDate, ArrayList<Accion> listaAcciones) {
         this.enfermedad = enfermedad;
         // this.duracion = calcularDuracion();  //crear
         this.inicioDate = inicioDate;
@@ -34,16 +34,16 @@ public class Tratamiento implements Cloneable {
         this.finalizado = false;
     }
 
-    public Tratamiento(Integer duracion , Enfermedad enfermedad, ArrayList<Accion> acciones){
+    public Tratamiento(Integer duracion, Enfermedad enfermedad, ArrayList<Accion> acciones) {
         this.duracion = duracion;
         this.enfermedad = enfermedad;
-        this.listaAcciones  = acciones;
+        this.listaAcciones = acciones;
         this.listaRegistrosDiarios = new Stack<RegistroDiario>();
         finalizado = false;
     }
 
-    public Tratamiento clonarTratamiento (){
-        Tratamiento aux = new Tratamiento(this.duracion,this.enfermedad,this.listaAcciones);
+    public Tratamiento clonarTratamiento() {
+        Tratamiento aux = new Tratamiento(this.duracion, this.enfermedad, this.listaAcciones);
         return aux;
     }
 
@@ -83,8 +83,8 @@ public class Tratamiento implements Cloneable {
         return duracion;
     }
 
-    public boolean existeRegistroDiario(LocalDate fecha){
-        for (RegistroDiario a : listaRegistrosDiarios){
+    public boolean existeRegistroDiario(LocalDate fecha) {
+        for (RegistroDiario a : listaRegistrosDiarios) {
             if (a.getFecha().equals(fecha)) {
                 return true;
             }
@@ -92,19 +92,18 @@ public class Tratamiento implements Cloneable {
         return false;
     }
 
-    public void realizarAcciones (){        //CAMBIAR (tiene que poder elegir que accion cambiar)
+    public void realizarAcciones() {        //CAMBIAR (tiene que poder elegir que accion cambiar)
         RegistroDiario aux;
-        if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()){
+        if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()) {
             aux = listaRegistrosDiarios.pop();
-        }else{
+        } else {
             aux = new RegistroDiario();
         }
 
-        for (Accion a : listaAcciones){
-            try{
+        for (Accion a : listaAcciones) {
+            try {
                 aux.agregarRegistro(a.accionar());  // agregar catch de AccionFallidaException
-            }
-            catch (AccionFallidaException e){
+            } catch (AccionFallidaException e) {
                 System.out.println(e);
             }
 
@@ -113,28 +112,28 @@ public class Tratamiento implements Cloneable {
         listaRegistrosDiarios.push(aux);
     }
 
-    public String modificarRegistros (){
+    public String modificarRegistros() {
 
-        if (listaRegistrosDiarios.peek().getFecha() == LocalDate.now()){
+        if (listaRegistrosDiarios.peek().getFecha() == LocalDate.now()) {
             listaRegistrosDiarios.peek().modificarRegistro();
             return "Se a modificado el registro diario con exito";
-        }else{
+        } else {
             return "No hay geistro diario que Modificar";
             // la logica del menu deberia indicarle que realice las acciones
         }
 
     }
 
-    public String toStringListaAcciones(){
+    public String toStringListaAcciones() {
         String rta = "";
-        try{
-            for (Accion a: listaAcciones){
-                rta  += a.toString();
+        try {
+            for (Accion a : listaAcciones) {
+                rta += a.toString();
             }
 
             return rta;
         } catch (NullPointerException e) {
-            System.out.println("Error de tipo : "+e);
+            System.out.println("Error de tipo : " + e);
         }
         return rta;
     }

@@ -9,15 +9,15 @@ public class AccionBooleana extends Accion {
     }
 
     @Override
-    public Registro accionar() throws AccionFallidaException{
+    public Registro accionar() throws AccionFallidaException {
         Scanner scan = new Scanner(System.in);
         Character opcion;
         System.out.println(super.getTextoPregunta());
         opcion = scan.nextLine().charAt(0);
-        if(opcion != 's'){
+        if (opcion != 's') {
             throw new AccionFallidaException();
-        }else{
-            Registro registro = new Registro(super.getNombre(), null , true);
+        } else {
+            Registro registro = new Registro(super.getNombre(), null, true);
             return registro;
         }
     }
