@@ -67,11 +67,10 @@ public class Medico extends Usuario implements Tratamientos {
     public void diagnosticarPacientes() {
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
-
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
 
-
+        // consultamos el paciente
         System.out.println("Ingrese el dni del paciente que desea diagnosticar");
         Scanner scan = new Scanner(System.in);
         String dni = scan.nextLine();
@@ -83,7 +82,6 @@ public class Medico extends Usuario implements Tratamientos {
         }
 
         // preguntamos al medico si queire elegir uno existente o crear uno nuevo
-
         Tratamiento tratamientoAux = new Tratamiento();
         int x;
         int opcionMenu;
@@ -99,7 +97,7 @@ public class Medico extends Usuario implements Tratamientos {
                 case 1:
                     x = 0;
                     for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println(x + a.toString());
+                        System.out.println("["+x+"] " + a.toString());
                         x++;
                     }
                     System.out.println("ingrese el numero del tratamiento elegido");
@@ -129,18 +127,13 @@ public class Medico extends Usuario implements Tratamientos {
             }
         } while (opcionMenu < 1 & opcionMenu > 3);
 
-
         // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
-
         pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
         pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
         pacienteAux.setDebeSerAtendido(false);
 
         // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
-
         Persistencia.serializacion(listaPacientes, "pacientes.json");
-
-
     }
 
 

@@ -65,8 +65,9 @@ public class Sistema {
 
     public void menuPaciente() {
         int opcionPaciente;
+        ((Paciente) usuarioLogueado).notificarPaciente();
         do {
-            ((Paciente) usuarioLogueado).notificarPaciente();
+
             System.out.println("[1] Realizar acciones del dia");    //TO DO
             System.out.println("[2] Modificar acciones del dia");   //TO DO
             System.out.println("[3] Mostrar acciones del dia");     //ok
@@ -76,9 +77,10 @@ public class Sistema {
 
             switch (opcionPaciente) {
                 case 1:
-
-                case 2:
                     ((Paciente) usuarioLogueado).realizarAcciones();    //ERROR
+                    break;
+                case 2:
+                    //falta editar acciones cargados hoy
                     break;
 
                 case 3:
@@ -187,15 +189,15 @@ public class Sistema {
 
             System.out.println("Mail: ");
 
-            String mail = scan.nextLine();    // sin harcodeo
-//            String mail = "paciente@hotmail.com";  //Harcodeo paciente
-//            String mail = "lorem@hotmailmedico.com";  //Harcodeo medico
+//            String mail = scan.nextLine();    // sin harcodeo
+            String mail = "paciente@hotmail.com";  //Harcodeo paciente
+//          String mail = "lorem@hotmailmedico.com";  //Harcodeo medico
 
 
             System.out.println("Contraseña: ");
 
-            String pass = scan.nextLine();    // sin harcodeo
-//            String pass = "Coco";          //Harcodeo paciente
+  //          String pass = scan.nextLine();    // sin harcodeo
+           String pass = "Coco";          //Harcodeo paciente
 //            String pass = "Cocodrilo";          //Harcodeo medico
 
 

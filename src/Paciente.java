@@ -35,7 +35,7 @@ public class Paciente extends Usuario {
         try {
             int flag = 0;    //por si no hay accion para notificar
             for (Accion a : this.tratamientoActual.getListaAcciones()) {
-                if (a.getUltimaNoti().isEqual(LocalDate.now())) {
+                if (a.getUltimaNoti() == null || !a.getUltimaNoti().isEqual(LocalDate.now())) {
                     System.out.println("Debe realizar la accion : " + a.getNombre());
                     a.setUltimaNoti(LocalDate.now());
                     flag = 1;
@@ -52,12 +52,22 @@ public class Paciente extends Usuario {
 
     public void realizarAcciones() {
 
-        // cheqeuar fecha finalizacion menor o igual a actual
-        // si es mayor pasar el tratamiento al historial clinico y setear tratamiento como null
-        // recibir lista de acciones y modificar aca dentro y qeu get acciones devuelva una lista de acciones
-
-        this.tratamientoActual.realizarAcciones();
+        if (tratamientoActual.getFinDate().equals(LocalDate.now()) || tratamientoActual.getFinDate().isBefore(LocalDate.now())) {
+            tratamientoActual.setFinalizado(true);
+            historialClinico.add(tratamientoActual);
+            tratamientoActual = null;
+            System.out.println("Usted ha finalizado su tratamiento");
+            return;
+        } else {
+            this.tratamientoActual.realizarAcciones();
+        }
+        return;
     }
+
+
+
+
+
 
     public void setDebeSerAtendido(Boolean debeSerAtendido) {
         this.debeSerAtendido = debeSerAtendido;
@@ -82,11 +92,6 @@ public class Paciente extends Usuario {
         this.historialClinico = historialClinico;
     }
 
-    public void asdasd() {
-
-        this.tratamientoActual.realizarAcciones();
-
-    }
 
 
     public Boolean getDebeSerAtendido() {

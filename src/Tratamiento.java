@@ -108,22 +108,36 @@ public class Tratamiento implements Cloneable {
 
     public void realizarAcciones() {        //CAMBIAR (tiene que poder elegir que accion cambiar)
         RegistroDiario aux;
-        if (listaRegistrosDiarios.pop().getFecha() == LocalDate.now()) {
-            aux = listaRegistrosDiarios.pop();
-        } else {
+        if (listaRegistrosDiarios.empty() || listaRegistrosDiarios.pop().getFecha().isBefore(LocalDate.now())) {
             aux = new RegistroDiario();
-        }
 
-        for (Accion a : listaAcciones) {
-            try {
-                aux.agregarRegistro(a.accionar());  // agregar catch de AccionFallidaException
-            } catch (AccionFallidaException e) {
-                System.out.println(e);
+            for (Accion a : listaAcciones) {
+                try {
+
+                    if (a instanceof AccionBooleana){
+                        Registro registroAux = ((AccionBooleana)a).accionar();
+                        aux.agregarRegistro(registroAux);
+                    }
+                    if (a instanceof AccionDouble){
+                        Registro registroAux = ((AccionDouble)a).accionar();
+                        aux.agregarRegistro(registroAux);
+                    }
+
+                } catch (AccionFallidaException e) {
+                    System.out.println(e);
+                }
+                listaRegistrosDiarios.push(aux);
             }
 
+            return;
+
+        } else {
+            System.out.println("Ya se ingresaron registros para la fecha de hoy, si desea modificarlos, hagalo desde el menu");
         }
 
-        listaRegistrosDiarios.push(aux);
+
+
+
     }
 
     public String modificarRegistros() {
