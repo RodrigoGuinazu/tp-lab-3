@@ -1,1 +1,52 @@
-[{"enfermedad":{"nombre":"Amiloidosis"},"finalizado":false},{"enfermedad":{"nombre":"Encondroma"},"inicioDate":{"year":2022,"month":6,"day":8},"listaAcciones":[{"seHizo":false,"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":4,"nombre":"Pastilla"},{"seHizo":false,"textoPregunta":"Tomar Presion","cadaCuanto":1,"vecesPorDia":2,"nombre":"Presion"},{"rta":0.0,"textoPregunta":"Tomar Temperatura","cadaCuanto":1,"vecesPorDia":3,"nombre":"Temperatura"},{"rta":0.0,"textoPregunta":"Tomar Densidad","cadaCuanto":2,"vecesPorDia":1,"nombre":"Densiometria"}],"listaRegistrosDiarios":[],"finalizado":false}]
+[
+  {
+    "enfermedad": {
+      "nombre": "Amiloidosis"
+    },
+    "finalizado": false
+  },
+  {
+    "enfermedad": {
+      "nombre": "Encondroma"
+    },
+    "duracion": "15",
+
+    "inicioDate": {
+      "year": 2022,
+      "month": 6,
+      "day": 8
+    },
+    "listaAcciones": [
+      {
+        "seHizo": false,
+        "textoPregunta": "Tomar Pastilla",
+        "cadaCuanto": 1,
+        "vecesPorDia": 4,
+        "nombre": "Pastilla"
+      },
+      {
+        "seHizo": false,
+        "textoPregunta": "Tomar Presion",
+        "cadaCuanto": 1,
+        "vecesPorDia": 2,
+        "nombre": "Presion"
+      },
+      {
+        "rta": 0.0,
+        "textoPregunta": "Tomar Temperatura",
+        "cadaCuanto": 1,
+        "vecesPorDia": 3,
+        "nombre": "Temperatura"
+      },
+      {
+        "rta": 0.0,
+        "textoPregunta": "Tomar Densidad",
+        "cadaCuanto": 2,
+        "vecesPorDia": 1,
+        "nombre": "Densiometria"
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
+  }
+]

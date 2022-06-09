@@ -15,6 +15,8 @@ public class Tratamiento implements Cloneable {
     // Constructores
 
     public Tratamiento() {
+        listaAcciones = new ArrayList<>();
+        listaRegistrosDiarios  = new Stack<>();
 
     }
 
@@ -45,6 +47,18 @@ public class Tratamiento implements Cloneable {
     public Tratamiento clonarTratamiento() {
         Tratamiento aux = new Tratamiento(this.duracion, this.enfermedad, this.listaAcciones);
         return aux;
+    }
+
+    public LocalDate getInicioDate() {
+        return inicioDate;
+    }
+
+    public LocalDate getFinDate() {
+        return finDate;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
     }
 
     public void setEnfermedad(Enfermedad enfermedad) {

@@ -97,9 +97,10 @@ public class Sistema {
 
 
     public void menuMedico() {
+        System.out.println(((Medico) usuarioLogueado).notificarMedico());
         int opcionMedico;
         do {
-            System.out.println(((Medico) usuarioLogueado).notificarMedico());   //mostrar mejor y que cuando oprima una tecla siga con el menu
+            //mostrar mejor y que cuando oprima una tecla siga con el menu
             System.out.println("[1] Asignar tratamiento");
             // ver notificaciones de vuelta
             System.out.println("[2] Ver historiales de los pacientes");

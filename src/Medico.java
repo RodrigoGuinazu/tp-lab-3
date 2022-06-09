@@ -24,19 +24,24 @@ public class Medico extends Usuario implements Tratamientos {
     public String notificarMedico() {
         //levantar el archivo de pacientes
         //entra paciente por paciente por id y verifica qeu tratamiento
-        ArrayList<Paciente> aux = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
         String rta = "";
         rta += "Pacientes que deben ser atendidos hoy:=" + '\'';
-        for (Paciente a : aux) {
-            if (a.getDebeSerAtendido()) {
-                rta += a.getinfoPaciente();
+        for (Paciente pacientegeneral : listaPacientes) {
+            if (pacientegeneral.getDebeSerAtendido()) {
+                for (Integer a : pacientesDelMedico) {
+                    if (pacientegeneral.getId().equals(a)){
+                        rta += pacientegeneral.getinfoPaciente();
+                    }
+                }
+
             }
         }
         rta += "Pacientes que no registraron informacion ayer:='" + '\'';
 
-        for (Paciente a : aux) {
+        for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
-                if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1))) {
+                if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
                     rta += a.getinfoPaciente();
                 }
             }
@@ -67,18 +72,6 @@ public class Medico extends Usuario implements Tratamientos {
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
 
 
-        // mostramos al medico todos sus pacientes sin tratamiento
-
-        String rta = "Pacientes que deben ser atendidos hoy:=" + '\'';
-        for (Paciente pacientegeneral : listaPacientes) {
-            if (pacientegeneral.getDebeSerAtendido()) {
-                for (Integer a : pacientesDelMedico) {
-                    if (pacientegeneral.getId().equals(a)) ;
-                }
-                rta += pacientegeneral.getinfoPaciente();
-            }
-        }
-        System.out.println(rta);
         System.out.println("Ingrese el dni del paciente que desea diagnosticar");
         Scanner scan = new Scanner(System.in);
         String dni = scan.nextLine();
@@ -98,7 +91,7 @@ public class Medico extends Usuario implements Tratamientos {
 
             System.out.println("[1] Elegir un tratamiento ya existente");   //ok
             System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");   //ok
-            System.out.println("[2] Crear un nuevo tratamiento");   //ok
+            System.out.println("[3] Crear un nuevo tratamiento");   //ok
             System.out.println("Ingrese una opcion:");
             opcionMenu = scan.nextInt();
 
@@ -166,11 +159,16 @@ public class Medico extends Usuario implements Tratamientos {
         nuevoTratamiento.setDuracion(scan.nextInt());
         System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
         int aux = scan.nextInt();
+        int index = 0;
+
+        for (Accion a : listaAcciones) {
+            System.out.println(index + a.toString());
+            index++;
+
+        }
 
         for (int i = 0; i < aux; i++) {
-            for (Accion a : listaAcciones) {
-                System.out.println(i + a.toString());
-            }
+
             System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
             accionIndex = scan.nextInt();
             accionAux = listaAcciones.get(accionIndex).clonarAccion();

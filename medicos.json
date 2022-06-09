@@ -1,1 +1,23 @@
-[{"pacientesDelMedico":[],"nombre":"Sandra","apellido":"Gonzales","dni":"44963081","mail":"medico@outlook.com","password":"Cielo","id":3},{"pacientesDelMedico":[1,3,7],"nombre":"Cintia","apellido":"Laiz","dni":"56912074","mail":"medico@gmail.com","password":"Cosa","id":4}]
+[
+  {
+    "pacientesDelMedico": [],
+    "nombre": "Sandra",
+    "apellido": "Gonzales",
+    "dni": "44963081",
+    "mail": "medico@outlook.com",
+    "password": "Cielo",
+    "id": 3
+  },
+  {
+    "pacientesDelMedico": [
+      1,
+      2
+    ],
+    "nombre": "Cintia",
+    "apellido": "Laiz",
+    "dni": "56912074",
+    "mail": "medico@gmail.com",
+    "password": "Cosa",
+    "id": 4
+  }
+]
