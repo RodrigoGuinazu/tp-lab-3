@@ -42,8 +42,10 @@ public class Medico extends Usuario implements Tratamientos {
 
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
-                if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
-                    rta += a.getinfoPaciente();
+                if (a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
+                    if (a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(LocalDate.now().minusDays(1))) {
+                        rta += a.getinfoPaciente();
+                    }
                 }
             }
         }
@@ -139,7 +141,18 @@ public class Medico extends Usuario implements Tratamientos {
 
 
     public void verHistorialPaciente() {
-        //mas o menos como diagnosticarPacientes() { sin modificar
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
+
+        System.out.println("Ingrese el dni del paciente que desea cunsultar");
+        Scanner scan = new Scanner(System.in);
+        String dni = scan.nextLine();
+        Paciente pacienteAux = new Paciente();
+        for (Paciente a : listaPacientes) {
+            if (a.getDni().equals(dni)) {
+                pacienteAux = a;
+            }
+        }
+        System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
     }
 
     @Override
