@@ -188,19 +188,16 @@ public class Sistema {
         while (rta == null) {
 
             System.out.println("Mail: ");
-
             String mail = scan.nextLine();    // sin harcodeo
 //            String mail = "paciente@hotmail.com";  //Harcodeo paciente
 //          String mail = "medico@gmail.com";  //Harcodeo medico
 
-
             System.out.println("Contraseña: ");
-
             String pass = scan.nextLine();    // sin harcodeo
 //           String pass = "Coco";          //Harcodeo paciente
 //            String pass = "Cosa";          //Harcodeo medico
 
-
+            
             try {
                 rta = validarCredenciales(mail, pass);
             } catch (CredencialesIncorrectasException e) {
