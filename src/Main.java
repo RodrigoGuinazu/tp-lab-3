@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,15 +19,8 @@ public class Main {
 //        Persistencia.serializacion(pacientesMain, "pacientes.json");
 
 
-
-
-
-//        Sistema sistema = new Sistema();    //falta crear sistema con listas ya cargadas
-//        sistema.menu();
-
-
         // medicos
-
+        ArrayList<Medico> medicos = new ArrayList<>();
 
         // admins
 
@@ -44,9 +39,11 @@ public class Main {
 //
 
 
+//        Sistema sistema = new Sistema();    //falta crear sistema con listas ya cargadas
+//        sistema.menu();
 
 
-
+        /////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //        ArrayList<Paciente> pacientes = new ArrayList<>();
