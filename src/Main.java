@@ -4,18 +4,20 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
+        //falta crear sistema con listas ya cargadas
+
 //        Sistema sistema = new Sistema();
 //        sistema.menu();
 
 
-        // pacientes
+        // Pacientes
         ArrayList<Paciente> pacientes = new ArrayList<>();
         pacientes.add(new Paciente("Juan", "Ros", "11247824", "paciente@gmail.com", "Casa"));//sin medico asignado
         pacientes.add(new Paciente("Elena", "Vargas", "40347821", "paciente@hotmail.com", "Coco", 14));//con medico asignado
         Persistencia.serializacion(pacientes, "pacientes.json");
 
 
-        // medicos
+        // Medicos
         ArrayList<Medico> medicos = new ArrayList<>();
         ArrayList<Integer> pacientesMedico = new ArrayList<>();
         pacientesMedico.add(1);
@@ -26,7 +28,14 @@ public class Main {
         Persistencia.serializacion(medicos, "medicos.json");
 
 
-        //acciones
+        // admins
+        ArrayList<Admin> admins = new ArrayList<>();
+        admins.add(new Admin("Rene","Favaloro","16703723","admin@hotmail.com","Cusco"));
+        admins.add(new Admin("Roberto","Estévez","19594105","admin@gmail.com","Caña"));
+        Persistencia.serializacion(admins,"admins.json");
+
+
+        // Acciones
         ArrayList<Accion> acciones = new ArrayList<>();
         acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
         acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
@@ -36,7 +45,7 @@ public class Main {
 
 
 
-//        //Enfermedades
+        // Enfermedades
         ArrayList<Enfermedad> enfermedades = new ArrayList<>();
         enfermedades.add(new Enfermedad("Estres"));
         enfermedades.add(new Enfermedad("Gripe"));
@@ -55,10 +64,9 @@ public class Main {
 
 
 
-        // admins
 
-//        Sistema sistema = new Sistema();    //falta crear sistema con listas ya cargadas
-//        sistema.menu();
+
+
 
     }
 }
