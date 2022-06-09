@@ -174,10 +174,11 @@ public class Admin extends Usuario implements Tratamientos {
 
         Scanner scan = new Scanner(System.in);
         ArrayList<Tratamiento> tratamientos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
+        ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
 
-        // duracion
-        System.out.println("Ingrese duracion del tratamiento");
-        Integer duracion = scan.nextInt();
+//        // duracion
+//        System.out.println("Ingrese duracion del tratamiento");
+//        Integer duracion = scan.nextInt();
 
 
         // nombre enfermedad para tratamiento (2 opciones : la crea o la elige)
@@ -187,41 +188,46 @@ public class Admin extends Usuario implements Tratamientos {
             System.out.println("[2] Crear nueva enfermedad");
             System.out.println("Ingrese una opcion:");
 
+            Enfermedad enfermedad;
             opcion = scan.nextInt();
             switch (opcion){
-                case 1:
-                    agregarEnfermedad();
+                case 1: {
+                    System.out.println("Enfermedades actuales : ");
+                    int indice = 0;
+                    for (Enfermedad e : enfermedades) {
+                        indice++;
+                        System.out.print(indice + " ");
+                        System.out.println(e.mostrarEnfermedad());
+                    }
+                    System.out.println("Ingrese el numero de la enfermedad");
+                    indice = scan.nextInt();
+                    enfermedad = enfermedades.get(indice - 1);  // validar indice
+                    System.out.println(enfermedad.getNombre());
+                    opcion = 0;
                     break;
-
-                case 2:
-                    break;
-
-                default:{
-                    System.out.println("Opcion incorrecta, ingrese otra");
                 }
+                case 2:
+                    System.out.println("Creando nueva enfermedad, ingrese nombre");
+                    scan.nextLine();
+                    String nuevoNombre = scan.nextLine();
+                    for (Enfermedad e : enfermedades) {
+                        while (nuevoNombre.equalsIgnoreCase(e.getNombre())) {
+                            System.out.println("Enfermedad ya cargada, ingrese otra");
+                            nuevoNombre = scan.nextLine();
+                        }
+                    }
+                    Enfermedad enfermedadNueva = new Enfermedad(nuevoNombre);
+                    enfermedades.add(enfermedadNueva);
+                    System.out.println("Se agrego nueva enfermedad a enfermedades");
+                    Persistencia.serializacion(enfermedades, "enfermedades.json");
+                    opcion =0;
+                    break;
             }
-
         }while (opcion !=0);
 
 
-        ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
-        System.out.println("Enfermedades actuales : ");
-        for (Enfermedad e : enfermedades) {
-            System.out.println(e.mostrarEnfermedad());
-        }
-        System.out.println("Ingrese numero de enfermedad a elegir");
-        int indice = scan.nextInt();
-        String enfermedadElegida = enfermedades.get(indice - 1).getNombre();
+        //crear lista de acciones o elegir uno existente --> falta ver como son las acciones
 
-
-        // lista acciones
-        Tratamiento nuevoTratamiento = new Tratamiento();
-
-        // levantar archivo Tratameintos
-        // agregar tratemiento
-        //persistir
-
-        scan.close();
         return null;
     }
 
