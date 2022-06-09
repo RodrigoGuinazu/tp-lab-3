@@ -64,10 +64,6 @@ public class Paciente extends Usuario {
     }
 
 
-
-
-
-
     public void setDebeSerAtendido(Boolean debeSerAtendido) {
         this.debeSerAtendido = debeSerAtendido;
     }

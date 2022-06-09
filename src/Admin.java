@@ -75,11 +75,6 @@ public class Admin extends Usuario implements Tratamientos {
         // persistir
     }
 
-    public void registrarAdmin() {
-        // levantar archivo admin
-        // agregar admin
-        // persistir
-    }
 
     private Usuario buscarUsuario(ArrayList<Usuario> listado, String dni) throws UsuarioInexistenteException {
         for (Usuario u : listado) {
@@ -108,16 +103,37 @@ public class Admin extends Usuario implements Tratamientos {
     }
 
     public void agregarEnfermedad() {
-        // levantar archivo enfermedad
-        // agregar enfermedad
-        // persistir
+        ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
+        System.out.println("Enfermedades actuales : ");
+        for (Enfermedad e : enfermedades) {
+            System.out.println(e.mostrarEnfermedad());
+        }
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Ingrese nueva enfermedad : ");
+        String nuevoNombre = scan.nextLine();
+        for (Enfermedad e : enfermedades) {
+            while (nuevoNombre.equalsIgnoreCase(e.getNombre())) {
+                System.out.println("Enfermedad ya cargada, ingrese otra");
+                nuevoNombre = scan.nextLine();
+            }
+        }
+        Enfermedad enfermedadNueva = new Enfermedad(nuevoNombre);
+        enfermedades.add(enfermedadNueva);
+        Persistencia.serializacion(enfermedades, "enfermedades.json");
     }
 
     @Override
     public Tratamiento crearTratamiento() {
+
+        ArrayList<Tratamiento> tratamientos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
+
+        System.out.println(tratamientos);
+
+
         // levantar archivo Tratameintos
         // agregar tratemiento
         //persistir
+
         return null;
     }
 
