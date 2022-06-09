@@ -6,9 +6,13 @@ public class Medico extends Usuario implements Tratamientos{
 
     private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();  //ids paciente
 
-    //Constructores
+    // Constructores
+    // sin lista de pacientes
+    public Medico(String nombre, String apellido, String dni, String mail, String password) {
+        super(nombre, apellido, dni, mail, password);
+    }
 
-
+    // con lista de pacientes
     public Medico(String nombre, String apellido, String dni, String mail, String password, ArrayList<Integer> pacientesDelMedico) {
         super(nombre, apellido, dni, mail, password);
         this.pacientesDelMedico = pacientesDelMedico;

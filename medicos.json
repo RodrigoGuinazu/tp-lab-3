@@ -1,26 +1,24 @@
 [
   {
     "pacientesDelMedico": [],
-    "nombre": "Elena medico",
-    "apellido": "Vargas",
-    "mail": "lorem@hotmailmedico.com",
-    "password": "Cocodrilo",
+    "nombre": "Sandra",
+    "apellido": "Gonzales",
+    "dni": "44963081",
+    "mail": "medico@outlook.com",
+    "password": "Cielo",
+    "id": 3
+  },
+  {
+    "pacientesDelMedico": [
+      1,
+      3,
+      7
+    ],
+    "nombre": "Cintia",
+    "apellido": "Laiz",
+    "dni": "56912074",
+    "mail": "medico@gmail.com",
+    "password": "Cosa",
     "id": 4
-  },
-  {
-    "pacientesDelMedico": [],
-    "nombre": "pedrito medico",
-    "apellido": "Vargas",
-    "mail": "loremipsum@hotmailmedico.com",
-    "password": "abc123",
-    "id": 5
-  },
-  {
-    "pacientesDelMedico": [],
-    "nombre": "probando medico",
-    "apellido": "agregar",
-    "mail": "nuevo@hotmailmedico.com",
-    "password": "hola",
-    "id": 6
   }
 ]
