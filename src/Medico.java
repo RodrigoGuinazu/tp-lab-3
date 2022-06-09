@@ -26,7 +26,7 @@ public class Medico extends Usuario implements Tratamientos {
         //entra paciente por paciente por id y verifica qeu tratamiento
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
         String rta = "";
-        rta += "Pacientes que deben ser atendidos hoy:=" + '\'';
+        rta += "Pacientes que deben ser atendidos hoy : ";
         for (Paciente pacientegeneral : listaPacientes) {
             if (pacientegeneral.getDebeSerAtendido()) {
                 for (Integer a : pacientesDelMedico) {
@@ -37,7 +37,8 @@ public class Medico extends Usuario implements Tratamientos {
 
             }
         }
-        rta += "Pacientes que no registraron informacion ayer:='" + '\'';
+        System.out.println();
+        rta += " \nPacientes que no registraron informacion ayer : ";
 
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {

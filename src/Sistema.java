@@ -190,15 +190,15 @@ public class Sistema {
             System.out.println("Mail: ");
 
 //            String mail = scan.nextLine();    // sin harcodeo
-            String mail = "paciente@hotmail.com";  //Harcodeo paciente
-//          String mail = "lorem@hotmailmedico.com";  //Harcodeo medico
+//            String mail = "paciente@hotmail.com";  //Harcodeo paciente
+          String mail = "medico@gmail.com";  //Harcodeo medico
 
 
             System.out.println("Contraseña: ");
 
   //          String pass = scan.nextLine();    // sin harcodeo
-           String pass = "Coco";          //Harcodeo paciente
-//            String pass = "Cocodrilo";          //Harcodeo medico
+//           String pass = "Coco";          //Harcodeo paciente
+            String pass = "Cosa";          //Harcodeo medico
 
 
             try {

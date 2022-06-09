@@ -51,13 +51,8 @@ public class Usuario {
     }
 
     public String toStringInfoNoSensible() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni='" + dni + '\'' +
-                '}';
+        return nombre + " " + apellido + " "+ dni + " , ";
     }
-
 
     @Override
     public String toString() {

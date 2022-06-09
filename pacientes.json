@@ -1,51 +1,6 @@
 [
   {
-    "historialClinico": [],
-    "tratamientoActual": {
-      "enfermedad": {
-        "nombre": "Encondroma"
-      },
-      "duracion": 15,
-      "inicioDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 7
-      },
-      "finDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 24
-      },
-      "listaAcciones": [
-        {
-          "textoPregunta": "Tomar Pastilla",
-          "cadaCuanto": 1,
-          "vecesPorDia": 4,
-          "nombre": "Pastilla"
-        },
-        {
-          "textoPregunta": "Tomar Presion",
-          "cadaCuanto": 1,
-          "vecesPorDia": 2,
-          "nombre": "Presion"
-        },
-        {
-          "textoPregunta": "Tomar Temperatura",
-          "cadaCuanto": 1,
-          "vecesPorDia": 3,
-          "nombre": "Temperatura"
-        },
-        {
-          "textoPregunta": "Tomar Densidad",
-          "cadaCuanto": 2,
-          "vecesPorDia": 1,
-          "nombre": "Densiometria"
-        }
-      ],
-      "listaRegistrosDiarios": [],
-      "finalizado": false
-    },
-    "debeSerAtendido": false,
+    "debeSerAtendido": true,
     "nombre": "Juan",
     "apellido": "Ros",
     "dni": "11247824",
@@ -56,8 +11,7 @@
   {
     "historialClinico": [],
 
-    "idMedicoAsignado": 14,
-    "debeSerAtendido": false,
+    "debeSerAtendido": true,
     "nombre": "Elena",
     "apellido": "Vargas",
     "dni": "40347821",
