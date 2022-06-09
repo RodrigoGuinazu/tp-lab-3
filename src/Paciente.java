@@ -91,7 +91,9 @@ public class Paciente extends Usuario {
         this.historialClinico = historialClinico;
     }
 
-
+    public void setIdMedicoAsignado(Integer idMedicoAsignado) {
+        this.idMedicoAsignado = idMedicoAsignado;
+    }
 
     public Boolean getDebeSerAtendido() {
         return debeSerAtendido;

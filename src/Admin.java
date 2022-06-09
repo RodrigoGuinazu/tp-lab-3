@@ -31,6 +31,7 @@ public class Admin extends Usuario implements Tratamientos {
             // verifico que no tenga un tratamiento en curso
             if (rta.getTratamientoActual() == null) {
                 System.out.println("El paciente ya existe, se le notificara al medico con disponibildad que lo atienda");
+                // asignar medico
                 rta.setDebeSerAtendido(true);
             } else {
                 System.out.println("El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita");
@@ -50,6 +51,7 @@ public class Admin extends Usuario implements Tratamientos {
                     System.out.println("Password: ");
                     String password = scan.nextLine();
                     flag = 1;
+                    //asignar medico
                     rta = new Paciente(nombre, apellido, dni, mail, password, 1); // por ahora hardcodeado, deberia llamar al metodo asignar medico
                     pacientes.add(rta);
                 } catch (InputMismatchException f) {
