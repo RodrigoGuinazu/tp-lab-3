@@ -98,7 +98,7 @@ public class Medico extends Usuario implements Tratamientos {
                 case 1:
                     x = 0;
                     for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println("["+x+"] " + a.toString());
+                        System.out.println("["+x+"] " + a.toStringMedico());
                         x++;
                     }
                     System.out.println("ingrese el numero del tratamiento elegido");
@@ -109,7 +109,7 @@ public class Medico extends Usuario implements Tratamientos {
 
                     x = 0;
                     for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println(x + a.toString());               //modificar a
+                        System.out.println(x + a.toString());
                         x++;
                     }
                     System.out.println("ingrese el numero del tratamiento elegido");

@@ -22,6 +22,16 @@ public class Accion { // no puede ser abstract por el deserializador
     }
 
     // Metodos
+
+
+    public Integer getCadaCuanto() {
+        return cadaCuanto;
+    }
+
+    public Integer getVecesPorDia() {
+        return vecesPorDia;
+    }
+
     public LocalDate getUltimaNoti() {
         return ultimaNoti;
     }
@@ -63,6 +73,10 @@ public class Accion { // no puede ser abstract por el deserializador
 
     public String getTextoPregunta() {
         return textoPregunta;
+    }
+
+    public String mostrarAccion(){
+        return  "Accion : "+this.nombre+ " , cada cuanto : "+this.cadaCuanto+" , veces por dia :"+this.vecesPorDia;
     }
 
 

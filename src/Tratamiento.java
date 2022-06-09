@@ -26,17 +26,8 @@ public class Tratamiento implements Cloneable {
         this.finalizado = false;
     }
 
-    public Tratamiento(Enfermedad enfermedad, LocalDate inicioDate, ArrayList<Accion> listaAcciones) {
-        this.enfermedad = enfermedad;
-        // this.duracion = calcularDuracion();  //crear
-        this.inicioDate = inicioDate;
-        // this.finDate = calcularCierre(); //crear
-        this.listaAcciones = listaAcciones;
-        this.listaRegistrosDiarios = new Stack<RegistroDiario>();
-        this.finalizado = false;
-    }
 
-    public Tratamiento(Integer duracion, Enfermedad enfermedad, ArrayList<Accion> acciones) {
+    public Tratamiento(Enfermedad enfermedad,Integer duracion, ArrayList<Accion> acciones) {
         this.duracion = duracion;
         this.enfermedad = enfermedad;
         this.listaAcciones = acciones;
@@ -45,7 +36,7 @@ public class Tratamiento implements Cloneable {
     }
 
     public Tratamiento clonarTratamiento() {
-        Tratamiento aux = new Tratamiento(this.duracion, this.enfermedad, this.listaAcciones);
+        Tratamiento aux = new Tratamiento(this.enfermedad,this.duracion, this.listaAcciones);
         return aux;
     }
 
@@ -171,10 +162,13 @@ public class Tratamiento implements Cloneable {
     }
 
 
-    public String toStringMedico(){
-      //enfermedad, duracion y lista de acciones
-
-        return enfermedad + " " +duracion + " " +listaAcciones;
+    public String toStringMedico(){     //enfermedad, duracion y lista de acciones
+        String rta = "";
+        for(Accion a : listaAcciones){
+            rta += "\n     ";
+            rta+=a.mostrarAccion();
+        }
+        return "Enfermedad : " +this.getEnfermedad().mostrarEnfermedad() + " , " + "Duracion : " +this.duracion + " " +rta;
     }
 
     @Override

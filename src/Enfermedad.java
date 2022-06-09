@@ -5,6 +5,11 @@ public class Enfermedad {
         this.nombre = nombre;
     }
 
+
+    public String mostrarEnfermedad(){
+        return this.nombre;
+    }
+
     @Override
     public String toString() {
         return "Enfermedad{" +
