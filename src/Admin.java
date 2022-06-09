@@ -177,18 +177,19 @@ public class Admin extends Usuario implements Tratamientos {
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
 
 //        // duracion
-//        System.out.println("Ingrese duracion del tratamiento");
-//        Integer duracion = scan.nextInt();
+        System.out.println("Ingrese duracion del tratamiento");
+        Integer duracion = scan.nextInt();
 
 
         // nombre enfermedad para tratamiento (2 opciones : la crea o la elige)
+        Enfermedad enfermedad = null;
         int opcion;
         do{
             System.out.println("[1] Elegir enfermedad existente");
             System.out.println("[2] Crear nueva enfermedad");
             System.out.println("Ingrese una opcion:");
 
-            Enfermedad enfermedad;
+
             opcion = scan.nextInt();
             switch (opcion){
                 case 1: {
@@ -216,8 +217,8 @@ public class Admin extends Usuario implements Tratamientos {
                             nuevoNombre = scan.nextLine();
                         }
                     }
-                    Enfermedad enfermedadNueva = new Enfermedad(nuevoNombre);
-                    enfermedades.add(enfermedadNueva);
+                    enfermedad = new Enfermedad(nuevoNombre);
+                    enfermedades.add(enfermedad);
                     System.out.println("Se agrego nueva enfermedad a enfermedades");
                     Persistencia.serializacion(enfermedades, "enfermedades.json");
                     opcion =0;
@@ -227,6 +228,11 @@ public class Admin extends Usuario implements Tratamientos {
 
 
         //crear lista de acciones o elegir uno existente --> falta ver como son las acciones
+
+        ArrayList<Accion> acciones = new ArrayList<>();
+        acciones.add(new Accion(1,2,"hola","aqdios"));
+        Tratamiento nuevoTratamiento = new Tratamiento(enfermedad,duracion,acciones);
+        System.out.println("Nuevo tratamiento a crear" + nuevoTratamiento);
 
         return null;
     }
