@@ -21,6 +21,12 @@ public class Accion { // no puede ser abstract por el deserializador
 
     }
 
+    // Metodos
+    public LocalDate getUltimaNoti() {
+        return ultimaNoti;
+    }
+
+
     public void setUltimaNoti(LocalDate ultimaNoti) {
         this.ultimaNoti = ultimaNoti;
     }

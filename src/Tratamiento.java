@@ -48,6 +48,10 @@ public class Tratamiento implements Cloneable {
         this.listaAcciones = listaAcciones;
     }
 
+    public ArrayList<Accion> getListaAcciones() {
+        return listaAcciones;
+    }
+
     public void setListaRegistrosDiarios(Stack<RegistroDiario> listaRegistrosDiarios) {
         this.listaRegistrosDiarios = listaRegistrosDiarios;
     }

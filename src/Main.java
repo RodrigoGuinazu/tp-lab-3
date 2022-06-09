@@ -3,19 +3,20 @@ public class Main {
 
         Sistema sistema = new Sistema();
         sistema.menu();
-//
+
 //        // pacientes
+//        // no se pueden tener paciente sin datos de usuario
 //        ArrayList<Paciente> pacientesMain = new ArrayList<>();
 //
-//        Paciente paciente1 = new Paciente("Elena","Vargas","40347821","paciente1@hotmail.com","Coco",14);
-//        pacientesMain.add(paciente1);   //con medico asignado
+//        Paciente paciente1 = new Paciente("Juan","Ros","11247824","paciente@gmail.com","Casa");
+//        pacientesMain.add(paciente1);   //sin medico asignado
 //
-//        Paciente paciente2 = new Paciente();
-//        pacientesMain.add(paciente2);   //sin nada
-//
-//        System.out.println(pacientesMain);
-//
+//        Paciente paciente2 = new Paciente("Elena","Vargas","40347821","paciente@hotmail.com","Coco",14);
+//        pacientesMain.add(paciente2);   //con medico asignado
+////        System.out.println(pacientesMain);
 //        Persistencia.serializacion(pacientesMain, "pacientes.json");
+
+
 
 
 

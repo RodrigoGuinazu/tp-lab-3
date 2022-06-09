@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Paciente extends Usuario {
@@ -9,12 +10,16 @@ public class Paciente extends Usuario {
     private Integer idMedicoAsignado;
     private Boolean debeSerAtendido;
 
-
+    // Vacio
     public Paciente() {
     }
 
-    // Vacio
 
+    // Sin medico asignado
+    public Paciente(String nombre, String apellido, String dni, String mail, String password) {
+        super(nombre, apellido, dni, mail, password);
+        this.debeSerAtendido = true;
+    }
 
 
     // Completo
@@ -26,9 +31,22 @@ public class Paciente extends Usuario {
 
     //Metodos
 
-    public void notificarPaciente() { // parecido a notificarMedico(); clase Medico linea 20
-        //recorrer lista de acciones y llamar funcion notificar en accion
-        // mostrar solamente las accioens que no esten hechas
+    public void notificarPaciente() {           //Chequear igualdades de LocalDate
+        try {
+            int flag = 0;    //por si no hay accion para notificar
+            for (Accion a : this.tratamientoActual.getListaAcciones()) {
+                if (a.getUltimaNoti().isEqual(LocalDate.now())) {
+                    System.out.println("Debe realizar la accion : " + a.getNombre());
+                    a.setUltimaNoti(LocalDate.now());
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                System.out.println("No se encontraron acciones para notificar");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("El paciente no tiene tratamiento asignado");
+        }
     }
 
 
