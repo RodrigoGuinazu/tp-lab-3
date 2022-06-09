@@ -1,4 +1,4 @@
 public interface Tratamientos {
     Tratamiento crearTratamiento();
-    void editarTratamiento();
+    Tratamiento editarTratamiento(Tratamiento x);
 }

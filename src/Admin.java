@@ -93,10 +93,11 @@ public class Admin extends Usuario implements Tratamientos{
     }
 
     @Override
-    public void editarTratamiento() {
+    public Tratamiento editarTratamiento(Tratamiento x) {
         // levantar archivo Tratameintos
         // editar tratamiento
         //persistir
+        return null;
     }
 
     @Override

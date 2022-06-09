@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 
-public class Accion{ // no puede ser abstract por el deserializador
+public class Accion { // no puede ser abstract por el deserializador
     // Atributos
-    private LocalDate ultimaNoti; // ultima vez que se le notifico la accion
+    private LocalDate ultimaNoti =  null; // ultima vez que se le notifico la accion
     private String textoPregunta;
     private int cadaCuanto; // cada cuanto dias tiene que hacer la accion
     private int vecesPorDia; // cuantas veces por dia tiene que hacer la accion
@@ -16,7 +16,37 @@ public class Accion{ // no puede ser abstract por el deserializador
         this.nombre = nombre;
     }
 
+    // Constructores
+    public Accion(  ) {
+
+    }
+
+    public void setUltimaNoti(LocalDate ultimaNoti) {
+        this.ultimaNoti = ultimaNoti;
+    }
+
+    public void setTextoPregunta(String textoPregunta) {
+        this.textoPregunta = textoPregunta;
+    }
+
+    public void setCadaCuanto(int cadaCuanto) {
+        this.cadaCuanto = cadaCuanto;
+    }
+
+    public void setVecesPorDia(int vecesPorDia) {
+        this.vecesPorDia = vecesPorDia;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     // Metodos
+    public Accion clonarAccion(){
+        Accion aux = new Accion(this.cadaCuanto,this.vecesPorDia,this.nombre,this.textoPregunta);
+        return aux;
+    }
+
     public Registro accionar() throws AccionFallidaException{
         return null; // por default
     }//accionar debe devolver el registro ya creado

@@ -2,9 +2,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Tratamiento {
+public class Tratamiento implements Cloneable {
     private Enfermedad enfermedad;
-    private int duracion;
+    private int duracion ;
     private LocalDate incioDate;
     private LocalDate finDate;
     protected ArrayList<Accion> listaAcciones;
@@ -15,13 +15,17 @@ public class Tratamiento {
 
     }
 
-    public Tratamiento(Enfermedad enfermedad, LocalDate inicio, LocalDate fin, ArrayList<Accion> acciones){
+    public Tratamiento(int duracion , Enfermedad enfermedad, ArrayList<Accion> acciones){
+        this.duracion = duracion;
         this.enfermedad = enfermedad;
-        this.incioDate = inicio;
-        this.finDate = fin;
         this.listaAcciones  = acciones;
         this.listaRegistrosDiarios = new Stack<RegistroDiario>();
         finalizado = false;
+    }
+
+    public Tratamiento clonarTratamiento (){
+        Tratamiento aux = new Tratamiento(this.duracion,this.enfermedad,this.listaAcciones);
+        return aux;
     }
 
     public void setEnfermedad(Enfermedad enfermedad) {

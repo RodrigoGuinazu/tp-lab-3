@@ -84,28 +84,55 @@ public class Medico extends Usuario implements Tratamientos{
             }
         }
 
-        //mostramos al medico la lista de tratamientos
-
-        int x = 0;
-        for(Tratamiento a : listaTratamientosGenericos){
-            System.out.println(x + a.toString());
-            x++;
-        }
-
         // preguntamos al medico si queire elegir uno existente o crear uno nuevo
 
-        System.out.println("quiere legir uno de lso tratamientos ya existentes? s/n");
-        scan.nextLine();
-        String option = scan.nextLine();
+        Tratamiento tratamientoAux = new Tratamiento();
+        int x;
+        int opcionMenu;
+        do {
 
-        if (option.equals("s")){
-            System.out.println("ingrese el numero del tratamiento elegido");
-            pacienteAux.tratamientoActual = listaTratamientosGenericos.get(scan.nextInt());
+            System.out.println("[1] Elegir un tratamiento ya existente");   //ok
+            System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");   //ok
+            System.out.println("[2] Crear un nuevo tratamiento");   //ok
+            System.out.println("Ingrese una opcion:");
+            opcionMenu = scan.nextInt();
 
-        }
-        else{
-            pacienteAux.tratamientoActual = crearTratamiento();
-        }
+            switch (opcionMenu) {
+                case 1:
+                    x = 0;
+                    for(Tratamiento a : listaTratamientosGenericos){
+                        System.out.println(x + a.toString());
+                        x++;
+                    }
+                    System.out.println("ingrese el numero del tratamiento elegido");
+                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
+                    pacienteAux.tratamientoActual = tratamientoAux;
+                    break;
+                case 2:
+
+                    x = 0;
+                    for(Tratamiento a : listaTratamientosGenericos){
+                        System.out.println(x + a.toString());
+                        x++;
+                    }
+                    System.out.println("ingrese el numero del tratamiento elegido");
+                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
+                    pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
+
+                    break;
+
+                case 3:
+
+                    pacienteAux.tratamientoActual = crearTratamiento();
+                    break;
+
+                default:
+                    System.out.println("Opcion incorrecta, ingrese otra");
+            }
+        } while (opcionMenu < 1 & opcionMenu > 3 );
+
+
+
 
         // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
 
@@ -121,12 +148,15 @@ public class Medico extends Usuario implements Tratamientos{
 
     }
 
+
     public void verHistorialPaciente() {
         //mas o menos como diagnosticarPacientes() { sin modificar
     }
 
     @Override
     public Tratamiento crearTratamiento() {
+        int accionIndex ;
+        Accion accionAux = new Accion();
         Scanner scan = new Scanner(System.in);
         ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json",Accion.class);
         Tratamiento nuevoTratamiento = new Tratamiento();
@@ -139,18 +169,23 @@ public class Medico extends Usuario implements Tratamientos{
            for (Accion a :  listaAcciones){
                System.out.println(i + a.toString());
            }
-           System.out.println("elija el numero de de la accion que escoja para el tratamiento:");
-           nuevoTratamiento.listaAcciones.add(listaAcciones.get(scan.nextInt()));
-           // tener en cuenta que sea cada tantos dias
+           System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
+           accionIndex = scan.nextInt();
+           accionAux = listaAcciones.get(accionIndex).clonarAccion();
+           System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+           accionAux.setCadaCuanto(scan.nextInt());
+           nuevoTratamiento.listaAcciones.add(accionAux);
        }
 
         return nuevoTratamiento;
     }
 
     @Override
-    public void editarTratamiento() {
-       // se modifica uno ya existente de la lista
-        //no se persiste
+    public Tratamiento editarTratamiento(Tratamiento aux) {
+
+        // consultar que hacer con la modificacion del tratamiento, hasta donde puede meter mano
+
+        return null;
     }
 
     @Override

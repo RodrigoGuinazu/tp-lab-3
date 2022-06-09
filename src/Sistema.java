@@ -163,7 +163,7 @@ public class Sistema {
                 break;
 
                 case 5: {
-                    ((Admin) usuarioLogueado).editarTratamiento();
+                    //((Admin) usuarioLogueado).editarTratamiento();   aca tenes que levantar primero la lista y despues mandar por parametro
                 }
                 break;
 

@@ -1,1 +1,16 @@
-[{"seHizo":false,"textoPregunta":"Debe tomar la pastilla","cadaCuanto":1,"vecesPorDia":1,"nombre":"Tomar Pastilla"},{"rta":0.0,"textoPregunta":"Debe tomarse la fiebre","cadaCuanto":1,"vecesPorDia":1,"nombre":"Tomarse la fiebre"}]
+[
+  {
+    "seHizo": false,
+    "textoPregunta": "Debe tomar la pastilla",
+    "cadaCuanto": 1,
+    "vecesPorDia": 1,
+    "nombre": "Tomar Pastilla"
+  },
+  {
+    "rta": 0.0,
+    "textoPregunta": "Debe tomarse la fiebre",
+    "cadaCuanto": 1,
+    "vecesPorDia": 1,
+    "nombre": "Tomarse la fiebre"
+  }
+]

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AccionBooleana extends Accion{
+public class AccionBooleana extends Accion {
 
     private boolean seHizo = false;
 
