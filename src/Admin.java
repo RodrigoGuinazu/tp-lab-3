@@ -52,6 +52,12 @@ public class Admin extends Usuario implements Tratamientos {
                     String password = scan.nextLine();
                     flag = 1;
                     //asignar medico
+                    Integer id;
+                    try{
+                        id = asignarMedico(apellido, nombre);
+                    }catch(MedicoInexistenteException m){
+                        System.out.println(m);
+                    }
                     rta = new Paciente(nombre, apellido, dni, mail, password, 1); // por ahora hardcodeado, deberia llamar al metodo asignar medico
                     pacientes.add(rta);
                 } catch (InputMismatchException f) {
@@ -84,15 +90,21 @@ public class Admin extends Usuario implements Tratamientos {
         throw new UsuarioInexistenteException();
     }
 
-    private Integer asignarMedico(String apellido, String nombre){
+    private Integer asignarMedico(String apellido, String nombre) throws MedicoInexistenteException{
         Scanner scan = new Scanner(System.in);
         System.out.println("Elegir un medico para asignarle a " + nombre + " " + apellido);
         ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
         for(Medico m : medicos){
-            System.out.println(m.get);
+            System.out.println("[ ID: " + m.getId() + "]" + " Dr. " + m.getNombre() + " " + m.getApellido());
         }
+        System.out.println("Ingrese el id del medico que desea asignar");
         Integer rta = scan.nextInt();
-        return rta;
+        for(Medico m : medicos){
+            if(m.getId() == rta){
+                return rta;
+            }
+        }
+        throw new MedicoInexistenteException();
     }
 
     public void agregarEnfermedad() {
