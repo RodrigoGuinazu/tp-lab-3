@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Tratamiento implements Cloneable {
+public class Tratamiento  {
     private Enfermedad enfermedad;
     private Integer duracion;
     private LocalDate inicioDate;
@@ -91,6 +91,7 @@ public class Tratamiento implements Cloneable {
     public boolean existeRegistroDiario(LocalDate fecha) {
         for (RegistroDiario a : listaRegistrosDiarios) {
             if (a.getFecha().equals(fecha)) {
+                System.out.println(a.getFecha().toString());
                 return true;
             }
         }
@@ -171,6 +172,15 @@ public class Tratamiento implements Cloneable {
         return "Enfermedad : " +this.getEnfermedad().mostrarEnfermedad() + " , " + "Duracion : " +this.duracion + " " +rta;
     }
 
+    public String toStringHistorialTratamientoActual(){
+        String rta = "";
+        for(RegistroDiario a : listaRegistrosDiarios){
+            rta += a.toString();
+        }
+        return rta;
+
+    }
+
     @Override
     public String toString() {
         return "Tratamiento{" +
@@ -182,5 +192,18 @@ public class Tratamiento implements Cloneable {
                 ", listaRegistrosDiarios=" + listaRegistrosDiarios +
                 ", finalizado=" + finalizado +
                 '}';
+    }
+
+    public int getNumeroAccionesDelTratamiento() {
+        return listaAcciones.size();
+    }
+
+    public int getNumeroAccionesRegistroDiario(LocalDate fecha) {
+        for (RegistroDiario a : listaRegistrosDiarios) {
+            if (a.getFecha().equals(fecha)) {
+                return a.listaRegistros.size();
+            }
+        }
+        return -1;
     }
 }

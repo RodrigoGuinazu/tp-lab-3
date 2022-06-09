@@ -2,7 +2,82 @@
   {
     "historialClinico": [],
     "idMedicoAsignado": 4,
-    "debeSerAtendido": true,
+    "historialClinico": [],
+    "tratamientoActual": {
+      "enfermedad": {
+        "nombre": "Encondroma"
+      },
+      "duracion": 7,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 8
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 16
+      },
+      "listaAcciones": [
+        {
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 4,
+          "nombre": "Pastilla"
+        },
+        {
+          "textoPregunta": "Tomar Presion",
+          "cadaCuanto": 1,
+          "vecesPorDia": 2,
+          "nombre": "Presion"
+        },
+        {
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 1,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
+        },
+        {
+          "textoPregunta": "Tomar Densidad",
+          "cadaCuanto": 2,
+          "vecesPorDia": 1,
+          "nombre": "Densiometria"
+        }
+      ],
+      "listaRegistrosDiarios": [
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 8
+          },
+          "listaRegistros" : [
+            {
+              "nombreAccion" : "Presion",
+              "rta" : "120-80",
+              "seHizo" : true
+            },
+            {
+              "nombreAccion" : "Temperatura",
+              "rta" : "37",
+              "seHizo" : true
+            },
+            {
+              "nombreAccion" : "Densidad",
+              "rta" : "45",
+              "seHizo" : true
+            },
+            {
+              "nombreAccion" : "Densidad",
+              "rta" : "45",
+              "seHizo" : true
+            }
+          ]
+        }
+      ],
+      "finalizado": false
+    },
+    "debeSerAtendido": false,
     "nombre": "Juan",
     "apellido": "Ros",
     "dni": "11247824",

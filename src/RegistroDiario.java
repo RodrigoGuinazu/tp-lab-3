@@ -2,8 +2,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RegistroDiario {
-    private ArrayList<Registro> listaRegistros;
     private LocalDate fecha;
+    protected ArrayList<Registro> listaRegistros;
+
 
     public RegistroDiario() {
         this.fecha = LocalDate.now();
@@ -36,6 +37,21 @@ public class RegistroDiario {
         // les mostramos todos los registros del dia y lo hacemos elegir cual quiere modificar, almacenamos el indice en una variable aux;
 
     }
+    public String mostrarRegistrosParaToString() {
+        String rta = "";
 
+        for (Registro a : listaRegistros) {
+            rta += a.toStringParaHistorial();
+        }
+        return rta;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Registro de la fecha: " +
+                 fecha +"\n" + mostrarRegistrosParaToString()
+                ;
+    }
 }
 

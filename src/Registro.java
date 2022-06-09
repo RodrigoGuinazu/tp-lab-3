@@ -21,4 +21,20 @@ public class Registro {     //
     public void setearValores() {
         // setea los nuevos valores que ingresa el usuario
     }
+
+    public String toStringParaHistorial() {
+        return
+                "Se tomo la " + nombreAccion  +
+                " el resultado fue: " + rta + ". \n";
+
+    }
+
+    @Override
+    public String toString() {
+        return "Registro{" +
+                "nombreAccion='" + nombreAccion + '\'' +
+                ", rta='" + rta + '\'' +
+                ", seHizo=" + seHizo +
+                '}';
+    }
 }

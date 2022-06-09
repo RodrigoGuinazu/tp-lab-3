@@ -31,6 +31,8 @@ public class Paciente extends Usuario {
 
     //Metodos
 
+
+
     public void notificarPaciente() {           //Chequear igualdades de LocalDate
         try {
             int flag = 0;    //por si no hay accion para notificar
