@@ -19,5 +19,14 @@
     "mail": "medico@gmail.com",
     "password": "Cosa",
     "id": 4
+  },
+  {
+    "pacientesDelMedico": [],
+    "nombre": "Medico Creado",
+    "apellido": "Prueba",
+    "dni": "45115432",
+    "mail": "prueba@crearMEDICO.com",
+    "password": "medicooo",
+    "id": 1
   }
 ]

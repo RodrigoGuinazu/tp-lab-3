@@ -83,9 +83,43 @@ public class Admin extends Usuario implements Tratamientos {
     }
 
     public void registrarMedico() {
-        // levantar archivo medico
-        // agregar medico
-        // persistir
+        Scanner scan = new Scanner(System.in);
+        Medico rta;
+        // levantar archivo usuarios
+        ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
+        ArrayList<Usuario> aux = new ArrayList<Usuario>();
+        aux.addAll(medicos);
+        System.out.println("Registrando un Medico:");
+        System.out.println("Ingrese el dni del medico");
+        String dni = scan.nextLine();
+        //fijarse que exista el usuario
+        try {
+            this.buscarUsuario(aux, dni);
+            System.out.println("El Medico ya existe, no hace falta registrarlo de vuelta");
+        } catch (UsuarioInexistenteException e) {
+            // si no lo creo y lo agrego
+            System.out.println(e);
+            int flag = 0;
+            while (flag == 0) {
+                try {
+                    System.out.println("Nombre: ");
+                    String nombre = scan.nextLine();
+                    System.out.println("Apellido: ");
+                    String apellido = scan.nextLine();
+                    System.out.println("Mail: ");
+                    String mail = scan.nextLine();
+                    System.out.println("Password: ");
+                    String password = scan.nextLine();
+                    flag = 1;
+                    rta = new Medico(nombre, apellido, dni, mail, password);
+                    medicos.add(rta);
+                } catch (InputMismatchException f) {
+                    System.out.println(f);
+                }
+            }
+        }
+        //persistir
+        Persistencia.serializacion(medicos, "medicos.json");
     }
 
 
