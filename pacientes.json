@@ -1,8 +1,6 @@
 [
   {
     "historialClinico": [],
-    "idMedicoAsignado": 4,
-    "historialClinico": [],
     "tratamientoActual": {
       "enfermedad": {
         "nombre": "Encondroma"
@@ -51,32 +49,33 @@
             "month": 6,
             "day": 8
           },
-          "listaRegistros" : [
+          "listaRegistros": [
             {
-              "nombreAccion" : "Presion",
-              "rta" : "120-80",
-              "seHizo" : true
+              "nombreAccion": "Presion",
+              "rta": "120-80",
+              "seHizo": true
             },
             {
-              "nombreAccion" : "Temperatura",
-              "rta" : "37",
-              "seHizo" : true
+              "nombreAccion": "Temperatura",
+              "rta": "37",
+              "seHizo": true
             },
             {
-              "nombreAccion" : "Densidad",
-              "rta" : "45",
-              "seHizo" : true
+              "nombreAccion": "Densidad",
+              "rta": "45",
+              "seHizo": true
             },
             {
-              "nombreAccion" : "Densidad",
-              "rta" : "45",
-              "seHizo" : true
+              "nombreAccion": "Densidad",
+              "rta": "45",
+              "seHizo": true
             }
           ]
         }
       ],
       "finalizado": false
     },
+    "idMedicoAsignado": 4,
     "debeSerAtendido": false,
     "nombre": "Juan",
     "apellido": "Ros",
@@ -119,7 +118,7 @@
   },
   {
     "historialClinico": [],
-    "idMedicoAsignado": 3,
+    "idMedicoAsignado": 1,
     "debeSerAtendido": true,
     "nombre": "tercerea",
     "apellido": "3",
@@ -127,5 +126,16 @@
     "mail": "tres@hotmail.com",
     "password": "asdfas",
     "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": true,
+    "nombre": "agokasfgsdfgfasd",
+    "apellido": "gfafgadfgasdf",
+    "dni": "234231511",
+    "mail": "gafgaf@agadffad.com",
+    "password": "asdfgafga",
+    "id": 2
   }
 ]
