@@ -50,6 +50,18 @@ public class Usuario {
         return dni;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public static Integer getID() {
+        return ID;
+    }
+
     public String toStringInfoNoSensible() {
         return nombre + " " + apellido + " "+ dni + " , ";
     }

@@ -84,6 +84,17 @@ public class Admin extends Usuario implements Tratamientos {
         throw new UsuarioInexistenteException();
     }
 
+    private Integer asignarMedico(String apellido, String nombre){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Elegir un medico para asignarle a " + nombre + " " + apellido);
+        ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
+        for(Medico m : medicos){
+            System.out.println(m.get);
+        }
+        Integer rta = scan.nextInt();
+        return rta;
+    }
+
     public void agregarEnfermedad() {
         // levantar archivo enfermedad
         // agregar enfermedad
