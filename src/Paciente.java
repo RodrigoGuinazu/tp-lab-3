@@ -51,7 +51,6 @@ public class Paciente extends Usuario {
 
 
     public void realizarAcciones() {
-
         if (tratamientoActual.getFinDate().equals(LocalDate.now()) || tratamientoActual.getFinDate().isBefore(LocalDate.now())) {
             tratamientoActual.setFinalizado(true);
             historialClinico.add(tratamientoActual);

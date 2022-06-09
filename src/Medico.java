@@ -109,7 +109,7 @@ public class Medico extends Usuario implements Tratamientos {
 
                     x = 0;
                     for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println(x + a.toString());
+                        System.out.println(x + a.toString());               //modificar a
                         x++;
                     }
                     System.out.println("ingrese el numero del tratamiento elegido");

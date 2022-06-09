@@ -171,6 +171,12 @@ public class Tratamiento implements Cloneable {
     }
 
 
+    public String toStringMedico(){
+      //enfermedad, duracion y lista de acciones
+
+        return enfermedad + " " +duracion + " " +listaAcciones;
+    }
+
     @Override
     public String toString() {
         return "Tratamiento{" +
