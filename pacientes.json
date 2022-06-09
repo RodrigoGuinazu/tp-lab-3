@@ -1,5 +1,7 @@
 [
   {
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
     "debeSerAtendido": true,
     "nombre": "Juan",
     "apellido": "Ros",
@@ -10,7 +12,6 @@
   },
   {
     "historialClinico": [],
-
     "debeSerAtendido": true,
     "nombre": "Elena",
     "apellido": "Vargas",
@@ -18,5 +19,38 @@
     "mail": "paciente@hotmail.com",
     "password": "Coco",
     "id": 2
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 1,
+    "debeSerAtendido": true,
+    "nombre": "Probando",
+    "apellido": "NuevoPaciente",
+    "dni": "4987612",
+    "mail": "prueba@pacienteAdmin.com",
+    "password": "123",
+    "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 3,
+    "debeSerAtendido": true,
+    "nombre": "2",
+    "apellido": "segunda",
+    "dni": "Prueba 2",
+    "mail": "segunda@2.com",
+    "password": "asd",
+    "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 3,
+    "debeSerAtendido": true,
+    "nombre": "tercerea",
+    "apellido": "3",
+    "dni": "41234231",
+    "mail": "tres@hotmail.com",
+    "password": "asdfas",
+    "id": 1
   }
 ]

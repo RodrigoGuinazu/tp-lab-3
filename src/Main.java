@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -32,31 +30,31 @@ public class Main {
 //
 //
 //        // Acciones
-        ArrayList<Accion> acciones = new ArrayList<>();
-        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
-        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
-        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
-        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
-//        Persistencia.serializacion(acciones, "acciones.json");
-//
-//
-//        // Enfermedades
-        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
-        enfermedades.add(new Enfermedad("Estres"));
-        enfermedades.add(new Enfermedad("Gripe"));
-        enfermedades.add(new Enfermedad("Alergia"));
-        enfermedades.add(new Enfermedad("Amiloidosis"));
-        enfermedades.add(new Enfermedad("Encondroma"));
-//        Persistencia.serializacion(enfermedades, "enfermedades.json");
-//
-//
-//        // Tratamientos
-        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-//        tratamientos.add(new Tratamiento(enfermedades.get(3))); // Vacio
-//        tratamientos.add(new Tratamiento(enfermedades.get(4), LocalDate.now(), acciones));   //con acciones
-        tratamientos.add(new Tratamiento(enfermedades.get(4),7,acciones));
-        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
-        Persistencia.serializacion(tratamientos, "tratamientos.json");
+//        ArrayList<Accion> acciones = new ArrayList<>();
+//        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
+//        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
+//        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
+//        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
+////        Persistencia.serializacion(acciones, "acciones.json");
+////
+////
+////        // Enfermedades
+//        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
+//        enfermedades.add(new Enfermedad("Estres"));
+//        enfermedades.add(new Enfermedad("Gripe"));
+//        enfermedades.add(new Enfermedad("Alergia"));
+//        enfermedades.add(new Enfermedad("Amiloidosis"));
+//        enfermedades.add(new Enfermedad("Encondroma"));
+////        Persistencia.serializacion(enfermedades, "enfermedades.json");
+////
+////
+////        // Tratamientos
+//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+////        tratamientos.add(new Tratamiento(enfermedades.get(3))); // Vacio
+////        tratamientos.add(new Tratamiento(enfermedades.get(4), LocalDate.now(), acciones));   //con acciones
+//        tratamientos.add(new Tratamiento(enfermedades.get(4),7,acciones));
+//        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
+//        Persistencia.serializacion(tratamientos, "tratamientos.json");
 
 
         Sistema sistema = new Sistema();
