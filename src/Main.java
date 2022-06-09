@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -46,15 +47,11 @@ public class Main {
 
 
 
-//        //tratamientos
-//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-//
-////        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-////        tratamientos.add(new Tratamiento(new Enfermedad("Fiebre"), LocalDate.now(), LocalDate.now().plusDays(5), acciones));
-
-//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-////        tratamientos.add(new Tratamiento(enfermedad1, null, null, listaAcciones));
-////        Persistencia.serializacion(tratamientos, "tratamientos.json");
+        //tratamientos
+        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+        tratamientos.add(new Tratamiento(enfermedades.get(3))); // Vacio
+        tratamientos.add(new Tratamiento(enfermedades.get(4), LocalDate.now(),acciones));   //con acciones
+        Persistencia.serializacion(tratamientos, "tratamientos.json");
 
 
 

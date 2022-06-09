@@ -4,18 +4,37 @@ import java.util.Stack;
 
 public class Tratamiento implements Cloneable {
     private Enfermedad enfermedad;
-    private int duracion ;
-    private LocalDate incioDate;
+    private Integer duracion ;
+    private LocalDate inicioDate;
     private LocalDate finDate;
     protected ArrayList<Accion> listaAcciones;
     private Stack<RegistroDiario> listaRegistrosDiarios;
     private boolean finalizado;
 
+
+    // Constructores
+
     public Tratamiento(){
 
     }
 
-    public Tratamiento(int duracion , Enfermedad enfermedad, ArrayList<Accion> acciones){
+    // Tratamiento "Vacio"
+    public Tratamiento(Enfermedad enfermedad) {
+        this.enfermedad = enfermedad;
+        this.finalizado = false;
+    }
+
+    public Tratamiento(Enfermedad enfermedad,LocalDate inicioDate, ArrayList<Accion> listaAcciones) {
+        this.enfermedad = enfermedad;
+        // this.duracion = calcularDuracion();  //crear
+        this.inicioDate = inicioDate;
+        // this.finDate = calcularCierre(); //crear
+        this.listaAcciones = listaAcciones;
+        this.listaRegistrosDiarios = new Stack<RegistroDiario>();
+        this.finalizado = false;
+    }
+
+    public Tratamiento(Integer duracion , Enfermedad enfermedad, ArrayList<Accion> acciones){
         this.duracion = duracion;
         this.enfermedad = enfermedad;
         this.listaAcciones  = acciones;
@@ -32,12 +51,12 @@ public class Tratamiento implements Cloneable {
         this.enfermedad = enfermedad;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(Integer duracion) {
         this.duracion = duracion;
     }
 
     public void setIncioDate(LocalDate incioDate) {
-        this.incioDate = incioDate;
+        this.inicioDate = incioDate;
     }
 
     public void setFinDate(LocalDate finDate) {
@@ -108,10 +127,15 @@ public class Tratamiento implements Cloneable {
 
     public String toStringListaAcciones(){
         String rta = "";
-        for (Accion a: listaAcciones){
-            rta  += a.toString();
-        }
+        try{
+            for (Accion a: listaAcciones){
+                rta  += a.toString();
+            }
 
+            return rta;
+        } catch (NullPointerException e) {
+            System.out.println("Error de tipo : "+e);
+        }
         return rta;
     }
 
@@ -119,13 +143,17 @@ public class Tratamiento implements Cloneable {
         return enfermedad;
     }
 
+
     @Override
     public String toString() {
         return "Tratamiento{" +
                 "enfermedad=" + enfermedad +
-                ", duracion=" + duracion + "Lista de acciones del tratamiento:" + toStringListaAcciones() +
+                ", duracion=" + duracion +
+                ", incioDate=" + inicioDate +
+                ", finDate=" + finDate +
+                ", listaAcciones=" + listaAcciones +
+                ", listaRegistrosDiarios=" + listaRegistrosDiarios +
+                ", finalizado=" + finalizado +
                 '}';
     }
 }
-
-

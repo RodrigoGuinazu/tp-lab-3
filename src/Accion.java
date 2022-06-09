@@ -65,10 +65,15 @@ public class Accion { // no puede ser abstract por el deserializador
         return textoPregunta;
     }
 
+
     @Override
     public String toString() {
         return "Accion{" +
-                "nombre='" + nombre + '\'' +
+                "ultimaNoti=" + ultimaNoti +
+                ", textoPregunta='" + textoPregunta + '\'' +
+                ", cadaCuanto=" + cadaCuanto +
+                ", vecesPorDia=" + vecesPorDia +
+                ", nombre='" + nombre + '\'' +
                 '}';
     }
 }
