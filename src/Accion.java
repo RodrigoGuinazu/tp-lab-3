@@ -4,12 +4,12 @@ public class Accion { // no puede ser abstract por el deserializador
     // Atributos
     private LocalDate ultimaNoti =  null; // ultima vez que se le notifico la accion
     private String textoPregunta;
-    private int cadaCuanto; // cada cuanto dias tiene que hacer la accion
-    private int vecesPorDia; // cuantas veces por dia tiene que hacer la accion
+    private Integer cadaCuanto; // cada cuanto dias tiene que hacer la accion
+    private Integer vecesPorDia; // cuantas veces por dia tiene que hacer la accion
     private String nombre;
 
     // Constructores
-    public Accion(int cadaCuanto, int vecesPorDia, String nombre, String textoPregunta) {
+    public Accion(Integer cadaCuanto, Integer vecesPorDia, String nombre, String textoPregunta) {
         this.textoPregunta = textoPregunta;
         this.cadaCuanto = cadaCuanto;
         this.vecesPorDia = vecesPorDia;
@@ -35,11 +35,11 @@ public class Accion { // no puede ser abstract por el deserializador
         this.textoPregunta = textoPregunta;
     }
 
-    public void setCadaCuanto(int cadaCuanto) {
+    public void setCadaCuanto(Integer cadaCuanto) {
         this.cadaCuanto = cadaCuanto;
     }
 
-    public void setVecesPorDia(int vecesPorDia) {
+    public void setVecesPorDia(Integer vecesPorDia) {
         this.vecesPorDia = vecesPorDia;
     }
 
