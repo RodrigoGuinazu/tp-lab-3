@@ -24,7 +24,7 @@ public class Medico extends Usuario implements Tratamientos {
     public String notificarMedico() {
         //levantar el archivo de pacientes
         //entra paciente por paciente por id y verifica qeu tratamiento
-        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         String rta = "";
         rta += "Pacientes que deben ser atendidos hoy : ";
         for (Paciente pacientegeneral : listaPacientes) {
@@ -70,8 +70,8 @@ public class Medico extends Usuario implements Tratamientos {
     public void diagnosticarPacientes() {
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
-        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
-        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
+        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
 
         // consultamos el paciente
         System.out.println("Ingrese el dni del paciente que desea diagnosticar");
@@ -136,7 +136,7 @@ public class Medico extends Usuario implements Tratamientos {
             pacienteAux.setDebeSerAtendido(false);
 
             // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
-            Persistencia.serializacion(listaPacientes, "pacientes.json");
+            Persistencia.serializacionPacientes(listaPacientes);
         }else{
             System.out.println("El dni que ingreso no es correcto o no corresponde con uno de sus pacientes.");
         }
@@ -146,7 +146,7 @@ public class Medico extends Usuario implements Tratamientos {
 
 
     public void verHistorialPaciente() {
-        ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
 
         System.out.println("Ingrese el dni del paciente que desea cunsultar");
         Scanner scan = new Scanner(System.in);
@@ -163,9 +163,8 @@ public class Medico extends Usuario implements Tratamientos {
     @Override
     public Tratamiento crearTratamiento() {
         int accionIndex;
-        Accion accionAux = new Accion();
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
         Tratamiento nuevoTratamiento = new Tratamiento();
         System.out.println("Ingrese la duracion del tratamiento");
         nuevoTratamiento.setDuracion(scan.nextInt());
@@ -183,21 +182,30 @@ public class Medico extends Usuario implements Tratamientos {
 
             System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
             accionIndex = scan.nextInt();
-            accionAux = listaAcciones.get(accionIndex).clonarAccion();
-            System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-            accionAux.setCadaCuanto(scan.nextInt());
-            nuevoTratamiento.listaAcciones.add(accionAux);
+            if(listaAcciones.get(accionIndex) instanceof AccionBooleana){
+                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
+                System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                accionAux.setCadaCuanto(scan.nextInt());
+                nuevoTratamiento.listaAcciones.add(accionAux);
+            }else{
+                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
+                System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                accionAux.setCadaCuanto(scan.nextInt());
+                nuevoTratamiento.listaAcciones.add(accionAux);
+            }
+
         }
 
         return nuevoTratamiento;
+
     }
 
     @Override
     public Tratamiento editarTratamiento(Tratamiento aux) {
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
         int opcionMenu = 0;
-        Accion accionAux = new Accion();
+
 
         do {
 
@@ -221,12 +229,22 @@ public class Medico extends Usuario implements Tratamientos {
                         index++;
 
                     }
+
                     System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
                     accionIndex = scan.nextInt();
-                    accionAux = listaAcciones.get(accionIndex).clonarAccion();
-                    System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-                    accionAux.setCadaCuanto(scan.nextInt());
-                    aux.listaAcciones.add(accionAux);
+                    if(listaAcciones.get(accionIndex) instanceof AccionDouble){
+                        AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
+                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                        accionAux.setCadaCuanto(scan.nextInt());
+                        aux.listaAcciones.add(accionAux);
+                    }else{
+                        AccionBooleana accionAux = (AccionBooleana)listaAcciones.get(accionIndex).clonarAccion();
+                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                        accionAux.setCadaCuanto(scan.nextInt());
+                        aux.listaAcciones.add(accionAux);
+                    }
+
+
 
                 case 2:
                     String rta  = "";
