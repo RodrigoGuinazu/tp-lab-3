@@ -90,4 +90,53 @@ public abstract class Persistencia {
     }
 
 
+
+    public static ArrayList<Accion> deserializacionAcciones()  {
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
+        Gson gson = gsonBilder.create();
+        ArrayList<Accion> listaAcciones = new ArrayList<>();
+
+        File file = new File("acciones.json");
+        try {
+            Type listType = new TypeToken<ArrayList<Accion>>() {
+            }.getType();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listaAcciones = gson.fromJson(bufferedReader, listType);
+            return listaAcciones;
+
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    // escritura
+    public static <T> void serializacionAcciones(ArrayList<Accion> arrayAcciones) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
+        Gson gson = gsonBuilder.create();
+
+        File file = new File("acciones.json");
+        try {
+
+            Type listType = new TypeToken<ArrayList<Accion>>() {
+            }.getType();
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(arrayAcciones, listType, bufferedWriter);
+            bufferedWriter.close();
+
+
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
