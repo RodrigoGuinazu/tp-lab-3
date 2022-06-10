@@ -8,6 +8,12 @@ public class AccionDouble extends Accion {
     }
 
     @Override
+    public AccionDouble clonarAccion() {
+        AccionDouble aux = new AccionDouble(this.cadaCuanto, this.vecesPorDia, this.nombre, this.textoPregunta);
+        return aux;
+    }
+
+    @Override
     public Registro accionar() throws AccionFallidaException {
         Scanner scan = new Scanner(System.in);
         String rta;

@@ -105,15 +105,8 @@ public class Tratamiento  {
 
             for (Accion a : listaAcciones) {
                 try {
-
-                    if (a instanceof AccionBooleana){
-                        Registro registroAux = ((AccionBooleana)a).accionar();
+                        Registro registroAux = a.accionar();
                         aux.agregarRegistro(registroAux);
-                    }
-                    if (a instanceof AccionDouble){
-                        Registro registroAux = ((AccionDouble)a).accionar();
-                        aux.agregarRegistro(registroAux);
-                    }
 
                 } catch (AccionFallidaException e) {
                     System.out.println(e);

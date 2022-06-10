@@ -9,6 +9,12 @@ public class AccionBooleana extends Accion {
     }
 
     @Override
+    public AccionBooleana clonarAccion() {
+        AccionBooleana aux = new AccionBooleana(this.cadaCuanto, this.vecesPorDia, this.nombre, this.textoPregunta);
+        return aux;
+    }
+
+    @Override
     public Registro accionar() throws AccionFallidaException {
         Scanner scan = new Scanner(System.in);
         Character opcion;

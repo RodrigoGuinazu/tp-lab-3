@@ -22,6 +22,8 @@ public class Paciente extends Usuario {
     }
 
 
+
+
     // Completo
     public Paciente(String nombre, String apellido, String dni, String mail, String password, Integer idMedicoAsignado) {
         super(nombre, apellido, dni, mail, password);
@@ -65,6 +67,10 @@ public class Paciente extends Usuario {
         return;
     }
 
+
+    public void setTratamientoActual(Tratamiento tratamientoActual) {
+        this.tratamientoActual = tratamientoActual;
+    }
 
     public void setDebeSerAtendido(Boolean debeSerAtendido) {
         this.debeSerAtendido = debeSerAtendido;

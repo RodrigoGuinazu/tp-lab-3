@@ -1,16 +1,67 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public abstract class Persistencia {
     // Metodos
+
+    // lectura
+
+    public static ArrayList<Paciente> deserializacionPacientes ()  {
+
+        GsonBuilder gsonBilder = new GsonBuilder();
+        gsonBilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
+        Gson gson = gsonBilder.create();
+        ArrayList<Paciente> listaPacientes = new ArrayList<>();
+
+        File file = new File("pacientes.json");
+        try {
+
+            Type listType = new TypeToken<ArrayList<Paciente>>() {
+            }.getType();
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            listaPacientes = gson.fromJson(bufferedReader, listType);
+            return listaPacientes;
+
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    // escritura
+    public static <T> void serializacionPacientes(ArrayList<Paciente> arrayPaciente) {
+
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
+        Gson gson = gsonBuilder.create();
+
+        File file = new File("pacientes.json");
+        try {
+
+            Type listType = new TypeToken<ArrayList<Paciente>>() {
+            }.getType();
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            gson.toJson(arrayPaciente, listType, bufferedWriter);
+            bufferedWriter.close();
+
+
+        } catch (IOException e) {
+            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
 
     // lectura
     public static <T> ArrayList<T> deserializacion(String archivo, Class<T> type) {
@@ -37,4 +88,6 @@ public abstract class Persistencia {
             System.out.println(e);
         }
     }
+
+
 }

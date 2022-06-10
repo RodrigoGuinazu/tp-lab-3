@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -29,13 +31,12 @@ public class Main {
 //        Persistencia.serializacion(admins, "admins.json");
 //
 //
-//        // Acciones
-//        ArrayList<Accion> acciones = new ArrayList<>();
-//        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
-//        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
-//        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
-//        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
-////        Persistencia.serializacion(acciones, "acciones.json");
+//
+        ArrayList<Paciente> paciente  = new ArrayList<>();
+        paciente = Persistencia.deserializacionPacientes();
+        System.out.println(paciente.get(0).tratamientoActual.listaAcciones.get(0).getClass());
+
+//        Persistencia.serializacion(acciones, "acciones.json");
 ////
 ////
 ////        // Enfermedades
@@ -56,9 +57,9 @@ public class Main {
 //        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
 //        Persistencia.serializacion(tratamientos, "tratamientos.json");
 
-
-        Sistema sistema = new Sistema();
-        sistema.menu();
+//
+//        Sistema sistema = new Sistema();
+//        sistema.menu();
 
     }
 }

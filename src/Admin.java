@@ -17,7 +17,8 @@ public class Admin extends Usuario implements Tratamientos {
         Scanner scan = new Scanner(System.in);
         Paciente rta;
         // levantar archivo usuarios
-        ArrayList<Paciente> pacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
+
+        ArrayList<Paciente>pacientes = Persistencia.deserializacionPacientes();
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(pacientes);
         System.out.println("Registrando un paciente:");
@@ -78,7 +79,7 @@ public class Admin extends Usuario implements Tratamientos {
             }
         }
         //persistir
-        Persistencia.serializacion(pacientes, "pacientes.json");
+        Persistencia.serializacionPacientes(pacientes);
     }
 
     public void registrarMedico() {
@@ -210,7 +211,7 @@ public class Admin extends Usuario implements Tratamientos {
         //crear lista de acciones o elegir uno existente --> falta ver como son las acciones
 
         ArrayList<Accion> acciones = new ArrayList<>();
-        acciones.add(new Accion(1,2,"hola","aqdios"));
+        //acciones.add(new Accion(1,2,"hola","aqdios"));
         Tratamiento nuevoTratamiento = new Tratamiento(enfermedad,duracion,acciones);
         System.out.println("Nuevo tratamiento a crear" + nuevoTratamiento);
 
