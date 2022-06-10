@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -10,7 +8,7 @@ public class Main {
 //        ArrayList<Paciente> pacientes = new ArrayList<>();
 //        pacientes.add(new Paciente("Juan", "Ros", "11247824", "paciente@gmail.com", "Casa"));//sin medico asignado
 //        pacientes.add(new Paciente("Elena", "Vargas", "40347821", "paciente@hotmail.com", "Coco", 14));//con medico asignado
-//        Persistencia.serializacion(pacientes, "pacientes.json");
+//        Persistencia.serializacionPacientes(pacientes);
 //
 //
 //        // Medicos
@@ -29,35 +27,36 @@ public class Main {
 //        admins.add(new Admin("Rene", "Favaloro", "16703723", "admin@hotmail.com", "Cusco"));
 //        admins.add(new Admin("Roberto", "Estévez", "19594105", "admin@gmail.com", "Caña"));
 //        Persistencia.serializacion(admins, "admins.json");
+//        Persistencia.serializacion(admins, "acciones.json");
 //
 //
 //
-        ArrayList<Paciente> paciente  = new ArrayList<>();
-        paciente = Persistencia.deserializacionPacientes();
-        System.out.println(paciente.get(0).tratamientoActual.listaAcciones.get(0).getClass());
-
-//        Persistencia.serializacion(acciones, "acciones.json");
-////
-////
-////        // Enfermedades
+//        // Enfermedades
 //        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
 //        enfermedades.add(new Enfermedad("Estres"));
 //        enfermedades.add(new Enfermedad("Gripe"));
 //        enfermedades.add(new Enfermedad("Alergia"));
 //        enfermedades.add(new Enfermedad("Amiloidosis"));
 //        enfermedades.add(new Enfermedad("Encondroma"));
-////        Persistencia.serializacion(enfermedades, "enfermedades.json");
-////
-////
-////        // Tratamientos
+//        Persistencia.serializacion(enfermedades, "enfermedades.json");
+//
+//
+//        // Acciones
+//        ArrayList<Accion> acciones = new ArrayList<>();
+//        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
+//        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
+//        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
+//        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
+//        Persistencia.serializacionAcciones(acciones);
+//
+//
+//        // Tratamientos
 //        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-////        tratamientos.add(new Tratamiento(enfermedades.get(3))); // Vacio
-////        tratamientos.add(new Tratamiento(enfermedades.get(4), LocalDate.now(), acciones));   //con acciones
 //        tratamientos.add(new Tratamiento(enfermedades.get(4),7,acciones));
 //        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
-//        Persistencia.serializacion(tratamientos, "tratamientos.json");
+//        Persistencia.serializacionTratamientos(tratamientos);
 
-//
+
 //        Sistema sistema = new Sistema();
 //        sistema.menu();
 

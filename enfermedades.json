@@ -1,1 +1,17 @@
-[{"nombre":"Estres"},{"nombre":"Gripe"},{"nombre":"Alergia"},{"nombre":"Amiloidosis"},{"nombre":"Encondroma"},{"nombre":"Flibosis"},{"nombre":"Atrofiarse"},{"nombre":"Caerse"},{"nombre":"Subirse"},{"nombre":""},{"nombre":"Golpeada"},{"nombre":"Susto"},{"nombre":"Hechizado"},{"nombre":"caida"},{"nombre":"pararse"}]
+[
+  {
+    "nombre": "Estres"
+  },
+  {
+    "nombre": "Gripe"
+  },
+  {
+    "nombre": "Alergia"
+  },
+  {
+    "nombre": "Amiloidosis"
+  },
+  {
+    "nombre": "Encondroma"
+  }
+]
