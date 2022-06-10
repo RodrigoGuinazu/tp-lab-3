@@ -71,7 +71,7 @@ public class Medico extends Usuario implements Tratamientos {
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacion("pacientes.json", Paciente.class);
-        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
+        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
         // consultamos el paciente
         System.out.println("Ingrese el dni del paciente que desea diagnosticar");
@@ -165,7 +165,7 @@ public class Medico extends Usuario implements Tratamientos {
         int accionIndex;
         Accion accionAux = new Accion();
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
         Tratamiento nuevoTratamiento = new Tratamiento();
         System.out.println("Ingrese la duracion del tratamiento");
         nuevoTratamiento.setDuracion(scan.nextInt());
@@ -195,7 +195,7 @@ public class Medico extends Usuario implements Tratamientos {
     @Override
     public Tratamiento editarTratamiento(Tratamiento aux) {
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
         int opcionMenu = 0;
         Accion accionAux = new Accion();
 
