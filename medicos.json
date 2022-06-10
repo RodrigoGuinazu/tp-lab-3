@@ -19,23 +19,5 @@
     "mail": "medico@gmail.com",
     "password": "Cosa",
     "id": 4
-  },
-  {
-    "pacientesDelMedico": [],
-    "nombre": "Medico Creado",
-    "apellido": "Prueba",
-    "dni": "45115432",
-    "mail": "prueba@crearMEDICO.com",
-    "password": "medicooo",
-    "id": 1
-  },
-  {
-    "pacientesDelMedico": [],
-    "nombre": "asdasd",
-    "apellido": "agadg",
-    "dni": "14123451251",
-    "mail": "agdagdf@sdfgsf.com",
-    "password": "sdfafada",
-    "id": 1
   }
 ]

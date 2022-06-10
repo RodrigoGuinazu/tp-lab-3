@@ -174,7 +174,7 @@ public class Medico extends Usuario implements Tratamientos {
         int index = 0;
 
         for (Accion a : listaAcciones) {
-            System.out.println(index + a.toString());
+            System.out.println("["+index+"] " + a.toString());
             index++;
 
         }
@@ -194,10 +194,73 @@ public class Medico extends Usuario implements Tratamientos {
 
     @Override
     public Tratamiento editarTratamiento(Tratamiento aux) {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
+        int opcionMenu = 0;
+        Accion accionAux = new Accion();
 
-        // consultar que hacer con la modificacion del tratamiento, hasta donde puede meter mano
+        do {
 
-        return null;
+
+            System.out.println("[1] Agregar accion");
+            System.out.println("[2] Quitar accion");
+            System.out.println("[3] Modificar duracion");
+            System.out.println("[4] Guardar tratamiendo");
+            System.out.println("Ingrese una opcion:");
+            opcionMenu = scan.nextInt();
+            int x;
+            int index;
+
+            switch (opcionMenu) {
+
+                case 1:
+                    index = 0;
+                    int accionIndex;
+                    for (Accion a : listaAcciones) {
+                        System.out.println("["+index+"] " + a.toString());
+                        index++;
+
+                    }
+                    System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
+                    accionIndex = scan.nextInt();
+                    accionAux = listaAcciones.get(accionIndex).clonarAccion();
+                    System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                    accionAux.setCadaCuanto(scan.nextInt());
+                    aux.listaAcciones.add(accionAux);
+
+                case 2:
+                    String rta  = "";
+                    index = 0;
+                    for (Accion a : aux.listaAcciones){
+                       rta +="["+index+"] " + a.toString();
+                    }
+                    System.out.println("Elija el numero de la accion que escoja para eliminar del tratamiento:");
+                    accionIndex = scan.nextInt();
+                    aux.listaAcciones.remove(accionIndex);
+
+                    break;
+
+
+                case 3:
+                    System.out.println("Ingrese la duracion que desea para el tratamiento");
+                    x = scan.nextInt();
+                    aux.setDuracion(x);
+                    break;
+
+                case 4:
+                    System.out.println("Guardando tratamieto...");
+                    break;
+
+
+
+                default:
+                    System.out.println("Opcion incorrecta, ingrese otra");
+            }
+        } while (opcionMenu != 4);
+
+
+
+        return aux;
     }
 
     @Override
