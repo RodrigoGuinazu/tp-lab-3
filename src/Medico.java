@@ -42,10 +42,11 @@ public class Medico extends Usuario implements Tratamientos {
 
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
-                if (a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
-                    if (a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(LocalDate.now().minusDays(1))) {
-                        rta += a.getinfoPaciente();
-                    }
+                if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
+                    rta += a.getinfoPaciente();
+
+                }else if(a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1))&a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(LocalDate.now().minusDays(1))){
+                    rta += a.getinfoPaciente();
                 }
             }
         }
@@ -65,13 +66,12 @@ public class Medico extends Usuario implements Tratamientos {
         return pacientesDelMedico;
     }
 
-    //metodo configuracion con ids y llenar su propai lista
 
     public void diagnosticarPacientes() {
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
-        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacion("tratamientos.json", Tratamiento.class);
+        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
         // consultamos el paciente
         System.out.println("Ingrese el dni del paciente que desea diagnosticar");
@@ -83,7 +83,7 @@ public class Medico extends Usuario implements Tratamientos {
                 pacienteAux = a;
             }
         }
-        if(pacienteAux.getIdMedicoAsignado().equals(super.getId())){
+
             // preguntamos al medico si queire elegir uno existente o crear uno nuevo
             Tratamiento tratamientoAux = new Tratamiento();
             int x;
@@ -111,11 +111,12 @@ public class Medico extends Usuario implements Tratamientos {
 
                         x = 0;
                         for (Tratamiento a : listaTratamientosGenericos) {
-                            System.out.println(x + a.toString());
+                            System.out.println("["+x+"] " + a.toStringMedico());
                             x++;
                         }
                         System.out.println("ingrese el numero del tratamiento elegido");
                         tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
+                        pacienteAux.tratamientoActual = tratamientoAux;
                         pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
 
                         break;
@@ -137,9 +138,7 @@ public class Medico extends Usuario implements Tratamientos {
 
             // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
             Persistencia.serializacionPacientes(listaPacientes);
-        }else{
-            System.out.println("El dni que ingreso no es correcto o no corresponde con uno de sus pacientes.");
-        }
+
 
 
     }
@@ -164,7 +163,7 @@ public class Medico extends Usuario implements Tratamientos {
     public Tratamiento crearTratamiento() {
         int accionIndex;
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
         Tratamiento nuevoTratamiento = new Tratamiento();
         System.out.println("Ingrese la duracion del tratamiento");
         nuevoTratamiento.setDuracion(scan.nextInt());
@@ -183,12 +182,12 @@ public class Medico extends Usuario implements Tratamientos {
             System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
             accionIndex = scan.nextInt();
             if(listaAcciones.get(accionIndex) instanceof AccionBooleana){
-                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
+                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
                 System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
                 accionAux.setCadaCuanto(scan.nextInt());
                 nuevoTratamiento.listaAcciones.add(accionAux);
             }else{
-                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
+                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
                 System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
                 accionAux.setCadaCuanto(scan.nextInt());
                 nuevoTratamiento.listaAcciones.add(accionAux);
@@ -203,7 +202,7 @@ public class Medico extends Usuario implements Tratamientos {
     @Override
     public Tratamiento editarTratamiento(Tratamiento aux) {
         Scanner scan = new Scanner(System.in);
-        ArrayList<Accion> listaAcciones = Persistencia.deserializacion("acciones.json", Accion.class);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
         int opcionMenu = 0;
 
 
@@ -225,7 +224,7 @@ public class Medico extends Usuario implements Tratamientos {
                     index = 0;
                     int accionIndex;
                     for (Accion a : listaAcciones) {
-                        System.out.println("["+index+"] " + a.toString());
+                        System.out.println("["+index+"] " + a.mostrarAccion());
                         index++;
 
                     }
@@ -244,14 +243,18 @@ public class Medico extends Usuario implements Tratamientos {
                         aux.listaAcciones.add(accionAux);
                     }
 
-
+                    break;
 
                 case 2:
+
                     String rta  = "";
                     index = 0;
                     for (Accion a : aux.listaAcciones){
-                       rta +="["+index+"] " + a.toString();
+
+                        System.out.println("["+index+"] " + a.mostrarAccion());
+                        index++;
                     }
+
                     System.out.println("Elija el numero de la accion que escoja para eliminar del tratamiento:");
                     accionIndex = scan.nextInt();
                     aux.listaAcciones.remove(accionIndex);

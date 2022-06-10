@@ -8,7 +8,7 @@ public class Tratamiento  {
     private LocalDate inicioDate;
     private LocalDate finDate;
     protected ArrayList<Accion> listaAcciones;
-    private Stack<RegistroDiario> listaRegistrosDiarios;
+    protected Stack<RegistroDiario> listaRegistrosDiarios;
     private boolean finalizado;
 
 
@@ -109,11 +109,10 @@ public class Tratamiento  {
                         aux.agregarRegistro(registroAux);
 
                 } catch (AccionFallidaException e) {
-                    System.out.println(e);
                 }
-                listaRegistrosDiarios.push(aux);
-            }
 
+            }
+            listaRegistrosDiarios.push(aux);
             return;
 
         } else {

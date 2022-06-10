@@ -3,7 +3,7 @@
     "type": "AccionBooleana",
     "properties": {
       "seHizo": false,
-      "textoPregunta": "Tomar Pastilla",
+      "textoPregunta": "Quiere Tomarse la Pastilla?",
       "cadaCuanto": 1,
       "vecesPorDia": 4,
       "nombre": "Pastilla"
@@ -13,17 +13,17 @@
     "type": "AccionBooleana",
     "properties": {
       "seHizo": false,
-      "textoPregunta": "Tomar Presion",
+      "textoPregunta": "Hoy le dolio la cabeza??",
       "cadaCuanto": 1,
       "vecesPorDia": 2,
-      "nombre": "Presion"
+      "nombre": "Dolor de Cabeza"
     }
   },
   {
     "type": "AccionDouble",
     "properties": {
       "rta": 0.0,
-      "textoPregunta": "Tomar Temperatura",
+      "textoPregunta": "Quiere Tomarse la temperatura?",
       "cadaCuanto": 1,
       "vecesPorDia": 3,
       "nombre": "Temperatura"
@@ -33,7 +33,7 @@
     "type": "AccionDouble",
     "properties": {
       "rta": 0.0,
-      "textoPregunta": "Tomar Densidad",
+      "textoPregunta": "Quiere Tomarse la densidad?",
       "cadaCuanto": 2,
       "vecesPorDia": 1,
       "nombre": "Densiometria"

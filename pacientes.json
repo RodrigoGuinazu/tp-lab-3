@@ -1,7 +1,68 @@
 [
   {
     "historialClinico": [],
-    "debeSerAtendido": true,
+    "tratamientoActual": {
+      "enfermedad": {
+        "nombre": "Encondroma"
+      },
+      "duracion": 7,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 10
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 17
+      },
+      "listaAcciones": [
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "seHizo": false,
+            "textoPregunta": "Tomar Pastilla",
+            "cadaCuanto": 1,
+            "vecesPorDia": 4,
+            "nombre": "Pastilla"
+          }
+        },
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "seHizo": false,
+            "textoPregunta": "Tomar Presion",
+            "cadaCuanto": 1,
+            "vecesPorDia": 2,
+            "nombre": "Presion"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "textoPregunta": "Tomar Temperatura",
+            "cadaCuanto": 1,
+            "vecesPorDia": 3,
+            "nombre": "Temperatura"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "textoPregunta": "Tomar Densidad",
+            "cadaCuanto": 2,
+            "vecesPorDia": 1,
+            "nombre": "Densiometria"
+          }
+        }
+      ],
+      "listaRegistrosDiarios": [],
+      "finalizado": false
+    },
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": false,
     "nombre": "Juan",
     "apellido": "Ros",
     "dni": "11247824",
@@ -11,13 +72,141 @@
   },
   {
     "historialClinico": [],
-    "idMedicoAsignado": 14,
-    "debeSerAtendido": true,
+    "tratamientoActual": {
+      "duracion": 8,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 10
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 18
+      },
+      "listaAcciones": [
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "textoPregunta": "Tomar Densidad",
+            "cadaCuanto": 5,
+            "vecesPorDia": 1,
+            "nombre": "Densiometria"
+          }
+        }
+      ],
+      "listaRegistrosDiarios": [],
+      "finalizado": false
+    },
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": false,
     "nombre": "Elena",
     "apellido": "Vargas",
     "dni": "40347821",
     "mail": "paciente@hotmail.com",
     "password": "Coco",
     "id": 2
+  },
+  {
+    "historialClinico": [],
+    "tratamientoActual": {
+      "enfermedad": {
+        "nombre": "Amiloidosis"
+      },
+      "duracion": 14,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 9
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 24
+      },
+      "listaAcciones": [
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "seHizo": false,
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 10
+            },
+            "textoPregunta": "Hoy le dolio la cabeza??",
+            "cadaCuanto": 1,
+            "vecesPorDia": 2,
+            "nombre": "Dolor de Cabeza"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 10
+            },
+            "textoPregunta": "Quiere Tomarse la temperatura?",
+            "cadaCuanto": 1,
+            "vecesPorDia": 3,
+            "nombre": "Temperatura"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 10
+            },
+            "textoPregunta": "Quiere Tomarse la densidad?",
+            "cadaCuanto": 2,
+            "vecesPorDia": 1,
+            "nombre": "Densiometria"
+          }
+        }
+      ],
+      "listaRegistrosDiarios": [
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 9
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Temperatura",
+              "rta": "23",
+              "seHizo": true
+            },
+            {
+              "nombreAccion": "Densiometria",
+              "rta": "78",
+              "seHizo": true
+            },
+            {
+              "nombreAccion": "Densiometria",
+              "rta": "78",
+              "seHizo": true
+            }
+          ]
+        }
+      ],
+      "finalizado": false
+    },
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": false,
+    "nombre": "santi",
+    "apellido": "torre",
+    "dni": "123123",
+    "mail": "santi@hotmail.com",
+    "password": "Coco",
+    "id": 7
   }
 ]

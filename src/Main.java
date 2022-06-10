@@ -57,8 +57,8 @@ public class Main {
 //        Persistencia.serializacionTratamientos(tratamientos);
 
 
-//        Sistema sistema = new Sistema();
-//        sistema.menu();
+        Sistema sistema = new Sistema();
+        sistema.menu();
 
     }
 }

@@ -18,7 +18,7 @@ public class AccionDouble extends Accion {
         Scanner scan = new Scanner(System.in);
         String rta;
         Character opcion;
-        System.out.println(super.getTextoPregunta());
+        System.out.println(("Quiere realizar la accion: " + super.getNombre()));
         opcion = scan.nextLine().charAt(0);
         if (opcion != 's') {
             throw new AccionFallidaException();
@@ -28,6 +28,12 @@ public class AccionDouble extends Accion {
             Registro registro = new Registro(super.getNombre(), rta, true);
             return registro;
         }
+    }
+
+    public String toString() {
+        return "AccionDouble{" + super.toString()+
+                "seHizo=" + rta +
+                '}';
     }
 
 }

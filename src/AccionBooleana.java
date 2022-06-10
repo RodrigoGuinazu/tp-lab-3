@@ -18,15 +18,20 @@ public class AccionBooleana extends Accion {
     public Registro accionar() throws AccionFallidaException {
         Scanner scan = new Scanner(System.in);
         Character opcion;
-        System.out.println(super.getTextoPregunta());
+        System.out.println("Quiere realizar la accion: " + super.getNombre());
         opcion = scan.nextLine().charAt(0);
         if (opcion != 's') {
             throw new AccionFallidaException();
         } else {
-            Registro registro = new Registro(super.getNombre(), null, true);
+            Registro registro = new Registro(super.getNombre(), "no Aplica", true);
             return registro;
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "AccionBooleana{" + super.toString()+
+                "seHizo=" + seHizo +
+                '}';
+    }
 }

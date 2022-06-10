@@ -77,7 +77,9 @@ public class Sistema {
 
             switch (opcionPaciente) {
                 case 1:
-                    ((Paciente) usuarioLogueado).realizarAcciones();    //ERROR
+                    ((Paciente) usuarioLogueado).realizarAcciones();
+                    System.out.println(((Paciente) usuarioLogueado).tratamientoActual.listaRegistrosDiarios);
+                    persistirPacienteActual(((Paciente)usuarioLogueado));
                     break;
                 case 2:
                     //falta editar acciones cargados hoy
@@ -190,15 +192,15 @@ public class Sistema {
             System.out.println("Mail: ");
 //            String mail = scan.nextLine();    // sin harcodeo
 //            String mail = "paciente@hotmail.com";  //Harcodeo paciente
-          //String mail = "medico@gmail.com";  //Harcodeo medico
-          String mail = "admin@hotmail.com";  //Harcodeo admin
+          String mail = "medico@gmail.com";  //Harcodeo medico
+   //      String mail = "santi@hotmail.com";  //Harcodeo admin
 
 
             System.out.println("Contraseña: ");
 //            String pass = scan.nextLine();    // sin harcodeo
-//           String pass = "Coco";          //Harcodeo paciente
-            //String pass = "Cosa";          //Harcodeo medico
-            String pass = "Cusco";          //Harcodeo admin
+//          String pass = "Coco";          //Harcodeo paciente
+            String pass = "Cosa";          //Harcodeo medico
+//            String pass = "Cusco";          //Harcodeo admin
 
 
             try {
@@ -208,6 +210,22 @@ public class Sistema {
             }
         }
         return rta;
+    }
+
+    public void persistirPacienteActual(Paciente logueado){
+
+        ArrayList<Paciente> pacientes = Persistencia.deserializacionPacientes();
+        for(Paciente a : pacientes){
+            if(a.getId().equals(logueado.getId())){
+
+                 pacientes.set(pacientes.indexOf(a),logueado);
+            }
+        }
+
+
+
+        Persistencia.serializacionPacientes(pacientes);
+
     }
 
     public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException {
