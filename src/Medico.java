@@ -83,60 +83,65 @@ public class Medico extends Usuario implements Tratamientos {
                 pacienteAux = a;
             }
         }
+        if(pacienteAux.getIdMedicoAsignado().equals(super.getId())){
+            // preguntamos al medico si queire elegir uno existente o crear uno nuevo
+            Tratamiento tratamientoAux = new Tratamiento();
+            int x;
+            int opcionMenu;
+            do {
 
-        // preguntamos al medico si queire elegir uno existente o crear uno nuevo
-        Tratamiento tratamientoAux = new Tratamiento();
-        int x;
-        int opcionMenu;
-        do {
+                System.out.println("[1] Elegir un tratamiento ya existente");   //ok
+                System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");   //ok
+                System.out.println("[3] Crear un nuevo tratamiento");   //ok
+                System.out.println("Ingrese una opcion:");
+                opcionMenu = scan.nextInt();
 
-            System.out.println("[1] Elegir un tratamiento ya existente");   //ok
-            System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");   //ok
-            System.out.println("[3] Crear un nuevo tratamiento");   //ok
-            System.out.println("Ingrese una opcion:");
-            opcionMenu = scan.nextInt();
+                switch (opcionMenu) {
+                    case 1:
+                        x = 0;
+                        for (Tratamiento a : listaTratamientosGenericos) {
+                            System.out.println("["+x+"] " + a.toStringMedico());
+                            x++;
+                        }
+                        System.out.println("ingrese el numero del tratamiento elegido");
+                        tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
+                        pacienteAux.tratamientoActual = tratamientoAux;
+                        break;
+                    case 2:
 
-            switch (opcionMenu) {
-                case 1:
-                    x = 0;
-                    for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println("["+x+"] " + a.toStringMedico());
-                        x++;
-                    }
-                    System.out.println("ingrese el numero del tratamiento elegido");
-                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
-                    pacienteAux.tratamientoActual = tratamientoAux;
-                    break;
-                case 2:
+                        x = 0;
+                        for (Tratamiento a : listaTratamientosGenericos) {
+                            System.out.println(x + a.toString());
+                            x++;
+                        }
+                        System.out.println("ingrese el numero del tratamiento elegido");
+                        tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
+                        pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
 
-                    x = 0;
-                    for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println(x + a.toString());
-                        x++;
-                    }
-                    System.out.println("ingrese el numero del tratamiento elegido");
-                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
-                    pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
+                        break;
 
-                    break;
+                    case 3:
 
-                case 3:
+                        pacienteAux.tratamientoActual = crearTratamiento();
+                        break;
 
-                    pacienteAux.tratamientoActual = crearTratamiento();
-                    break;
+                    default:
+                        System.out.println("Opcion incorrecta, ingrese otra");
+                }
+            } while (opcionMenu < 1 & opcionMenu > 3);
 
-                default:
-                    System.out.println("Opcion incorrecta, ingrese otra");
-            }
-        } while (opcionMenu < 1 & opcionMenu > 3);
+            // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
+            pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
+            pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
+            pacienteAux.setDebeSerAtendido(false);
 
-        // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
-        pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
-        pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
-        pacienteAux.setDebeSerAtendido(false);
+            // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
+            Persistencia.serializacion(listaPacientes, "pacientes.json");
+        }else{
+            System.out.println("El dni que ingreso no es correcto o no corresponde con uno de sus pacientes.");
+        }
 
-        // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
-        Persistencia.serializacion(listaPacientes, "pacientes.json");
+
     }
 
 

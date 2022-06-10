@@ -81,6 +81,10 @@ public class Paciente extends Usuario {
         return super.getId();
     }
 
+    public Integer getIdMedicoAsignado() {
+        return idMedicoAsignado;
+    }
+
     public Tratamiento getTratamientoActual() {
         return tratamientoActual;
     }
