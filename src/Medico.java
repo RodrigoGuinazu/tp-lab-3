@@ -146,6 +146,13 @@ public class Medico extends Usuario implements Tratamientos {
 
     public void verHistorialPaciente() {
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
+        for (Paciente pacientegeneral : listaPacientes) {
+           for(int a : pacientesDelMedico){
+               if (pacientegeneral.getId().equals(a)){
+                   System.out.println(pacientegeneral.toStringInfoNoSensible());
+               }
+           }
+        }
 
         System.out.println("Ingrese el dni del paciente que desea cunsultar");
         Scanner scan = new Scanner(System.in);

@@ -23,9 +23,24 @@ public class Registro {     //
     }
 
     public String toStringParaHistorial() {
-        return
-                "Se tomo la " + nombreAccion  +
-                " el resultado fue: " + rta + ". \n";
+
+        String aux = "";
+        aux += "La accion " + nombreAccion;
+        if (this.seHizo){
+            aux += " se realizo";
+          if(rta!=null){
+              aux += " y su resultado fue:"+ rta + ". \n";
+          }else{
+              aux += ". \n";
+          }
+        }else{
+            aux += " no se realizo"+ ". \n";
+        }
+
+
+
+        return aux;
+
 
     }
 

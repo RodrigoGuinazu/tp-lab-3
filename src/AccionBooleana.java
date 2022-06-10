@@ -23,7 +23,7 @@ public class AccionBooleana extends Accion {
         if (opcion != 's') {
             throw new AccionFallidaException();
         } else {
-            Registro registro = new Registro(super.getNombre(), "no Aplica", true);
+            Registro registro = new Registro(super.getNombre(), null , true);
             return registro;
         }
     }

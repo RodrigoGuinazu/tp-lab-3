@@ -182,8 +182,8 @@
           "listaRegistros": [
             {
               "nombreAccion": "Temperatura",
-              "rta": "23",
-              "seHizo": true
+              "rta": null,
+              "seHizo": false
             },
             {
               "nombreAccion": "Densiometria",
@@ -191,8 +191,7 @@
               "seHizo": true
             },
             {
-              "nombreAccion": "Densiometria",
-              "rta": "78",
+              "nombreAccion": "Pastilla",
               "seHizo": true
             }
           ]
