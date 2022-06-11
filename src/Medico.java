@@ -67,22 +67,37 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
-    public void diagnosticarPacientes() {
+    public void diagnosticarPacientes() throws dniInexistenteException {
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
-        // consultamos el paciente
-        System.out.println("Ingrese el dni del paciente que desea diagnosticar");
         Scanner scan = new Scanner(System.in);
-        String dni = scan.nextLine();
-        Paciente pacienteAux = new Paciente();
-        for (Paciente a : listaPacientes) {
-            if (a.getDni().equals(dni)) {
-                pacienteAux = a;
+        Paciente pacienteAux = null;
+        int control =0;
+        while (control==0){
+
+            // consultamos el paciente
+            System.out.println("Ingrese el dni del paciente que desea diagnosticar");
+
+            String dni = scan.nextLine();
+            for (Paciente a : listaPacientes) {
+                if (a.getDni().equals(dni)) {
+                    pacienteAux = a;
+                    control=1;
+                }
+            }
+
+            if(pacienteAux == null){
+                System.out.println("Dni inexistente, ¿quiere ingresar otro? s/n");
+                if(scan.nextLine().charAt(0)!='s'){
+                    throw new dniInexistenteException();
+                }
             }
         }
+
+
 
             // preguntamos al medico si queire elegir uno existente o crear uno nuevo
             Tratamiento tratamientoAux = new Tratamiento();

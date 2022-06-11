@@ -116,7 +116,13 @@ public class Sistema {
 
             switch (opcionMedico) {
                 case 1:
-                    ((Medico) usuarioLogueado).diagnosticarPacientes();
+
+                    try{
+                        ((Medico) usuarioLogueado).diagnosticarPacientes();
+                    }catch (dniInexistenteException e){
+                    }
+
+
                     break;
 
                 case 2:
