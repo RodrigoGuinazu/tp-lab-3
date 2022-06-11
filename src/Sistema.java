@@ -15,6 +15,7 @@ public class Sistema {
         this.usuarios = new ArrayList<>();
         this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
+        menu();
     }
 
     // Metodos
@@ -68,10 +69,10 @@ public class Sistema {
         ((Paciente) usuarioLogueado).notificarPaciente();
         do {
 
-            System.out.println("[1] Realizar acciones del dia");    //TO DO
-            System.out.println("[2] Modificar acciones del dia");   //TO DO
-            System.out.println("[3] Mostrar acciones del dia");     //ok
-            System.out.println("[4] Log Out");                      //ok
+            System.out.println("[1] Realizar acciones del dia");
+            System.out.println("[2] Modificar acciones del dia");
+            System.out.println("[3] Mostrar acciones del dia");
+            System.out.println("[4] Log Out");
             System.out.println("Ingrese una opcion:");
             opcionPaciente = scan.nextInt();
 

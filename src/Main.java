@@ -4,14 +4,14 @@ public class Main {
         //falta crear sistema con listas ya cargadas
 
 
-//        // Pacientes
+        // Pacientes
 //        ArrayList<Paciente> pacientes = new ArrayList<>();
 //        pacientes.add(new Paciente("Juan", "Ros", "11247824", "paciente@gmail.com", "Casa"));//sin medico asignado
 //        pacientes.add(new Paciente("Elena", "Vargas", "40347821", "paciente@hotmail.com", "Coco", 14));//con medico asignado
 //        Persistencia.serializacionPacientes(pacientes);
+
 //
-//
-//        // Medicos
+        // Medicos
 //        ArrayList<Medico> medicos = new ArrayList<>();
 //        ArrayList<Integer> pacientesMedico = new ArrayList<>();
 //        pacientesMedico.add(1);
@@ -22,7 +22,7 @@ public class Main {
 //        Persistencia.serializacion(medicos, "medicos.json");
 //
 //
-//        // admins
+        // admins
 //        ArrayList<Admin> admins = new ArrayList<>();
 //        admins.add(new Admin("Rene", "Favaloro", "16703723", "admin@hotmail.com", "Cusco"));
 //        admins.add(new Admin("Roberto", "Estévez", "19594105", "admin@gmail.com", "Caña"));
@@ -31,7 +31,7 @@ public class Main {
 //
 //
 //
-//        // Enfermedades
+        // Enfermedades
 //        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
 //        enfermedades.add(new Enfermedad("Estres"));
 //        enfermedades.add(new Enfermedad("Gripe"));
@@ -41,7 +41,7 @@ public class Main {
 //        Persistencia.serializacion(enfermedades, "enfermedades.json");
 //
 //
-//        // Acciones
+        // Acciones
 //        ArrayList<Accion> acciones = new ArrayList<>();
 //        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
 //        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
@@ -50,7 +50,7 @@ public class Main {
 //        Persistencia.serializacionAcciones(acciones);
 //
 //
-//        // Tratamientos
+        // Tratamientos
 //        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
 //        tratamientos.add(new Tratamiento(enfermedades.get(4),7,acciones));
 //        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
@@ -58,7 +58,6 @@ public class Main {
 
 
         Sistema sistema = new Sistema();
-        sistema.menu();
 
     }
 }
