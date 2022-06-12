@@ -219,11 +219,27 @@ public class Admin extends Usuario implements Tratamientos {
     }
 
     @Override
-    public Tratamiento editarTratamiento(Tratamiento x) {
-        // levantar archivo Tratameintos
-        // editar tratamiento
+    public Tratamiento editarTratamiento(Tratamiento aux){
+        Scanner scan = new Scanner(System.in);
+        // levantar archivo Tratamientos
+        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
+
+        // seleccionar el tratamiento a editar
+        int x = 0;
+        for (Tratamiento a : listaTratamientosGenericos) {
+            System.out.println("[" + x + "] " + a.toStringMedico());
+            x++;
+        }
+        System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
+        aux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
+
+        //editar tratamiento
+        Medico medicoAux = new Medico();
+        medicoAux.editarTratamiento(aux);
+
         //persistir
-        return null;
+        Persistencia.serializacionTratamientos(listaTratamientosGenericos);
+        return aux;
     }
 
 

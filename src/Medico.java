@@ -7,6 +7,10 @@ public class Medico extends Usuario implements Tratamientos {
     private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();  //ids paciente
 
     // Constructores
+    // Para medicos aux
+    public Medico() {
+    }
+
     // sin lista de pacientes
     public Medico(String nombre, String apellido, String dni, String mail, String password) {
         super(nombre, apellido, dni, mail, password);
@@ -71,7 +75,7 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
-    public void diagnosticarPacientes() throws dniInexistenteException {
+    public void diagnosticarPacientes() throws DniInexistenteException {
 
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
@@ -98,7 +102,7 @@ public class Medico extends Usuario implements Tratamientos {
             if (pacienteAux == null) {
                 System.out.println("Dni invalido, ¿Quiere ingresar otro dni? s/n");
                 if (scan.nextLine().charAt(0) != 's') {
-                    throw new dniInexistenteException();
+                    throw new DniInexistenteException();
                 }
             }
         }
@@ -124,7 +128,7 @@ public class Medico extends Usuario implements Tratamientos {
                         System.out.println("[" + x + "] " + a.toStringMedico());
                         x++;
                     }
-                    System.out.println("ingrese el numero del tratamiento elegido");
+                    System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
                     tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
                     pacienteAux.tratamientoActual = tratamientoAux;
                     System.out.println("Tratamiento generico asignado");
@@ -174,7 +178,7 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
-    public void verHistorialPaciente() throws dniInexistenteException {
+    public void verHistorialPaciente() throws DniInexistenteException {
         Scanner scan = new Scanner(System.in);
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         for (Paciente p : listaPacientes) {
@@ -201,7 +205,7 @@ public class Medico extends Usuario implements Tratamientos {
             if (pacienteAux == null) {
                 System.out.println("Dni invalido, ¿Quiere ingresar otro dni? s/n");
                 if (scan.nextLine().charAt(0) != 's') {
-                    throw new dniInexistenteException();
+                    throw new DniInexistenteException();
                 }
             }
         }
@@ -263,14 +267,13 @@ public class Medico extends Usuario implements Tratamientos {
 
         do {
 
-
+            System.out.println("Editando el tratamiento para la enfermedad: " + aux.getEnfermedad().getNombre());
             System.out.println("[1] Agregar accion");
             System.out.println("[2] Quitar accion");
             System.out.println("[3] Modificar duracion");
             System.out.println("[4] Guardar tratamiendo");
             System.out.println("Ingrese una opcion:");
             opcionMenu = scan.nextInt();
-            int x;
             int index;
 
             switch (opcionMenu) {
@@ -319,7 +322,7 @@ public class Medico extends Usuario implements Tratamientos {
 
                 case 3:
                     System.out.println("Ingrese la duracion que desea para el tratamiento");
-                    x = scan.nextInt();
+                    int x = scan.nextInt();
                     aux.setDuracion(x);
                     break;
 
