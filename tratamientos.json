@@ -16,16 +16,6 @@
         }
       },
       {
-        "type": "AccionBooleana",
-        "properties": {
-          "seHizo": false,
-          "textoPregunta": "Tomar Presion",
-          "cadaCuanto": 1,
-          "vecesPorDia": 2,
-          "nombre": "Presion"
-        }
-      },
-      {
         "type": "AccionDouble",
         "properties": {
           "rta": 0.0,
@@ -56,13 +46,13 @@
     "duracion": 14,
     "listaAcciones": [
       {
-        "type": "AccionBooleana",
+        "type": "AccionDouble",
         "properties": {
-          "seHizo": false,
-          "textoPregunta": "Tomar Presion",
+          "rta": 0.0,
+          "textoPregunta": "Tomar Temperatura",
           "cadaCuanto": 1,
-          "vecesPorDia": 2,
-          "nombre": "Presion"
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
         }
       }
     ],

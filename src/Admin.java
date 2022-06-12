@@ -225,20 +225,28 @@ public class Admin extends Usuario implements Tratamientos {
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
         // seleccionar el tratamiento a editar
-        int x = 0;
-        for (Tratamiento a : listaTratamientosGenericos) {
-            System.out.println("[" + x + "] " + a.toStringMedico());
-            x++;
+        int flag = 0;
+        while (flag == 0){
+            try{
+                int x = 1;
+                for (Tratamiento a : listaTratamientosGenericos) {
+                    System.out.println("[" + x + "] " + a.toStringMedico());
+                    x++;
+                }
+                System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
+                aux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
+
+                //editar tratamiento
+                Medico medicoAux = new Medico();
+                medicoAux.editarTratamiento(aux);
+
+                //persistir
+                Persistencia.serializacionTratamientos(listaTratamientosGenericos);
+                flag = 1;
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+            }
         }
-        System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
-        aux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
-
-        //editar tratamiento
-        Medico medicoAux = new Medico();
-        medicoAux.editarTratamiento(aux);
-
-        //persistir
-        Persistencia.serializacionTratamientos(listaTratamientosGenericos);
         return aux;
     }
 
