@@ -23,17 +23,24 @@ public class RegistroDiario {
 
     public void modificarRegistro() {
         Scanner scan = new Scanner(System.in);
-        int i = 1;
-        for(Registro r : listaRegistros){
-            System.out.println("["+i+"] " + r.mostrarNombresRegistros());
-            i++;
-        }
-        System.out.println("Ingrese el numero del Registro que desea modificar: ");
-        int aux = scan.nextInt();
-        try {
-            listaRegistros.get(aux-1).modificar();
-        }catch (AccionFallidaException e){
+        int flag = 0;
 
+        while (flag == 0){
+            try{
+                int i = 1;
+                for(Registro r : listaRegistros){
+                    System.out.println("["+i+"] " + r.mostrarNombresRegistros());
+                    i++;
+                }
+                System.out.println("Ingrese el numero del Registro que desea modificar: ");
+                int aux = scan.nextInt();
+                listaRegistros.get(aux-1).modificar();
+                flag = 1;
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+            }catch (AccionFallidaException f){
+                flag = 1;
+            }
         }
     }
 
