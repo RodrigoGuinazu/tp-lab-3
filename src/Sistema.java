@@ -80,7 +80,7 @@ public class Sistema {
                 case 1:
                     ((Paciente) usuarioLogueado).realizarAcciones();
                     System.out.println(((Paciente) usuarioLogueado).tratamientoActual.listaRegistrosDiarios);
-                    persistirPacienteActual(((Paciente)usuarioLogueado));
+                    persistirPacienteActual(((Paciente) usuarioLogueado));
                     break;
                 case 2:
                     //falta editar acciones cargados hoy
@@ -117,15 +117,18 @@ public class Sistema {
             switch (opcionMedico) {
                 case 1:
 
-                    try{
+                    try {
                         ((Medico) usuarioLogueado).diagnosticarPacientes();
-                    }catch (dniInexistenteException e){
+                    } catch (dniInexistenteException e) {
                     }
 
                     break;
 
                 case 2:
-                    ((Medico) usuarioLogueado).verHistorialPaciente();
+                    try {
+                        ((Medico) usuarioLogueado).verHistorialPaciente();
+                    } catch (dniInexistenteException e) {
+                    }
                     break;
 
                 case 3:
@@ -198,8 +201,8 @@ public class Sistema {
             System.out.println("Mail: ");
 //            String mail = scan.nextLine();    // sin harcodeo
 //            String mail = "paciente@hotmail.com";  //Harcodeo paciente
-          String mail = "medico@gmail.com";  //Harcodeo medico
-   //      String mail = "santi@hotmail.com";  //Harcodeo admin
+            String mail = "medico@gmail.com";  //Harcodeo medico
+            //      String mail = "santi@hotmail.com";  //Harcodeo admin
 
 
             System.out.println("Contraseña: ");
@@ -218,16 +221,15 @@ public class Sistema {
         return rta;
     }
 
-    public void persistirPacienteActual(Paciente logueado){
+    public void persistirPacienteActual(Paciente logueado) {
 
         ArrayList<Paciente> pacientes = Persistencia.deserializacionPacientes();
-        for(Paciente a : pacientes){
-            if(a.getId().equals(logueado.getId())){
+        for (Paciente a : pacientes) {
+            if (a.getId().equals(logueado.getId())) {
 
-                 pacientes.set(pacientes.indexOf(a),logueado);
+                pacientes.set(pacientes.indexOf(a), logueado);
             }
         }
-
 
 
         Persistencia.serializacionPacientes(pacientes);

@@ -174,7 +174,8 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
-    public void verHistorialPaciente() {
+    public void verHistorialPaciente() throws dniInexistenteException {
+        Scanner scan = new Scanner(System.in);
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         for (Paciente p : listaPacientes) {
             for (int a : pacientesDelMedico) {  //ve solo el historial de sus pacientes
@@ -184,20 +185,33 @@ public class Medico extends Usuario implements Tratamientos {
             }
         }
 
-        System.out.println("Ingrese el dni su paciente para ver historial");
-        Scanner scan = new Scanner(System.in);
-        String dni = scan.nextLine();
-        Paciente pacienteAux = new Paciente();
-        for (Paciente a : listaPacientes) {
-            if (a.getDni().equals(dni)) {
-                pacienteAux = a;
+        Paciente pacienteAux = null;
+        int control = 0;
+        while (control == 0) {
+            System.out.println("Ingrese el dni su paciente para ver historial");
+
+            String dni = scan.nextLine();
+            pacienteAux = null;
+            for (Paciente a : listaPacientes) {
+                if (a.getDni().equals(dni)) {
+                    pacienteAux = a;
+                    control = 1;
+                }
+            }
+            if (pacienteAux == null) {
+                System.out.println("Dni invalido, ¿Quiere ingresar otro dni? s/n");
+                if (scan.nextLine().charAt(0) != 's') {
+                    throw new dniInexistenteException();
+                }
             }
         }
+
 
         for (Tratamiento t : pacienteAux.getHistorialClinico()) {
             t.mostrarTratamiento();
         }
-
+        System.out.println("Presione cualquier tecla para continuar");
+        scan.nextLine();
     }
 
     @Override
