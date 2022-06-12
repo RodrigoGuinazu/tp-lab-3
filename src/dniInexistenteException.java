@@ -2,7 +2,7 @@ public class dniInexistenteException extends Exception{
 
 
     public dniInexistenteException(){
-        System.out.println("Dni inexistente");
+        System.out.println("Dni invalido");
     }
 
 }
