@@ -1,1 +1,42 @@
-[{"type":"AccionBooleana","properties":{"seHizo":false,"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":4,"nombre":"Pastilla"}},{"type":"AccionBooleana","properties":{"seHizo":false,"textoPregunta":"Tomar Presion","cadaCuanto":1,"vecesPorDia":2,"nombre":"Presion"}},{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Temperatura","cadaCuanto":1,"vecesPorDia":3,"nombre":"Temperatura"}},{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Densidad","cadaCuanto":2,"vecesPorDia":1,"nombre":"Densiometria"}}]
+[
+  {
+    "type": "AccionBooleana",
+    "properties": {
+      "seHizo": false,
+      "textoPregunta": "Tomar Pastilla",
+      "cadaCuanto": 1,
+      "vecesPorDia": 4,
+      "nombre": "Pastilla"
+    }
+  },
+  {
+    "type": "AccionBooleana",
+    "properties": {
+      "seHizo": false,
+      "textoPregunta": "Tomar Presion",
+      "cadaCuanto": 1,
+      "vecesPorDia": 2,
+      "nombre": "Presion"
+    }
+  },
+  {
+    "type": "AccionDouble",
+    "properties": {
+      "rta": 0.0,
+      "textoPregunta": "Tomar Temperatura",
+      "cadaCuanto": 1,
+      "vecesPorDia": 3,
+      "nombre": "Temperatura"
+    }
+  },
+  {
+    "type": "AccionDouble",
+    "properties": {
+      "rta": 0.0,
+      "textoPregunta": "Tomar Densidad",
+      "cadaCuanto": 2,
+      "vecesPorDia": 1,
+      "nombre": "Densiometria"
+    }
+  }
+]

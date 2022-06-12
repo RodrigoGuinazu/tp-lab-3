@@ -77,6 +77,8 @@ public class Medico extends Usuario implements Tratamientos {
 
     public void diagnosticarPacientes() throws DniInexistenteException {
 
+        // revisar que haya alguien a quien diagnosticar
+
         // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
@@ -123,28 +125,43 @@ public class Medico extends Usuario implements Tratamientos {
 
             switch (opcionMenu) {
                 case 1:
-                    x = 0;
-                    for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println("[" + x + "] " + a.toStringMedico());
-                        x++;
+                    int flag1 = 0;
+                    while (flag1 == 0){
+                        try{
+                            x = 1;
+                            for (Tratamiento a : listaTratamientosGenericos) {
+                                System.out.println("[" + x + "] " + a.toStringMedico());
+                                x++;
+                            }
+                            System.out.println("Ingrese el numero del tratamiento que quiera asignarle al paciente: ");
+                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
+                            pacienteAux.tratamientoActual = tratamientoAux;
+                            System.out.println("Tratamiento generico asignado");
+                            flag1 = 1;
+                        }catch (IndexOutOfBoundsException e){
+                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                        }
                     }
-                    System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
-                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
-                    pacienteAux.tratamientoActual = tratamientoAux;
-                    System.out.println("Tratamiento generico asignado");
                     break;
                 case 2:
-
-                    x = 0;
-                    for (Tratamiento a : listaTratamientosGenericos) {
-                        System.out.println("[" + x + "] " + a.toStringMedico());
-                        x++;
+                    int flag2 = 0;
+                    while (flag2 == 0){
+                        try{
+                            x = 1;
+                            for (Tratamiento a : listaTratamientosGenericos) {
+                                System.out.println("[" + x + "] " + a.toStringMedico());
+                                x++;
+                            }
+                            System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
+                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
+                            pacienteAux.tratamientoActual = tratamientoAux;
+                            pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
+                            System.out.println("Tratamiento modificado asignado");
+                            flag2= 1;
+                        }catch (IndexOutOfBoundsException e){
+                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                        }
                     }
-                    System.out.println("ingrese el numero del tratamiento elegido");
-                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
-                    pacienteAux.tratamientoActual = tratamientoAux;
-                    pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
-                    System.out.println("Tratamiento modificado asignado");
                     break;
 
                 case 3:
@@ -279,44 +296,53 @@ public class Medico extends Usuario implements Tratamientos {
             switch (opcionMenu) {
 
                 case 1:
-                    index = 0;
+                    int flag1 = 0;
                     int accionIndex;
-                    for (Accion a : listaAcciones) {
-                        System.out.println("[" + index + "] " + a.mostrarAccion());
-                        index++;
-
+                    while (flag1 == 0){
+                        try{
+                            index = 1;
+                            for (Accion a : listaAcciones) {
+                                System.out.println("[" + index + "] " + a.mostrarAccion());
+                                index++;
+                            }
+                            System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
+                            accionIndex = scan.nextInt();
+                            if (listaAcciones.get(accionIndex-1) instanceof AccionDouble) {
+                                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex-1).clonarAccion();
+                                System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                                accionAux.setCadaCuanto(scan.nextInt());
+                                aux.listaAcciones.add(accionAux);
+                            } else {
+                                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex-1).clonarAccion();
+                                System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                                accionAux.setCadaCuanto(scan.nextInt());
+                                aux.listaAcciones.add(accionAux);
+                            }
+                            flag1 = 1;
+                        }catch (IndexOutOfBoundsException e){
+                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                        }
                     }
-
-                    System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
-                    accionIndex = scan.nextInt();
-                    if (listaAcciones.get(accionIndex) instanceof AccionDouble) {
-                        AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
-                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-                        accionAux.setCadaCuanto(scan.nextInt());
-                        aux.listaAcciones.add(accionAux);
-                    } else {
-                        AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
-                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-                        accionAux.setCadaCuanto(scan.nextInt());
-                        aux.listaAcciones.add(accionAux);
-                    }
-
                     break;
 
                 case 2:
+                    int flag2 = 0;
+                    while (flag2 == 0){
+                        try{
+                            index = 1;
+                            for (Accion a : aux.listaAcciones) {
+                                System.out.println("[" + index + "] " + a.mostrarAccion());
+                                index++;
+                            }
 
-                    String rta = "";
-                    index = 0;
-                    for (Accion a : aux.listaAcciones) {
-
-                        System.out.println("[" + index + "] " + a.mostrarAccion());
-                        index++;
+                            System.out.println("Elija el numero de la accion que escoja para eliminar del tratamiento:");
+                            accionIndex = scan.nextInt();
+                            aux.listaAcciones.remove(accionIndex-1);
+                            flag2 = 1;
+                        }catch (IndexOutOfBoundsException e){
+                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                        }
                     }
-
-                    System.out.println("Elija el numero de la accion que escoja para eliminar del tratamiento:");
-                    accionIndex = scan.nextInt();
-                    aux.listaAcciones.remove(accionIndex);
-
                     break;
 
 
