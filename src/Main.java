@@ -63,6 +63,6 @@ public class Main {
 
 
         Sistema sistema = new Sistema();
-
+        sistema.menu();
     }
 }

@@ -15,34 +15,31 @@ public class Sistema {
         this.usuarios = new ArrayList<>();
         this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
-        menu();
     }
 
     // Metodos
     public void menu() {
+        // generamos la lista de usuarios para poder utilizarla en la logica del login
         ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Paciente> pacientesAux = Persistencia.deserializacionPacientes();
         ArrayList<Admin> adminsAux = Persistencia.deserializacion("admins.json", Admin.class);
-        //despersistir array list admins
-
-        //agregar array list admins a usuarios
         this.usuarios.addAll(medicosAux);
         this.usuarios.addAll(pacientesAux);
         this.usuarios.addAll(adminsAux);
 
         Scanner scan = new Scanner(System.in);
-
         int opcionMenu = 0;
+
         do {
             System.out.println("Bienvenido al TP LAB III\n");
-            System.out.println("[1] Log In");   //ok
-            System.out.println("[2] Salir del programa");   //ok
+            System.out.println("[1] Log In");
+            System.out.println("[2] Salir del programa");
             System.out.println("Ingrese una opcion:");
             opcionMenu = scan.nextInt();
 
             switch (opcionMenu) {
 
-                case 1: //log in
+                case 1:
                     this.usuarioLogueado = this.login();
                     if (this.usuarioLogueado instanceof Paciente) {
                         this.menuPaciente();
@@ -53,7 +50,7 @@ public class Sistema {
                     }
                     break;
 
-                case 2: //salir del programa
+                case 2:
                     System.out.println("Cerrando el programa...");
                     break;
 
@@ -87,7 +84,7 @@ public class Sistema {
                     break;
 
                 case 3:
-                    ((Paciente) usuarioLogueado).notificarPaciente();   //no hace nada
+                    ((Paciente) usuarioLogueado).notificarPaciente();
                     break;
 
                 case 4:
@@ -107,9 +104,9 @@ public class Sistema {
         do {
             //mostrar mejor y que cuando oprima una tecla siga con el menu
             System.out.println("[1] Asignar tratamiento");
-            // ver notificaciones de vuelta
-            System.out.println("[2] Ver historiales de los pacientes");
-            System.out.println("[3] Log Out");
+            System.out.println("[2] Ver las notificaciones del dia");
+            System.out.println("[3] Ver historiales de los pacientes");
+            System.out.println("[4] Log Out");
 
             System.out.println("Ingrese una opcion:");
             opcionMedico = scan.nextInt();
@@ -125,20 +122,24 @@ public class Sistema {
                     break;
 
                 case 2:
+                    System.out.println(((Medico) usuarioLogueado).notificarMedico());
+                    break;
+
+                case 3:
                     try {
                         ((Medico) usuarioLogueado).verHistorialPaciente();
                     } catch (DniInexistenteException e) {
                     }
                     break;
 
-                case 3:
+                case 4:
                     this.logout();
                     break;
 
                 default:
                     System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcionMedico != 3);
+        } while (opcionMedico != 4);
     }
 
 
