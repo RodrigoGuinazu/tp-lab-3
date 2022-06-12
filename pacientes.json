@@ -1,1 +1,83 @@
-[{"historialClinico":[],"tratamientoActual":{"enfermedad":{"nombre":"Amiloidosis"},"duracion":14,"inicioDate":{"year":2022,"month":6,"day":11},"finDate":{"year":2022,"month":6,"day":25},"listaAcciones":[{"type":"AccionBooleana","properties":{"seHizo":false,"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":4,"nombre":"Pastilla"}},{"type":"AccionBooleana","properties":{"seHizo":false,"textoPregunta":"Tomar Presion","cadaCuanto":1,"vecesPorDia":2,"nombre":"Presion"}},{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Temperatura","cadaCuanto":1,"vecesPorDia":3,"nombre":"Temperatura"}},{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Densidad","cadaCuanto":2,"vecesPorDia":1,"nombre":"Densiometria"}}],"listaRegistrosDiarios":[],"finalizado":false},"debeSerAtendido":false,"nombre":"Juan","apellido":"Ros","dni":"11247824","mail":"paciente@gmail.com","password":"Casa","id":1},{"historialClinico":[],"idMedicoAsignado":14,"debeSerAtendido":true,"nombre":"Elena","apellido":"Vargas","dni":"40347821","mail":"paciente@hotmail.com","password":"Coco","id":2}]
+[
+  {
+    "historialClinico": [],
+    "tratamientoActual": {
+      "enfermedad": {
+        "nombre": "Amiloidosis"
+      },
+      "duracion": 14,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 11
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 25
+      },
+      "listaAcciones": [
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "seHizo": false,
+            "textoPregunta": "Tomar Pastilla",
+            "cadaCuanto": 1,
+            "vecesPorDia": 4,
+            "nombre": "Pastilla"
+          }
+        },
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "seHizo": false,
+            "textoPregunta": "Tomar Presion",
+            "cadaCuanto": 1,
+            "vecesPorDia": 2,
+            "nombre": "Presion"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "textoPregunta": "Tomar Temperatura",
+            "cadaCuanto": 1,
+            "vecesPorDia": 3,
+            "nombre": "Temperatura"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "rta": 0.0,
+            "textoPregunta": "Tomar Densidad",
+            "cadaCuanto": 2,
+            "vecesPorDia": 1,
+            "nombre": "Densiometria"
+          }
+        }
+      ],
+      "listaRegistrosDiarios": [],
+      "finalizado": false
+    },
+    "debeSerAtendido": false,
+    "nombre": "Juan",
+    "apellido": "Ros",
+    "dni": "11247824",
+    "mail": "paciente@gmail.com",
+    "password": "Casa",
+    "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 14,
+    "debeSerAtendido": true,
+    "nombre": "Elena",
+    "apellido": "Vargas",
+    "dni": "40347821",
+    "mail": "paciente@hotmail.com",
+    "password": "Coco",
+    "id": 2
+  }
+]

@@ -88,13 +88,15 @@ public class Medico extends Usuario implements Tratamientos {
             String dni = scan.nextLine();
             for (Paciente a : listaPacientes) {
                 if (a.getDni().equals(dni)) {
-                    pacienteAux = a;
-                    control = 1;
+                    if (a.getDebeSerAtendido()) {
+                        pacienteAux = a;
+                        control = 1;
+                    }
                 }
             }
 
             if (pacienteAux == null) {
-                System.out.println("Dni inexistente, ¿Quiere ingresar otro dni? s/n");
+                System.out.println("Dni invalido, ¿Quiere ingresar otro dni? s/n");
                 if (scan.nextLine().charAt(0) != 's') {
                     throw new dniInexistenteException();
                 }
