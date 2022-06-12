@@ -122,7 +122,6 @@ public class Sistema {
                     }catch (dniInexistenteException e){
                     }
 
-
                     break;
 
                 case 2:
