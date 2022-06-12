@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class RegistroDiario {
     private LocalDate fecha;
@@ -21,11 +22,19 @@ public class RegistroDiario {
     }
 
     public void modificarRegistro() {
-        mostrarRegistros();
-        //preguntamos que registro y guardamos el index en una variable int
-        int aux = 0;
-        listaRegistros.get(aux).setearValores();
+        Scanner scan = new Scanner(System.in);
+        int i = 1;
+        for(Registro r : listaRegistros){
+            System.out.println("["+i+"] " + r.mostrarNombresRegistros());
+            i++;
+        }
+        System.out.println("Ingrese el numero del Registro que desea modificar: ");
+        int aux = scan.nextInt();
+        try {
+            listaRegistros.get(aux-1).modificar();
+        }catch (AccionFallidaException e){
 
+        }
     }
 
     public void mostrarRegistros() {

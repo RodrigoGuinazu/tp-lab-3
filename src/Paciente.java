@@ -80,10 +80,13 @@ public class Paciente extends Usuario {
         return;
     }
 
-
-
-
-
+    public void editarAccionesDelDia(){
+        if(tratamientoActual != null){
+            this.tratamientoActual.modificarAcciones();
+        }else{
+            System.out.println("No te encuentras realizando un tratamiento");
+        }
+    }
 
     public void setTratamientoActual(Tratamiento tratamientoActual) {
         this.tratamientoActual = tratamientoActual;

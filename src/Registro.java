@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Registro {     //
     private String nombreAccion;
     private String rta;
@@ -18,8 +20,35 @@ public class Registro {     //
         return this.nombreAccion;
     }
 
-    public void setearValores() {
-        // setea los nuevos valores que ingresa el usuario
+    public void modificar() throws AccionFallidaException {
+        Scanner scan = new Scanner(System.in);
+        Character opcion;
+        if(rta == null){
+            System.out.println("Usted marco la accion " + this.nombreAccion + (this.seHizo ? " realizada " : " sin realizar "));
+        }else{
+            System.out.println("Usted ingreso en la accion " + this.nombreAccion + " el resultado: " + this.rta);
+        }
+        System.out.println("Desea modificar la accion? (s/n)");
+        opcion = scan.nextLine().charAt(0);
+        if (opcion != 's') {
+            throw new AccionFallidaException();
+        } else {
+            if(rta == null){
+                Boolean rta;
+                if(this.seHizo == true){
+                    System.out.println("Se marco la accion como sin realizar");
+                    rta = false;
+                }else{
+                    System.out.println("Se marco la accion como realizada");
+                    rta = true;
+                }
+                this.seHizo = rta;
+            }else{
+                System.out.println("Ingrese el nuevo resultado: ");
+                String rta = scan.nextLine();
+                this.rta = rta;
+            }
+        }
     }
 
     public String toStringParaHistorial() {

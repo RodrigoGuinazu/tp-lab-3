@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class Tratamiento {
@@ -135,8 +136,14 @@ public class Tratamiento {
         } else {
             System.out.println("Ya se ingresaron registros para la fecha de hoy, si desea modificarlos, hagalo desde el menu");
         }
+    }
 
-
+    public void modificarAcciones() {
+        try{
+            this.listaRegistrosDiarios.peek().modificarRegistro();
+        }catch (EmptyStackException e){
+            System.out.println("No hay registros que modificar en el dia de hoy");
+        }
     }
 
     public String modificarRegistros() {
