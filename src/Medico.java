@@ -21,36 +21,40 @@ public class Medico extends Usuario implements Tratamientos {
 
     //Metodos
 
-    public String notificarMedico() {
+    public StringBuilder notificarMedico() {
+        StringBuilder string1 = new StringBuilder();
         //levantar el archivo de pacientes
         //entra paciente por paciente por id y verifica qeu tratamiento
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
-        String rta = "";
-        rta += "Pacientes que deben ser atendidos hoy : ";
+        string1.append("Pacientes que deben ser atendidos hoy : ");
         for (Paciente pacientegeneral : listaPacientes) {
             if (pacientegeneral.getDebeSerAtendido()) {
                 for (Integer a : pacientesDelMedico) {
                     if (pacientegeneral.getId().equals(a)) {
-                        rta += pacientegeneral.getinfoPaciente();
+                        string1.append(pacientegeneral.getinfoPaciente());
                     }
                 }
-
             }
         }
-        System.out.println();
-        rta += " \nPacientes que no registraron informacion ayer : ";
-
+        if (string1.toString().equals("Pacientes que deben ser atendidos hoy : ")) {
+            string1.append(" No hay");
+        }
+        string1.append("\n");
+        StringBuilder string2 = new StringBuilder();
+        string2.append("Pacientes que no registraron informacion ayer : ");
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
                 if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
-                    rta += a.getinfoPaciente();
-
+                    string2.append(a.getinfoPaciente());
                 } else if (a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(LocalDate.now().minusDays(1))) {
-                    rta += a.getinfoPaciente();
+                    string2.append(a.getinfoPaciente());
                 }
             }
         }
-        return rta;
+        if (string2.toString().equals("Pacientes que no registraron informacion ayer : ")) {
+            string2.append("No hay");
+        }
+        return string1.append(string2);
     }
 
 
@@ -99,7 +103,7 @@ public class Medico extends Usuario implements Tratamientos {
 
 
         // preguntamos al medico si queire elegir uno existente o crear uno nuevo
-        Tratamiento tratamientoAux=null;
+        Tratamiento tratamientoAux = null;
         int x;
         int opcionMenu;
         do {
@@ -144,17 +148,17 @@ public class Medico extends Usuario implements Tratamientos {
 
                 case 4:
                     System.out.println("Saliendo...");
-                    opcionMenu=0;
+                    opcionMenu = 0;
                     break;
 
                 default:
                     System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcionMenu!=0);
+        } while (opcionMenu != 0);
 
-        if(tratamientoAux==null){
+        if (tratamientoAux == null) {
             System.out.print("No se cargo nada...");
-        }else {
+        } else {
             // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
             pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
             pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));

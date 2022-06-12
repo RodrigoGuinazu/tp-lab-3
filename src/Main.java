@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -5,10 +7,10 @@ public class Main {
 
 
         // Pacientes
-//        ArrayList<Paciente> pacientes = new ArrayList<>();
-//        pacientes.add(new Paciente("Juan", "Ros", "11247824", "paciente@gmail.com", "Casa"));//sin medico asignado
-//        pacientes.add(new Paciente("Elena", "Vargas", "40347821", "paciente@hotmail.com", "Coco", 14));//con medico asignado
-//        Persistencia.serializacionPacientes(pacientes);
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        pacientes.add(new Paciente("Juan", "Ros", "11247824", "paciente@gmail.com", "Casa"));//sin medico asignado
+        pacientes.add(new Paciente("Elena", "Vargas", "40347821", "paciente@hotmail.com", "Coco", 14));//con medico asignado
+        Persistencia.serializacionPacientes(pacientes);
 
 //
         // Medicos
