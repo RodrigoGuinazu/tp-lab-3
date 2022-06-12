@@ -99,14 +99,15 @@ public class Medico extends Usuario implements Tratamientos {
 
 
         // preguntamos al medico si queire elegir uno existente o crear uno nuevo
-        Tratamiento tratamientoAux = new Tratamiento();
+        Tratamiento tratamientoAux=null;
         int x;
         int opcionMenu;
         do {
 
-            System.out.println("[1] Elegir un tratamiento ya existente");   //ok
-            System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");   //ok
-            System.out.println("[3] Crear un nuevo tratamiento");   //ok
+            System.out.println("[1] Elegir un tratamiento ya existente");
+            System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");
+            System.out.println("[3] Crear un nuevo tratamiento");
+            System.out.println("[4] Salir");
             System.out.println("Ingrese una opcion:");
             opcionMenu = scan.nextInt();
 
@@ -120,6 +121,7 @@ public class Medico extends Usuario implements Tratamientos {
                     System.out.println("ingrese el numero del tratamiento elegido");
                     tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
                     pacienteAux.tratamientoActual = tratamientoAux;
+                    System.out.println("Tratamiento generico asignado");
                     break;
                 case 2:
 
@@ -132,26 +134,35 @@ public class Medico extends Usuario implements Tratamientos {
                     tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()).clonarTratamiento();
                     pacienteAux.tratamientoActual = tratamientoAux;
                     pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
-
+                    System.out.println("Tratamiento modificado asignado");
                     break;
 
                 case 3:
-
                     pacienteAux.tratamientoActual = crearTratamiento();
+                    System.out.println("Tratamiento nuevo asignado");
+                    break;
+
+                case 4:
+                    System.out.println("Saliendo...");
+                    opcionMenu=0;
                     break;
 
                 default:
                     System.out.println("Opcion incorrecta, ingrese otra");
             }
-        } while (opcionMenu < 1 & opcionMenu > 3);
+        } while (opcionMenu!=0);
 
-        // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
-        pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
-        pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
-        pacienteAux.setDebeSerAtendido(false);
+        if(tratamientoAux==null){
+            System.out.print("No se cargo nada...");
+        }else {
+            // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
+            pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
+            pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
+            pacienteAux.setDebeSerAtendido(false);
 
-        // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
-        Persistencia.serializacionPacientes(listaPacientes);
+            // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
+            Persistencia.serializacionPacientes(listaPacientes);
+        }
 
 
     }
