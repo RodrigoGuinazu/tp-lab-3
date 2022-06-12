@@ -7,6 +7,13 @@ public class AccionDouble extends Accion {
         super(cadaCuanto, vecesPorDia, nombr, textoPregunta);
     }
 
+
+    public void mostrarAccionDouble() {
+        System.out.println(super.mostrarAccion());
+        System.out.println("Rta : " + this.rta);
+    }
+
+
     @Override
     public AccionDouble clonarAccion() {
         AccionDouble aux = new AccionDouble(this.cadaCuanto, this.vecesPorDia, this.nombre, this.textoPregunta);
@@ -31,7 +38,7 @@ public class AccionDouble extends Accion {
     }
 
     public String toString() {
-        return "AccionDouble{" + super.toString()+
+        return "AccionDouble{" + super.toString() +
                 "seHizo=" + rta +
                 '}';
     }

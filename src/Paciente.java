@@ -15,6 +15,14 @@ public class Paciente extends Usuario {
     }
 
 
+    //para probar ver historial de de paciente
+    public Paciente(String nombre, String apellido, String dni, String mail, String password, ArrayList<Tratamiento> historialClinico, Integer idMedicoAsignado) {
+        super(nombre, apellido, dni, mail, password);
+        this.historialClinico = historialClinico;
+        this.idMedicoAsignado = idMedicoAsignado;
+        this.debeSerAtendido = true;
+    }
+
     // Sin medico asignado
     public Paciente(String nombre, String apellido, String dni, String mail, String password) {
         super(nombre, apellido, dni, mail, password);
@@ -32,6 +40,11 @@ public class Paciente extends Usuario {
     }
 
     //Metodos
+
+
+    public ArrayList<Tratamiento> getHistorialClinico() {
+        return historialClinico;
+    }
 
 
 
@@ -66,6 +79,10 @@ public class Paciente extends Usuario {
         }
         return;
     }
+
+
+
+
 
 
     public void setTratamientoActual(Tratamiento tratamientoActual) {

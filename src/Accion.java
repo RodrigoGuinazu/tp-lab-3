@@ -58,11 +58,10 @@ public abstract class Accion { // no puede ser abstract por el deserializador
     }
 
     // Metodos
-    public abstract Accion clonarAccion() ;
+    public abstract Accion clonarAccion();
 
 
-
-    public abstract Registro accionar() throws AccionFallidaException ;
+    public abstract Registro accionar() throws AccionFallidaException;
 
 
     public String getNombre() {
@@ -73,8 +72,8 @@ public abstract class Accion { // no puede ser abstract por el deserializador
         return textoPregunta;
     }
 
-    public String mostrarAccion(){
-        return  "Accion : "+this.nombre+ " , cada cuanto : "+this.cadaCuanto+" , veces por dia :"+this.vecesPorDia;
+    public String mostrarAccion() {
+        return "Accion : " + this.nombre + " , cada cuanto : " + this.cadaCuanto + " , veces por dia :" + this.vecesPorDia;
     }
 
 

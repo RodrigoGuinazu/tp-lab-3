@@ -176,15 +176,15 @@ public class Medico extends Usuario implements Tratamientos {
 
     public void verHistorialPaciente() {
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
-        for (Paciente pacientegeneral : listaPacientes) {
-            for (int a : pacientesDelMedico) {
-                if (pacientegeneral.getId().equals(a)) {
-                    System.out.println(pacientegeneral.toStringInfoNoSensible());
+        for (Paciente p : listaPacientes) {
+            for (int a : pacientesDelMedico) {  //ve solo el historial de sus pacientes
+                if (p.getId().equals(a)) {
+                    System.out.println(p.toStringInfoNoSensible());
                 }
             }
         }
 
-        System.out.println("Ingrese el dni del paciente que desea cunsultar");
+        System.out.println("Ingrese el dni su paciente para ver historial");
         Scanner scan = new Scanner(System.in);
         String dni = scan.nextLine();
         Paciente pacienteAux = new Paciente();
@@ -193,7 +193,11 @@ public class Medico extends Usuario implements Tratamientos {
                 pacienteAux = a;
             }
         }
-        System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
+
+        for (Tratamiento t : pacienteAux.getHistorialClinico()) {
+            t.mostrarTratamiento();
+        }
+
     }
 
     @Override

@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Tratamiento  {
+public class Tratamiento {
     private Enfermedad enfermedad;
     private Integer duracion;
     private LocalDate inicioDate;
@@ -16,7 +16,7 @@ public class Tratamiento  {
 
     public Tratamiento() {
         listaAcciones = new ArrayList<>();
-        listaRegistrosDiarios  = new Stack<>();
+        listaRegistrosDiarios = new Stack<>();
 
     }
 
@@ -27,7 +27,7 @@ public class Tratamiento  {
     }
 
 
-    public Tratamiento(Enfermedad enfermedad,Integer duracion, ArrayList<Accion> acciones) {
+    public Tratamiento(Enfermedad enfermedad, Integer duracion, ArrayList<Accion> acciones) {
         this.duracion = duracion;
         this.enfermedad = enfermedad;
         this.listaAcciones = acciones;
@@ -35,8 +35,25 @@ public class Tratamiento  {
         finalizado = false;
     }
 
+
+    // Metodos
+    public void mostrarTratamiento() {
+        System.out.println("Enfermedad : " + this.enfermedad.getNombre());
+        System.out.println("Duracion : " + this.duracion);
+        System.out.println("Inicio : " + this.inicioDate);
+        System.out.println("Fin : " + this.finDate);
+        for (Accion a : listaAcciones) {
+            if (a instanceof AccionBooleana) {
+                ((AccionBooleana) a).mostrarAccionBooleana();
+            } else {
+                ((AccionDouble) a).mostrarAccionDouble();
+            }
+        }
+    }
+
+
     public Tratamiento clonarTratamiento() {
-        Tratamiento aux = new Tratamiento(this.enfermedad,this.duracion, this.listaAcciones);
+        Tratamiento aux = new Tratamiento(this.enfermedad, this.duracion, this.listaAcciones);
         return aux;
     }
 
@@ -105,8 +122,8 @@ public class Tratamiento  {
 
             for (Accion a : listaAcciones) {
                 try {
-                        Registro registroAux = a.accionar();
-                        aux.agregarRegistro(registroAux);
+                    Registro registroAux = a.accionar();
+                    aux.agregarRegistro(registroAux);
 
                 } catch (AccionFallidaException e) {
                 }
@@ -118,8 +135,6 @@ public class Tratamiento  {
         } else {
             System.out.println("Ya se ingresaron registros para la fecha de hoy, si desea modificarlos, hagalo desde el menu");
         }
-
-
 
 
     }
@@ -155,18 +170,18 @@ public class Tratamiento  {
     }
 
 
-    public String toStringMedico(){     //enfermedad, duracion y lista de acciones
+    public String toStringMedico() {     //enfermedad, duracion y lista de acciones
         String rta = "";
-        for(Accion a : listaAcciones){
+        for (Accion a : listaAcciones) {
             rta += "\n     ";
-            rta+=a.mostrarAccion();
+            rta += a.mostrarAccion();
         }
-        return "Enfermedad : " +this.getEnfermedad().mostrarEnfermedad() + " , " + "Duracion : " +this.duracion + " " +rta;
+        return "Enfermedad : " + this.getEnfermedad().mostrarEnfermedad() + " , " + "Duracion : " + this.duracion + " " + rta;
     }
 
-    public String toStringHistorialTratamientoActual(){
+    public String toStringHistorialTratamientoActual() {
         String rta = "";
-        for(RegistroDiario a : listaRegistrosDiarios){
+        for (RegistroDiario a : listaRegistrosDiarios) {
             rta += a.toString();
         }
         return rta;

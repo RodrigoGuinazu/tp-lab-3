@@ -14,7 +14,7 @@ public class Enfermedad {
         this.nombre = nombre;
     }
 
-    public String mostrarEnfermedad(){
+    public String mostrarEnfermedad() {
         return this.nombre;
     }
 

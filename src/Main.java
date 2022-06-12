@@ -1,14 +1,47 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
         //falta crear sistema con listas ya cargadas
 
 
+        // Enfermedades
+        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
+        enfermedades.add(new Enfermedad("Estres"));
+        enfermedades.add(new Enfermedad("Gripe"));
+        enfermedades.add(new Enfermedad("Alergia"));
+        enfermedades.add(new Enfermedad("Amiloidosis"));
+        enfermedades.add(new Enfermedad("Encondroma"));
+//        Persistencia.serializacion(enfermedades, "enfermedades.json");
+//
+
+        // Acciones
+        ArrayList<Accion> acciones = new ArrayList<>();
+        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
+//        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
+//        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
+//        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
+//        Persistencia.serializacionAcciones(acciones);
+        AccionBooleana buli = (AccionBooleana) acciones.get(0);
+        buli.setSeHizo(true);
+
+//
+
+        // Tratamientos
+        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
+        tratamientos.add(new Tratamiento(enfermedades.get(4), 7, acciones));
+//        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
+//        Persistencia.serializacionTratamientos(tratamientos);
+        tratamientos.get(0).setFinalizado(true);
+
+
         // Pacientes
-//        ArrayList<Paciente> pacientes = new ArrayList<>();
+        ArrayList<Paciente> pacientes = new ArrayList<>();
 //        pacientes.add(new Paciente("Juan", "Ros", "11247824", "paciente@gmail.com", "Casa"));//sin medico asignado
 //        pacientes.add(new Paciente("Elena", "Vargas", "40347821", "paciente@hotmail.com", "Coco", 14));//con medico asignado
-//        Persistencia.serializacionPacientes(pacientes);
+        pacientes.add(new Paciente("Julian", "Gallo", "93746352", "paciente@outlook.com", "Chicha", tratamientos, 3));
+        Persistencia.serializacionPacientes(pacientes);
 
 //
         // Medicos
@@ -31,30 +64,10 @@ public class Main {
 //
 //
 //
-        // Enfermedades
-//        ArrayList<Enfermedad> enfermedades = new ArrayList<>();
-//        enfermedades.add(new Enfermedad("Estres"));
-//        enfermedades.add(new Enfermedad("Gripe"));
-//        enfermedades.add(new Enfermedad("Alergia"));
-//        enfermedades.add(new Enfermedad("Amiloidosis"));
-//        enfermedades.add(new Enfermedad("Encondroma"));
-//        Persistencia.serializacion(enfermedades, "enfermedades.json");
+
 //
+
 //
-        // Acciones
-//        ArrayList<Accion> acciones = new ArrayList<>();
-//        acciones.add(new AccionBooleana(1, 4, "Pastilla", "Tomar Pastilla"));
-//        acciones.add(new AccionBooleana(1, 2, "Presion", "Tomar Presion"));
-//        acciones.add(new AccionDouble(1, 3, "Temperatura", "Tomar Temperatura"));
-//        acciones.add(new AccionDouble(2, 1, "Densiometria", "Tomar Densidad"));
-//        Persistencia.serializacionAcciones(acciones);
-//
-//
-        // Tratamientos
-//        ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-//        tratamientos.add(new Tratamiento(enfermedades.get(4),7,acciones));
-//        tratamientos.add(new Tratamiento(enfermedades.get(3),14,acciones));
-//        Persistencia.serializacionTratamientos(tratamientos);
 
 
         Sistema sistema = new Sistema();
