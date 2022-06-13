@@ -198,6 +198,7 @@ public class Admin extends Usuario implements Tratamientos {
 
         Scanner scan = new Scanner(System.in);
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
+        ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
 
 
         // nombre enfermedad para tratamiento (2 opciones : la crea o la elige)
@@ -245,19 +246,63 @@ public class Admin extends Usuario implements Tratamientos {
             }
         }while (opcion !=0);
 
-        // duracion
-        System.out.println("Ingrese duracion del tratamiento");
-        Integer duracion = scan.nextInt(); // validar para que si ingresa una letra no se rompa
+        Tratamiento nuevoTratamiento = new Tratamiento();
+
+        System.out.println("Ingrese la duracion que desea que tenga el tratamiento");
+        nuevoTratamiento.setDuracion(scan.nextInt());
+        nuevoTratamiento.setEnfermedad(enfermedad);
 
 
-        //crear lista de acciones o elegir uno existente --> falta ver como son las acciones
+        System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
+        int aux = scan.nextInt();
+        int flag;
+        int accionIndex;
 
-        ArrayList<Accion> acciones = new ArrayList<>();
-        //acciones.add(new Accion(1,2,"hola","aqdios"));
-        Tratamiento nuevoTratamiento = new Tratamiento(enfermedad,duracion,acciones);
-        System.out.println("Nuevo tratamiento a crear" + nuevoTratamiento);
+        for (int i = 0; i < aux; i++) {
+            flag = 0;
+            while(flag == 0){
+                try{
+                    int index = 1;
+                    for (Accion a : listaAcciones) {
+                        System.out.println("[" + index + "] " + a.mostrarAccion()); // mostrar mejor el a
+                        index++;
 
-        return null;
+                    }
+
+                    System.out.println("Elija el numero de de la accion que desea para el tratamiento:");
+                    accionIndex = scan.nextInt()-1;
+                    if (listaAcciones.get(accionIndex) instanceof AccionBooleana) {
+                        AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
+                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                        accionAux.setCadaCuanto(scan.nextInt());
+                        nuevoTratamiento.listaAcciones.add(accionAux);
+                    } else {
+                        AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
+                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                        accionAux.setCadaCuanto(scan.nextInt());
+                        nuevoTratamiento.listaAcciones.add(accionAux);
+                    }
+                    flag = 1;
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
+                }catch (InputMismatchException l) {
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                    scan.nextLine();
+                }
+            }
+        }
+
+
+
+
+        ArrayList<Tratamiento> listaTratamientos = Persistencia.deserializacionTratamientos();
+        listaTratamientos.add(nuevoTratamiento);
+        Persistencia.serializacionTratamientos(listaTratamientos);
+
+        System.out.println("El tratamiento fue creado con exito.");
+
+        return nuevoTratamiento;
+
     }
 
     @Override

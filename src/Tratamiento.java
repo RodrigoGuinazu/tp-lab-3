@@ -126,7 +126,7 @@ public class Tratamiento {
             for (Accion a : listaAcciones) {
                 flag = 0;
                 for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
-                    if (x.mostrarNombresRegistros().equals(a.getNombre())) {
+                    if (x.mostrarNombresRegistros().equals(a.getNombre()) || !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(LocalDate.now())){
                         flag = 1;
                     }
                 }
@@ -174,7 +174,7 @@ public class Tratamiento {
                 for (Accion a : listaAcciones) {    // cuando hay registro del dia con algo adentro
                     flag = 0;
                     for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
-                        if (x.mostrarNombresRegistros().equals(a.getNombre())) {
+                        if (x.mostrarNombresRegistros().equals(a.getNombre())|| !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(LocalDate.now())) {
                             flag = 1;
                         }
                     }

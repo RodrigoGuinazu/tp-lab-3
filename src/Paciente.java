@@ -50,13 +50,17 @@ public class Paciente extends Usuario {
 
         if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(LocalDate.now())) {
             try {
-                int flag = 0;    //por si no hay accion para notificar
+
 
                 for (Accion a : this.tratamientoActual.getListaAcciones()) {
 
-                    System.out.println("Debe realizar la accion : " + a.getNombre());
-                    a.setUltimaNoti(LocalDate.now());
-                    flag = 1;
+                    if(a.ultimaNoti != null & a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(LocalDate.now())){
+                        System.out.println("Debe realizar la accion : " + a.getNombre());
+                        a.setUltimaNoti(LocalDate.now());
+
+                    }
+
+
 
                 }
 

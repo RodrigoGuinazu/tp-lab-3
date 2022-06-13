@@ -63,5 +63,52 @@
     ],
     "listaRegistrosDiarios": [],
     "finalizado": false
+  },
+  {
+    "enfermedad": {
+      "nombre": "Covid 19"
+    },
+    "duracion": 15,
+    "listaAcciones": [
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 4,
+          "nombre": "Pastilla"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 2,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
+  },
+  {
+    "enfermedad": {
+      "nombre": "Otitis"
+    },
+    "duracion": 10,
+    "listaAcciones": [
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Densidad",
+          "cadaCuanto": 1,
+          "vecesPorDia": 1,
+          "nombre": "Densiometria"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
   }
 ]
