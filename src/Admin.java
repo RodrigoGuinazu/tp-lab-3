@@ -214,20 +214,20 @@ public class Admin extends Usuario implements Tratamientos {
                     System.out.println("Ingrese el numero de la enfermedad");
                     int indice = scan.nextInt();
                     enfermedad = enfermedades.get(indice - 1);  // falta validar indice
-                    System.out.println("Se eligio la enfermedad : "+enfermedad.getNombre());
+                    System.out.println("Se eligio la enfermedad : " + enfermedad.getNombre());
                     opcion = 0;
                     break;
                 }
                 case 2:
-                    System.out.println("Creando nueva enfermedad, ingrese nombre");
+                    System.out.println("Creando una nueva enfermedad, ingrese el nombre: ");
                     scan.nextLine();
                     String nombreValido = nombreRepetidoEnfermedad(scan.nextLine());
                     Enfermedad nuevaEnfermedad = new Enfermedad(nombreValido);
                     enfermedades.add(nuevaEnfermedad);
-                    System.out.println("Se agrego nueva enfermedad a enfermedades");
+                    System.out.println("Se agrego la enfermedad " + nuevaEnfermedad.getNombre() + " al archivo de enfermedades");
                     Persistencia.serializacion(enfermedades, "enfermedades.json");
                     enfermedad = nuevaEnfermedad;
-                    opcion =0;
+                    opcion = 0;
                     break;
             }
         }while (opcion !=0);

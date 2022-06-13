@@ -24,16 +24,6 @@
           "vecesPorDia": 3,
           "nombre": "Temperatura"
         }
-      },
-      {
-        "type": "AccionDouble",
-        "properties": {
-          "rta": 0.0,
-          "textoPregunta": "Tomar Densidad",
-          "cadaCuanto": 2,
-          "vecesPorDia": 1,
-          "nombre": "Densiometria"
-        }
       }
     ],
     "listaRegistrosDiarios": [],

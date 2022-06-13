@@ -77,5 +77,27 @@
     "mail": "paciente@outlook.com",
     "password": "Chicha",
     "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": true,
+    "nombre": "Preuba",
+    "apellido": "Crear Paciente",
+    "dni": "12345678",
+    "mail": "prueba@paciente.com",
+    "password": "asdfas",
+    "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 1,
+    "debeSerAtendido": true,
+    "nombre": "fasdf",
+    "apellido": "sdfaasd",
+    "dni": "12345145345",
+    "mail": "pruebaaa2@hotmail.com",
+    "password": "dfasdfasd",
+    "id": 2
   }
 ]

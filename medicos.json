@@ -29,5 +29,14 @@
     "mail": "validador@mailcorrrecto.com",
     "password": "dasfasd",
     "id": 1
+  },
+  {
+    "pacientesDelMedico": [],
+    "nombre": "Medico",
+    "apellido": "probando el programa",
+    "dni": "123345567",
+    "mail": "prueba@menuadmin.com",
+    "password": "asdfasdf",
+    "id": 1
   }
 ]
