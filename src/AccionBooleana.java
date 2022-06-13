@@ -31,7 +31,7 @@ public class AccionBooleana extends Accion {
     public Registro accionar() throws AccionFallidaException {
         Scanner scan = new Scanner(System.in);
         Character opcion;
-        System.out.println("Quiere realizar la accion: " + super.getNombre());
+        System.out.println("Quiere realizar la accion " + super.getNombre() + ": (s/n)");
         opcion = scan.nextLine().charAt(0);
         if (opcion != 's') {
             throw new AccionFallidaException();

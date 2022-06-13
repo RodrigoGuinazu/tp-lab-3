@@ -23,10 +23,7 @@
       }
     ],
     "tratamientoActual": {
-      "enfermedad": {
-        "nombre": "Encondroma"
-      },
-      "duracion": 7,
+      "duracion": 14,
       "inicioDate": {
         "year": 2022,
         "month": 6,
@@ -35,7 +32,7 @@
       "finDate": {
         "year": 2022,
         "month": 6,
-        "day": 19
+        "day": 26
       },
       "listaAcciones": [
         {
@@ -53,7 +50,7 @@
           "properties": {
             "seHizo": false,
             "textoPregunta": "Tomar Presion",
-            "cadaCuanto": 1,
+            "cadaCuanto": 2,
             "vecesPorDia": 2,
             "nombre": "Presion"
           }
@@ -67,16 +64,6 @@
             "vecesPorDia": 3,
             "nombre": "Temperatura"
           }
-        },
-        {
-          "type": "AccionDouble",
-          "properties": {
-            "rta": 0.0,
-            "textoPregunta": "Tomar Densidad",
-            "cadaCuanto": 2,
-            "vecesPorDia": 1,
-            "nombre": "Densiometria"
-          }
         }
       ],
       "listaRegistrosDiarios": [],
@@ -89,39 +76,6 @@
     "dni": "93746352",
     "mail": "paciente@outlook.com",
     "password": "Chicha",
-    "id": 1
-  },
-  {
-    "historialClinico": [],
-    "idMedicoAsignado": 3,
-    "debeSerAtendido": true,
-    "nombre": "prueba nuevoi",
-    "apellido": "menu",
-    "dni": "41009232",
-    "mail": "prueba@menuu.ciom",
-    "password": "asfd",
-    "id": 1
-  },
-  {
-    "historialClinico": [],
-    "idMedicoAsignado": 4,
-    "debeSerAtendido": true,
-    "nombre": "Prueba nuevo",
-    "apellido": "Menu",
-    "dni": "14123431243",
-    "mail": "asdfasd@asdgasdf.com",
-    "password": "12312",
-    "id": 1
-  },
-  {
-    "historialClinico": [],
-    "idMedicoAsignado": 4,
-    "debeSerAtendido": true,
-    "nombre": "prueba ",
-    "apellido": "validar mail",
-    "dni": "123451451",
-    "mail": "paciente2@outlook.com",
-    "password": "23411234",
     "id": 1
   }
 ]

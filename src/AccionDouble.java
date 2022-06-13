@@ -25,7 +25,7 @@ public class AccionDouble extends Accion {
         Scanner scan = new Scanner(System.in);
         String rta;
         Character opcion;
-        System.out.println(("Quiere realizar la accion: " + super.getNombre()));
+        System.out.println("Quiere realizar la accion: " + super.getNombre() + ": (s/n)");
         opcion = scan.nextLine().charAt(0);
         if (opcion != 's') {
             throw new AccionFallidaException();

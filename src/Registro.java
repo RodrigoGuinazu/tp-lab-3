@@ -24,7 +24,7 @@ public class Registro {     //
         Scanner scan = new Scanner(System.in);
         Character opcion;
         if(rta == null){
-            System.out.println("Usted marco la accion " + this.nombreAccion + (this.seHizo ? " realizada " : " sin realizar "));
+            System.out.println("Usted marco la accion " + this.nombreAccion + " como" + (this.seHizo ? " realizada " : " sin realizar "));
         }else{
             System.out.println("Usted ingreso en la accion " + this.nombreAccion + " el resultado: " + this.rta);
         }
