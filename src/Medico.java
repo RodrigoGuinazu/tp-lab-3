@@ -166,6 +166,7 @@ public class Medico extends Usuario implements Tratamientos {
 
                 case 3:
                     pacienteAux.tratamientoActual = crearTratamiento();
+                    tratamientoAux = pacienteAux.tratamientoActual;
                     System.out.println("Tratamiento nuevo asignado");
                     break;
 
@@ -180,7 +181,7 @@ public class Medico extends Usuario implements Tratamientos {
         } while (opcionMenu != 0);
 
         if (tratamientoAux == null) {
-            System.out.print("No se cargo nada...");
+            System.out.println("No se cargo nada...");
         } else {
             // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
             pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
@@ -245,34 +246,39 @@ public class Medico extends Usuario implements Tratamientos {
         nuevoTratamiento.setDuracion(scan.nextInt());
         System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
         int aux = scan.nextInt();
-        int index = 0;
-
-        for (Accion a : listaAcciones) {
-            System.out.println("[" + index + "] " + a.toString());
-            index++;
-
-        }
+        int flag;
 
         for (int i = 0; i < aux; i++) {
+            flag = 0;
+            while(flag == 0){
+                try{
+                    int index = 1;
+                    for (Accion a : listaAcciones) {
+                        System.out.println("[" + index + "] " + a.mostrarAccion()); // mostrar mejor el a
+                        index++;
 
-            System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
-            accionIndex = scan.nextInt();
-            if (listaAcciones.get(accionIndex) instanceof AccionBooleana) {
-                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
-                System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-                accionAux.setCadaCuanto(scan.nextInt());
-                nuevoTratamiento.listaAcciones.add(accionAux);
-            } else {
-                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
-                System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
-                accionAux.setCadaCuanto(scan.nextInt());
-                nuevoTratamiento.listaAcciones.add(accionAux);
+                    }
+
+                    System.out.println("Elija el numero de de la accion que desea para el tratamiento:");
+                    accionIndex = scan.nextInt()-1;
+                    if (listaAcciones.get(accionIndex) instanceof AccionBooleana) {
+                        AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
+                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                        accionAux.setCadaCuanto(scan.nextInt());
+                        nuevoTratamiento.listaAcciones.add(accionAux);
+                    } else {
+                        AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex).clonarAccion();
+                        System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
+                        accionAux.setCadaCuanto(scan.nextInt());
+                        nuevoTratamiento.listaAcciones.add(accionAux);
+                    }
+                    flag = 1;
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                }
             }
-
         }
-
         return nuevoTratamiento;
-
     }
 
     @Override
