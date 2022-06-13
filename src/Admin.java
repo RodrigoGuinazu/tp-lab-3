@@ -74,7 +74,7 @@ public class Admin extends Usuario implements Tratamientos {
                     rta = new Paciente(nombre, apellido, dni, mail, password, id);
                     pacientes.add(rta);
                 } catch (InputMismatchException f) {
-                    System.out.println(f);
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
                 }
             }
         }
@@ -128,7 +128,7 @@ public class Admin extends Usuario implements Tratamientos {
                     rta = new Medico(nombre, apellido, dni, mail, password);
                     medicos.add(rta);
                 } catch (InputMismatchException f) {
-                    System.out.println(f);
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
                 }
             }
         }
