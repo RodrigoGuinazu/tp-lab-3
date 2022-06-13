@@ -23,7 +23,7 @@ public class AbstractAccionAdapter implements JsonSerializer<Accion>, JsonDeseri
         try {
             return context.deserialize(element, Class.forName(type));
         } catch (ClassNotFoundException cnfe) {
-            throw new JsonParseException("Unknown element type: " + type, cnfe);
+            throw new JsonParseException(Colores.rojo() + "Unknown element type: " + Colores.blanco() + type, cnfe);
         }
     }
 }

@@ -59,10 +59,10 @@ public class Paciente extends Usuario {
                 }
             }
             if (flag == 0) {
-                System.out.println("No se encontraron acciones para notificar");
+                System.out.println(Colores.amarillo() + "No se encontraron acciones para notificar" + Colores.blanco());
             }
         } catch (NullPointerException e) {
-            System.out.println("El paciente no tiene tratamiento asignado");
+            System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
         }
     }
 
@@ -72,9 +72,9 @@ public class Paciente extends Usuario {
             tratamientoActual.setFinalizado(true);
             historialClinico.add(tratamientoActual);
             tratamientoActual = null;
-            System.out.println("Usted ha finalizado su tratamiento");
+            System.out.println(Colores.amarillo() + "Usted ha finalizado su tratamiento" + Colores.blanco());
             return;
-        } else {
+        }else {
             this.tratamientoActual.realizarAcciones();
         }
         return;
@@ -84,7 +84,7 @@ public class Paciente extends Usuario {
         if(tratamientoActual != null){
             this.tratamientoActual.modificarAcciones();
         }else{
-            System.out.println("No te encuentras realizando un tratamiento");
+            System.out.println(Colores.amarillo() + "No te encuentras realizando un tratamiento" + Colores.blanco());
         }
     }
 

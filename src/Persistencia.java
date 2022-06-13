@@ -19,7 +19,7 @@ public abstract class Persistencia {
             rta = gson.fromJson(reader, TypeToken.getParameterized(ArrayList.class, type).getType());
             reader.close();
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(Colores.rojo() + e + Colores.blanco());
         }
         return rta;
     }
@@ -32,7 +32,7 @@ public abstract class Persistencia {
             new Gson().toJson(list, writer);
             writer.close();
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(Colores.rojo() + e + Colores.blanco());
         }
     }
 
@@ -52,8 +52,7 @@ public abstract class Persistencia {
             listaPacientes = gson.fromJson(bufferedReader, listType);
             return listaPacientes;
         } catch (IOException e) {
-            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(Colores.rojo() + "No se pudo leer/escribir el archivo: " + e.getMessage() + Colores.blanco());
             return null;
         }
     }
@@ -74,8 +73,7 @@ public abstract class Persistencia {
             gson.toJson(arrayPaciente, listType, bufferedWriter);
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(Colores.rojo() + "No se pudo leer/escribir el archivo: " + e.getMessage() + Colores.blanco());
         }
     }
 
@@ -95,8 +93,7 @@ public abstract class Persistencia {
             listaAcciones = gson.fromJson(bufferedReader, listType);
             return listaAcciones;
         } catch (IOException e) {
-            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(Colores.rojo() + "No se pudo leer/escribir el archivo: " + e.getMessage() + Colores.blanco());
             return null;
         }
     }
@@ -114,8 +111,7 @@ public abstract class Persistencia {
             gson.toJson(arrayAcciones, listType, bufferedWriter);
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(Colores.rojo() + "No se pudo leer/escribir el archivo: " + e.getMessage() + Colores.blanco());
         }
     }
 
@@ -134,8 +130,7 @@ public abstract class Persistencia {
             listaTratamientos = gson.fromJson(bufferedReader, listType);
             return listaTratamientos;
         } catch (IOException e) {
-            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(Colores.rojo() + "No se pudo leer/escribir el archivo: " + e.getMessage() + Colores.blanco());
             return null;
         }
     }
@@ -153,8 +148,7 @@ public abstract class Persistencia {
             gson.toJson(arrayTratamientos, listType, bufferedWriter);
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("No se pudo leer/escribir el archivo: " + e.getMessage());
-            e.printStackTrace();
+            System.out.println(Colores.rojo() + "No se pudo leer/escribir el archivo: " + e.getMessage() + Colores.blanco());
         }
     }
 }

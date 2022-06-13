@@ -61,7 +61,6 @@ public class Main {
 //        Persistencia.serializacion(admins, "acciones.json");
 //
 
-
         Sistema sistema = new Sistema();
         sistema.menu();
     }

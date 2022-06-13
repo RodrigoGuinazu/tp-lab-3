@@ -38,9 +38,9 @@ public class RegistroDiario {
                 listaRegistros.get(aux-1).modificar();
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
-                System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
             }catch (InputMismatchException i) {
-                System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 scan.nextLine();
             }catch (AccionFallidaException f){
                 flag = 1;

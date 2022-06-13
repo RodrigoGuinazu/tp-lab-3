@@ -134,7 +134,7 @@ public class Tratamiento {
             return;
 
         } else {
-            System.out.println("Ya se ingresaron registros para la fecha de hoy, si desea modificarlos, hagalo desde el menu");
+            System.out.println(Colores.amarillo() + "Ya se ingresaron registros para la fecha de hoy, si desea modificarlos, hagalo desde el menu" + Colores.blanco());
         }
     }
 
@@ -142,7 +142,7 @@ public class Tratamiento {
         try{
             this.listaRegistrosDiarios.peek().modificarRegistro();
         }catch (EmptyStackException e){
-            System.out.println("No hay registros que modificar en el dia de hoy");
+            System.out.println(Colores.amarillo() + "No hay registros que modificar en el dia de hoy" + Colores.blanco());
         }
     }
 
@@ -150,9 +150,9 @@ public class Tratamiento {
 
         if (listaRegistrosDiarios.peek().getFecha() == LocalDate.now()) {
             listaRegistrosDiarios.peek().modificarRegistro();
-            return "Se a modificado el registro diario con exito";
+            return (Colores.verde() + "Se a modificado el registro diario con exito" + Colores.blanco());
         } else {
-            return "No hay geistro diario que Modificar";
+            return (Colores.amarillo() + "No hay geistro diario que Modificar" + Colores.blanco());
             // la logica del menu deberia indicarle que realice las acciones
         }
 
@@ -167,7 +167,7 @@ public class Tratamiento {
 
             return rta;
         } catch (NullPointerException e) {
-            System.out.println("Error de tipo : " + e);
+            System.out.println(Colores.rojo() + "Error de tipo : " + e + Colores.blanco());
         }
         return rta;
     }

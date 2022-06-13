@@ -1,1 +1,52 @@
-[{"enfermedad":{"nombre":"Encondroma"},"duracion":7,"listaAcciones":[{"type":"AccionBooleana","properties":{"seHizo":false,"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":4,"nombre":"Pastilla"}},{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Temperatura","cadaCuanto":1,"vecesPorDia":3,"nombre":"Temperatura"}}],"listaRegistrosDiarios":[],"finalizado":false},{"enfermedad":{"nombre":"Amiloidosis"},"duracion":14,"listaAcciones":[{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Temperatura","cadaCuanto":1,"vecesPorDia":3,"nombre":"Temperatura"}},{"type":"AccionDouble","properties":{"rta":0.0,"textoPregunta":"Tomar Densidad","cadaCuanto":12,"vecesPorDia":1,"nombre":"Densiometria"}}],"listaRegistrosDiarios":[],"finalizado":false}]
+[
+  {
+    "enfermedad": {
+      "nombre": "Encondroma"
+    },
+    "duracion": 7,
+    "listaAcciones": [
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "seHizo": false,
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 4,
+          "nombre": "Pastilla"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "rta": 0.0,
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 1,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
+  },
+  {
+    "enfermedad": {
+      "nombre": "Amiloidosis"
+    },
+    "duracion": 14,
+    "listaAcciones": [
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "rta": 0.0,
+          "textoPregunta": "Tomar Densidad",
+          "cadaCuanto": 12,
+          "vecesPorDia": 1,
+          "nombre": "Densiometria"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
+  }
+]

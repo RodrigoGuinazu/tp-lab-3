@@ -36,10 +36,10 @@ public class Registro {     //
             if(rta == null){
                 Boolean rta;
                 if(this.seHizo == true){
-                    System.out.println("Se marco la accion como sin realizar");
+                    System.out.println(Colores.verde() + "Se marco la accion como sin realizar" + Colores.blanco());
                     rta = false;
                 }else{
-                    System.out.println("Se marco la accion como realizada");
+                    System.out.println(Colores.verde() + "Se marco la accion como realizada" + Colores.blanco());
                     rta = true;
                 }
                 this.seHizo = rta;

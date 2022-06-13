@@ -1,81 +1,13 @@
 [
   {
-    "historialClinico": [
-      {
-        "enfermedad": {
-          "nombre": "Encondroma"
-        },
-        "duracion": 7,
-        "listaAcciones": [
-          {
-            "type": "AccionBooleana",
-            "properties": {
-              "seHizo": true,
-              "textoPregunta": "Tomar Pastilla",
-              "cadaCuanto": 1,
-              "vecesPorDia": 4,
-              "nombre": "Pastilla"
-            }
-          }
-        ],
-        "listaRegistrosDiarios": [],
-        "finalizado": true
-      }
-    ],
-    "tratamientoActual": {
-      "duracion": 14,
-      "inicioDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 12
-      },
-      "finDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 26
-      },
-      "listaAcciones": [
-        {
-          "type": "AccionBooleana",
-          "properties": {
-            "seHizo": false,
-            "textoPregunta": "Tomar Pastilla",
-            "cadaCuanto": 1,
-            "vecesPorDia": 4,
-            "nombre": "Pastilla"
-          }
-        },
-        {
-          "type": "AccionBooleana",
-          "properties": {
-            "seHizo": false,
-            "textoPregunta": "Tomar Presion",
-            "cadaCuanto": 2,
-            "vecesPorDia": 2,
-            "nombre": "Presion"
-          }
-        },
-        {
-          "type": "AccionDouble",
-          "properties": {
-            "rta": 0.0,
-            "textoPregunta": "Tomar Temperatura",
-            "cadaCuanto": 1,
-            "vecesPorDia": 3,
-            "nombre": "Temperatura"
-          }
-        }
-      ],
-      "listaRegistrosDiarios": [],
-      "finalizado": false
-    },
-    "idMedicoAsignado": 3,
-    "debeSerAtendido": false,
-    "nombre": "Julian",
-    "apellido": "Gallo",
-    "dni": "93746352",
-    "mail": "paciente@outlook.com",
-    "password": "Chicha",
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": true,
+    "nombre": "Preuba",
+    "apellido": "Crear Paciente",
+    "dni": "12345678",
+    "mail": "prueba@paciente.com",
+    "password": "asdfas",
     "id": 1
   },
   {

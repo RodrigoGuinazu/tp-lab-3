@@ -16,13 +16,7 @@ public abstract class Accion { // no puede ser abstract por el deserializador
         this.nombre = nombre;
     }
 
-    // Constructores
-    public Accion() {
-
-    }
-
     // Metodos
-
 
     public Integer getCadaCuanto() {
         return cadaCuanto;

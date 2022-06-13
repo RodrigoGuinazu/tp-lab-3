@@ -34,16 +34,16 @@ public class Admin extends Usuario implements Tratamientos {
                 rta = (Paciente) verificar;
                 // verifico que no tenga un tratamiento en curso
                 if (rta.getTratamientoActual() == null) {
-                    System.out.println("El paciente ya existe, asignarle un medico...");
+                    System.out.println(Colores.amarillo() + "El paciente ya existe, asignarle un medico..." + Colores.blanco());
                     // asignar medico
                     Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
                     rta.setIdMedicoAsignado(id);
                     rta.setDebeSerAtendido(true);
                 } else {
-                    System.out.println("El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita");
+                    System.out.println(Colores.amarillo() + "El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita" + Colores.blanco());
                 }
             }else {
-                System.out.println("El dni que ingresaste pertenece a un medico ya registrado");
+                System.out.println(Colores.amarillo() + "El dni que ingresaste pertenece a un medico ya registrado" + Colores.blanco());
             }
         } catch (UsuarioInexistenteException e) {
             // si no lo creo y lo agrego
@@ -74,7 +74,7 @@ public class Admin extends Usuario implements Tratamientos {
                     rta = new Paciente(nombre, apellido, dni, mail, password, id);
                     pacientes.add(rta);
                 } catch (InputMismatchException f) {
-                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 }
             }
         }
@@ -97,9 +97,9 @@ public class Admin extends Usuario implements Tratamientos {
         //fijarse que exista el usuario
         try {
             if(this.buscarUsuario(aux, dni) instanceof Paciente){
-                System.out.println("El dni que ingresaste pertenece a un paciente ya registrado");
+                System.out.println(Colores.amarillo() + "El dni que ingresaste pertenece a un paciente ya registrado" + Colores.blanco());
             }else{
-                System.out.println("El Medico ya existe, no hace falta registrarlo de vuelta");
+                System.out.println(Colores.amarillo() + "El Medico ya existe, no hace falta registrarlo de vuelta" + Colores.blanco());
             }
         } catch (UsuarioInexistenteException e) {
             // si no lo creo y lo agrego
@@ -128,7 +128,7 @@ public class Admin extends Usuario implements Tratamientos {
                     rta = new Medico(nombre, apellido, dni, mail, password);
                     medicos.add(rta);
                 } catch (InputMismatchException f) {
-                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 }
             }
         }
@@ -172,9 +172,9 @@ public class Admin extends Usuario implements Tratamientos {
                 rta = medicos.get(scan.nextInt()-1).getId();
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
-                System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
             }catch (InputMismatchException i) {
-                System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 scan.nextLine();
             }
         }
@@ -214,7 +214,7 @@ public class Admin extends Usuario implements Tratamientos {
                     opcion = scan.nextInt();
                     flagSwitch = 1;
                 }catch (InputMismatchException i) {
-                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
                 }
@@ -237,7 +237,7 @@ public class Admin extends Usuario implements Tratamientos {
                     String nombreValido = nombreRepetidoEnfermedad(scan.nextLine());
                     Enfermedad nuevaEnfermedad = new Enfermedad(nombreValido);
                     enfermedades.add(nuevaEnfermedad);
-                    System.out.println("Se agrego la enfermedad " + nuevaEnfermedad.getNombre() + " al archivo de enfermedades");
+                    System.out.println(Colores.verde() + "Se agrego la enfermedad " + nuevaEnfermedad.getNombre() + " al archivo de enfermedades" + Colores.blanco());
                     Persistencia.serializacion(enfermedades, "enfermedades.json");
                     enfermedad = nuevaEnfermedad;
                     opcion = 0;
@@ -247,7 +247,7 @@ public class Admin extends Usuario implements Tratamientos {
 
         // duracion
         System.out.println("Ingrese duracion del tratamiento");
-        Integer duracion = scan.nextInt();
+        Integer duracion = scan.nextInt(); // validar para que si ingresa una letra no se rompa
 
 
         //crear lista de acciones o elegir uno existente --> falta ver como son las acciones
@@ -286,9 +286,9 @@ public class Admin extends Usuario implements Tratamientos {
                 Persistencia.serializacionTratamientos(listaTratamientosGenericos);
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
-                System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
             }catch (InputMismatchException i) {
-                System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 scan.nextLine();
             }
         }
@@ -301,7 +301,7 @@ public class Admin extends Usuario implements Tratamientos {
         Scanner scan = new Scanner(System.in);
         for (Enfermedad e : enfermedades) {
             while (nuevoNombre.equalsIgnoreCase(e.getNombre())) {
-                System.out.println("Enfermedad ya cargada, ingrese otra");
+                System.out.println(Colores.amarillo() + "Enfermedad ya cargada, ingrese otra" + Colores.blanco());
                 nuevoNombre = scan.nextLine();
             }
         }

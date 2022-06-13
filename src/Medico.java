@@ -103,7 +103,7 @@ public class Medico extends Usuario implements Tratamientos {
             }
 
             if (pacienteAux == null) {
-                System.out.println("Dni invalido, ¿Quiere ingresar otro dni? s/n");
+                System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? s/n" + Colores.blanco());
                 if (scan.nextLine().charAt(0) != 's') {
                     throw new DniInexistenteException();
                 }
@@ -129,7 +129,7 @@ public class Medico extends Usuario implements Tratamientos {
                     opcionMenu = scan.nextInt();
                     flagSwitch = 1;
                 }catch (InputMismatchException i) {
-                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
                 }
@@ -148,12 +148,12 @@ public class Medico extends Usuario implements Tratamientos {
                             System.out.println("Ingrese el numero del tratamiento que quiera asignarle al paciente: ");
                             tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
                             pacienteAux.tratamientoActual = tratamientoAux;
-                            System.out.println("Tratamiento generico asignado");
+                            System.out.println(Colores.verde() + "Tratamiento generico asignado" + Colores.blanco());
                             flag1 = 1;
                         }catch (IndexOutOfBoundsException e){
-                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
                         }catch (InputMismatchException i) {
-                            System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
                     }
@@ -171,12 +171,12 @@ public class Medico extends Usuario implements Tratamientos {
                             tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
                             pacienteAux.tratamientoActual = tratamientoAux;
                             pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
-                            System.out.println("Tratamiento modificado asignado");
+                            System.out.println(Colores.verde() + "Tratamiento modificado asignado" + Colores.blanco());
                             flag2= 1;
                         }catch (IndexOutOfBoundsException e){
-                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
                         }catch (InputMismatchException i) {
-                            System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
                     }
@@ -185,7 +185,7 @@ public class Medico extends Usuario implements Tratamientos {
                 case 3:
                     pacienteAux.tratamientoActual = crearTratamiento();
                     tratamientoAux = pacienteAux.tratamientoActual;
-                    System.out.println("Tratamiento nuevo asignado");
+                    System.out.println(Colores.verde() + "Tratamiento nuevo asignado" + Colores.blanco());
                     break;
 
                 case 4:
@@ -194,12 +194,12 @@ public class Medico extends Usuario implements Tratamientos {
                     break;
 
                 default:
-                    System.out.println("Opcion incorrecta, ingrese otra");
+                    System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
         } while (opcionMenu != 0);
 
         if (tratamientoAux == null) {
-            System.out.println("No se cargo nada...");
+            System.out.println(Colores.amarillo() + "No se cargo nada..." + Colores.blanco());
         } else {
             // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
             pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
@@ -239,7 +239,7 @@ public class Medico extends Usuario implements Tratamientos {
                 }
             }
             if (pacienteAux == null) {
-                System.out.println("Dni invalido, ¿Quiere ingresar otro dni? s/n");
+                System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? s/n" + Colores.blanco());
                 if (scan.nextLine().charAt(0) != 's') {
                     throw new DniInexistenteException();
                 }
@@ -292,9 +292,9 @@ public class Medico extends Usuario implements Tratamientos {
                     }
                     flag = 1;
                 }catch (IndexOutOfBoundsException e){
-                    System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
                 }catch (InputMismatchException l) {
-                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     scan.nextLine();
                 }
             }
@@ -324,7 +324,7 @@ public class Medico extends Usuario implements Tratamientos {
                     opcionMenu = scan.nextInt();
                     flagSwitch = 1;
                 }catch (InputMismatchException i) {
-                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
                 }
@@ -359,9 +359,9 @@ public class Medico extends Usuario implements Tratamientos {
                             }
                             flag1 = 1;
                         }catch (IndexOutOfBoundsException e){
-                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
                         }catch (InputMismatchException i) {
-                            System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
                     }
@@ -382,9 +382,9 @@ public class Medico extends Usuario implements Tratamientos {
                             aux.listaAcciones.remove(accionIndex-1);
                             flag2 = 1;
                         }catch (IndexOutOfBoundsException e){
-                            System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
                         }catch (InputMismatchException i) {
-                            System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
                     }
@@ -398,12 +398,12 @@ public class Medico extends Usuario implements Tratamientos {
                     break;
 
                 case 4:
-                    System.out.println("Guardando tratamieto...");
+                    System.out.println(Colores.verde() + "Guardando tratamieto..." + Colores.blanco());
                     break;
 
 
                 default:
-                    System.out.println("Opcion incorrecta, ingrese otra");
+                    System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
         } while (opcionMenu != 4);
 
