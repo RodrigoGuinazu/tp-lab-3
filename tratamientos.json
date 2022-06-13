@@ -8,7 +8,6 @@
       {
         "type": "AccionBooleana",
         "properties": {
-          "seHizo": false,
           "textoPregunta": "Tomar Pastilla",
           "cadaCuanto": 1,
           "vecesPorDia": 4,
@@ -18,7 +17,6 @@
       {
         "type": "AccionDouble",
         "properties": {
-          "rta": 0.0,
           "textoPregunta": "Tomar Temperatura",
           "cadaCuanto": 1,
           "vecesPorDia": 3,
@@ -33,16 +31,33 @@
     "enfermedad": {
       "nombre": "Amiloidosis"
     },
-    "duracion": 14,
+    "duracion": 1000,
     "listaAcciones": [
       {
         "type": "AccionDouble",
         "properties": {
-          "rta": 0.0,
           "textoPregunta": "Tomar Densidad",
           "cadaCuanto": 12,
           "vecesPorDia": 1,
           "nombre": "Densiometria"
+        }
+      },
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 4,
+          "nombre": "Pastilla"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 1,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
         }
       }
     ],

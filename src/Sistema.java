@@ -41,11 +41,11 @@ public class Sistema {
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcionMenu = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
@@ -88,11 +88,11 @@ public class Sistema {
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcionPaciente = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
@@ -104,7 +104,7 @@ public class Sistema {
                     try {
                         ((Paciente) usuarioLogueado).realizarAcciones();
                         persistirPacienteActual(((Paciente) usuarioLogueado));
-                    }catch (NullPointerException e){
+                    } catch (NullPointerException e) {
                         System.out.println(Colores.amarillo() + "No te encuentras realizando un tratamiento" + Colores.blanco());
                     }
                     break;
@@ -136,16 +136,17 @@ public class Sistema {
             System.out.println("[1] Asignar tratamiento");
             System.out.println("[2] Ver las notificaciones del dia");
             System.out.println("[3] Ver historiales de los pacientes");
-            System.out.println("[4] Log Out");
+            System.out.println("[4] Ver historial del tratamiento actual de los pacientes");
+            System.out.println("[5] Log Out");
 
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcionMedico = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
@@ -172,13 +173,20 @@ public class Sistema {
                     break;
 
                 case 4:
+                    try {
+                        ((Medico) usuarioLogueado).verHistorialTratamientoActual();
+                    } catch (DniInexistenteException e) {
+                    }
+                    break;
+
+                case 5:
                     this.logout();
                     break;
 
                 default:
                     System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
-        } while (opcionMedico != 4);
+        } while (opcionMedico != 5);
     }
 
 
@@ -195,11 +203,11 @@ public class Sistema {
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcion = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
@@ -250,17 +258,17 @@ public class Sistema {
         while (rta == null) {
 
             System.out.println("Mail: ");
- //           String mail = scan.nextLine();    // sin harcodeo
- //           String mail = "pruebaid1@paciente.com"; //Harcodeo paciente
-            String mail = "medico@gmail.com"; //Harcodeo medico
-            //String mail = "admin@hotmail.com"; //Harcodeo admin
+            //     String mail = scan.nextLine();    // sin harcodeo
+            //         String mail = "pruebaid1@paciente.com"; //Harcodeo paciente
+                       String mail = "medico@gmail.com"; //Harcodeo medico
+          //  String mail = "admin@hotmail.com"; //Harcodeo admin
 
 
             System.out.println("Contraseña: ");
             //String pass = scan.nextLine(); // sin harcodeo
             //String pass = "Chicha"; //Harcodeo paciente
             String pass = "Cosa"; //Harcodeo medico
-            //String pass = "Cusco"; //Harcodeo admin
+           // String pass = "Cusco"; //Harcodeo admin
 
 
             try {

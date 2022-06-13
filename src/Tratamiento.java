@@ -109,7 +109,6 @@ public class Tratamiento {
     public boolean existeRegistroDiario(LocalDate fecha) {
         for (RegistroDiario a : listaRegistrosDiarios) {
             if (a.getFecha().equals(fecha)) {
-                System.out.println(a.getFecha().toString());
                 return true;
             }
         }
@@ -251,7 +250,7 @@ public class Tratamiento {
     }
 
 
-    public String toStringMedico() {     //enfermedad, duracion y lista de acciones
+    public String mostrarTratamientoString() {     //enfermedad, duracion y lista de acciones
         String rta = "";
         for (Accion a : listaAcciones) {
             rta += "\n     ";

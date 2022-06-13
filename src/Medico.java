@@ -46,7 +46,7 @@ public class Medico extends Usuario implements Tratamientos {
         }
         string1.append("\n");
         StringBuilder string2 = new StringBuilder();
-        string2.append("Pacientes que no registraron informacion ayer : ");
+        string2.append("Pacientes que no registraron toda la informacion ayer : ");
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
                 if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
@@ -142,7 +142,7 @@ public class Medico extends Usuario implements Tratamientos {
                         try{
                             x = 1;
                             for (Tratamiento a : listaTratamientosGenericos) {
-                                System.out.println("[" + x + "] " + a.toStringMedico());
+                                System.out.println("[" + x + "] " + a.mostrarTratamientoString());
                                 x++;
                             }
                             System.out.println("Ingrese el numero del tratamiento que quiera asignarle al paciente: ");
@@ -166,7 +166,7 @@ public class Medico extends Usuario implements Tratamientos {
                         try{
                             x = 1;
                             for (Tratamiento a : listaTratamientosGenericos) {
-                                System.out.println("[" + x + "] " + a.toStringMedico());
+                                System.out.println("[" + x + "] " + a.mostrarTratamientoString());
                                 x++;
                             }
                             System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
@@ -256,6 +256,30 @@ public class Medico extends Usuario implements Tratamientos {
         }
         System.out.println("Presione cualquier tecla para continuar");
         scan.nextLine();
+    }
+
+
+
+    public void verHistorialTratamientoActual() throws DniInexistenteException {
+        ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
+        for (Paciente pacientegeneral : listaPacientes) {
+            for (int a : pacientesDelMedico) {
+                if (pacientegeneral.getId().equals(a)) {
+                    System.out.println(pacientegeneral.toStringInfoNoSensible());
+                }
+            }
+        }
+
+        System.out.println("Ingrese el dni del paciente que desea cunsultar");
+        Scanner scan = new Scanner(System.in);
+        String dni = scan.nextLine();
+        Paciente pacienteAux = new Paciente();
+        for (Paciente a : listaPacientes) {
+            if (a.getDni().equals(dni)) {
+                pacienteAux = a;
+            }
+        }
+        System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
     }
 
     @Override

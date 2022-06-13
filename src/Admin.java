@@ -272,15 +272,19 @@ public class Admin extends Usuario implements Tratamientos {
             try{
                 int x = 1;
                 for (Tratamiento a : listaTratamientosGenericos) {
-                    System.out.println("[" + x + "] " + a.toStringMedico());
+                    System.out.println("[" + x + "] " + a.mostrarTratamientoString());
                     x++;
                 }
                 System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
-                aux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
+                int y = scan.nextInt()-1;
+                aux = listaTratamientosGenericos.get(y).clonarTratamiento();
 
                 //editar tratamiento
                 Medico medicoAux = new Medico();
                 medicoAux.editarTratamiento(aux);
+
+                listaTratamientosGenericos.remove(y);
+                listaTratamientosGenericos.add(aux);
 
                 //persistir
                 Persistencia.serializacionTratamientos(listaTratamientosGenericos);
