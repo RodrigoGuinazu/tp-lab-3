@@ -244,7 +244,7 @@ public class Sistema {
         } while (opcion != 6);
     }
 
-    public Usuario login() { // Si entra mal pass mantener el mail, no volver a pedirlo
+    public Usuario login() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Log In");
         Usuario rta = null;
