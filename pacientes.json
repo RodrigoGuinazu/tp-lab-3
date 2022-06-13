@@ -90,5 +90,27 @@
     "mail": "paciente@outlook.com",
     "password": "Chicha",
     "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 3,
+    "debeSerAtendido": true,
+    "nombre": "prueba nuevoi",
+    "apellido": "menu",
+    "dni": "41009232",
+    "mail": "prueba@menuu.ciom",
+    "password": "asfd",
+    "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": true,
+    "nombre": "Prueba nuevo",
+    "apellido": "Menu",
+    "dni": "14123431243",
+    "mail": "asdfasd@asdgasdf.com",
+    "password": "12312",
+    "id": 1
   }
 ]

@@ -32,16 +32,7 @@ public class Admin extends Usuario implements Tratamientos {
             if (rta.getTratamientoActual() == null) {
                 System.out.println("El paciente ya existe, asignarle un medico...");
                 // asignar medico
-                Integer id = null;
-                while(id == null){
-                    try{
-                        id = asignarMedico(rta.getApellido(), rta.getNombre());
-                    }catch(MedicoInexistenteException m){
-                        System.out.println(m);
-                    }catch(InputMismatchException e){
-                        System.out.println(e);
-                    }
-                }
+                Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
                 rta.setIdMedicoAsignado(id);
                 rta.setDebeSerAtendido(true);
             } else {
@@ -62,14 +53,7 @@ public class Admin extends Usuario implements Tratamientos {
                     System.out.println("Password: ");
                     String password = scan.nextLine();
                     //asignar medico
-                    Integer id = null;
-                    while(id == null){
-                        try{
-                            id = asignarMedico(apellido, nombre);
-                        }catch(MedicoInexistenteException m){
-                            System.out.println(m);
-                        }
-                    }
+                    Integer id = asignarMedico(apellido, nombre);
                     flag = 1;
                     rta = new Paciente(nombre, apellido, dni, mail, password, id);
                     pacientes.add(rta);
@@ -132,21 +116,27 @@ public class Admin extends Usuario implements Tratamientos {
         throw new UsuarioInexistenteException();
     }
 
-    private Integer asignarMedico(String apellido, String nombre) throws MedicoInexistenteException{
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Elegir un medico para " + nombre + " " + apellido);
+    private Integer asignarMedico(String apellido, String nombre){
         ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
-        for(Medico m : medicos){
-            System.out.println("[ ID: " + m.getId() + "]" + " Dr. " + m.getNombre() + " " + m.getApellido());
-        }
-        System.out.println("Ingrese el id del medico que desea asignar");
-        Integer rta = scan.nextInt();
-        for(Medico m : medicos){
-            if(m.getId() == rta){
-                return rta;
+        Scanner scan = new Scanner(System.in);
+        int rta = 0;
+        int flag = 0;
+        while (flag == 0){
+            try{
+                int i = 1;
+                System.out.println("Elegir un medico para " + nombre + " " + apellido);
+                for(Medico m : medicos){
+                    System.out.println("[" + i + "]" + " Dr. " + m.getNombre() + " " + m.getApellido());
+                    i++;
+                }
+                System.out.println("Ingrese el nro del medico que desea asignar");
+                rta = medicos.get(scan.nextInt()-1).getId();
+                flag = 1;
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
             }
         }
-        throw new MedicoInexistenteException();
+        return rta;
     }
 
     public void agregarEnfermedad() {
