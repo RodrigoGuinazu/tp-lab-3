@@ -18,8 +18,8 @@ public class Admin extends Usuario implements Tratamientos {
         Paciente rta;
         // levantar archivo usuarios
 
-        ArrayList<Paciente>pacientes = Persistencia.deserializacionPacientes();
-        ArrayList<Medico>medicos = Persistencia.deserializacion("medicos.json", Medico.class);
+        ArrayList<Paciente> pacientes = Persistencia.deserializacionPacientes();
+        ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(pacientes);
         aux.addAll(medicos);
@@ -29,7 +29,7 @@ public class Admin extends Usuario implements Tratamientos {
         //fijarse que exista el usuario
         try {
             Usuario verificar = this.buscarUsuario(aux, dni);
-            if(verificar instanceof Paciente){
+            if (verificar instanceof Paciente) {
                 // si existe le cambio el atributo debeSerAtendido a true
                 rta = (Paciente) verificar;
                 // verifico que no tenga un tratamiento en curso
@@ -42,7 +42,7 @@ public class Admin extends Usuario implements Tratamientos {
                 } else {
                     System.out.println(Colores.amarillo() + "El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita" + Colores.blanco());
                 }
-            }else {
+            } else {
                 System.out.println(Colores.amarillo() + "El dni que ingresaste pertenece a un medico ya registrado" + Colores.blanco());
             }
         } catch (UsuarioInexistenteException e) {
@@ -57,12 +57,12 @@ public class Admin extends Usuario implements Tratamientos {
 
                     int flag2 = 0;
                     String mail = "";
-                    while (flag2 == 0){
-                        try{
+                    while (flag2 == 0) {
+                        try {
                             System.out.println("Mail: ");
                             mail = this.validarMail(aux, scan.nextLine());
                             flag2 = 1;
-                        }catch (MailRepetidoException w){
+                        } catch (MailRepetidoException w) {
                         }
                     }
 
@@ -87,7 +87,7 @@ public class Admin extends Usuario implements Tratamientos {
         Medico rta;
         // levantar archivo usuarios
         ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
-        ArrayList<Paciente>pacientes = Persistencia.deserializacionPacientes();
+        ArrayList<Paciente> pacientes = Persistencia.deserializacionPacientes();
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(medicos);
         aux.addAll(pacientes);
@@ -96,9 +96,9 @@ public class Admin extends Usuario implements Tratamientos {
         String dni = scan.nextLine();
         //fijarse que exista el usuario
         try {
-            if(this.buscarUsuario(aux, dni) instanceof Paciente){
+            if (this.buscarUsuario(aux, dni) instanceof Paciente) {
                 System.out.println(Colores.amarillo() + "El dni que ingresaste pertenece a un paciente ya registrado" + Colores.blanco());
-            }else{
+            } else {
                 System.out.println(Colores.amarillo() + "El Medico ya existe, no hace falta registrarlo de vuelta" + Colores.blanco());
             }
         } catch (UsuarioInexistenteException e) {
@@ -113,12 +113,12 @@ public class Admin extends Usuario implements Tratamientos {
 
                     int flag2 = 0;
                     String mail = "";
-                    while (flag2 == 0){
-                        try{
+                    while (flag2 == 0) {
+                        try {
                             System.out.println("Mail: ");
                             mail = this.validarMail(aux, scan.nextLine());
                             flag2 = 1;
-                        }catch (MailRepetidoException w){
+                        } catch (MailRepetidoException w) {
                         }
                     }
 
@@ -146,7 +146,7 @@ public class Admin extends Usuario implements Tratamientos {
         throw new UsuarioInexistenteException();
     }
 
-    private String validarMail(ArrayList<Usuario> listado, String mail) throws MailRepetidoException{
+    private String validarMail(ArrayList<Usuario> listado, String mail) throws MailRepetidoException {
         for (Usuario u : listado) {
             if (u.getMail().equals(mail)) {
                 throw new MailRepetidoException();
@@ -155,25 +155,25 @@ public class Admin extends Usuario implements Tratamientos {
         return mail;
     }
 
-    private Integer asignarMedico(String apellido, String nombre){
+    private Integer asignarMedico(String apellido, String nombre) {
         ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
         Scanner scan = new Scanner(System.in);
         int rta = 0;
         int flag = 0;
-        while (flag == 0){
-            try{
+        while (flag == 0) {
+            try {
                 int i = 1;
                 System.out.println("Elegir un medico para " + nombre + " " + apellido);
-                for(Medico m : medicos){
+                for (Medico m : medicos) {
                     System.out.println("[" + i + "]" + " Dr. " + m.getNombre() + " " + m.getApellido());
                     i++;
                 }
                 System.out.println("Ingrese el nro del medico que desea asignar");
-                rta = medicos.get(scan.nextInt()-1).getId();
+                rta = medicos.get(scan.nextInt() - 1).getId();
                 flag = 1;
-            }catch (IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-            }catch (InputMismatchException i) {
+            } catch (InputMismatchException i) {
                 System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 scan.nextLine();
             }
@@ -204,32 +204,45 @@ public class Admin extends Usuario implements Tratamientos {
         // nombre enfermedad para tratamiento (2 opciones : la crea o la elige)
         Enfermedad enfermedad = null;
         int opcion = 0;
-        do{
+        do {
             System.out.println("[1] Elegir enfermedad existente");
             System.out.println("[2] Crear nueva enfermedad");
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcion = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
                 }
             }
 
-            switch (opcion){
+            switch (opcion) {
                 case 1: {
 
-                    mostrarEnfermedadesArchivo();
-                    System.out.println("Ingrese el numero de la enfermedad");
-                    int indice = scan.nextInt();
-                    enfermedad = enfermedades.get(indice - 1);  // falta validar indice
-                    System.out.println("Se eligio la enfermedad : " + enfermedad.getNombre());
-                    opcion = 0;
+                    int flag = 0;
+                    while (flag == 0) {
+                        try {
+                            mostrarEnfermedadesArchivo();
+                            System.out.println("Ingrese el numero de la enfermedad");
+                            int indice = scan.nextInt();
+                            enfermedad = enfermedades.get(indice - 1);  // falta validar indice
+                            System.out.println("Se eligio la enfermedad : " + enfermedad.getNombre());
+                            opcion = 0;
+                            flag = 1;
+                        } catch (IndexOutOfBoundsException e) {
+                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
+                        } catch (InputMismatchException i) {
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                            scan.nextLine();
+                        }
+                    }
+
+
                     break;
                 }
                 case 2:
@@ -244,7 +257,7 @@ public class Admin extends Usuario implements Tratamientos {
                     opcion = 0;
                     break;
             }
-        }while (opcion !=0);
+        } while (opcion != 0);
 
         Tratamiento nuevoTratamiento = new Tratamiento();
 
@@ -260,8 +273,8 @@ public class Admin extends Usuario implements Tratamientos {
 
         for (int i = 0; i < aux; i++) {
             flag = 0;
-            while(flag == 0){
-                try{
+            while (flag == 0) {
+                try {
                     int index = 1;
                     for (Accion a : listaAcciones) {
                         System.out.println("[" + index + "] " + a.mostrarAccion()); // mostrar mejor el a
@@ -270,7 +283,7 @@ public class Admin extends Usuario implements Tratamientos {
                     }
 
                     System.out.println("Elija el numero de de la accion que desea para el tratamiento:");
-                    accionIndex = scan.nextInt()-1;
+                    accionIndex = scan.nextInt() - 1;
                     if (listaAcciones.get(accionIndex) instanceof AccionBooleana) {
                         AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
                         System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
@@ -283,16 +296,14 @@ public class Admin extends Usuario implements Tratamientos {
                         nuevoTratamiento.listaAcciones.add(accionAux);
                     }
                     flag = 1;
-                }catch (IndexOutOfBoundsException e){
+                } catch (IndexOutOfBoundsException e) {
                     System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                }catch (InputMismatchException l) {
+                } catch (InputMismatchException l) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     scan.nextLine();
                 }
             }
         }
-
-
 
 
         ArrayList<Tratamiento> listaTratamientos = Persistencia.deserializacionTratamientos();
@@ -306,22 +317,22 @@ public class Admin extends Usuario implements Tratamientos {
     }
 
     @Override
-    public Tratamiento editarTratamiento(Tratamiento aux){
+    public Tratamiento editarTratamiento(Tratamiento aux) {
         Scanner scan = new Scanner(System.in);
         // levantar archivo Tratamientos
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
         // seleccionar el tratamiento a editar
         int flag = 0;
-        while (flag == 0){
-            try{
+        while (flag == 0) {
+            try {
                 int x = 1;
                 for (Tratamiento a : listaTratamientosGenericos) {
                     System.out.println("[" + x + "] " + a.mostrarTratamientoString());
                     x++;
                 }
                 System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
-                int y = scan.nextInt()-1;
+                int y = scan.nextInt() - 1;
                 aux = listaTratamientosGenericos.get(y).clonarTratamiento();
 
                 //editar tratamiento
@@ -334,9 +345,9 @@ public class Admin extends Usuario implements Tratamientos {
                 //persistir
                 Persistencia.serializacionTratamientos(listaTratamientosGenericos);
                 flag = 1;
-            }catch (IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-            }catch (InputMismatchException i) {
+            } catch (InputMismatchException i) {
                 System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 scan.nextLine();
             }
@@ -345,7 +356,7 @@ public class Admin extends Usuario implements Tratamientos {
     }
 
 
-    public String nombreRepetidoEnfermedad(String nuevoNombre){
+    public String nombreRepetidoEnfermedad(String nuevoNombre) {
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
         Scanner scan = new Scanner(System.in);
         for (Enfermedad e : enfermedades) {
@@ -357,8 +368,8 @@ public class Admin extends Usuario implements Tratamientos {
         return nuevoNombre;
     }
 
-    public void mostrarEnfermedadesArchivo(){
-        Integer contador=1;
+    public void mostrarEnfermedadesArchivo() {
+        Integer contador = 1;
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
         System.out.println("Enfermedades persistidas : ");
         for (Enfermedad e : enfermedades) {
