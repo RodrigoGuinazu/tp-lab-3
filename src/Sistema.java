@@ -20,6 +20,9 @@ public class Sistema {
 
     // Metodos
     public void menu() {
+        // escondo los warning
+        System.err.close();
+        System.setErr(System.out);
         // generamos la lista de usuarios para poder utilizarla en la logica del login
         ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Paciente> pacientesAux = Persistencia.deserializacionPacientes();
