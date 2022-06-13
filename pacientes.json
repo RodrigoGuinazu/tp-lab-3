@@ -112,5 +112,16 @@
     "mail": "asdfasd@asdgasdf.com",
     "password": "12312",
     "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": true,
+    "nombre": "prueba ",
+    "apellido": "validar mail",
+    "dni": "123451451",
+    "mail": "paciente2@outlook.com",
+    "password": "23411234",
+    "id": 1
   }
 ]

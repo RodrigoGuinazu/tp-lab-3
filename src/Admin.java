@@ -19,28 +19,34 @@ public class Admin extends Usuario implements Tratamientos {
         // levantar archivo usuarios
 
         ArrayList<Paciente>pacientes = Persistencia.deserializacionPacientes();
+        ArrayList<Medico>medicos = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(pacientes);
+        aux.addAll(medicos);
         System.out.println("Registrando un paciente:");
         System.out.println("Ingrese el dni del paciente");
         String dni = scan.nextLine();
         //fijarse que exista el usuario
         try {
-            // si existe le cambio el atributo debeSerAtendido a true
-            rta = (Paciente) this.buscarUsuario(aux, dni);
-            // verifico que no tenga un tratamiento en curso
-            if (rta.getTratamientoActual() == null) {
-                System.out.println("El paciente ya existe, asignarle un medico...");
-                // asignar medico
-                Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
-                rta.setIdMedicoAsignado(id);
-                rta.setDebeSerAtendido(true);
-            } else {
-                System.out.println("El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita");
+            Usuario verificar = this.buscarUsuario(aux, dni);
+            if(verificar instanceof Paciente){
+                // si existe le cambio el atributo debeSerAtendido a true
+                rta = (Paciente) verificar;
+                // verifico que no tenga un tratamiento en curso
+                if (rta.getTratamientoActual() == null) {
+                    System.out.println("El paciente ya existe, asignarle un medico...");
+                    // asignar medico
+                    Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
+                    rta.setIdMedicoAsignado(id);
+                    rta.setDebeSerAtendido(true);
+                } else {
+                    System.out.println("El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita");
+                }
+            }else {
+                System.out.println("El dni que ingresaste pertenece a un medico ya registrado");
             }
         } catch (UsuarioInexistenteException e) {
             // si no lo creo y lo agrego
-            System.out.println(e);
             int flag = 0;
             while (flag == 0) {
                 try {
@@ -48,8 +54,18 @@ public class Admin extends Usuario implements Tratamientos {
                     String nombre = scan.nextLine();
                     System.out.println("Apellido: ");
                     String apellido = scan.nextLine();
-                    System.out.println("Mail: ");
-                    String mail = scan.nextLine();
+
+                    int flag2 = 0;
+                    String mail = "";
+                    while (flag2 == 0){
+                        try{
+                            System.out.println("Mail: ");
+                            mail = this.validarMail(aux, scan.nextLine());
+                            flag2 = 1;
+                        }catch (MailRepetidoException w){
+                        }
+                    }
+
                     System.out.println("Password: ");
                     String password = scan.nextLine();
                     //asignar medico
@@ -71,18 +87,22 @@ public class Admin extends Usuario implements Tratamientos {
         Medico rta;
         // levantar archivo usuarios
         ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
+        ArrayList<Paciente>pacientes = Persistencia.deserializacionPacientes();
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(medicos);
+        aux.addAll(pacientes);
         System.out.println("Registrando un Medico:");
         System.out.println("Ingrese el dni del medico");
         String dni = scan.nextLine();
         //fijarse que exista el usuario
         try {
-            this.buscarUsuario(aux, dni);
-            System.out.println("El Medico ya existe, no hace falta registrarlo de vuelta");
+            if(this.buscarUsuario(aux, dni) instanceof Paciente){
+                System.out.println("El dni que ingresaste pertenece a un paciente ya registrado");
+            }else{
+                System.out.println("El Medico ya existe, no hace falta registrarlo de vuelta");
+            }
         } catch (UsuarioInexistenteException e) {
             // si no lo creo y lo agrego
-            System.out.println(e);
             int flag = 0;
             while (flag == 0) {
                 try {
@@ -90,8 +110,18 @@ public class Admin extends Usuario implements Tratamientos {
                     String nombre = scan.nextLine();
                     System.out.println("Apellido: ");
                     String apellido = scan.nextLine();
-                    System.out.println("Mail: ");
-                    String mail = scan.nextLine();
+
+                    int flag2 = 0;
+                    String mail = "";
+                    while (flag2 == 0){
+                        try{
+                            System.out.println("Mail: ");
+                            mail = this.validarMail(aux, scan.nextLine());
+                            flag2 = 1;
+                        }catch (MailRepetidoException w){
+                        }
+                    }
+
                     System.out.println("Password: ");
                     String password = scan.nextLine();
                     flag = 1;
@@ -114,6 +144,15 @@ public class Admin extends Usuario implements Tratamientos {
             }
         }
         throw new UsuarioInexistenteException();
+    }
+
+    private String validarMail(ArrayList<Usuario> listado, String mail) throws MailRepetidoException{
+        for (Usuario u : listado) {
+            if (u.getMail().equals(mail)) {
+                throw new MailRepetidoException();
+            }
+        }
+        return mail;
     }
 
     private Integer asignarMedico(String apellido, String nombre){

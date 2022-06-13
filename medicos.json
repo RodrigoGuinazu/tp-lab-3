@@ -20,5 +20,14 @@
     "mail": "medico@gmail.com",
     "password": "Cosa",
     "id": 4
+  },
+  {
+    "pacientesDelMedico": [],
+    "nombre": "prueba validaciones",
+    "apellido": "menu admin",
+    "dni": "44963080",
+    "mail": "validador@mailcorrrecto.com",
+    "password": "dasfasd",
+    "id": 1
   }
 ]
