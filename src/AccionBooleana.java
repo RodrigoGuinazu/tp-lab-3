@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class AccionBooleana extends Accion {
 
-    private boolean seHizo = false;
 
     public AccionBooleana(int cadaCuanto, int vecesPorDia, String nombre, String textoPregunta) {
         super(cadaCuanto, vecesPorDia, nombre, textoPregunta);
@@ -10,16 +9,10 @@ public class AccionBooleana extends Accion {
 
     public void mostrarAccionBooleana() {
         System.out.println(super.mostrarAccion());
-        System.out.println("Se hizo : " + this.seHizo);
+
     }
 
-    public boolean isSeHizo() {
-        return seHizo;
-    }
 
-    public void setSeHizo(boolean seHizo) {
-        this.seHizo = seHizo;
-    }
 
     @Override
     public AccionBooleana clonarAccion() {
@@ -36,6 +29,7 @@ public class AccionBooleana extends Accion {
         if (opcion != 's') {
             throw new AccionFallidaException();
         } else {
+
             Registro registro = new Registro(super.getNombre(), null, true);
             return registro;
         }
@@ -44,7 +38,6 @@ public class AccionBooleana extends Accion {
     @Override
     public String toString() {
         return "AccionBooleana{" + super.toString() +
-                "seHizo=" + seHizo +
                 '}';
     }
 }

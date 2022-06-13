@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class AccionDouble extends Accion {
-    private float rta;
+
 
     public AccionDouble(int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
         super(cadaCuanto, vecesPorDia, nombr, textoPregunta);
@@ -10,7 +10,6 @@ public class AccionDouble extends Accion {
 
     public void mostrarAccionDouble() {
         System.out.println(super.mostrarAccion());
-        System.out.println("Rta : " + this.rta);
     }
 
 
@@ -32,6 +31,8 @@ public class AccionDouble extends Accion {
         } else {
             System.out.println("Ingrese el resultado: ");
             rta = scan.nextLine();
+
+
             Registro registro = new Registro(super.getNombre(), rta, true);
             return registro;
         }
@@ -39,7 +40,7 @@ public class AccionDouble extends Accion {
 
     public String toString() {
         return "AccionDouble{" + super.toString() +
-                "seHizo=" + rta +
+                "seHizo="  +
                 '}';
     }
 

@@ -103,7 +103,6 @@ public class Sistema {
                 case 1:
                     try {
                         ((Paciente) usuarioLogueado).realizarAcciones();
-                        System.out.println(((Paciente) usuarioLogueado).tratamientoActual.listaRegistrosDiarios);
                         persistirPacienteActual(((Paciente) usuarioLogueado));
                     }catch (NullPointerException e){
                         System.out.println(Colores.amarillo() + "No te encuentras realizando un tratamiento" + Colores.blanco());
@@ -251,16 +250,16 @@ public class Sistema {
         while (rta == null) {
 
             System.out.println("Mail: ");
-            String mail = scan.nextLine();    // sin harcodeo
-            //String mail = "paciente@outlook.com"; //Harcodeo paciente
-            //String mail = "medico@gmail.com"; //Harcodeo medico
+ //           String mail = scan.nextLine();    // sin harcodeo
+ //           String mail = "pruebaid1@paciente.com"; //Harcodeo paciente
+            String mail = "medico@gmail.com"; //Harcodeo medico
             //String mail = "admin@hotmail.com"; //Harcodeo admin
 
 
             System.out.println("Contraseña: ");
-            String pass = scan.nextLine(); // sin harcodeo
+            //String pass = scan.nextLine(); // sin harcodeo
             //String pass = "Chicha"; //Harcodeo paciente
-            //String pass = "Cosa"; //Harcodeo medico
+            String pass = "Cosa"; //Harcodeo medico
             //String pass = "Cusco"; //Harcodeo admin
 
 

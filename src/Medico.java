@@ -156,7 +156,9 @@ public class Medico extends Usuario implements Tratamientos {
                             System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
+                        opcionMenu = 0;
                     }
+
                     break;
                 case 2:
                     int flag2 = 0;
@@ -180,12 +182,14 @@ public class Medico extends Usuario implements Tratamientos {
                             scan.nextLine();
                         }
                     }
+                    opcionMenu = 0;
                     break;
 
                 case 3:
                     pacienteAux.tratamientoActual = crearTratamiento();
                     tratamientoAux = pacienteAux.tratamientoActual;
                     System.out.println(Colores.verde() + "Tratamiento nuevo asignado" + Colores.blanco());
+                    opcionMenu = 0;
                     break;
 
                 case 4:
