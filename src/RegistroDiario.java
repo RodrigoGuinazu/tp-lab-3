@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegistroDiario {
@@ -38,6 +39,9 @@ public class RegistroDiario {
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
                 System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+            }catch (InputMismatchException i) {
+                System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                scan.nextLine();
             }catch (AccionFallidaException f){
                 flag = 1;
             }

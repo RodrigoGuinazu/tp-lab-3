@@ -173,6 +173,9 @@ public class Admin extends Usuario implements Tratamientos {
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
                 System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+            }catch (InputMismatchException i) {
+                System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                scan.nextLine();
             }
         }
         return rta;
@@ -199,14 +202,24 @@ public class Admin extends Usuario implements Tratamientos {
 
         // nombre enfermedad para tratamiento (2 opciones : la crea o la elige)
         Enfermedad enfermedad = null;
-        int opcion;
+        int opcion = 0;
         do{
             System.out.println("[1] Elegir enfermedad existente");
             System.out.println("[2] Crear nueva enfermedad");
             System.out.println("Ingrese una opcion:");
 
+            int flagSwitch = 0;
+            while(flagSwitch == 0){
+                try{
+                    opcion = scan.nextInt();
+                    flagSwitch = 1;
+                }catch (InputMismatchException i) {
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println("Ingrese una opcion:");
+                    scan.nextLine();
+                }
+            }
 
-            opcion = scan.nextInt();
             switch (opcion){
                 case 1: {
 
@@ -274,6 +287,9 @@ public class Admin extends Usuario implements Tratamientos {
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
                 System.out.println("Ingresaste una opcion incorrecta, intentalo nuevamente");
+            }catch (InputMismatchException i) {
+                System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                scan.nextLine();
             }
         }
         return aux;

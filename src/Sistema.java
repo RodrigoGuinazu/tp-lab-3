@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sistema {
@@ -35,7 +36,18 @@ public class Sistema {
             System.out.println("[1] Log In");
             System.out.println("[2] Salir del programa");
             System.out.println("Ingrese una opcion:");
-            opcionMenu = scan.nextInt();
+
+            int flagSwitch = 0;
+            while(flagSwitch == 0){
+                try{
+                    opcionMenu = scan.nextInt();
+                    flagSwitch = 1;
+                }catch (InputMismatchException i) {
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println("Ingrese una opcion:");
+                    scan.nextLine();
+                }
+            }
 
             switch (opcionMenu) {
 
@@ -62,7 +74,7 @@ public class Sistema {
 
 
     public void menuPaciente() {
-        int opcionPaciente;
+        int opcionPaciente = 0;
         ((Paciente) usuarioLogueado).notificarPaciente();
         do {
 
@@ -71,7 +83,18 @@ public class Sistema {
             System.out.println("[3] Mostrar acciones del dia");
             System.out.println("[4] Log Out");
             System.out.println("Ingrese una opcion:");
-            opcionPaciente = scan.nextInt();
+
+            int flagSwitch = 0;
+            while(flagSwitch == 0){
+                try{
+                    opcionPaciente = scan.nextInt();
+                    flagSwitch = 1;
+                }catch (InputMismatchException i) {
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println("Ingrese una opcion:");
+                    scan.nextLine();
+                }
+            }
 
             switch (opcionPaciente) {
                 case 1:
@@ -101,7 +124,7 @@ public class Sistema {
 
     public void menuMedico() {
         System.out.println(((Medico) usuarioLogueado).notificarMedico());
-        int opcionMedico;
+        int opcionMedico = 0;
         do {
             //mostrar mejor y que cuando oprima una tecla siga con el menu
             System.out.println("[1] Asignar tratamiento");
@@ -110,7 +133,18 @@ public class Sistema {
             System.out.println("[4] Log Out");
 
             System.out.println("Ingrese una opcion:");
-            opcionMedico = scan.nextInt();
+
+            int flagSwitch = 0;
+            while(flagSwitch == 0){
+                try{
+                    opcionMedico = scan.nextInt();
+                    flagSwitch = 1;
+                }catch (InputMismatchException i) {
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println("Ingrese una opcion:");
+                    scan.nextLine();
+                }
+            }
 
             switch (opcionMedico) {
                 case 1:
@@ -143,7 +177,7 @@ public class Sistema {
 
 
     public void menuAdmin() {
-        int opcion;
+        int opcion = 0;
         do {
             System.out.println("[1] Registrar un nuevo paciente");
             System.out.println("[2] Registrar un nuevo medico");
@@ -153,7 +187,18 @@ public class Sistema {
             System.out.println("[6] Log Out");
 
             System.out.println("Ingrese una opcion:");
-            opcion = scan.nextInt();
+
+            int flagSwitch = 0;
+            while(flagSwitch == 0){
+                try{
+                    opcion = scan.nextInt();
+                    flagSwitch = 1;
+                }catch (InputMismatchException i) {
+                    System.out.println("Ingresaste un tipo de dato incorrecto, intentalo nuevamente");
+                    System.out.println("Ingrese una opcion:");
+                    scan.nextLine();
+                }
+            }
 
             switch (opcion) {
                 case 1: {
