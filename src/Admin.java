@@ -167,7 +167,10 @@ public class Admin extends Usuario implements Tratamientos {
                 throw new MailRepetidoException();
             }
         }
-        return mail;
+        if(mail.contains("@hotmail.com") || mail.contains("@outlook.com") || mail.contains("@gmail.com")){
+            return mail;
+        }
+        throw new MailRepetidoException(mail);
     }
 
     private Integer asignarMedico(String apellido, String nombre) {
