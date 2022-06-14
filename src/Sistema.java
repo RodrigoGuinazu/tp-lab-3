@@ -263,7 +263,7 @@ public class Sistema {
             System.out.println("Mail: ");
             //     String mail = scan.nextLine();    // sin harcodeo
 //                   String mail = "pruebaid1@paciente.com"; //Harcodeo paciente
-                //       String mail = "medico@gmail.com"; //Harcodeo medico
+//                       String mail = "medico@gmail.com"; //Harcodeo medico
            String mail = "admin@hotmail.com"; //Harcodeo admin
 
 

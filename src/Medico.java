@@ -124,11 +124,11 @@ public class Medico extends Usuario implements Tratamientos {
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcionMenu = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
@@ -138,21 +138,21 @@ public class Medico extends Usuario implements Tratamientos {
             switch (opcionMenu) {
                 case 1:
                     int flag1 = 0;
-                    while (flag1 == 0){
-                        try{
+                    while (flag1 == 0) {
+                        try {
                             x = 1;
                             for (Tratamiento a : listaTratamientosGenericos) {
                                 System.out.println("[" + x + "] " + a.mostrarTratamientoString());
                                 x++;
                             }
                             System.out.println("Ingrese el numero del tratamiento que quiera asignarle al paciente: ");
-                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
+                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt() - 1).clonarTratamiento();
                             pacienteAux.tratamientoActual = tratamientoAux;
                             System.out.println(Colores.verde() + "Tratamiento generico asignado" + Colores.blanco());
                             flag1 = 1;
-                        }catch (IndexOutOfBoundsException e){
+                        } catch (IndexOutOfBoundsException e) {
                             System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                        }catch (InputMismatchException i) {
+                        } catch (InputMismatchException i) {
                             System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
@@ -162,22 +162,22 @@ public class Medico extends Usuario implements Tratamientos {
                     break;
                 case 2:
                     int flag2 = 0;
-                    while (flag2 == 0){
-                        try{
+                    while (flag2 == 0) {
+                        try {
                             x = 1;
                             for (Tratamiento a : listaTratamientosGenericos) {
                                 System.out.println("[" + x + "] " + a.mostrarTratamientoString());
                                 x++;
                             }
                             System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
-                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt()-1).clonarTratamiento();
+                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt() - 1).clonarTratamiento();
                             pacienteAux.tratamientoActual = tratamientoAux;
                             pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
                             System.out.println(Colores.verde() + "Tratamiento modificado asignado" + Colores.blanco());
-                            flag2= 1;
-                        }catch (IndexOutOfBoundsException e){
+                            flag2 = 1;
+                        } catch (IndexOutOfBoundsException e) {
                             System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                        }catch (InputMismatchException i) {
+                        } catch (InputMismatchException i) {
                             System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
@@ -259,7 +259,6 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
-
     public void verHistorialTratamientoActual() throws DniInexistenteException {
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         for (Paciente pacientegeneral : listaPacientes) {
@@ -296,8 +295,8 @@ public class Medico extends Usuario implements Tratamientos {
 
         for (int i = 0; i < aux; i++) {
             flag = 0;
-            while(flag == 0){
-                try{
+            while (flag == 0) {
+                try {
                     int index = 1;
                     for (Accion a : listaAcciones) {
                         System.out.println("[" + index + "] " + a.mostrarAccion()); // mostrar mejor el a
@@ -306,7 +305,7 @@ public class Medico extends Usuario implements Tratamientos {
                     }
 
                     System.out.println("Elija el numero de de la accion que desea para el tratamiento:");
-                    accionIndex = scan.nextInt()-1;
+                    accionIndex = scan.nextInt() - 1;
                     if (listaAcciones.get(accionIndex) instanceof AccionBooleana) {
                         AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
                         System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
@@ -319,9 +318,9 @@ public class Medico extends Usuario implements Tratamientos {
                         nuevoTratamiento.listaAcciones.add(accionAux);
                     }
                     flag = 1;
-                }catch (IndexOutOfBoundsException e){
+                } catch (IndexOutOfBoundsException e) {
                     System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                }catch (InputMismatchException l) {
+                } catch (InputMismatchException l) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     scan.nextLine();
                 }
@@ -347,11 +346,11 @@ public class Medico extends Usuario implements Tratamientos {
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
-            while(flagSwitch == 0){
-                try{
+            while (flagSwitch == 0) {
+                try {
                     opcionMenu = scan.nextInt();
                     flagSwitch = 1;
-                }catch (InputMismatchException i) {
+                } catch (InputMismatchException i) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     System.out.println("Ingrese una opcion:");
                     scan.nextLine();
@@ -365,8 +364,8 @@ public class Medico extends Usuario implements Tratamientos {
                 case 1:
                     int flag1 = 0;
                     int accionIndex;
-                    while (flag1 == 0){
-                        try{
+                    while (flag1 == 0) {
+                        try {
                             index = 1;
                             for (Accion a : listaAcciones) {
                                 System.out.println("[" + index + "] " + a.mostrarAccion());
@@ -374,21 +373,21 @@ public class Medico extends Usuario implements Tratamientos {
                             }
                             System.out.println("Elija el numero de de la accion que escoja para el tratamiento:");
                             accionIndex = scan.nextInt();
-                            if (listaAcciones.get(accionIndex-1) instanceof AccionDouble) {
-                                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex-1).clonarAccion();
+                            if (listaAcciones.get(accionIndex - 1) instanceof AccionDouble) {
+                                AccionDouble accionAux = (AccionDouble) listaAcciones.get(accionIndex - 1).clonarAccion();
                                 System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
                                 accionAux.setCadaCuanto(scan.nextInt());
                                 aux.listaAcciones.add(accionAux);
                             } else {
-                                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex-1).clonarAccion();
+                                AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex - 1).clonarAccion();
                                 System.out.println("Ingrese cada cuandos dias quiere que se realice la accion, encaso de ser todos los dias, ingrese 1:");
                                 accionAux.setCadaCuanto(scan.nextInt());
                                 aux.listaAcciones.add(accionAux);
                             }
                             flag1 = 1;
-                        }catch (IndexOutOfBoundsException e){
+                        } catch (IndexOutOfBoundsException e) {
                             System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                        }catch (InputMismatchException i) {
+                        } catch (InputMismatchException i) {
                             System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
@@ -397,25 +396,32 @@ public class Medico extends Usuario implements Tratamientos {
 
                 case 2:
                     int flag2 = 0;
-                    while (flag2 == 0){
-                        try{
-                            index = 1;
-                            for (Accion a : aux.listaAcciones) {
-                                System.out.println("[" + index + "] " + a.mostrarAccion());
-                                index++;
-                            }
 
-                            System.out.println("Elija el numero de la accion que escoja para eliminar del tratamiento:");
-                            accionIndex = scan.nextInt();
-                            aux.listaAcciones.remove(accionIndex-1);
-                            flag2 = 1;
-                        }catch (IndexOutOfBoundsException e){
-                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                        }catch (InputMismatchException i) {
-                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
-                            scan.nextLine();
+
+                    if (aux.listaAcciones.size() == 1) {
+                        System.out.println(Colores.amarillo()+"No se puede tener un tratamiento vacio"+Colores.blanco());
+                    } else {
+                        while (flag2 == 0) {
+                            try {
+                                index = 1;
+                                for (Accion a : aux.listaAcciones) {
+                                    System.out.println("[" + index + "] " + a.mostrarAccion());
+                                    index++;
+                                }
+
+                                System.out.println("Elija el numero de la accion que escoja para eliminar del tratamiento:");
+                                accionIndex = scan.nextInt();
+                                aux.listaAcciones.remove(accionIndex - 1);
+                                flag2 = 1;
+                            } catch (IndexOutOfBoundsException e) {
+                                System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
+                            } catch (InputMismatchException i) {
+                                System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                                scan.nextLine();
+                            }
                         }
                     }
+
                     break;
 
 
