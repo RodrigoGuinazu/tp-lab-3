@@ -56,12 +56,14 @@ public class Sistema {
 
                 case 1:
                     this.usuarioLogueado = this.login();
-                    if (this.usuarioLogueado instanceof Paciente) {
-                        this.menuPaciente();
-                    } else if (this.usuarioLogueado instanceof Medico) {
-                        this.menuMedico();
-                    } else {
-                        this.menuAdmin();
+                    if(this.usuarioLogueado != null){
+                        if (this.usuarioLogueado instanceof Paciente) {
+                            this.menuPaciente();
+                        } else if (this.usuarioLogueado instanceof Medico) {
+                            this.menuMedico();
+                        } else {
+                            this.menuAdmin();
+                        }
                     }
                     break;
 
@@ -258,25 +260,29 @@ public class Sistema {
         Scanner scan = new Scanner(System.in);
         System.out.println("Log In");
         Usuario rta = null;
-        while (rta == null) {
+        Character opcion = 's';
+        while (rta == null && opcion == 's') {
 
             System.out.println("Mail: ");
-            //String mail = scan.nextLine();    // sin harcodeo
+            String mail = scan.nextLine();    // sin harcodeo
 //            String mail = "paciente2@hotmail.com"; //Harcodeo paciente
             //String mail = "juantorres@gmail.com"; //Harcodeo medico
-            String mail = "admin@hotmail.com"; //Harcodeo admin
+            //String mail = "admin@hotmail.com"; //Harcodeo admin
 
 
             System.out.println("Contraseña: ");
-            //String pass = scan.nextLine(); // sin harcodeo
+            String pass = scan.nextLine(); // sin harcodeo
 //            String pass = "Paciente2"; //Harcodeo paciente
             //String pass = "Medico1"; //Harcodeo medico
-            String pass = "Admin"; //Harcodeo admin
+            //String pass = "Admin"; //Harcodeo admin
 
 
             try {
                 rta = validarCredenciales(mail, pass);
+                opcion = 'n';
             } catch (CredencialesIncorrectasException e) {
+                System.out.println("Desea intentarlo de vuelta? (s/n):");
+                opcion = scan.nextLine().charAt(0);
             }
         }
         return rta;
