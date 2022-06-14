@@ -8,13 +8,13 @@ public class Sistema {
 
     // Atributos
     private ArrayList<Usuario> usuarios;
-    private LocalDate fechaDelDia;      //No se esta usando
+    private static LocalDate fechaDelDia = LocalDate.now();
     private Usuario usuarioLogueado;
 
     //Constructor 1
     public Sistema() {
         this.usuarios = new ArrayList<>();
-        this.fechaDelDia = LocalDate.now();
+//        this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
     }
 
@@ -313,4 +313,9 @@ public class Sistema {
     public void logout() {
         this.usuarioLogueado = null;
     }
+
+    public static LocalDate getFechaDelDia() {
+        return fechaDelDia;
+    }
 }
+

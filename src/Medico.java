@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -49,9 +48,9 @@ public class Medico extends Usuario implements Tratamientos {
         string2.append("Pacientes que no registraron toda la informacion ayer : ");
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
-                if (!a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(LocalDate.now())) {
+                if (!a.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(Sistema.getFechaDelDia())) {
                     string2.append(a.getinfoPaciente());
-                } else if (a.tratamientoActual.existeRegistroDiario(LocalDate.now().minusDays(1)) & a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(LocalDate.now().minusDays(1))) {
+                } else if (a.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(Sistema.getFechaDelDia().minusDays(1))) {
                     string2.append(a.getinfoPaciente());
                 }
             }
@@ -206,8 +205,8 @@ public class Medico extends Usuario implements Tratamientos {
             System.out.println(Colores.amarillo() + "No se cargo nada..." + Colores.blanco());
         } else {
             // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
-            pacienteAux.tratamientoActual.setIncioDate(LocalDate.now());
-            pacienteAux.tratamientoActual.setFinDate(LocalDate.now().plusDays(pacienteAux.tratamientoActual.getDuracion()));
+            pacienteAux.tratamientoActual.setIncioDate(Sistema.getFechaDelDia());
+            pacienteAux.tratamientoActual.setFinDate(Sistema.getFechaDelDia().plusDays(pacienteAux.tratamientoActual.getDuracion()));
             pacienteAux.setDebeSerAtendido(false);
 
             // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
