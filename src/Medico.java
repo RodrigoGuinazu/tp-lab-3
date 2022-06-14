@@ -75,160 +75,173 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
+    /**
+     En el metodo diagnosticarPacientes verificar que haya a quien diagnosticar,
+     en caso de que el medico ya haya atendido a todos sus pacientes devolverlo al menu principal automaticamente
+     */
+
     public void diagnosticarPacientes() throws DniInexistenteException {
 
-        // revisar que haya alguien a quien diagnosticar
+        try{
+            // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
+            ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
+            ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
-        // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
-        ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
-        ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
-
-        // muestro los pacientes que deben ser atendidos de vuelta
-        StringBuilder string = new StringBuilder();
-        string.append("Pacientes que deben ser atendidos hoy: \n");
-        for (Paciente pacientegeneral : listaPacientes) {
-            if (pacientegeneral.getDebeSerAtendido()) {
-                for (Integer a : pacientesDelMedico) {
-                    if (pacientegeneral.getId().equals(a)) {
-                        string.append(pacientegeneral.getinfoPaciente());
+            // muestro los pacientes que deben ser atendidos de vuelta
+            int flagSinPacientes = 0;
+            StringBuilder string = new StringBuilder();
+            string.append("Pacientes que deben ser atendidos hoy: \n");
+            for (Paciente pacientegeneral : listaPacientes) {
+                if (pacientegeneral.getDebeSerAtendido()) {
+                    for (Integer a : pacientesDelMedico) {
+                        if (pacientegeneral.getId().equals(a)) {
+                            string.append(pacientegeneral.getinfoPaciente());
+                        }
                     }
                 }
             }
-        }
-        if (string.toString().equals("Pacientes que deben ser atendidos hoy: \n")) {
-            string.append(Colores.amarillo() + "No hay" + Colores.blanco());
-        }
+            if (string.toString().equals("Pacientes que deben ser atendidos hoy: \n")) {
+                string.append(Colores.amarillo() + "No hay" + Colores.blanco());
+                flagSinPacientes = 1;
+            }
 
-        System.out.println(string);
+            System.out.println(string);
+            // acaa
+            if(flagSinPacientes != 1){
+                Scanner scan = new Scanner(System.in);
+                Paciente pacienteAux = null;
+                int control = 0;
+                while (control == 0) {
 
-        Scanner scan = new Scanner(System.in);
-        Paciente pacienteAux = null;
-        int control = 0;
-        while (control == 0) {
+                    // consultamos el paciente
+                    System.out.println("Ingrese el dni del paciente que desea diagnosticar: ");
 
-            // consultamos el paciente
-            System.out.println("Ingrese el dni del paciente que desea diagnosticar: ");
+                    String dni = scan.nextLine();
+                    for (Paciente a : listaPacientes) {
+                        if (a.getDni().equals(dni)) {
+                            if (a.getDebeSerAtendido()) {
+                                pacienteAux = a;
+                                control = 1;
+                            }
+                        }
+                    }
 
-            String dni = scan.nextLine();
-            for (Paciente a : listaPacientes) {
-                if (a.getDni().equals(dni)) {
-                    if (a.getDebeSerAtendido()) {
-                        pacienteAux = a;
-                        control = 1;
+                    if (pacienteAux == null) {
+                        System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? (s/n)" + Colores.blanco());
+                        if (scan.nextLine().charAt(0) != 's') {
+                            throw new DniInexistenteException();
+                        }
                     }
                 }
-            }
-
-            if (pacienteAux == null) {
-                System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? (s/n)" + Colores.blanco());
-                if (scan.nextLine().charAt(0) != 's') {
-                    throw new DniInexistenteException();
-                }
-            }
-        }
 
 
-        // preguntamos al medico si queire elegir uno existente o crear uno nuevo
-        Tratamiento tratamientoAux = null;
-        int x;
-        int opcionMenu = 0;
-        do {
+                // preguntamos al medico si queire elegir uno existente o crear uno nuevo
+                Tratamiento tratamientoAux = null;
+                int x;
+                int opcionMenu = 0;
+                do {
 
-            System.out.println("[1] Elegir un tratamiento ya existente");
-            System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");
-            System.out.println("[3] Crear un nuevo tratamiento");
-            System.out.println("[4] Salir");
-            System.out.println("Ingrese una opcion:");
-
-            int flagSwitch = 0;
-            while (flagSwitch == 0) {
-                try {
-                    opcionMenu = scan.nextInt();
-                    flagSwitch = 1;
-                } catch (InputMismatchException i) {
-                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                    System.out.println("[1] Elegir un tratamiento ya existente");
+                    System.out.println("[2] Elegir un tratamiento ya existente y modificarlo");
+                    System.out.println("[3] Crear un nuevo tratamiento");
+                    System.out.println("[4] Salir");
                     System.out.println("Ingrese una opcion:");
-                    scan.nextLine();
+
+                    int flagSwitch = 0;
+                    while (flagSwitch == 0) {
+                        try {
+                            opcionMenu = scan.nextInt();
+                            flagSwitch = 1;
+                        } catch (InputMismatchException i) {
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                            System.out.println("Ingrese una opcion:");
+                            scan.nextLine();
+                        }
+                    }
+
+                    switch (opcionMenu) {
+                        case 1:
+                            int flag1 = 0;
+                            while (flag1 == 0) {
+                                try {
+                                    x = 1;
+                                    for (Tratamiento a : listaTratamientosGenericos) {
+                                        System.out.println("[" + x + "] " + a.mostrarTratamientoString());
+                                        x++;
+                                    }
+                                    System.out.println("Ingrese el numero del tratamiento que quiera asignarle al paciente: ");
+                                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt() - 1).clonarTratamiento();
+                                    pacienteAux.tratamientoActual = tratamientoAux;
+                                    System.out.println(Colores.verde() + "Tratamiento generico asignado" + Colores.blanco());
+                                    flag1 = 1;
+                                } catch (IndexOutOfBoundsException e) {
+                                    System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
+                                } catch (InputMismatchException i) {
+                                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                                    scan.nextLine();
+                                }
+                                opcionMenu = 0;
+                            }
+
+                            break;
+                        case 2:
+                            int flag2 = 0;
+                            while (flag2 == 0) {
+                                try {
+                                    x = 1;
+                                    for (Tratamiento a : listaTratamientosGenericos) {
+                                        System.out.println("[" + x + "] " + a.mostrarTratamientoString());
+                                        x++;
+                                    }
+                                    System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
+                                    tratamientoAux = listaTratamientosGenericos.get(scan.nextInt() - 1).clonarTratamiento();
+                                    pacienteAux.tratamientoActual = tratamientoAux;
+                                    pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
+                                    System.out.println(Colores.verde() + "Tratamiento modificado asignado" + Colores.blanco());
+                                    flag2 = 1;
+                                } catch (IndexOutOfBoundsException e) {
+                                    System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
+                                } catch (InputMismatchException i) {
+                                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                                    scan.nextLine();
+                                }
+                            }
+                            opcionMenu = 0;
+                            break;
+
+                        case 3:
+                            pacienteAux.tratamientoActual = crearTratamiento();
+                            tratamientoAux = pacienteAux.tratamientoActual;
+                            System.out.println(Colores.verde() + "Tratamiento nuevo asignado" + Colores.blanco());
+                            opcionMenu = 0;
+                            break;
+
+                        case 4:
+                            System.out.println("Saliendo...");
+                            opcionMenu = 0;
+                            break;
+
+                        default:
+                            System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
+                    }
+                } while (opcionMenu != 0);
+
+                if (tratamientoAux == null) {
+                    System.out.println(Colores.amarillo() + "No se cargo nada..." + Colores.blanco());
+                } else {
+                    // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
+                    pacienteAux.tratamientoActual.setIncioDate(Sistema.getFechaDelDia());
+                    pacienteAux.tratamientoActual.setFinDate(Sistema.getFechaDelDia().plusDays(pacienteAux.tratamientoActual.getDuracion()));
+                    pacienteAux.setDebeSerAtendido(false);
+
+                    // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
+                    Persistencia.serializacionPacientes(listaPacientes);
                 }
+            }else {
+                System.out.println(Colores.amarillo() + "No tienes pacientes que atender en el dia de hoy" + Colores.blanco());
             }
-
-            switch (opcionMenu) {
-                case 1:
-                    int flag1 = 0;
-                    while (flag1 == 0) {
-                        try {
-                            x = 1;
-                            for (Tratamiento a : listaTratamientosGenericos) {
-                                System.out.println("[" + x + "] " + a.mostrarTratamientoString());
-                                x++;
-                            }
-                            System.out.println("Ingrese el numero del tratamiento que quiera asignarle al paciente: ");
-                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt() - 1).clonarTratamiento();
-                            pacienteAux.tratamientoActual = tratamientoAux;
-                            System.out.println(Colores.verde() + "Tratamiento generico asignado" + Colores.blanco());
-                            flag1 = 1;
-                        } catch (IndexOutOfBoundsException e) {
-                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                        } catch (InputMismatchException i) {
-                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
-                            scan.nextLine();
-                        }
-                        opcionMenu = 0;
-                    }
-
-                    break;
-                case 2:
-                    int flag2 = 0;
-                    while (flag2 == 0) {
-                        try {
-                            x = 1;
-                            for (Tratamiento a : listaTratamientosGenericos) {
-                                System.out.println("[" + x + "] " + a.mostrarTratamientoString());
-                                x++;
-                            }
-                            System.out.println("Ingrese el numero del tratamiento que desea modificar: ");
-                            tratamientoAux = listaTratamientosGenericos.get(scan.nextInt() - 1).clonarTratamiento();
-                            pacienteAux.tratamientoActual = tratamientoAux;
-                            pacienteAux.tratamientoActual = editarTratamiento(pacienteAux.tratamientoActual);
-                            System.out.println(Colores.verde() + "Tratamiento modificado asignado" + Colores.blanco());
-                            flag2 = 1;
-                        } catch (IndexOutOfBoundsException e) {
-                            System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-                        } catch (InputMismatchException i) {
-                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
-                            scan.nextLine();
-                        }
-                    }
-                    opcionMenu = 0;
-                    break;
-
-                case 3:
-                    pacienteAux.tratamientoActual = crearTratamiento();
-                    tratamientoAux = pacienteAux.tratamientoActual;
-                    System.out.println(Colores.verde() + "Tratamiento nuevo asignado" + Colores.blanco());
-                    opcionMenu = 0;
-                    break;
-
-                case 4:
-                    System.out.println("Saliendo...");
-                    opcionMenu = 0;
-                    break;
-
-                default:
-                    System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
-            }
-        } while (opcionMenu != 0);
-
-        if (tratamientoAux == null) {
-            System.out.println(Colores.amarillo() + "No se cargo nada..." + Colores.blanco());
-        } else {
-            // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
-            pacienteAux.tratamientoActual.setIncioDate(Sistema.getFechaDelDia());
-            pacienteAux.tratamientoActual.setFinDate(Sistema.getFechaDelDia().plusDays(pacienteAux.tratamientoActual.getDuracion()));
-            pacienteAux.setDebeSerAtendido(false);
-
-            // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
-            Persistencia.serializacionPacientes(listaPacientes);
+        }catch(NullPointerException e){
+            System.out.println(Colores.amarillo() + "No tienes pacientes asignados por el momento" + Colores.blanco());
         }
     }
 
@@ -237,7 +250,7 @@ public class Medico extends Usuario implements Tratamientos {
         Scanner scan = new Scanner(System.in);
 
         if (pacientesDelMedico.isEmpty()) {
-            System.out.println("No hay pacientes asignados a este medico");
+            System.out.println(Colores.amarillo() + "No hay pacientes asignados a este medico" + Colores.blanco());
         } else {
 
             ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
@@ -253,7 +266,7 @@ public class Medico extends Usuario implements Tratamientos {
             Paciente pacienteAux = null;
             int control = 0;
             while (control == 0) {
-                System.out.println("Ingrese el dni su paciente para ver historial");
+                System.out.println("Ingrese el dni del paciente para ver su historial: ");
 
                 String dni = scan.nextLine();
                 pacienteAux = null;
@@ -275,14 +288,14 @@ public class Medico extends Usuario implements Tratamientos {
             //muestra el historial clinico
             try {
                 if (pacienteAux.getHistorialClinico().isEmpty()) {
-                    System.out.println("No hay historial clinico para mostrar");
+                    System.out.println(Colores.amarillo() + "No hay historial clinico para mostrar" + Colores.blanco());
                 } else {
                     for (Tratamiento t : pacienteAux.getHistorialClinico()) {
                         t.mostrarTratamiento();
                     }
                 }
             } catch (NullPointerException e) {
-                System.out.println("No hay historial clinico para mostrar");
+                System.out.println(Colores.amarillo() + "No hay historial clinico para mostrar" + Colores.blanco());
             }
             System.out.println("Presione cualquier tecla para continuar");
             scan.nextLine();
@@ -303,7 +316,7 @@ public class Medico extends Usuario implements Tratamientos {
             }
         }
 
-        System.out.println("Ingrese el dni del paciente que desea consultar");
+        System.out.println("Ingrese el dni del paciente para ver el seguimiento de su tratamiento: ");
         Scanner scan = new Scanner(System.in);
         String dni = scan.nextLine();
         Paciente pacienteAux = new Paciente();
@@ -315,12 +328,12 @@ public class Medico extends Usuario implements Tratamientos {
 
         try {
             if (pacienteAux.getTratamientoActual() == null) {
-                System.out.println("No hay tratamiento actual");
+                System.out.println(Colores.amarillo() + "No hay tratamiento actual" + Colores.blanco());
             } else {
                 System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
             }
         } catch (NullPointerException e) {
-            System.out.println("No hay tratamiento actual");
+            System.out.println(Colores.amarillo() + "No hay tratamiento actual" + Colores.blanco());
         }
     }
 
@@ -330,9 +343,9 @@ public class Medico extends Usuario implements Tratamientos {
         Scanner scan = new Scanner(System.in);
         ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
         Tratamiento nuevoTratamiento = new Tratamiento();
-        System.out.println("Ingrese la duracion del tratamiento");
+        System.out.println("Ingrese la duracion del tratamiento:");
         nuevoTratamiento.setDuracion(scan.nextInt());
-        System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
+        System.out.println("Ingrese el numero de acciones que tendra el tratamiento:");
         int aux = scan.nextInt();
         int flag;
 
