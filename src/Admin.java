@@ -25,12 +25,21 @@ public class Admin extends Usuario implements Tratamientos {
         aux.addAll(medicos);
         Character opcionDni = 'n';
         String dni = "";
+        int flagDni;
         System.out.println("Registrando un paciente:");
         while(opcionDni != 's'){
-            System.out.println("Ingrese el dni del paciente: ");
-            dni = scan.nextLine();
-            System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
-            opcionDni = scan.nextLine().charAt(0);
+            flagDni = 0;
+            while (flagDni == 0){
+                try{
+                    System.out.println("Ingrese el dni del paciente: ");
+                    dni = scan.nextLine();
+                    dni = validarDni(dni);
+                    System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
+                    opcionDni = scan.nextLine().charAt(0);
+                    flagDni = 1;
+                }catch (DniIncorrectoException w){
+                }
+            }
         }
         //fijarse que exista el usuario
         try {
@@ -113,12 +122,21 @@ public class Admin extends Usuario implements Tratamientos {
         aux.addAll(pacientes);
         String dni = "";
         Character opcionDni = 'n';
+        int flagDni;
         System.out.println("Registrando un Medico:");
         while(opcionDni != 's'){
-            System.out.println("Ingrese el dni del medico: ");
-            dni = scan.nextLine();
-            System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
-            opcionDni = scan.nextLine().charAt(0);
+            flagDni = 0;
+            while (flagDni == 0){
+                try{
+                    System.out.println("Ingrese el dni del medico: ");
+                    dni = scan.nextLine();
+                    dni = validarDni(dni);
+                    System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
+                    opcionDni = scan.nextLine().charAt(0);
+                    flagDni = 1;
+                }catch (DniIncorrectoException w){
+                }
+            }
         }
         //fijarse que exista el usuario
         try {
@@ -183,6 +201,13 @@ public class Admin extends Usuario implements Tratamientos {
             return mail;
         }
         throw new MailRepetidoException(mail);
+    }
+
+    public String validarDni(String dni) throws DniIncorrectoException{
+        if(dni.matches("[0-9]+")){
+            return dni;
+        }
+        throw new DniIncorrectoException();
     }
 
     private Integer asignarMedico(String apellido, String nombre) {
