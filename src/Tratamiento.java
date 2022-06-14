@@ -119,14 +119,14 @@ public class Tratamiento {
         RegistroDiario aux;
         int flag = 0;
         int contador  = 0;
-        if (listaRegistrosDiarios.empty() || listaRegistrosDiarios.peek().getFecha().isBefore(LocalDate.now())) { // si no existe registro pata hoy, le pide hacer todo
+        if (listaRegistrosDiarios.empty() || listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) { // si no existe registro pata hoy, le pide hacer todo
             aux = new RegistroDiario();
             listaRegistrosDiarios.push(aux);
 
             for (Accion a : listaAcciones) {
                 flag = 0;
                 for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
-                    if (x.mostrarNombresRegistros().equals(a.getNombre()) || !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(LocalDate.now())){
+                    if (x.mostrarNombresRegistros().equals(a.getNombre()) || !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())){
                         flag = 1;
                     }
                 }
@@ -151,7 +151,7 @@ public class Tratamiento {
 
             return;
 
-        } else if (listaRegistrosDiarios.peek().getFecha().isEqual(LocalDate.now())) { // cuando hay registro para hoy, pero no tiene nada adentro, pasa muy poco
+        } else if (listaRegistrosDiarios.peek().getFecha().isEqual(Sistema.getFechaDelDia())) { // cuando hay registro para hoy, pero no tiene nada adentro, pasa muy poco
             if (listaRegistrosDiarios.peek().listaRegistros.isEmpty()) {
                 for (Accion a : listaAcciones) {
 
@@ -174,7 +174,7 @@ public class Tratamiento {
                 for (Accion a : listaAcciones) {    // cuando hay registro del dia con algo adentro
                     flag = 0;
                     for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
-                        if (x.mostrarNombresRegistros().equals(a.getNombre())|| !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(LocalDate.now())) {
+                        if (x.mostrarNombresRegistros().equals(a.getNombre())|| !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
                             flag = 1;
                         }
                     }
@@ -221,7 +221,7 @@ public class Tratamiento {
 
     public String modificarRegistros() {
 
-        if (listaRegistrosDiarios.peek().getFecha() == LocalDate.now()) {
+        if (listaRegistrosDiarios.peek().getFecha() == Sistema.getFechaDelDia()) {
             listaRegistrosDiarios.peek().modificarRegistro();
             return (Colores.verde() + "Se a modificado el registro diario con exito" + Colores.blanco());
         } else {
