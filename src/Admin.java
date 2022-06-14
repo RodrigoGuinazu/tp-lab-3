@@ -73,6 +73,7 @@ public class Admin extends Usuario implements Tratamientos {
                     flag = 1;
                     rta = new Paciente(nombre, apellido, dni, mail, password, id);
                     pacientes.add(rta);
+                    System.out.println(Colores.verde() + "Creaste el paciente con exito!" + Colores.blanco());
                 } catch (InputMismatchException f) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 }
@@ -127,6 +128,7 @@ public class Admin extends Usuario implements Tratamientos {
                     flag = 1;
                     rta = new Medico(nombre, apellido, dni, mail, password);
                     medicos.add(rta);
+                    System.out.println(Colores.verde() + "Creaste el medico con exito!" + Colores.blanco());
                 } catch (InputMismatchException f) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 }
