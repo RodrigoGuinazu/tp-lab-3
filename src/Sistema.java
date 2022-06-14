@@ -8,14 +8,13 @@ public class Sistema {
 
     // Atributos
     private ArrayList<Usuario> usuarios;
-    //    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
-    private static LocalDate fechaDelDia = LocalDate.now().plusDays(1);
+    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
+    //private static LocalDate fechaDelDia = LocalDate.now().plusDays(4);
     private Usuario usuarioLogueado;
 
     //Constructor 1
     public Sistema() {
         this.usuarios = new ArrayList<>();
-//        this.fechaDelDia = LocalDate.now();
         this.usuarioLogueado = null;
     }
 
@@ -316,6 +315,14 @@ public class Sistema {
 
     public static LocalDate getFechaDelDia() {
         return fechaDelDia;
+    }
+
+    public static boolean comprobarCorrespodenAccion(LocalDate fecha){
+        if(fecha.isEqual(Sistema.getFechaDelDia())){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
 

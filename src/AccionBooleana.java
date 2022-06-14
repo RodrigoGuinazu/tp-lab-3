@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class AccionBooleana extends Accion {
 
 
-    public AccionBooleana(int cadaCuanto, int vecesPorDia, String nombre, String textoPregunta) {
-        super(cadaCuanto, vecesPorDia, nombre, textoPregunta);
+    public AccionBooleana(int cadaCuanto, String nombre, String textoPregunta) {
+        super(cadaCuanto, nombre, textoPregunta);
     }
 
     public void mostrarAccionBooleana() {
@@ -15,7 +15,7 @@ public class AccionBooleana extends Accion {
 
     @Override
     public AccionBooleana clonarAccion() {
-        AccionBooleana aux = new AccionBooleana(this.cadaCuanto, this.vecesPorDia, this.nombre, this.textoPregunta);
+        AccionBooleana aux = new AccionBooleana(this.cadaCuanto, this.nombre, this.textoPregunta);
         return aux;
     }
 

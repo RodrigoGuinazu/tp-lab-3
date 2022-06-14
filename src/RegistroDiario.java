@@ -9,7 +9,7 @@ public class RegistroDiario {
 
 
     public RegistroDiario() {
-        this.fecha = LocalDate.now();
+        this.fecha = Sistema.getFechaDelDia();
         this.listaRegistros = new ArrayList<Registro>();
     }
 

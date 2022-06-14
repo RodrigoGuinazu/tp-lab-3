@@ -118,23 +118,23 @@ public class Tratamiento {
     public void realizarAcciones() {        //CAMBIAR (tiene que poder elegir que accion cambiar)
         RegistroDiario aux;
         int flag = 0;
-        int contador  = 0;
+        int contador = 0;
         if (listaRegistrosDiarios.empty() || listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) { // si no existe registro pata hoy, le pide hacer todo
             aux = new RegistroDiario();
             listaRegistrosDiarios.push(aux);
 
             for (Accion a : listaAcciones) {
                 flag = 0;
-                for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
-                    if (x.mostrarNombresRegistros().equals(a.getNombre()) || !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())){
-                        flag = 1;
-                    }
+                if (!a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
+                    flag = 1;
                 }
-                if(flag ==0){
-                    contador ++;
+
+                if (flag == 0) {
+                    contador++;
                     if (a instanceof AccionDouble) {
                         try {
                             Registro registroAux = a.accionar();
+                            a.setUltimaNoti(Sistema.getFechaDelDia());
                             listaRegistrosDiarios.peek().agregarRegistro(registroAux);
                         } catch (AccionFallidaException e) {
                         }
@@ -142,6 +142,7 @@ public class Tratamiento {
                     if (a instanceof AccionBooleana) {
                         try {
                             Registro registroAux = a.accionar();
+                            a.setUltimaNoti(Sistema.getFechaDelDia());
                             listaRegistrosDiarios.peek().agregarRegistro(registroAux);
                         } catch (AccionFallidaException e) {
                         }
@@ -154,35 +155,45 @@ public class Tratamiento {
         } else if (listaRegistrosDiarios.peek().getFecha().isEqual(Sistema.getFechaDelDia())) { // cuando hay registro para hoy, pero no tiene nada adentro, pasa muy poco
             if (listaRegistrosDiarios.peek().listaRegistros.isEmpty()) {
                 for (Accion a : listaAcciones) {
+                    if (!Sistema.comprobarCorrespodenAccion(a.ultimaNoti.plusDays(a.cadaCuanto))){
+                        break;
+                    }
 
                     if (a instanceof AccionDouble) {
                         try {
                             Registro registroAux = a.accionar();
+                            a.setUltimaNoti(Sistema.getFechaDelDia());
                             listaRegistrosDiarios.peek().agregarRegistro(registroAux);
                         } catch (AccionFallidaException e) {
                         }
                     } else if (a instanceof AccionBooleana) {
                         try {
                             Registro registroAux = a.accionar();
+                            a.setUltimaNoti(Sistema.getFechaDelDia());
                             listaRegistrosDiarios.peek().agregarRegistro(registroAux);
                         } catch (AccionFallidaException e) {
                         }
                     }
 
                 }
-            }else {
+            } else {
                 for (Accion a : listaAcciones) {    // cuando hay registro del dia con algo adentro
                     flag = 0;
-                    for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
-                        if (x.mostrarNombresRegistros().equals(a.getNombre())|| !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
-                            flag = 1;
+                    if (!a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
+                        flag = 1;
+                    }else {
+                        for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
+                            if (x.mostrarNombresRegistros().equals(a.getNombre())) {
+
+                            }
                         }
                     }
-                    if(flag ==0){
-                        contador ++;
+                    if (flag == 0) {
+                        contador++;
                         if (a instanceof AccionDouble) {
                             try {
                                 Registro registroAux = a.accionar();
+                                a.setUltimaNoti(Sistema.getFechaDelDia());
                                 listaRegistrosDiarios.peek().agregarRegistro(registroAux);
                             } catch (AccionFallidaException e) {
                             }
@@ -190,6 +201,7 @@ public class Tratamiento {
                         if (a instanceof AccionBooleana) {
                             try {
                                 Registro registroAux = a.accionar();
+                                a.setUltimaNoti(Sistema.getFechaDelDia());
                                 listaRegistrosDiarios.peek().agregarRegistro(registroAux);
                             } catch (AccionFallidaException e) {
                             }
@@ -197,24 +209,23 @@ public class Tratamiento {
                     }
 
 
-
                 }
             }
 
         }
 
-        if(contador == 0){
+        if (contador == 0) {
             System.out.println("Todas las acciones fueron realizadas, si quiere modificar sus valores, ingrese desde la opcion Modificar en el menu");
         }
 
     }
 
     public void modificarAcciones() {
-        try{
-            if(Sistema.getFechaDelDia().equals(this.listaRegistrosDiarios.peek().getFecha())){ // intentando agregarle logica de fecha, no lo pude probrar
+        try {
+            if (Sistema.getFechaDelDia().equals(this.listaRegistrosDiarios.peek().getFecha())) { // intentando agregarle logica de fecha, no lo pude probrar
                 this.listaRegistrosDiarios.peek().modificarRegistro();
             }
-        }catch (EmptyStackException e) {
+        } catch (EmptyStackException e) {
             System.out.println(Colores.amarillo() + "No hay registros que modificar en el dia de hoy" + Colores.blanco());
         }
     }

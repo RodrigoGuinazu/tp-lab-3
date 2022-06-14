@@ -5,15 +5,14 @@ public abstract class Accion { // no puede ser abstract por el deserializador
     protected LocalDate ultimaNoti = null; // ultima vez que se le notifico la accion
     protected String textoPregunta;
     protected Integer cadaCuanto; // cada cuanto dias tiene que hacer la accion
-    protected Integer vecesPorDia; // cuantas veces por dia tiene que hacer la accion
 
     protected String nombre;
 
     // Constructores
-    public Accion(Integer cadaCuanto, Integer vecesPorDia, String nombre, String textoPregunta) {
+    public Accion(Integer cadaCuanto, String nombre, String textoPregunta) {
         this.textoPregunta = textoPregunta;
         this.cadaCuanto = cadaCuanto;
-        this.vecesPorDia = vecesPorDia;
+
         this.nombre = nombre;
     }
 
@@ -22,9 +21,6 @@ public abstract class Accion { // no puede ser abstract por el deserializador
         return cadaCuanto;
     }
 
-    public Integer getVecesPorDia() {
-        return vecesPorDia;
-    }
 
     public LocalDate getUltimaNoti() {
         return ultimaNoti;
@@ -43,9 +39,6 @@ public abstract class Accion { // no puede ser abstract por el deserializador
         this.cadaCuanto = cadaCuanto;
     }
 
-    public void setVecesPorDia(Integer vecesPorDia) {
-        this.vecesPorDia = vecesPorDia;
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -67,7 +60,7 @@ public abstract class Accion { // no puede ser abstract por el deserializador
     }
 
     public String mostrarAccion() {
-        return "Accion : " + this.nombre + " , cada cuanto : " + this.cadaCuanto + " , veces por dia :" + this.vecesPorDia;
+        return "Accion : " + this.nombre + " , cada cuanto : " + this.cadaCuanto ;
     }
 
 
@@ -77,7 +70,6 @@ public abstract class Accion { // no puede ser abstract por el deserializador
                 "ultimaNoti=" + ultimaNoti +
                 ", textoPregunta='" + textoPregunta + '\'' +
                 ", cadaCuanto=" + cadaCuanto +
-                ", vecesPorDia=" + vecesPorDia +
                 ", nombre='" + nombre + '\'' +
                 '}';
     }

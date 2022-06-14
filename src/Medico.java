@@ -266,6 +266,7 @@ public class Medico extends Usuario implements Tratamientos {
         }
 
 
+
         for (Tratamiento t : pacienteAux.getHistorialClinico()) {
             t.mostrarTratamiento();
         }

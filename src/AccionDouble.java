@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class AccionDouble extends Accion {
 
 
-    public AccionDouble(int cadaCuanto, int vecesPorDia, String nombr, String textoPregunta) {
-        super(cadaCuanto, vecesPorDia, nombr, textoPregunta);
+    public AccionDouble(int cadaCuanto, String nombr, String textoPregunta) {
+        super(cadaCuanto, nombr, textoPregunta);
     }
 
 
@@ -15,7 +15,7 @@ public class AccionDouble extends Accion {
 
     @Override
     public AccionDouble clonarAccion() {
-        AccionDouble aux = new AccionDouble(this.cadaCuanto, this.vecesPorDia, this.nombre, this.textoPregunta);
+        AccionDouble aux = new AccionDouble(this.cadaCuanto, this.nombre, this.textoPregunta);
         return aux;
     }
 
