@@ -38,6 +38,7 @@ public class RegistroDiario {
                 try{
                     listaRegistros.get(aux-1).modificar();
                 }catch (EliminarRegistroException e){
+                    // porque no pide la accion de vuelta despues de borrarlo del registro diario?
                     listaRegistros.remove(aux-1);
                 }
                 flag = 1;

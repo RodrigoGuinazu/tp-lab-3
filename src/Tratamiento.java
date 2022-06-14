@@ -227,7 +227,7 @@ public class Tratamiento {
 
     public void modificarAcciones() {
         try {
-            if (Sistema.getFechaDelDia().equals(this.listaRegistrosDiarios.peek().getFecha())) { // intentando agregarle logica de fecha, no lo pude probrar
+            if (Sistema.getFechaDelDia().equals(this.listaRegistrosDiarios.peek().getFecha()) && (this.listaRegistrosDiarios.peek().listaRegistros.size() > 0)) {
                 this.listaRegistrosDiarios.peek().modificarRegistro();
             }else{
                 System.out.println(Colores.amarillo() + "No hay registros que modificar en el dia de hoy" + Colores.blanco());
