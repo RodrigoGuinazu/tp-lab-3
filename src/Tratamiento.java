@@ -293,4 +293,11 @@ public class Tratamiento {
         }
         return -1;
     }
+
+
+    public void setInicioDate(LocalDate inicioDate) {
+        this.inicioDate = inicioDate;
+    }
+
+
 }

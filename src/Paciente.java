@@ -9,18 +9,19 @@ public class Paciente extends Usuario {
     private Integer idMedicoAsignado;
     private Boolean debeSerAtendido;
 
-    // Vacio
+
     public Paciente() {
     }
 
 
-    //para probar ver historial de de paciente
-    public Paciente(String nombre, String apellido, String dni, String mail, String password, ArrayList<Tratamiento> historialClinico, Integer idMedicoAsignado) {
+    public Paciente(String nombre, String apellido, String dni, String mail, String password, ArrayList<Tratamiento> historialClinico, Tratamiento tratamientoActual, Integer idMedicoAsignado, Boolean debeSerAtendido) {
         super(nombre, apellido, dni, mail, password);
         this.historialClinico = historialClinico;
+        this.tratamientoActual = tratamientoActual;
         this.idMedicoAsignado = idMedicoAsignado;
-        this.debeSerAtendido = true;
+        this.debeSerAtendido = debeSerAtendido;
     }
+
 
     // Sin medico asignado
     public Paciente(String nombre, String apellido, String dni, String mail, String password) {

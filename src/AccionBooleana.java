@@ -9,7 +9,6 @@ public class AccionBooleana extends Accion {
 
     public void mostrarAccionBooleana() {
         System.out.println(super.mostrarAccion());
-
     }
 
 

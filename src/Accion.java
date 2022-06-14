@@ -6,6 +6,7 @@ public abstract class Accion { // no puede ser abstract por el deserializador
     protected String textoPregunta;
     protected Integer cadaCuanto; // cada cuanto dias tiene que hacer la accion
     protected Integer vecesPorDia; // cuantas veces por dia tiene que hacer la accion
+
     protected String nombre;
 
     // Constructores
@@ -17,6 +18,8 @@ public abstract class Accion { // no puede ser abstract por el deserializador
     }
 
     // Metodos
+
+
 
     public Integer getCadaCuanto() {
         return cadaCuanto;

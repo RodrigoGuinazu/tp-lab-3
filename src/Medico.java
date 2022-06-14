@@ -212,8 +212,6 @@ public class Medico extends Usuario implements Tratamientos {
             // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
             Persistencia.serializacionPacientes(listaPacientes);
         }
-
-
     }
 
 

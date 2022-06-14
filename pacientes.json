@@ -1,1 +1,62 @@
-[{"historialClinico":[],"tratamientoActual":{"enfermedad":{"nombre":"Encondroma"},"duracion":20,"inicioDate":{"year":2022,"month":6,"day":11},"finDate":{"year":2022,"month":7,"day":3},"listaAcciones":[{"type":"AccionDouble","properties":{"ultimaNoti":{"year":2022,"month":6,"day":13},"textoPregunta":"Tomar Temperatura","cadaCuanto":1,"vecesPorDia":3,"nombre":"Temperatura"}},{"type":"AccionDouble","properties":{"ultimaNoti":{"year":2022,"month":6,"day":13},"textoPregunta":"Tomar Densidad","cadaCuanto":2,"vecesPorDia":1,"nombre":"Densiometria"}}],"listaRegistrosDiarios":[{"fecha":{"year":2022,"month":6,"day":11},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"37","seHizo":true},{"nombreAccion":"Densiometria","rta":"98","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":12},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"37","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":13},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"40","seHizo":true}]}],"finalizado":false},"idMedicoAsignado":4,"debeSerAtendido":false,"nombre":"Preuba","apellido":"Crear Paciente","dni":"12345678","mail":"pruebaid1@paciente.com","password":"Cosa","id":1},{"historialClinico":[],"tratamientoActual":{"enfermedad":{"nombre":"Amiloidosis"},"duracion":555,"inicioDate":{"year":2022,"month":6,"day":12},"finDate":{"year":2023,"month":12,"day":19},"listaAcciones":[{"type":"AccionDouble","properties":{"textoPregunta":"Tomar Densidad","cadaCuanto":12,"vecesPorDia":1,"nombre":"Densiometria"}},{"type":"AccionBooleana","properties":{"textoPregunta":"Tomar Pastilla","cadaCuanto":3,"vecesPorDia":4,"nombre":"Pastilla"}}],"listaRegistrosDiarios":[],"finalizado":false},"idMedicoAsignado":4,"debeSerAtendido":false,"nombre":"Preuba","apellido":"Crear Paciente","dni":"5555555","mail":"pruebaid3@paciente.com","password":"Cosa","id":3},{"historialClinico":[],"tratamientoActual":{"enfermedad":{"nombre":"Encondroma"},"duracion":7,"inicioDate":{"year":2022,"month":6,"day":13},"finDate":{"year":2022,"month":6,"day":20},"listaAcciones":[{"type":"AccionDouble","properties":{"textoPregunta":"Tomar Densidad","cadaCuanto":1,"vecesPorDia":1,"nombre":"Densiometria"}},{"type":"AccionBooleana","properties":{"textoPregunta":"Tomar Presion","cadaCuanto":1,"vecesPorDia":2,"nombre":"Presion"}}],"listaRegistrosDiarios":[],"finalizado":false},"idMedicoAsignado":1,"debeSerAtendido":false,"nombre":"fasdf","apellido":"sdfaasd","dni":"12345145345","mail":"pruebaid7@hotmail.com","password":"Cosa","id":7}]
+[
+  {
+    "historialClinico": [
+      {
+        "enfermedad": {
+          "nombre": "Gripe"
+        },
+        "duracion": 1,
+        "inicioDate": {
+          "year": 2022,
+          "month": 6,
+          "day": 11
+        },
+        "finDate": {
+          "year": 2022,
+          "month": 6,
+          "day": 12
+        },
+        "listaAcciones": [
+          {
+            "type": "AccionBooleana",
+            "properties": {
+              "ultimaNoti": {
+                "year": 2022,
+                "month": 6,
+                "day": 12
+              },
+              "textoPregunta": "Tomar Pastilla",
+              "cadaCuanto": 1,
+              "vecesPorDia": 1,
+              "nombre": "Pastilla"
+            }
+          }
+        ],
+        "listaRegistrosDiarios": [
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 13
+            },
+            "listaRegistros": [
+              {
+                "nombreAccion": "AccionGenerica",
+                "seHizo": true
+              }
+            ]
+          }
+        ],
+        "finalizado": true
+      }
+    ],
+    "idMedicoAsignado": 3,
+    "debeSerAtendido": false,
+    "nombre": "Julian",
+    "apellido": "Gallo",
+    "dni": "93746352",
+    "mail": "paciente@outlook.com",
+    "password": "Chicha",
+    "id": 1
+  }
+]
