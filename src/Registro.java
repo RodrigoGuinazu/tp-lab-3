@@ -20,7 +20,7 @@ public class Registro {     //
         return this.nombreAccion;
     }
 
-    public void modificar() throws AccionFallidaException {
+    public void modificar() throws AccionFallidaException, EliminarRegistroException {
         Scanner scan = new Scanner(System.in);
         Character opcion;
         if(rta == null){
@@ -28,25 +28,24 @@ public class Registro {     //
         }else{
             System.out.println("Usted ingreso en la accion " + this.nombreAccion + " el resultado: " + this.rta);
         }
-        System.out.println("Desea modificar la accion? (s/n)");
+        System.out.println("Desea modificar la accion? (s/n): ");
         opcion = scan.nextLine().charAt(0);
         if (opcion != 's') {
             throw new AccionFallidaException();
         } else {
             if(rta == null){
-                Boolean rta;
-                if(this.seHizo == true){
-                    System.out.println(Colores.verde() + "Se marco la accion como sin realizar" + Colores.blanco());
-                    rta = false;
-                }else{
-                    System.out.println(Colores.verde() + "Se marco la accion como realizada" + Colores.blanco());
-                    rta = true;
-                }
-                this.seHizo = rta;
+                throw new EliminarRegistroException(this.nombreAccion);
             }else{
-                System.out.println("Ingrese el nuevo resultado: ");
-                String rta = scan.nextLine();
-                this.rta = rta;
+                Character opcion2;
+                System.out.println(Colores.amarillo() + "Si desea eliminar el registro ingrese 's', si quiere cambiar el resultado de la accion ingrese cualquier otra letra: " + Colores.blanco());
+                opcion2 = scan.nextLine().charAt(0);
+                if(opcion2 == 's'){
+                    throw new EliminarRegistroException(this.nombreAccion);
+                }else{
+                    System.out.println("Ingrese el nuevo resultado: ");
+                    String rta = scan.nextLine();
+                    this.rta = rta;
+                }
             }
         }
     }

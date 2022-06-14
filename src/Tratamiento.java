@@ -153,7 +153,7 @@ public class Tratamiento {
             }
 
             if (contador == 0) {
-                System.out.println("Todas las acciones fueron realizadas, si quiere modificar sus valores, ingrese desde la opcion Modificar en el menu");
+                System.out.println(Colores.amarillo() + "Todas las acciones fueron realizadas, si quiere modificar sus valores, ingrese desde la opcion Modificar en el menu" + Colores.blanco());
             }
             return;
 
@@ -220,7 +220,7 @@ public class Tratamiento {
         }
 
         if (contador == 0) {
-            System.out.println("Todas las acciones fueron realizadas, si quiere modificar sus valores, ingrese desde la opcion Modificar en el menu");
+            System.out.println(Colores.amarillo() + "Todas las acciones fueron realizadas, si quiere modificar sus valores, ingrese desde la opcion Modificar en el menu" + Colores.blanco());
         }
 
     }

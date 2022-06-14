@@ -35,7 +35,11 @@ public class RegistroDiario {
                 }
                 System.out.println("Ingrese el numero del Registro que desea modificar: ");
                 int aux = scan.nextInt();
-                listaRegistros.get(aux-1).modificar();
+                try{
+                    listaRegistros.get(aux-1).modificar();
+                }catch (EliminarRegistroException e){
+                    listaRegistros.remove(aux-1);
+                }
                 flag = 1;
             }catch (IndexOutOfBoundsException e){
                 System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
