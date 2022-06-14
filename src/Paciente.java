@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Paciente extends Usuario {
@@ -48,15 +47,15 @@ public class Paciente extends Usuario {
     public void notificarPaciente() {
         //Chequear igualdades de LocalDate
 
-        if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(LocalDate.now())) {
+        if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) {
             try {
 
 
                 for (Accion a : this.tratamientoActual.getListaAcciones()) {
 
-                    if(a.ultimaNoti != null & a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(LocalDate.now())){
+                    if(a.ultimaNoti != null & a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())){
                         System.out.println("Debe realizar la accion : " + a.getNombre());
-                        a.setUltimaNoti(LocalDate.now());
+                        a.setUltimaNoti(Sistema.getFechaDelDia());
 
                     }
 
@@ -87,7 +86,7 @@ public class Paciente extends Usuario {
                     if(flag == 0){
 
                         System.out.println("Debe realizar la accion : " + a.getNombre());
-                        a.setUltimaNoti(LocalDate.now());
+                        a.setUltimaNoti(Sistema.getFechaDelDia());
                     }else{
                         System.out.println("Ya se realizo la accion : " + a.getNombre());
                     }
@@ -109,7 +108,7 @@ public class Paciente extends Usuario {
 
 
     public void realizarAcciones() {
-        if (tratamientoActual.getFinDate().equals(LocalDate.now()) || tratamientoActual.getFinDate().isBefore(LocalDate.now())) {
+        if (tratamientoActual.getFinDate().equals(Sistema.getFechaDelDia()) || tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())) {
             tratamientoActual.setFinalizado(true);
             historialClinico.add(tratamientoActual);
             tratamientoActual = null;
