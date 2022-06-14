@@ -60,7 +60,7 @@ public class Medico extends Usuario implements Tratamientos {
 
             }
         }
-        if (string2.toString().equals("Pacientes que no registraron informacion ayer: \n")) {
+        if (string2.toString().equals("Pacientes que no registraron toda la informacion ayer: \n")) {
             string2.append(Colores.amarillo() + "No hay" + Colores.blanco());
         }
         return string1.append(string2);
