@@ -336,13 +336,16 @@ public class Medico extends Usuario implements Tratamientos {
         }
 
         try {
-            if (pacienteAux.getTratamientoActual() == null) {
-                System.out.println(Colores.amarillo() + "No hay tratamiento actual" + Colores.blanco());
-            } else {
-                System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
+            if(pacienteAux.getTratamientoActual() != null){
+                if(!pacienteAux.tratamientoActual.listaRegistrosDiarios.isEmpty()){
+                    System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
+                }else{
+                    System.out.println(Colores.amarillo() + "El paciente que ingresaste no realizo ninguna accion del tratamiento por el momento!" + Colores.blanco());
+                }
+            }else{
+                System.out.println(Colores.amarillo() + "El paciente que ingresaste no se encuentra realizando ningun tratamiento por el momento!" + Colores.blanco());
             }
         } catch (NullPointerException e) {
-            System.out.println(Colores.amarillo() + "No hay tratamiento actual" + Colores.blanco());
         }
     }
 
