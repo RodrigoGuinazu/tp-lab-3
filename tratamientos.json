@@ -1,1 +1,150 @@
-[{"enfermedad":{"nombre":"Gripe"},"duracion":1,"listaAcciones":[{"type":"AccionBooleana","properties":{"ultimaNoti":{"year":2022,"month":6,"day":12},"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":1,"nombre":"Pastilla"}}],"listaRegistrosDiarios":[{"fecha":{"year":2022,"month":6,"day":13},"listaRegistros":[{"nombreAccion":"AccionGenerica","seHizo":true}]}],"finalizado":true}]
+[
+  {
+    "enfermedad": {
+      "nombre": "Estres"
+    },
+    "duracion": 7,
+    "inicioDate": {
+      "year": 2022,
+      "month": 6,
+      "day": 12
+    },
+    "finDate": {
+      "year": 2022,
+      "month": 6,
+      "day": 13
+    },
+    "listaAcciones": [
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 1,
+          "nombre": "Pastilla"
+        }
+      },
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Presion",
+          "cadaCuanto": 1,
+          "vecesPorDia": 2,
+          "nombre": "Presion"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 1,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Densidad",
+          "cadaCuanto": 2,
+          "vecesPorDia": 1,
+          "nombre": "Densiometria"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": true
+  },
+  {
+    "enfermedad": {
+      "nombre": "Amiloidosis"
+    },
+    "duracion": 14,
+    "listaAcciones": [
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 1,
+          "nombre": "Pastilla"
+        }
+      },
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Presion",
+          "cadaCuanto": 1,
+          "vecesPorDia": 2,
+          "nombre": "Presion"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 1,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Densidad",
+          "cadaCuanto": 2,
+          "vecesPorDia": 1,
+          "nombre": "Densiometria"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
+  },
+  {
+    "enfermedad": {
+      "nombre": "Gripe"
+    },
+    "duracion": 1,
+    "listaAcciones": [
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Pastilla",
+          "cadaCuanto": 1,
+          "vecesPorDia": 1,
+          "nombre": "Pastilla"
+        }
+      },
+      {
+        "type": "AccionBooleana",
+        "properties": {
+          "textoPregunta": "Tomar Presion",
+          "cadaCuanto": 1,
+          "vecesPorDia": 2,
+          "nombre": "Presion"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Temperatura",
+          "cadaCuanto": 1,
+          "vecesPorDia": 3,
+          "nombre": "Temperatura"
+        }
+      },
+      {
+        "type": "AccionDouble",
+        "properties": {
+          "textoPregunta": "Tomar Densidad",
+          "cadaCuanto": 2,
+          "vecesPorDia": 1,
+          "nombre": "Densiometria"
+        }
+      }
+    ],
+    "listaRegistrosDiarios": [],
+    "finalizado": false
+  }
+]

@@ -18,9 +18,6 @@ public abstract class Accion { // no puede ser abstract por el deserializador
     }
 
     // Metodos
-
-
-
     public Integer getCadaCuanto() {
         return cadaCuanto;
     }

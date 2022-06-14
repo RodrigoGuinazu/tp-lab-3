@@ -4,15 +4,7 @@
     "apellido": "Favaloro",
     "dni": "16703723",
     "mail": "admin@hotmail.com",
-    "password": "Cusco",
-    "id": 5
-  },
-  {
-    "nombre": "Roberto",
-    "apellido": "Estévez",
-    "dni": "19594105",
-    "mail": "admin@gmail.com",
-    "password": "Caña",
-    "id": 6
+    "password": "Admin",
+    "id": -1872292764
   }
 ]

@@ -2,17 +2,24 @@
   {
     "type": "AccionBooleana",
     "properties": {
-      "seHizo": false,
       "textoPregunta": "Tomar Pastilla",
       "cadaCuanto": 1,
-      "vecesPorDia": 4,
+      "vecesPorDia": 1,
       "nombre": "Pastilla"
     }
   },
   {
     "type": "AccionBooleana",
     "properties": {
-      "seHizo": false,
+      "textoPregunta": "Nebulizarse",
+      "cadaCuanto": 1,
+      "vecesPorDia": 2,
+      "nombre": "Nebulizar"
+    }
+  },
+  {
+    "type": "AccionDouble",
+    "properties": {
       "textoPregunta": "Tomar Presion",
       "cadaCuanto": 1,
       "vecesPorDia": 2,
@@ -22,7 +29,6 @@
   {
     "type": "AccionDouble",
     "properties": {
-      "rta": 0.0,
       "textoPregunta": "Tomar Temperatura",
       "cadaCuanto": 1,
       "vecesPorDia": 3,
@@ -32,7 +38,6 @@
   {
     "type": "AccionDouble",
     "properties": {
-      "rta": 0.0,
       "textoPregunta": "Tomar Densidad",
       "cadaCuanto": 2,
       "vecesPorDia": 1,
