@@ -63,7 +63,7 @@ public class Usuario {
     }
 
     public String toStringInfoNoSensible() {
-        return nombre + " " + apellido + " "+ dni + " , ";
+        return "Nombre: " + nombre + " " + apellido + " DNI: " + dni + "\n";
     }
 
     @Override

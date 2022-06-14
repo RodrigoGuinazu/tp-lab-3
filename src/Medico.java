@@ -30,7 +30,7 @@ public class Medico extends Usuario implements Tratamientos {
         //levantar el archivo de pacientes
         //entra paciente por paciente por id y verifica qeu tratamiento
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
-        string1.append("Pacientes que deben ser atendidos hoy : ");
+        string1.append("Pacientes que deben ser atendidos hoy: \n");
         for (Paciente pacientegeneral : listaPacientes) {
             if (pacientegeneral.getDebeSerAtendido()) {
                 for (Integer a : pacientesDelMedico) {
@@ -40,12 +40,12 @@ public class Medico extends Usuario implements Tratamientos {
                 }
             }
         }
-        if (string1.toString().equals("Pacientes que deben ser atendidos hoy : ")) {
-            string1.append(" No hay");
+        if (string1.toString().equals("Pacientes que deben ser atendidos hoy: \n")) {
+            string1.append(Colores.amarillo() + "No hay" + Colores.blanco());
         }
         string1.append("\n");
         StringBuilder string2 = new StringBuilder();
-        string2.append("Pacientes que no registraron toda la informacion ayer : ");
+        string2.append("Pacientes que no registraron toda la informacion ayer: \n");
         for (Paciente a : listaPacientes) {
             if (a.tratamientoActual != null) {
                 if (!a.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(Sistema.getFechaDelDia())) {
@@ -55,8 +55,8 @@ public class Medico extends Usuario implements Tratamientos {
                 }
             }
         }
-        if (string2.toString().equals("Pacientes que no registraron informacion ayer : ")) {
-            string2.append("No hay");
+        if (string2.toString().equals("Pacientes que no registraron informacion ayer: \n")) {
+            string2.append(Colores.amarillo() + "No hay" + Colores.blanco());
         }
         return string1.append(string2);
     }
@@ -83,13 +83,31 @@ public class Medico extends Usuario implements Tratamientos {
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
         ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
 
+        // muestro los pacientes que deben ser atendidos de vuelta
+        StringBuilder string = new StringBuilder();
+        string.append("Pacientes que deben ser atendidos hoy: \n");
+        for (Paciente pacientegeneral : listaPacientes) {
+            if (pacientegeneral.getDebeSerAtendido()) {
+                for (Integer a : pacientesDelMedico) {
+                    if (pacientegeneral.getId().equals(a)) {
+                        string.append(pacientegeneral.getinfoPaciente());
+                    }
+                }
+            }
+        }
+        if (string.toString().equals("Pacientes que deben ser atendidos hoy: \n")) {
+            string.append(Colores.amarillo() + "No hay" + Colores.blanco());
+        }
+
+        System.out.println(string);
+
         Scanner scan = new Scanner(System.in);
         Paciente pacienteAux = null;
         int control = 0;
         while (control == 0) {
 
             // consultamos el paciente
-            System.out.println("Ingrese el dni del paciente que desea diagnosticar");
+            System.out.println("Ingrese el dni del paciente que desea diagnosticar: ");
 
             String dni = scan.nextLine();
             for (Paciente a : listaPacientes) {
@@ -102,7 +120,7 @@ public class Medico extends Usuario implements Tratamientos {
             }
 
             if (pacienteAux == null) {
-                System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? s/n" + Colores.blanco());
+                System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? (s/n)" + Colores.blanco());
                 if (scan.nextLine().charAt(0) != 's') {
                     throw new DniInexistenteException();
                 }

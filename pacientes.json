@@ -1,1 +1,154 @@
-[{"historialClinico":[],"tratamientoActual":{"enfermedad":{"nombre":"Gripe"},"duracion":2,"inicioDate":{"year":2022,"month":6,"day":15},"finDate":{"year":2022,"month":6,"day":17},"listaAcciones":[{"type":"AccionBooleana","properties":{"ultimaNoti":{"year":2022,"month":6,"day":12},"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":1,"nombre":"Pastilla"}},{"type":"AccionDouble","properties":{"textoPregunta":"Tomar Temperatura","cadaCuanto":2,"vecesPorDia":3,"nombre":"Temperatura"}}],"listaRegistrosDiarios":[{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"41","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Pastilla","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Pastilla","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"41","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]}],"finalizado":false},"idMedicoAsignado":4,"debeSerAtendido":false,"nombre":"Prueba ","apellido":"Crear Paciente","dni":"543542","mail":"prueba@paciente.com","password":"asdf","id":1},{"historialClinico":[],"tratamientoActual":{"enfermedad":{"nombre":"Gripe"},"duracion":2,"inicioDate":{"year":2022,"month":6,"day":15},"finDate":{"year":2022,"month":6,"day":17},"listaAcciones":[{"type":"AccionBooleana","properties":{"ultimaNoti":{"year":2022,"month":6,"day":12},"textoPregunta":"Tomar Pastilla","cadaCuanto":1,"vecesPorDia":1,"nombre":"Pastilla"}},{"type":"AccionDouble","properties":{"textoPregunta":"Tomar Temperatura","cadaCuanto":2,"vecesPorDia":3,"nombre":"Temperatura"}}],"listaRegistrosDiarios":[{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"41","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Pastilla","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Pastilla","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[{"nombreAccion":"Temperatura","rta":"41","seHizo":true}]},{"fecha":{"year":2022,"month":6,"day":14},"listaRegistros":[]}],"finalizado":false},"idMedicoAsignado":4,"debeSerAtendido":false,"nombre":"Prueba ","apellido":"Crear Paciente","dni":"543542","mail":"prueba@paciente.com","password":"asdf","id":1}]
+[
+  {
+    "historialClinico": [],
+    "tratamientoActual": {
+      "enfermedad": {
+        "nombre": "Gripe"
+      },
+      "duracion": 2,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 15
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 17
+      },
+      "listaAcciones": [
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 12
+            },
+            "textoPregunta": "Tomar Pastilla",
+            "cadaCuanto": 1,
+            "vecesPorDia": 1,
+            "nombre": "Pastilla"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "textoPregunta": "Tomar Temperatura",
+            "cadaCuanto": 2,
+            "vecesPorDia": 3,
+            "nombre": "Temperatura"
+          }
+        }
+      ],
+      "listaRegistrosDiarios": [
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": []
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Temperatura",
+              "rta": "41",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": []
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": []
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Pastilla",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Pastilla",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Temperatura",
+              "rta": "41",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 14
+          },
+          "listaRegistros": []
+        }
+      ],
+      "finalizado": false
+    },
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": false,
+    "nombre": "Prueba ",
+    "apellido": "Crear Paciente",
+    "dni": "543542",
+    "mail": "prueba@paciente.com",
+    "password": "asdf",
+    "id": 1
+  },
+  {
+    "historialClinico": [],
+    "idMedicoAsignado": 4,
+    "debeSerAtendido": true,
+    "nombre": "Prueba",
+    "apellido": "Crear Paciente",
+    "dni": "543542",
+    "mail": "prueba@paciente.com",
+    "password": "asdf",
+    "id": 1
+  }
+]
