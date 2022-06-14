@@ -4,7 +4,6 @@
     "properties": {
       "textoPregunta": "Tomar Pastilla",
       "cadaCuanto": 1,
-      "vecesPorDia": 1,
       "nombre": "Pastilla"
     }
   },
@@ -13,7 +12,6 @@
     "properties": {
       "textoPregunta": "Nebulizarse",
       "cadaCuanto": 1,
-      "vecesPorDia": 2,
       "nombre": "Nebulizar"
     }
   },
@@ -22,7 +20,6 @@
     "properties": {
       "textoPregunta": "Tomar Presion",
       "cadaCuanto": 1,
-      "vecesPorDia": 2,
       "nombre": "Presion"
     }
   },
@@ -31,7 +28,6 @@
     "properties": {
       "textoPregunta": "Tomar Temperatura",
       "cadaCuanto": 1,
-      "vecesPorDia": 3,
       "nombre": "Temperatura"
     }
   },
@@ -40,7 +36,6 @@
     "properties": {
       "textoPregunta": "Tomar Densidad",
       "cadaCuanto": 2,
-      "vecesPorDia": 1,
       "nombre": "Densiometria"
     }
   }

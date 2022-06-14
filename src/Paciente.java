@@ -69,8 +69,13 @@ public class Paciente extends Usuario {
                     int flag = 0;    //por si no hay accion para notificar
                     for (Accion a : this.tratamientoActual.getListaAcciones()) {
                         flag = 0;
-                        if(!Sistema.comprobarCorrespodenAccion(a.ultimaNoti.plusDays(a.cadaCuanto))){
-                            System.out.println("Hoy no toca la accion : " + a.getNombre());
+                        if(a.ultimaNoti!= null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti.plusDays(a.cadaCuanto))){
+                            if(a.ultimaNoti.isEqual(Sistema.getFechaDelDia())){
+                                System.out.println("Ya se realizo la accion : " + a.getNombre());
+                            }else{
+                                System.out.println("Hoy no toca la accion : " + a.getNombre());
+                            }
+
                             break;
                         }
                         for (Registro x : this.tratamientoActual.listaRegistrosDiarios.peek().listaRegistros) {

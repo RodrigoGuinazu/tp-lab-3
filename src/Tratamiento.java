@@ -125,7 +125,7 @@ public class Tratamiento {
 
             for (Accion a : listaAcciones) {
                 flag = 0;
-                if (!a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
+                if (a.ultimaNoti!=null  && !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
                     flag = 1;
                 }
 
@@ -155,7 +155,7 @@ public class Tratamiento {
         } else if (listaRegistrosDiarios.peek().getFecha().isEqual(Sistema.getFechaDelDia())) { // cuando hay registro para hoy, pero no tiene nada adentro, pasa muy poco
             if (listaRegistrosDiarios.peek().listaRegistros.isEmpty()) {
                 for (Accion a : listaAcciones) {
-                    if (!Sistema.comprobarCorrespodenAccion(a.ultimaNoti.plusDays(a.cadaCuanto))){
+                    if (a.ultimaNoti!=null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti.plusDays(a.cadaCuanto))){
                         break;
                     }
 
@@ -179,7 +179,7 @@ public class Tratamiento {
             } else {
                 for (Accion a : listaAcciones) {    // cuando hay registro del dia con algo adentro
                     flag = 0;
-                    if (!a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
+                    if (a.ultimaNoti!=null && !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
                         flag = 1;
                     }else {
                         for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
