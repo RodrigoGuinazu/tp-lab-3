@@ -70,6 +70,9 @@ public class Usuario {
         return "Nombre: " + nombre + " " + apellido + " DNI: " + dni + "\n";
     }
 
+    //mostrar historial
+
+
     @Override
     public String toString() {
         return "Usuario{" +

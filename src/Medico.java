@@ -235,57 +235,75 @@ public class Medico extends Usuario implements Tratamientos {
 
     public void verHistorialPaciente() throws DniInexistenteException {
         Scanner scan = new Scanner(System.in);
-        ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
-        for (Paciente p : listaPacientes) {
-            for (int a : pacientesDelMedico) {  //ve solo el historial de sus pacientes
-                if (p.getId().equals(a)) {
-                    System.out.println(p.toStringInfoNoSensible());
+
+        if (pacientesDelMedico.isEmpty()) {
+            System.out.println("No hay pacientes asignados a este medico");
+        } else {
+
+            ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
+            for (Paciente p : listaPacientes) {
+                for (int a : pacientesDelMedico) {  //ve solo el historial de sus pacientes
+                    if (p.getId().equals(a)) {
+                        System.out.println(p.toStringInfoNoSensible());//muestra nombre y apellido de lso pacientes del medico
+                    }
                 }
             }
-        }
 
-        Paciente pacienteAux = null;
-        int control = 0;
-        while (control == 0) {
-            System.out.println("Ingrese el dni su paciente para ver historial");
+            //valida dni
+            Paciente pacienteAux = null;
+            int control = 0;
+            while (control == 0) {
+                System.out.println("Ingrese el dni su paciente para ver historial");
 
-            String dni = scan.nextLine();
-            pacienteAux = null;
-            for (Paciente a : listaPacientes) {
-                if (a.getDni().equals(dni)) {
-                    pacienteAux = a;
-                    control = 1;
+                String dni = scan.nextLine();
+                pacienteAux = null;
+                for (Paciente a : listaPacientes) {
+                    if (a.getDni().equals(dni)) {
+                        pacienteAux = a;
+                        control = 1;
+                    }
+                }
+                if (pacienteAux == null) {
+                    System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? s/n" + Colores.blanco());
+                    if (scan.nextLine().charAt(0) != 's') {
+                        throw new DniInexistenteException();
+                    }
                 }
             }
-            if (pacienteAux == null) {
-                System.out.println(Colores.amarillo() + "Dni invalido, ¿Quiere ingresar otro dni? s/n" + Colores.blanco());
-                if (scan.nextLine().charAt(0) != 's') {
-                    throw new DniInexistenteException();
+
+
+            //muestra el historial clinico
+            try {
+                if (pacienteAux.getHistorialClinico().isEmpty()) {
+                    System.out.println("No hay historial clinico para mostrar");
+                } else {
+                    for (Tratamiento t : pacienteAux.getHistorialClinico()) {
+                        t.mostrarTratamiento();
+                    }
                 }
+            } catch (NullPointerException e) {
+                System.out.println("No hay historial clinico para mostrar");
             }
+            System.out.println("Presione cualquier tecla para continuar");
+            scan.nextLine();
         }
-
-
-
-        for (Tratamiento t : pacienteAux.getHistorialClinico()) {
-            t.mostrarTratamiento();
-        }
-        System.out.println("Presione cualquier tecla para continuar");
-        scan.nextLine();
     }
 
 
     public void verHistorialTratamientoActual() throws DniInexistenteException {
+
         ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
+
+
         for (Paciente pacientegeneral : listaPacientes) {
             for (int a : pacientesDelMedico) {
                 if (pacientegeneral.getId().equals(a)) {
-                    System.out.println(pacientegeneral.toStringInfoNoSensible());
+                    System.out.println(pacientegeneral.toStringInfoNoSensible());//muestra pacientes del medico
                 }
             }
         }
 
-        System.out.println("Ingrese el dni del paciente que desea cunsultar");
+        System.out.println("Ingrese el dni del paciente que desea consultar");
         Scanner scan = new Scanner(System.in);
         String dni = scan.nextLine();
         Paciente pacienteAux = new Paciente();
@@ -294,7 +312,16 @@ public class Medico extends Usuario implements Tratamientos {
                 pacienteAux = a;
             }
         }
-        System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
+
+        try {
+            if (pacienteAux.getTratamientoActual() == null) {
+                System.out.println("No hay tratamiento actual");
+            } else {
+                System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
+            }
+        } catch (NullPointerException e) {
+            System.out.println("No hay tratamiento actual");
+        }
     }
 
     @Override
@@ -415,7 +442,7 @@ public class Medico extends Usuario implements Tratamientos {
 
 
                     if (aux.listaAcciones.size() == 1) {
-                        System.out.println(Colores.amarillo()+"No se puede tener un tratamiento vacio"+Colores.blanco());
+                        System.out.println(Colores.amarillo() + "No se puede tener un tratamiento vacio" + Colores.blanco());
                     } else {
                         while (flag2 == 0) {
                             try {
