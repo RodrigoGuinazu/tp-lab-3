@@ -47,10 +47,12 @@ public class Paciente extends Usuario {
 
     public void notificarPaciente() {
 
+
+
         if(this.tratamientoActual!=null){
             //Chequear igualdades de LocalDate
             if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) {
-                try {
+
                     for (Accion a : this.tratamientoActual.getListaAcciones()) {
                         if( a.ultimaNoti == null ){
                             System.out.println("Debe realizar la accion : " + a.getNombre());
@@ -58,14 +60,13 @@ public class Paciente extends Usuario {
                         }else if(Sistema.comprobarCorrespodenAccion(a.ultimaNoti.plusDays(a.cadaCuanto))){
                             System.out.println("Debe realizar la accion : " + a.getNombre());
 
+                        }else{
+                            System.out.println("No debe realizar la accion : " + a.getNombre());
                         }
 
                     }
-                } catch (NullPointerException e) {
 
-                }
             } else {
-                try {
                     int flag = 0;    //por si no hay accion para notificar
                     for (Accion a : this.tratamientoActual.getListaAcciones()) {
                         flag = 0;
@@ -89,12 +90,10 @@ public class Paciente extends Usuario {
                             System.out.println("Ya se realizo la accion : " + a.getNombre());
                         }
                     }
-                } catch (NullPointerException e) {
-                    System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
-                }
             }
 
         }else{
+
 
             System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
 

@@ -150,6 +150,9 @@ public class Tratamiento {
                 }
             }
 
+            if (contador == 0) {
+                System.out.println("Todas las acciones fueron realizadas, si quiere modificar sus valores, ingrese desde la opcion Modificar en el menu");
+            }
             return;
 
         } else if (listaRegistrosDiarios.peek().getFecha().isEqual(Sistema.getFechaDelDia())) { // cuando hay registro para hoy, pero no tiene nada adentro, pasa muy poco

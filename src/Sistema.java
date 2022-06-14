@@ -8,8 +8,8 @@ public class Sistema {
 
     // Atributos
     private ArrayList<Usuario> usuarios;
-    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
-    //private static LocalDate fechaDelDia = LocalDate.now().plusDays(4);
+//    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
+    private static LocalDate fechaDelDia = LocalDate.now().plusDays(6);
     private Usuario usuarioLogueado;
 
     //Constructor 1
