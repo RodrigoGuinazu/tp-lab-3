@@ -209,12 +209,12 @@ public class Tratamiento {
 
     }
 
-
-
     public void modificarAcciones() {
-        try {
-            this.listaRegistrosDiarios.peek().modificarRegistro();
-        } catch (EmptyStackException e) {
+        try{
+            if(Sistema.getFechaDelDia().equals(this.listaRegistrosDiarios.peek().getFecha())){ // intentando agregarle logica de fecha, no lo pude probrar
+                this.listaRegistrosDiarios.peek().modificarRegistro();
+            }
+        }catch (EmptyStackException e) {
             System.out.println(Colores.amarillo() + "No hay registros que modificar en el dia de hoy" + Colores.blanco());
         }
     }

@@ -38,5 +38,14 @@
     "mail": "prueba@menuadmin.com",
     "password": "asdfasdf",
     "id": 9
+  },
+  {
+    "pacientesDelMedico": [],
+    "nombre": "Prueba",
+    "apellido": "Crear medico",
+    "dni": "4514513",
+    "mail": "pruebacreacionmedico@hotmail.com",
+    "password": "asdgasd",
+    "id": 2
   }
 ]
