@@ -34,7 +34,7 @@ public class Medico extends Usuario implements Tratamientos {
         for (Paciente pacientegeneral : listaPacientes) {
             if (pacientegeneral.getDebeSerAtendido()) {
                 for (Integer a : pacientesDelMedico) {
-                    if (pacientegeneral.getId().equals(a)) {
+                    if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null &&  pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
                         string1.append(pacientegeneral.getinfoPaciente());
                     }
                 }
@@ -46,13 +46,18 @@ public class Medico extends Usuario implements Tratamientos {
         string1.append("\n");
         StringBuilder string2 = new StringBuilder();
         string2.append("Pacientes que no registraron toda la informacion ayer: \n");
-        for (Paciente a : listaPacientes) {
-            if (a.tratamientoActual != null) {
-                if (!a.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & a.tratamientoActual.getInicioDate().isBefore(Sistema.getFechaDelDia())) {
-                    string2.append(a.getinfoPaciente());
-                } else if (a.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & a.tratamientoActual.getNumeroAccionesDelTratamiento() != a.tratamientoActual.getNumeroAccionesRegistroDiario(Sistema.getFechaDelDia().minusDays(1))) {
-                    string2.append(a.getinfoPaciente());
+        for (Paciente pacientegeneral : listaPacientes) {
+            if (pacientegeneral.tratamientoActual != null) {
+                for (Integer a : pacientesDelMedico) {
+                    if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null &&  pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
+                        if (!pacientegeneral.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & pacientegeneral.tratamientoActual.getInicioDate().isBefore(Sistema.getFechaDelDia())) {
+                            string2.append(pacientegeneral.getinfoPaciente());
+                        } else if (pacientegeneral.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & pacientegeneral.tratamientoActual.getNumeroAccionesNotificables() != pacientegeneral.tratamientoActual.getNumeroAccionesRegistroDiario(Sistema.getFechaDelDia().minusDays(1))) {
+                            string2.append(pacientegeneral.getinfoPaciente());
+                        }
+                    }
                 }
+
             }
         }
         if (string2.toString().equals("Pacientes que no registraron informacion ayer: \n")) {
@@ -72,6 +77,10 @@ public class Medico extends Usuario implements Tratamientos {
             aux.add(a);
         }
         return pacientesDelMedico;
+    }
+
+    public void agregarPaciente (Integer id){
+        pacientesDelMedico.add(id);
     }
 
 
@@ -94,7 +103,7 @@ public class Medico extends Usuario implements Tratamientos {
             for (Paciente pacientegeneral : listaPacientes) {
                 if (pacientegeneral.getDebeSerAtendido()) {
                     for (Integer a : pacientesDelMedico) {
-                        if (pacientegeneral.getId().equals(a)) {
+                        if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null &&  pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
                             string.append(pacientegeneral.getinfoPaciente());
                         }
                     }

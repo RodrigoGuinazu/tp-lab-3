@@ -1,14 +1,24 @@
 [
   {
     "pacientesDelMedico": [
-      -1702549412,
-      -156393235
+      -2073964684
     ],
-    "nombre": "Sandra",
-    "apellido": "Gonzales",
-    "dni": "44963081",
-    "mail": "medico@hotmail.com",
-    "password": "Medico",
-    "id": 572513422
+    "nombre": "Juan",
+    "apellido": "Torres",
+    "dni": "4199999",
+    "mail": "juantorres@gmail.com",
+    "password": "Medico1",
+    "id": 1188543223
+  },
+  {
+    "pacientesDelMedico": [
+      -1532262400
+    ],
+    "nombre": "Marcelo",
+    "apellido": "Garcia",
+    "dni": "512222",
+    "mail": "marcelogarcia@gmail.com",
+    "password": "Medico2",
+    "id": 412924
   }
 ]

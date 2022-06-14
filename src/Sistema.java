@@ -9,7 +9,7 @@ public class Sistema {
     // Atributos
     private ArrayList<Usuario> usuarios;
 //    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
-    private static LocalDate fechaDelDia = LocalDate.now().plusDays(6);
+    private static LocalDate fechaDelDia = LocalDate.now().plusDays(2);
     private Usuario usuarioLogueado;
 
     //Constructor 1
@@ -114,6 +114,7 @@ public class Sistema {
                     break;
 
                 case 3:
+
                     ((Paciente) usuarioLogueado).notificarPaciente();
                     break;
 
@@ -260,16 +261,16 @@ public class Sistema {
         while (rta == null) {
 
             System.out.println("Mail: ");
-//            String mail = scan.nextLine();    // sin harcodeo
+            String mail = scan.nextLine();    // sin harcodeo
 //            String mail = "paciente2@hotmail.com"; //Harcodeo paciente
-            String mail = "medico@hotmail.com"; //Harcodeo medico
+//            String mail = "medico@hotmail.com"; //Harcodeo medico
 //            String mail = "admin@hotmail.com"; //Harcodeo admin
 
 
             System.out.println("Contraseña: ");
-//            String pass = scan.nextLine(); // sin harcodeo
+            String pass = scan.nextLine(); // sin harcodeo
 //            String pass = "Paciente2"; //Harcodeo paciente
-            String pass = "Medico"; //Harcodeo medico
+//            String pass = "Medico"; //Harcodeo medico
 //            String pass = "Admin"; //Harcodeo admin
 
 

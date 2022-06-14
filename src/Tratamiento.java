@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class Tratamiento {
     private Enfermedad enfermedad;
     private Integer duracion;
@@ -297,14 +299,27 @@ public class Tratamiento {
                 '}';
     }
 
-    public int getNumeroAccionesDelTratamiento() {
-        return listaAcciones.size();
+    public int getNumeroAccionesNotificables() {
+
+        int contador = 0;
+        long dias = DAYS.between(this.inicioDate, Sistema.getFechaDelDia().minusDays(1));
+        for(Accion a : listaAcciones){
+            if(dias % a.cadaCuanto == 0){
+                contador++;
+            }
+        }
+
+        return contador;
     }
 
     public int getNumeroAccionesRegistroDiario(LocalDate fecha) {
         for (RegistroDiario a : listaRegistrosDiarios) {
             if (a.getFecha().equals(fecha)) {
-                return a.listaRegistros.size();
+                int x = a.listaRegistros.size();
+                int asd = 0 ;
+
+                return x;
+
             }
         }
         return -1;

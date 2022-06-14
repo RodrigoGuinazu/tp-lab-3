@@ -48,8 +48,7 @@ public class Paciente extends Usuario {
     public void notificarPaciente() {
 
 
-
-        if(this.tratamientoActual!=null){
+        if(this.tratamientoActual!=null && this.tratamientoActual.getFinDate().isAfter(Sistema.getFechaDelDia().minusDays(1))){  //minus day 1 para contemplar la fecha de fin, incluya hoy
             //Chequear igualdades de LocalDate
             if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) {
 
@@ -94,8 +93,21 @@ public class Paciente extends Usuario {
 
         }else{
 
+            if(tratamientoActual == null){
+                System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
+            }else{
+                if(this.tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())){
+                    if (tratamientoActual.getFinDate().equals(Sistema.getFechaDelDia()) || tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())) {
+                        tratamientoActual.setFinalizado(true);
+                        historialClinico.add(tratamientoActual);
+                        this.idMedicoAsignado = null;
+                        tratamientoActual = null;
+                        System.out.println(Colores.amarillo() + "Usted ha finalizado su tratamiento" + Colores.blanco());
+                    }
+                }
+            }
 
-            System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
+
 
         }
 
@@ -103,16 +115,14 @@ public class Paciente extends Usuario {
 
 
     public void realizarAcciones() {
-        if (tratamientoActual.getFinDate().equals(Sistema.getFechaDelDia()) || tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())) {
-            tratamientoActual.setFinalizado(true);
-            historialClinico.add(tratamientoActual);
-            tratamientoActual = null;
-            System.out.println(Colores.amarillo() + "Usted ha finalizado su tratamiento" + Colores.blanco());
-            return;
-        } else {
-            this.tratamientoActual.realizarAcciones();
-        }
-        return;
+
+            if(tratamientoActual != null){
+                this.tratamientoActual.realizarAcciones();
+            }else{
+                System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
+            }
+
+
     }
 
     public void editarAccionesDelDia() {

@@ -39,6 +39,13 @@ public class Admin extends Usuario implements Tratamientos {
                     Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
                     rta.setIdMedicoAsignado(id);
                     rta.setDebeSerAtendido(true);
+
+                    for (Medico a : medicos){
+                        if(id.equals(a.getId())){
+                            a.agregarPaciente(rta.getId());
+                        }
+                    }
+
                 } else {
                     System.out.println(Colores.amarillo() + "El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita" + Colores.blanco());
                 }
@@ -72,6 +79,11 @@ public class Admin extends Usuario implements Tratamientos {
                     Integer id = asignarMedico(apellido, nombre);
                     flag = 1;
                     rta = new Paciente(nombre, apellido, dni, mail, password, id);
+                    for (Medico a : medicos){
+                        if(id.equals(a.getId())){
+                            a.agregarPaciente(rta.getId());
+                        }
+                    }
                     pacientes.add(rta);
                     System.out.println(Colores.verde() + "Creaste el paciente con exito!" + Colores.blanco());
                 } catch (InputMismatchException f) {
@@ -81,6 +93,7 @@ public class Admin extends Usuario implements Tratamientos {
         }
         //persistir
         Persistencia.serializacionPacientes(pacientes);
+        Persistencia.serializacion(medicos,"medicos.json");
     }
 
     public void registrarMedico() {

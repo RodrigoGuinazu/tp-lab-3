@@ -1,43 +1,46 @@
 [
   {
-    "idMedicoAsignado": 572513422,
-    "debeSerAtendido": true,
-    "nombre": "Juan",
-    "apellido": "Ros",
-    "dni": "11247824",
-    "mail": "paciente1@gmail.com",
-    "password": "Paciente1",
-    "id": -156393235
-  },
-  {
     "historialClinico": [],
     "tratamientoActual": {
       "enfermedad": {
-        "nombre": "Gripe"
+        "nombre": "Estres"
       },
-      "duracion": 420,
+      "duracion": 7,
       "inicioDate": {
         "year": 2022,
         "month": 6,
         "day": 14
       },
       "finDate": {
-        "year": 2023,
-        "month": 8,
-        "day": 9
+        "year": 2022,
+        "month": 6,
+        "day": 21
       },
       "listaAcciones": [
         {
-          "type": "AccionBooleana",
+          "type": "AccionDouble",
           "properties": {
             "ultimaNoti": {
               "year": 2022,
               "month": 6,
-              "day": 20
+              "day": 15
             },
-            "textoPregunta": "Tomar Pastilla",
+            "textoPregunta": "Tomar Temperatura",
+            "cadaCuanto": 1,
+            "nombre": "Temperatura"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 14
+            },
+            "textoPregunta": "Tomar Densidad",
             "cadaCuanto": 2,
-            "nombre": "Pastilla"
+            "nombre": "Densiometria"
           }
         }
       ],
@@ -50,7 +53,13 @@
           },
           "listaRegistros": [
             {
-              "nombreAccion": "Pastilla",
+              "nombreAccion": "Temperatura",
+              "rta": "34",
+              "seHizo": true
+            },
+            {
+              "nombreAccion": "Densiometria",
+              "rta": "65",
               "seHizo": true
             }
           ]
@@ -61,51 +70,15 @@
             "month": 6,
             "day": 15
           },
-          "listaRegistros": []
-        },
-        {
-          "fecha": {
-            "year": 2022,
-            "month": 6,
-            "day": 16
-          },
           "listaRegistros": [
             {
-              "nombreAccion": "Pastilla",
+              "nombreAccion": "Temperatura",
+              "rta": "34",
               "seHizo": true
-            }
-          ]
-        },
-        {
-          "fecha": {
-            "year": 2022,
-            "month": 6,
-            "day": 18
-          },
-          "listaRegistros": [
+            },
             {
-              "nombreAccion": "Pastilla",
-              "seHizo": true
-            }
-          ]
-        },
-        {
-          "fecha": {
-            "year": 2022,
-            "month": 6,
-            "day": 19
-          },
-          "listaRegistros": []
-        },
-        {
-          "fecha": {
-            "year": 2022,
-            "month": 6,
-            "day": 20
-          },
-          "listaRegistros": [
-            {
-              "nombreAccion": "Pastilla",
+              "nombreAccion": "Temperatura",
+              "rta": "34",
               "seHizo": true
             }
           ]
@@ -113,13 +86,13 @@
       ],
       "finalizado": false
     },
-    "idMedicoAsignado": 572513422,
+    "idMedicoAsignado": 1188543223,
     "debeSerAtendido": false,
-    "nombre": "Elena",
-    "apellido": "Vargas",
-    "dni": "40347821",
-    "mail": "paciente2@hotmail.com",
-    "password": "Paciente2",
-    "id": -1702549412
+    "nombre": "Santi",
+    "apellido": "Torrecillas",
+    "dni": "3453453",
+    "mail": "santi@gmail.com",
+    "password": "santi",
+    "id": -2073964684
   }
 ]
