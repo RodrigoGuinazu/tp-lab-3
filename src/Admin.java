@@ -228,7 +228,7 @@ public class Admin extends Usuario implements Tratamientos {
                     while (flag == 0) {
                         try {
                             mostrarEnfermedadesArchivo();
-                            System.out.println("Ingrese el numero de la enfermedad");
+                            System.out.println("Ingrese el numero de la enfermedad: ");
                             int indice = scan.nextInt();
                             enfermedad = enfermedades.get(indice - 1);  // falta validar indice
                             System.out.println("Se eligio la enfermedad : " + enfermedad.getNombre());
@@ -261,12 +261,12 @@ public class Admin extends Usuario implements Tratamientos {
 
         Tratamiento nuevoTratamiento = new Tratamiento();
 
-        System.out.println("Ingrese la duracion que desea que tenga el tratamiento");
+        System.out.println("Ingrese la duracion que desea que tenga el tratamiento: ");
         nuevoTratamiento.setDuracion(scan.nextInt());
         nuevoTratamiento.setEnfermedad(enfermedad);
 
 
-        System.out.println("Ingrese el numero de acciones que tendra el tratamiento");
+        System.out.println("Ingrese el numero de acciones que tendra el tratamiento: ");
         int aux = scan.nextInt();
         int flag;
         int accionIndex;
@@ -282,7 +282,7 @@ public class Admin extends Usuario implements Tratamientos {
 
                     }
 
-                    System.out.println("Elija el numero de de la accion que desea para el tratamiento:");
+                    System.out.println("Elija el numero de de la accion que desea para el tratamiento: ");
                     accionIndex = scan.nextInt() - 1;
                     if (listaAcciones.get(accionIndex) instanceof AccionBooleana) {
                         AccionBooleana accionAux = (AccionBooleana) listaAcciones.get(accionIndex).clonarAccion();
@@ -310,7 +310,7 @@ public class Admin extends Usuario implements Tratamientos {
         listaTratamientos.add(nuevoTratamiento);
         Persistencia.serializacionTratamientos(listaTratamientos);
 
-        System.out.println("El tratamiento fue creado con exito.");
+        System.out.println(Colores.verde() + "El tratamiento fue creado con exito." + Colores.blanco());
 
         return nuevoTratamiento;
 
@@ -373,7 +373,7 @@ public class Admin extends Usuario implements Tratamientos {
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);
         System.out.println("Enfermedades persistidas : ");
         for (Enfermedad e : enfermedades) {
-            System.out.print(contador + " ");
+            System.out.print("[" + contador + "] ");
             System.out.println(e.mostrarEnfermedad());
             contador++;
         }
