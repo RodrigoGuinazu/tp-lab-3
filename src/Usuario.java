@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Usuario {
 
     //Atributos
@@ -6,7 +8,6 @@ public class Usuario {
     private String dni;
     private String mail;
     private String password;
-    private static Integer ID = 0;
     private Integer id;
 
     //Constructores
@@ -23,16 +24,10 @@ public class Usuario {
         this.dni = dni;
         this.mail = mail;
         this.password = password;
-        this.id = idAutoincremental();
+        this.id = this.hashCode();
     }
 
     //Metodos
-
-    //id autoincremental
-    private Integer idAutoincremental() {
-        ID += 1;
-        return ID;
-    }
 
     public String getMail() {
         return mail;
@@ -58,8 +53,17 @@ public class Usuario {
         return apellido;
     }
 
-    public static Integer getID() {
-        return ID;
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(dni, usuario.dni) && Objects.equals(mail, usuario.mail); // usa mail y dni ya que estos son unicos para cada usuario
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dni, mail);
     }
 
     public String toStringInfoNoSensible() {

@@ -80,7 +80,6 @@ public class Sistema {
     public void menuPaciente() {
         int opcionPaciente = 0;
         ((Paciente) usuarioLogueado).notificarPaciente();
-
         do {
 
             System.out.println("[1] Realizar acciones del dia");
