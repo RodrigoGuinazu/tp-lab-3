@@ -23,9 +23,15 @@ public class Admin extends Usuario implements Tratamientos {
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(pacientes);
         aux.addAll(medicos);
+        Character opcionDni = 'n';
+        String dni = "";
         System.out.println("Registrando un paciente:");
-        System.out.println("Ingrese el dni del paciente");
-        String dni = scan.nextLine();
+        while(opcionDni != 's'){
+            System.out.println("Ingrese el dni del paciente: ");
+            dni = scan.nextLine();
+            System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
+            opcionDni = scan.nextLine().charAt(0);
+        }
         //fijarse que exista el usuario
         try {
             Usuario verificar = this.buscarUsuario(aux, dni);
@@ -105,9 +111,15 @@ public class Admin extends Usuario implements Tratamientos {
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(medicos);
         aux.addAll(pacientes);
+        String dni = "";
+        Character opcionDni = 'n';
         System.out.println("Registrando un Medico:");
-        System.out.println("Ingrese el dni del medico");
-        String dni = scan.nextLine();
+        while(opcionDni != 's'){
+            System.out.println("Ingrese el dni del medico: ");
+            dni = scan.nextLine();
+            System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
+            opcionDni = scan.nextLine().charAt(0);
+        }
         //fijarse que exista el usuario
         try {
             if (this.buscarUsuario(aux, dni) instanceof Paciente) {
