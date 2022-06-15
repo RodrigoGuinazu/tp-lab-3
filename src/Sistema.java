@@ -23,18 +23,19 @@ public class Sistema {
         // escondo los warning
         System.err.close();
         System.setErr(System.out);
-        // generamos la lista de usuarios para poder utilizarla en la logica del login
-        ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
-        ArrayList<Paciente> pacientesAux = Persistencia.deserializacionPacientes();
-        ArrayList<Admin> adminsAux = Persistencia.deserializacion("admins.json", Admin.class);
-        this.usuarios.addAll(medicosAux);
-        this.usuarios.addAll(pacientesAux);
-        this.usuarios.addAll(adminsAux);
 
         Scanner scan = new Scanner(System.in);
         int opcionMenu = 0;
 
         do {
+            // generamos la lista de usuarios para poder utilizarla en la logica del login
+            ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
+            ArrayList<Paciente> pacientesAux = Persistencia.deserializacionPacientes();
+            ArrayList<Admin> adminsAux = Persistencia.deserializacion("admins.json", Admin.class);
+            this.usuarios.addAll(medicosAux);
+            this.usuarios.addAll(pacientesAux);
+            this.usuarios.addAll(adminsAux);
+
             System.out.println(Colores.violeta() + "Menu Principal" + Colores.blanco());
             System.out.println("Fecha del dia: " + fechaDelDia + "(Año/Mes/Dia)");
             System.out.println("[1] Log In");
