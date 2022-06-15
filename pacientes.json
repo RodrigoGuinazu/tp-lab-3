@@ -1,8 +1,104 @@
 [
   {
     "historialClinico": [],
+    "tratamientoActual": {
+      "duracion": 10,
+      "inicioDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 15
+      },
+      "finDate": {
+        "year": 2022,
+        "month": 6,
+        "day": 25
+      },
+      "listaAcciones": [
+        {
+          "type": "AccionBooleana",
+          "properties": {
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 17
+            },
+            "textoPregunta": "Tomar Pastilla",
+            "cadaCuanto": 1,
+            "nombre": "Pastilla"
+          }
+        },
+        {
+          "type": "AccionDouble",
+          "properties": {
+            "ultimaNoti": {
+              "year": 2022,
+              "month": 6,
+              "day": 15
+            },
+            "textoPregunta": "Tomar Temperatura",
+            "cadaCuanto": 2,
+            "nombre": "Temperatura"
+          }
+        }
+      ],
+      "listaRegistrosDiarios": [
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 15
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Pastilla",
+              "seHizo": true
+            },
+            {
+              "nombreAccion": "Temperatura",
+              "rta": "37",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 16
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Pastilla",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 17
+          },
+          "listaRegistros": [
+            {
+              "nombreAccion": "Pastilla",
+              "seHizo": true
+            }
+          ]
+        },
+        {
+          "fecha": {
+            "year": 2022,
+            "month": 6,
+            "day": 18
+          },
+          "listaRegistros": []
+        }
+      ],
+      "finalizado": false
+    },
     "idMedicoAsignado": 1188543223,
-    "debeSerAtendido": true,
+    "debeSerAtendido": false,
     "nombre": "Tito",
     "apellido": "Fuentes",
     "dni": "12345678",

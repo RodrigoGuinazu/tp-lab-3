@@ -127,7 +127,7 @@ public class Tratamiento {
 
             for (Accion a : listaAcciones) {
                 flag = 0;
-                if (a.ultimaNoti!=null  && !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
+                if (a.ultimaNoti != null && !a.ultimaNoti.plusDays(a.cadaCuanto).isEqual(Sistema.getFechaDelDia())) {
                     flag = 1;
                 }
 
@@ -160,7 +160,7 @@ public class Tratamiento {
         } else if (listaRegistrosDiarios.peek().getFecha().isEqual(Sistema.getFechaDelDia())) { // cuando hay registro para hoy, pero no tiene nada adentro, pasa muy poco
             if (listaRegistrosDiarios.peek().listaRegistros.isEmpty()) {
                 for (Accion a : listaAcciones) {
-                    if (a.ultimaNoti!=null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)){
+                    if (a.ultimaNoti != null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)) {
                         break;
                     }
 
@@ -184,9 +184,9 @@ public class Tratamiento {
             } else {
                 for (Accion a : listaAcciones) {    // cuando hay registro del dia con algo adentro
                     flag = 0;
-                    if (a.ultimaNoti!=null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)) {
+                    if (a.ultimaNoti != null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)) {
                         flag = 1;
-                    }else {
+                    } else {
                         for (Registro x : listaRegistrosDiarios.peek().listaRegistros) {
                             if (x.mostrarNombresRegistros().equals(a.getNombre())) {
                                 flag = 1;
@@ -229,7 +229,7 @@ public class Tratamiento {
         try {
             if (Sistema.getFechaDelDia().equals(this.listaRegistrosDiarios.peek().getFecha()) && (this.listaRegistrosDiarios.peek().listaRegistros.size() > 0)) {
                 this.listaRegistrosDiarios.peek().modificarRegistro();
-            }else{
+            } else {
                 System.out.println(Colores.amarillo() + "No hay registros que modificar en el dia de hoy" + Colores.blanco());
             }
         } catch (EmptyStackException e) {
@@ -278,10 +278,41 @@ public class Tratamiento {
     }
 
     public String toStringHistorialTratamientoActual() {
+
         String rta = "";
-        for (RegistroDiario a : listaRegistrosDiarios) {
-            rta += a.toString();
+
+        for (RegistroDiario registroDiario : listaRegistrosDiarios) {
+            rta += registroDiario.getFecha().toString()+ "\n";
+            for (Accion accion : listaAcciones) {
+                int flag = 0;
+                String aux = "";
+                if (!Sistema.comprobarCorrespodiaAccionPasado(this.inicioDate,registroDiario.getFecha(),accion.cadaCuanto)){
+                    rta+= "La accion "+ accion.getNombre() + " no debia realizarce.\n";
+                }else{
+                    for(Registro registroPart : registroDiario.listaRegistros){
+                        if(registroPart.mostrarNombresRegistros().equals(accion.getNombre())){
+                            flag = 1;
+                            aux = registroPart.toStringParaHistorial();
+                        }
+                    }
+                    if(flag == 1){
+                        rta += aux ;
+                    }else{
+                        rta += "La accion "+ accion.getNombre() + " debia realizarce y no se hizo.\n";
+                    }
+
+
+                }
+
+            }
+
         }
+
+
+//        for (RegistroDiario a : listaRegistrosDiarios) {
+//            rta += a.toString();
+//        }
+
         return rta;
 
     }
@@ -303,8 +334,8 @@ public class Tratamiento {
 
         int contador = 0;
         long dias = DAYS.between(this.inicioDate, Sistema.getFechaDelDia().minusDays(1));
-        for(Accion a : listaAcciones){
-            if(dias % a.cadaCuanto == 0){
+        for (Accion a : listaAcciones) {
+            if (dias % a.cadaCuanto == 0) {
                 contador++;
             }
         }
@@ -316,7 +347,7 @@ public class Tratamiento {
         for (RegistroDiario a : listaRegistrosDiarios) {
             if (a.getFecha().equals(fecha)) {
                 int x = a.listaRegistros.size();
-                int asd = 0 ;
+                int asd = 0;
 
                 return x;
 

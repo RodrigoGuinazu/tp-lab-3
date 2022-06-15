@@ -66,11 +66,6 @@ public class Medico extends Usuario implements Tratamientos {
         return string1.append(string2);
     }
 
-
-    public void verHistoriales() {
-
-    }
-
     public ArrayList<Integer> obtenerIDsPacientes() {
         ArrayList<Integer> aux = new ArrayList();
         for (Integer a : pacientesDelMedico) {
@@ -334,6 +329,11 @@ public class Medico extends Usuario implements Tratamientos {
         try {
             if(pacienteAux.getTratamientoActual() != null){
                 if(!pacienteAux.tratamientoActual.listaRegistrosDiarios.isEmpty()){
+
+
+
+
+
                     System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
                 }else{
                     System.out.println(Colores.amarillo() + "El paciente que ingresaste no realizo ninguna accion del tratamiento por el momento!" + Colores.blanco());

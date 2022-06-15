@@ -30,7 +30,7 @@ public class Sistema {
         do {
 
 
-            System.out.println("levantar archivos inicio");
+
             // generamos la lista de usuarios para poder utilizarla en la logica del login
             this.usuarios = new ArrayList<Usuario>();
 
@@ -364,6 +364,18 @@ public class Sistema {
         }
 
         if(fecha.isEqual(Sistema.getFechaDelDia())){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean comprobarCorrespodiaAccionPasado(LocalDate inicioTratamiento, LocalDate fechaRegistro, int cadaCuanto){
+        while(inicioTratamiento.isBefore(fechaRegistro)){
+            inicioTratamiento = inicioTratamiento.plusDays(cadaCuanto);
+        }
+
+        if(inicioTratamiento.isEqual(fechaRegistro)){
             return true;
         }else{
             return false;
