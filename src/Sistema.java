@@ -35,9 +35,11 @@ public class Sistema {
         int opcionMenu = 0;
 
         do {
-            System.out.println(Colores.violeta() + "Menu Principal\n" + Colores.blanco());
+            System.out.println(Colores.violeta() + "Menu Principal" + Colores.blanco());
+            System.out.println("Fecha del dia: " + fechaDelDia + "(Año/Mes/Dia)");
             System.out.println("[1] Log In");
-            System.out.println("[2] Salir del programa");
+            System.out.println("[2] Simular dias");
+            System.out.println("[3] Salir del programa");
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
@@ -68,13 +70,27 @@ public class Sistema {
                     break;
 
                 case 2:
+                    int flagDias = 0;
+                    while (flagDias == 0){
+                        try{
+                            System.out.println("Cuantos dias desea adelantarse?");
+                            Sistema.agregarDias(scan.nextLong());
+                            flagDias = 1;
+                        }catch (InputMismatchException e){
+                            System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                            scan.nextLine();
+                        }
+                    }
+                    break;
+
+                case 3:
                     System.out.println(Colores.rojo() + "Cerrando el programa..." + Colores.blanco());
                     break;
 
                 default:
                     System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
-        } while (opcionMenu != 2);
+        } while (opcionMenu != 3);
     }
 
 
@@ -82,7 +98,7 @@ public class Sistema {
         int opcionPaciente = 0;
         ((Paciente) usuarioLogueado).notificarPaciente();
         do {
-            System.out.println(Colores.violeta() + "Menu Paciente\n" + Colores.blanco());
+            System.out.println(Colores.violeta() + "Menu Paciente" + Colores.blanco());
             System.out.println("[1] Realizar acciones del dia");
             System.out.println("[2] Modificar acciones del dia");
             System.out.println("[3] Mostrar acciones del dia");
@@ -137,7 +153,7 @@ public class Sistema {
         int opcionMedico = 0;
         do {
             //mostrar mejor y que cuando oprima una tecla siga con el menu
-            System.out.println(Colores.violeta() + "Menu Medico\n" + Colores.blanco());
+            System.out.println(Colores.violeta() + "Menu Medico" + Colores.blanco());
             System.out.println("[1] Asignar tratamiento");
             System.out.println("[2] Ver las notificaciones del dia");
             System.out.println("[3] Ver historiales de los pacientes");
@@ -198,7 +214,7 @@ public class Sistema {
     public void menuAdmin() {
         int opcion = 0;
         do {
-            System.out.println(Colores.violeta() + "Menu Admin\n" + Colores.blanco());
+            System.out.println(Colores.violeta() + "Menu Admin" + Colores.blanco());
             System.out.println("[1] Registrar un nuevo paciente");
             System.out.println("[2] Registrar un nuevo medico");
             System.out.println("[3] Agregar una nueva enfermedad");
@@ -332,6 +348,10 @@ public class Sistema {
         }else{
             return false;
         }
+    }
+
+    public static void agregarDias(long x){
+        fechaDelDia = LocalDate.now().plusDays(x);
     }
 }
 
