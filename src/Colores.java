@@ -14,4 +14,8 @@ public class Colores {
     public static String blanco(){
         return "\u001B[0m";
     }
+
+    public static String violeta(){
+        return "\u001B[35m";
+    }
 }

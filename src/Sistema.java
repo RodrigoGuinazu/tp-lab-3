@@ -35,7 +35,7 @@ public class Sistema {
         int opcionMenu = 0;
 
         do {
-            System.out.println("Bienvenido al TP LAB III\n");
+            System.out.println(Colores.violeta() + "Menu Principal\n" + Colores.blanco());
             System.out.println("[1] Log In");
             System.out.println("[2] Salir del programa");
             System.out.println("Ingrese una opcion:");
@@ -82,7 +82,7 @@ public class Sistema {
         int opcionPaciente = 0;
         ((Paciente) usuarioLogueado).notificarPaciente();
         do {
-
+            System.out.println(Colores.violeta() + "Menu Paciente\n" + Colores.blanco());
             System.out.println("[1] Realizar acciones del dia");
             System.out.println("[2] Modificar acciones del dia");
             System.out.println("[3] Mostrar acciones del dia");
@@ -137,6 +137,7 @@ public class Sistema {
         int opcionMedico = 0;
         do {
             //mostrar mejor y que cuando oprima una tecla siga con el menu
+            System.out.println(Colores.violeta() + "Menu Medico\n" + Colores.blanco());
             System.out.println("[1] Asignar tratamiento");
             System.out.println("[2] Ver las notificaciones del dia");
             System.out.println("[3] Ver historiales de los pacientes");
@@ -197,6 +198,7 @@ public class Sistema {
     public void menuAdmin() {
         int opcion = 0;
         do {
+            System.out.println(Colores.violeta() + "Menu Admin\n" + Colores.blanco());
             System.out.println("[1] Registrar un nuevo paciente");
             System.out.println("[2] Registrar un nuevo medico");
             System.out.println("[3] Agregar una nueva enfermedad");
