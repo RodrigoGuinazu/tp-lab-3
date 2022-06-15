@@ -1,2 +1,146 @@
 [
+  {
+    "historialClinico": [
+      {
+        "enfermedad": {
+          "nombre": "Diabetes"
+        },
+        "duracion": 5,
+        "inicioDate": {
+          "year": 2022,
+          "month": 6,
+          "day": 15
+        },
+        "finDate": {
+          "year": 2022,
+          "month": 6,
+          "day": 20
+        },
+        "listaAcciones": [
+          {
+            "type": "AccionDouble",
+            "properties": {
+              "ultimaNoti": {
+                "year": 2022,
+                "month": 6,
+                "day": 20
+              },
+              "textoPregunta": "Cual fue el resultado",
+              "cadaCuanto": 1,
+              "nombre": "Azucar en sangre"
+            }
+          },
+          {
+            "type": "AccionBooleana",
+            "properties": {
+              "ultimaNoti": {
+                "year": 2022,
+                "month": 6,
+                "day": 19
+              },
+              "textoPregunta": "Tomar Pastilla",
+              "cadaCuanto": 2,
+              "nombre": "Pastilla"
+            }
+          }
+        ],
+        "listaRegistrosDiarios": [
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 15
+            },
+            "listaRegistros": [
+              {
+                "nombreAccion": "Azucar en sangre",
+                "rta": "11",
+                "seHizo": true
+              },
+              {
+                "nombreAccion": "Pastilla",
+                "seHizo": true
+              }
+            ]
+          },
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 16
+            },
+            "listaRegistros": [
+              {
+                "nombreAccion": "Azucar en sangre",
+                "rta": "11",
+                "seHizo": true
+              }
+            ]
+          },
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 17
+            },
+            "listaRegistros": [
+              {
+                "nombreAccion": "Azucar en sangre",
+                "rta": "10",
+                "seHizo": true
+              }
+            ]
+          },
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 18
+            },
+            "listaRegistros": []
+          },
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 19
+            },
+            "listaRegistros": [
+              {
+                "nombreAccion": "Azucar en sangre",
+                "rta": "10",
+                "seHizo": true
+              },
+              {
+                "nombreAccion": "Pastilla",
+                "seHizo": true
+              }
+            ]
+          },
+          {
+            "fecha": {
+              "year": 2022,
+              "month": 6,
+              "day": 20
+            },
+            "listaRegistros": [
+              {
+                "nombreAccion": "Azucar en sangre",
+                "rta": "9",
+                "seHizo": true
+              }
+            ]
+          }
+        ],
+        "finalizado": true
+      }
+    ],
+    "debeSerAtendido": false,
+    "nombre": "Paciente",
+    "apellido": "Creado",
+    "dni": "4188888",
+    "mail": "paciente@hotmail.com",
+    "password": "1234",
+    "id": -1954297074
+  }
 ]
