@@ -2,35 +2,17 @@ import java.util.ArrayList;
 
 public class Paciente extends Usuario {
 
-    //Atributos
-
+    // Atributos
     private ArrayList<Tratamiento> historialClinico = new ArrayList<>();
     protected Tratamiento tratamientoActual;
     private Integer idMedicoAsignado;
     private Boolean debeSerAtendido;
 
 
+    // Constructores
     public Paciente() {
     }
 
-
-    public Paciente(String nombre, String apellido, String dni, String mail, String password, ArrayList<Tratamiento> historialClinico, Tratamiento tratamientoActual, Integer idMedicoAsignado, Boolean debeSerAtendido) {
-        super(nombre, apellido, dni, mail, password);
-        this.historialClinico = historialClinico;
-        this.tratamientoActual = tratamientoActual;
-        this.idMedicoAsignado = idMedicoAsignado;
-        this.debeSerAtendido = debeSerAtendido;
-    }
-
-
-    // Sin medico asignado
-    public Paciente(String nombre, String apellido, String dni, String mail, String password) {
-        super(nombre, apellido, dni, mail, password);
-        this.debeSerAtendido = true;
-    }
-
-
-    // Completo
     public Paciente(String nombre, String apellido, String dni, String mail, String password, Integer idMedicoAsignado) {
         super(nombre, apellido, dni, mail, password);
         this.idMedicoAsignado = idMedicoAsignado;
@@ -38,7 +20,41 @@ public class Paciente extends Usuario {
     }
 
     //Metodos
+    public void setTratamientoActual(Tratamiento tratamientoActual) {
+        this.tratamientoActual = tratamientoActual;
+    }
 
+    public void setDebeSerAtendido(Boolean debeSerAtendido) {
+        this.debeSerAtendido = debeSerAtendido;
+    }
+
+    public String getinfoPaciente() {
+        return super.toStringInfoNoSensible();
+    }
+
+    public Integer getId() {
+        return super.getId();
+    }
+
+    public Integer getIdMedicoAsignado() {
+        return idMedicoAsignado;
+    }
+
+    public Tratamiento getTratamientoActual() {
+        return tratamientoActual;
+    }
+
+    public void setHistorialClinico(ArrayList<Tratamiento> historialClinico) {
+        this.historialClinico = historialClinico;
+    }
+
+    public void setIdMedicoAsignado(Integer idMedicoAsignado) {
+        this.idMedicoAsignado = idMedicoAsignado;
+    }
+
+    public Boolean getDebeSerAtendido() {
+        return debeSerAtendido;
+    }
 
     public ArrayList<Tratamiento> getHistorialClinico() {
         return historialClinico;
@@ -46,12 +62,9 @@ public class Paciente extends Usuario {
 
 
     public void notificarPaciente() {
-
-
-        if(this.tratamientoActual!=null && this.tratamientoActual.getFinDate().isAfter(Sistema.getFechaDelDia().minusDays(1))){  //minus day 1 para contemplar la fecha de fin, incluya hoy
+        if(this.tratamientoActual!=null && this.tratamientoActual.getFinDate().isAfter(Sistema.getFechaDelDia().minusDays(1))){  //minus day 1 para contemplar la fecha de fin (que sea inclusive esa fecha)
             //Chequear igualdades de LocalDate
             if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) {
-
                     for (Accion a : this.tratamientoActual.getListaAcciones()) {
                         if( a.ultimaNoti == null ){
                             System.out.println("Debe realizar la accion : " + a.getNombre());
@@ -62,9 +75,7 @@ public class Paciente extends Usuario {
                         }else{
                             System.out.println("No debe realizar la accion : " + a.getNombre());
                         }
-
                     }
-
             } else {
                     int flag = 0;    //por si no hay accion para notificar
                     for (Accion a : this.tratamientoActual.getListaAcciones()) {
@@ -75,7 +86,6 @@ public class Paciente extends Usuario {
                             }else{
                                 System.out.println("Hoy no toca la accion : " + a.getNombre());
                             }
-
                             break;
                         }
                         for (Registro x : this.tratamientoActual.listaRegistrosDiarios.peek().listaRegistros) {
@@ -106,23 +116,16 @@ public class Paciente extends Usuario {
                     }
                 }
             }
-
-
-
         }
 
     }
 
-
     public void realizarAcciones() {
-
-            if(tratamientoActual != null){
-                this.tratamientoActual.realizarAcciones();
-            }else{
-                System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
-            }
-
-
+        if(tratamientoActual != null){
+            this.tratamientoActual.realizarAcciones();
+        }else{
+            System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
+        }
     }
 
     public void editarAccionesDelDia() {
@@ -132,56 +135,6 @@ public class Paciente extends Usuario {
             System.out.println(Colores.amarillo() + "No te encuentras realizando un tratamiento" + Colores.blanco());
         }
     }
-
-    public void setTratamientoActual(Tratamiento tratamientoActual) {
-        this.tratamientoActual = tratamientoActual;
-    }
-
-    public void setDebeSerAtendido(Boolean debeSerAtendido) {
-        this.debeSerAtendido = debeSerAtendido;
-    }
-
-
-
-
-    public String getinfoPaciente() {
-
-        return super.toStringInfoNoSensible();
-    }
-
-    public Integer getId() {
-
-        return super.getId();
-    }
-
-    public Integer getIdMedicoAsignado() {
-        return idMedicoAsignado;
-    }
-
-    public Tratamiento getTratamientoActual() {
-        return tratamientoActual;
-    }
-
-    public void setHistorialClinico(ArrayList<Tratamiento> historialClinico) {
-        this.historialClinico = historialClinico;
-    }
-
-    public void setIdMedicoAsignado(Integer idMedicoAsignado) {
-        this.idMedicoAsignado = idMedicoAsignado;
-    }
-
-    public Boolean getDebeSerAtendido() {
-        return debeSerAtendido;
-    }
-
-    public String toStringHistorial() {
-        StringBuilder string = new StringBuilder();
-        for (Tratamiento t : this.historialClinico) {
-            string.append(t.getEnfermedad().toString() + "\n");
-        }
-        return string.toString();
-    }
-
 
     @Override
     public String toString() {

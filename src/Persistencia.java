@@ -27,7 +27,6 @@ public abstract class Persistencia {
     // escritura
     public static <T> void serializacion(ArrayList<T> list, String archivo) {
         try {
-            // el LocalDate de los atributos Tratamiento en Paciente generan los warning en consola
             Writer writer = new FileWriter(archivo);
             new Gson().toJson(list, writer);
             writer.close();
@@ -59,15 +58,12 @@ public abstract class Persistencia {
 
     // escritura
     public static <T> void serializacionPacientes(ArrayList<Paciente> arrayPaciente) {
-
-
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
         Gson gson = gsonBuilder.create();
 
         File file = new File("pacientes.json");
         try {
-
             Type listType = new TypeToken<ArrayList<Paciente>>() {}.getType();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(arrayPaciente, listType, bufferedWriter);

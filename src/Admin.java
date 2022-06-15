@@ -4,13 +4,10 @@ import java.util.Scanner;
 
 public class Admin extends Usuario implements Tratamientos {
 
-    //Sin atributos
-
-    //Constructor
+    //Constructores
     public Admin(String nombre, String apellido, String dni, String mail, String password) {
         super(nombre, apellido, dni, mail, password);
     }
-
 
     //Metodos
     public void registrarPaciente() {
@@ -18,16 +15,14 @@ public class Admin extends Usuario implements Tratamientos {
 
         Paciente rta;
         // levantar archivo usuarios
-
         ArrayList<Paciente> pacientes = Persistencia.deserializacionPacientes();
         ArrayList<Medico> medicos = Persistencia.deserializacion("medicos.json", Medico.class);
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(pacientes);
         aux.addAll(medicos);
 
-
         if (medicos.isEmpty()) {
-            System.out.println("No puede crear pacientes sin medicos");
+            System.out.println(Colores.amarillo() + "No puede crear pacientes sin medicos" + Colores.blanco());
         } else {
             Character opcionDni = 'n';
             String dni = "";
@@ -47,7 +42,7 @@ public class Admin extends Usuario implements Tratamientos {
                     }
                 }
             }
-            //fijarse que exista el usuario
+            //se fija que exista el usuario
             try {
                 Usuario verificar = this.buscarUsuario(aux, dni);
                 if (verificar instanceof Paciente) {

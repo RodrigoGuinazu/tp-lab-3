@@ -1,18 +1,41 @@
 import java.util.Scanner;
 
-public class Registro {     //
+public class Registro {
+    // Atributos
     private String nombreAccion;
     private String rta;
     private Boolean seHizo;
 
+    // Constructores
     public Registro(String nombre, String rta, Boolean seHizo) {
         this.nombreAccion = nombre;
         this.rta = rta;
         this.seHizo = seHizo;
     }
 
-    public Registro(String nombreAccion, Boolean seHizo) {
+    // Metodos
+
+    public String getNombreAccion() {
+        return nombreAccion;
+    }
+
+    public void setNombreAccion(String nombreAccion) {
         this.nombreAccion = nombreAccion;
+    }
+
+    public String getRta() {
+        return rta;
+    }
+
+    public void setRta(String rta) {
+        this.rta = rta;
+    }
+
+    public Boolean getSeHizo() {
+        return seHizo;
+    }
+
+    public void setSeHizo(Boolean seHizo) {
         this.seHizo = seHizo;
     }
 
@@ -51,7 +74,6 @@ public class Registro {     //
     }
 
     public String toStringParaHistorial() {
-
         String aux = "";
         aux += "La accion " + nombreAccion;
         if (this.seHizo){
@@ -65,11 +87,7 @@ public class Registro {     //
             aux += " no se realizo"+ ". \n";
         }
 
-
-
         return aux;
-
-
     }
 
     @Override

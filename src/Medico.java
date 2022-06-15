@@ -7,7 +7,6 @@ public class Medico extends Usuario implements Tratamientos {
     private ArrayList<Integer> pacientesDelMedico = new ArrayList<>();  //ids paciente
 
     // Constructores
-    // Para medicos aux
     public Medico() {
     }
 
@@ -16,15 +15,7 @@ public class Medico extends Usuario implements Tratamientos {
         super(nombre, apellido, dni, mail, password);
     }
 
-    // con lista de pacientes
-    public Medico(String nombre, String apellido, String dni, String mail, String password, ArrayList<Integer> pacientesDelMedico) {
-        super(nombre, apellido, dni, mail, password);
-        this.pacientesDelMedico = pacientesDelMedico;
-    }
-
-
     //Metodos
-
     public StringBuilder notificarMedico() {
         StringBuilder string1 = new StringBuilder();
         //levantar el archivo de pacientes
@@ -105,7 +96,7 @@ public class Medico extends Usuario implements Tratamientos {
             }
 
             System.out.println(string);
-            // acaa
+
             if(flagSinPacientes != 1){
                 Scanner scan = new Scanner(System.in);
                 Paciente pacienteAux = null;
@@ -257,12 +248,12 @@ public class Medico extends Usuario implements Tratamientos {
             for (Paciente p : listaPacientes) {
                 for (int a : pacientesDelMedico) {  //ve solo el historial de sus pacientes
                     if (p.getId().equals(a)) {
-                        System.out.println(p.toStringInfoNoSensible());//muestra nombre y apellido de lso pacientes del medico
+                        System.out.println(p.toStringInfoNoSensible()); //muestra nombre, apellido y DNI de los pacientes del medico
                     }
                 }
             }
 
-            //valida dni
+            // valida dni
             Paciente pacienteAux = null;
             int control = 0;
             while (control == 0) {
@@ -311,7 +302,7 @@ public class Medico extends Usuario implements Tratamientos {
         for (Paciente pacientegeneral : listaPacientes) {
             for (int a : pacientesDelMedico) {
                 if (pacientegeneral.getId().equals(a)) {
-                    System.out.println(pacientegeneral.toStringInfoNoSensible());//muestra pacientes del medico
+                    System.out.println(pacientegeneral.toStringInfoNoSensible()); //muestra pacientes del medico
                 }
             }
         }
@@ -329,11 +320,6 @@ public class Medico extends Usuario implements Tratamientos {
         try {
             if(pacienteAux.getTratamientoActual() != null){
                 if(!pacienteAux.tratamientoActual.listaRegistrosDiarios.isEmpty()){
-
-
-
-
-
                     System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
                 }else{
                     System.out.println(Colores.amarillo() + "El paciente que ingresaste no realizo ninguna accion del tratamiento por el momento!" + Colores.blanco());
@@ -399,9 +385,7 @@ public class Medico extends Usuario implements Tratamientos {
         ArrayList<Accion> listaAcciones = Persistencia.deserializacionAcciones();
         int opcionMenu = 0;
 
-
         do {
-
             System.out.println("Editando el tratamiento para la enfermedad: " + aux.getEnfermedad().getNombre());
             System.out.println("[1] Agregar accion");
             System.out.println("[2] Quitar accion");
@@ -504,7 +488,6 @@ public class Medico extends Usuario implements Tratamientos {
                     System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
         } while (opcionMenu != 4);
-
 
         return aux;
     }

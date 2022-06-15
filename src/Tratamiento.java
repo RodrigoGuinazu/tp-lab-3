@@ -6,6 +6,7 @@ import java.util.Stack;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Tratamiento {
+    // Atributos
     private Enfermedad enfermedad;
     private Integer duracion;
     private LocalDate inicioDate;
@@ -16,19 +17,11 @@ public class Tratamiento {
 
 
     // Constructores
-
     public Tratamiento() {
         listaAcciones = new ArrayList<>();
         listaRegistrosDiarios = new Stack<>();
 
     }
-
-    // Tratamiento "Vacio"
-    public Tratamiento(Enfermedad enfermedad) {
-        this.enfermedad = enfermedad;
-        this.finalizado = false;
-    }
-
 
     public Tratamiento(Enfermedad enfermedad, Integer duracion, ArrayList<Accion> acciones) {
         this.duracion = duracion;
@@ -38,8 +31,28 @@ public class Tratamiento {
         finalizado = false;
     }
 
-
     // Metodos
+
+    public void setInicioDate(LocalDate inicioDate) {
+        this.inicioDate = inicioDate;
+    }
+
+    public void setListaAcciones(ArrayList<Accion> listaAcciones) {
+        this.listaAcciones = listaAcciones;
+    }
+
+    public Stack<RegistroDiario> getListaRegistrosDiarios() {
+        return listaRegistrosDiarios;
+    }
+
+    public void setListaRegistrosDiarios(Stack<RegistroDiario> listaRegistrosDiarios) {
+        this.listaRegistrosDiarios = listaRegistrosDiarios;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
     public void mostrarTratamiento() {
         System.out.println("Enfermedad : " + this.enfermedad.getNombre());
         System.out.println("Duracion : " + this.duracion);
@@ -54,7 +67,6 @@ public class Tratamiento {
         }
     }
 
-
     public Tratamiento clonarTratamiento() {
         Tratamiento aux = new Tratamiento(this.enfermedad, this.duracion, this.listaAcciones);
         return aux;
@@ -66,10 +78,6 @@ public class Tratamiento {
 
     public LocalDate getFinDate() {
         return finDate;
-    }
-
-    public boolean isFinalizado() {
-        return finalizado;
     }
 
     public void setEnfermedad(Enfermedad enfermedad) {
@@ -88,16 +96,8 @@ public class Tratamiento {
         this.finDate = finDate;
     }
 
-    public void setListaAcciones(ArrayList<Accion> listaAcciones) {
-        this.listaAcciones = listaAcciones;
-    }
-
     public ArrayList<Accion> getListaAcciones() {
         return listaAcciones;
-    }
-
-    public void setListaRegistrosDiarios(Stack<RegistroDiario> listaRegistrosDiarios) {
-        this.listaRegistrosDiarios = listaRegistrosDiarios;
     }
 
     public void setFinalizado(boolean finalizado) {
@@ -117,11 +117,11 @@ public class Tratamiento {
         return false;
     }
 
-    public void realizarAcciones() {        //CAMBIAR (tiene que poder elegir que accion cambiar)
+    public void realizarAcciones() {
         RegistroDiario aux;
         int flag = 0;
         int contador = 0;
-        if (listaRegistrosDiarios.empty() || listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) { // si no existe registro pata hoy, le pide hacer todo
+        if (listaRegistrosDiarios.empty() || listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) { // si no existe registro para hoy, le pide hacer todo
             aux = new RegistroDiario();
             listaRegistrosDiarios.push(aux);
 
@@ -182,7 +182,7 @@ public class Tratamiento {
 
                 }
             } else {
-                for (Accion a : listaAcciones) {    // cuando hay registro del dia con algo adentro
+                for (Accion a : listaAcciones) { // cuando hay registro del dia con algo adentro
                     flag = 0;
                     if (a.ultimaNoti != null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)) {
                         flag = 1;
@@ -212,8 +212,6 @@ public class Tratamiento {
                             }
                         }
                     }
-
-
                 }
             }
 
@@ -237,36 +235,9 @@ public class Tratamiento {
         }
     }
 
-    public String modificarRegistros() {
-
-        if (listaRegistrosDiarios.peek().getFecha() == Sistema.getFechaDelDia()) {
-            listaRegistrosDiarios.peek().modificarRegistro();
-            return (Colores.verde() + "Se a modificado el registro diario con exito" + Colores.blanco());
-        } else {
-            return (Colores.amarillo() + "No hay geistro diario que Modificar" + Colores.blanco());
-            // la logica del menu deberia indicarle que realice las acciones
-        }
-
-    }
-
-    public String toStringListaAcciones() {
-        String rta = "";
-        try {
-            for (Accion a : listaAcciones) {
-                rta += a.toString();
-            }
-
-            return rta;
-        } catch (NullPointerException e) {
-            System.out.println(Colores.rojo() + "Error de tipo : " + e + Colores.blanco());
-        }
-        return rta;
-    }
-
     public Enfermedad getEnfermedad() {
         return enfermedad;
     }
-
 
     public String mostrarTratamientoString() {     //enfermedad, duracion y lista de acciones
         String rta = "";
@@ -278,7 +249,6 @@ public class Tratamiento {
     }
 
     public String toStringHistorialTratamientoActual() {
-
         String rta = "";
 
         for (RegistroDiario registroDiario : listaRegistrosDiarios) {
@@ -300,21 +270,11 @@ public class Tratamiento {
                     }else{
                         rta += "La accion "+ accion.getNombre() + " debia realizarce y no se hizo.\n";
                     }
-
-
                 }
-
             }
-
         }
 
-
-//        for (RegistroDiario a : listaRegistrosDiarios) {
-//            rta += a.toString();
-//        }
-
         return rta;
-
     }
 
     @Override
@@ -331,7 +291,6 @@ public class Tratamiento {
     }
 
     public int getNumeroAccionesNotificables() {
-
         int contador = 0;
         long dias = DAYS.between(this.inicioDate, Sistema.getFechaDelDia().minusDays(1));
         for (Accion a : listaAcciones) {
@@ -347,19 +306,9 @@ public class Tratamiento {
         for (RegistroDiario a : listaRegistrosDiarios) {
             if (a.getFecha().equals(fecha)) {
                 int x = a.listaRegistros.size();
-                int asd = 0;
-
                 return x;
-
             }
         }
         return -1;
     }
-
-
-    public void setInicioDate(LocalDate inicioDate) {
-        this.inicioDate = inicioDate;
-    }
-
-
 }

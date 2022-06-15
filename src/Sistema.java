@@ -4,18 +4,25 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Sistema {
-    Scanner scan = new Scanner(System.in);  //no se puede scan.close(); pero en Main si
+    Scanner scan = new Scanner(System.in);
 
     // Atributos
     private ArrayList<Usuario> usuarios;
-//    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
     private static LocalDate fechaDelDia = LocalDate.now();
     private Usuario usuarioLogueado;
 
-    //Constructor 1
+    //Constructor
     public Sistema() {
         this.usuarios = new ArrayList<>();
         this.usuarioLogueado = null;
+    }
+
+    public static LocalDate getFechaDelDia() {
+        return fechaDelDia;
+    }
+
+    public static void agregarDias(long x){
+        fechaDelDia = fechaDelDia.plusDays(x);
     }
 
     // Metodos
@@ -28,9 +35,6 @@ public class Sistema {
         int opcionMenu = 0;
 
         do {
-
-
-
             // generamos la lista de usuarios para poder utilizarla en la logica del login
             this.usuarios = new ArrayList<Usuario>();
 
@@ -166,14 +170,12 @@ public class Sistema {
         System.out.println(((Medico) usuarioLogueado).notificarMedico());
         int opcionMedico = 0;
         do {
-            //mostrar mejor y que cuando oprima una tecla siga con el menu
             System.out.println(Colores.violeta() + "Menu Medico" + Colores.blanco());
             System.out.println("[1] Asignar tratamiento");
             System.out.println("[2] Ver las notificaciones del dia");
             System.out.println("[3] Ver historiales de los pacientes");
             System.out.println("[4] Ver historial del tratamiento actual de los pacientes");
             System.out.println("[5] Log Out");
-
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
@@ -236,7 +238,6 @@ public class Sistema {
             System.out.println("[4] Crear un nuevo tratamiento");
             System.out.println("[5] Editar un tratamiento");
             System.out.println("[6] Log Out");
-
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
@@ -297,18 +298,10 @@ public class Sistema {
         while (rta == null && opcion == 's') {
 
             System.out.println("Mail: ");
-            String mail = scan.nextLine();    // sin harcodeo
-//            String mail = "paciente2@hotmail.com"; //Harcodeo paciente
-            //String mail = "juantorres@gmail.com"; //Harcodeo medico
-            //String mail = "admin@hotmail.com"; //Harcodeo admin
-
+            String mail = scan.nextLine();
 
             System.out.println("Contraseña: ");
-            String pass = scan.nextLine(); // sin harcodeo
-//            String pass = "Paciente2"; //Harcodeo paciente
-            //String pass = "Medico1"; //Harcodeo medico
-            //String pass = "Admin"; //Harcodeo admin
-
+            String pass = scan.nextLine();
 
             try {
                 rta = validarCredenciales(mail, pass);
@@ -322,18 +315,13 @@ public class Sistema {
     }
 
     public void persistirPacienteActual(Paciente logueado) {
-
         ArrayList<Paciente> pacientes = Persistencia.deserializacionPacientes();
         for (Paciente a : pacientes) {
             if (a.getId().equals(logueado.getId())) {
-
                 pacientes.set(pacientes.indexOf(a), logueado);
             }
         }
-
-
         Persistencia.serializacionPacientes(pacientes);
-
     }
 
     public Usuario validarCredenciales(String mail, String pass) throws CredencialesIncorrectasException {
@@ -352,10 +340,6 @@ public class Sistema {
     public void logout() {
         this.usuarioLogueado = null;
 
-    }
-
-    public static LocalDate getFechaDelDia() {
-        return fechaDelDia;
     }
 
     public static boolean comprobarCorrespodenAccion(LocalDate fecha, int cadaCuanto){
@@ -380,11 +364,6 @@ public class Sistema {
         }else{
             return false;
         }
-    }
-
-    public static void agregarDias(long x){
-        System.out.println(x);
-        fechaDelDia = fechaDelDia.plusDays(x);
     }
 }
 

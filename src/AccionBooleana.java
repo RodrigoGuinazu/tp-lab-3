@@ -2,16 +2,15 @@ import java.util.Scanner;
 
 public class AccionBooleana extends Accion {
 
-
+    // Constructores
     public AccionBooleana(int cadaCuanto, String nombre, String textoPregunta) {
         super(cadaCuanto, nombre, textoPregunta);
     }
 
+    // Metodos
     public void mostrarAccionBooleana() {
         System.out.println(super.mostrarAccion());
     }
-
-
 
     @Override
     public AccionBooleana clonarAccion() {

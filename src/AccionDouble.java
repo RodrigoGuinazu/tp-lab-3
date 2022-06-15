@@ -2,16 +2,15 @@ import java.util.Scanner;
 
 public class AccionDouble extends Accion {
 
-
+    // Constructores
     public AccionDouble(int cadaCuanto, String nombr, String textoPregunta) {
         super(cadaCuanto, nombr, textoPregunta);
     }
 
-
+    // Metodos
     public void mostrarAccionDouble() {
         System.out.println(super.mostrarAccion());
     }
-
 
     @Override
     public AccionDouble clonarAccion() {

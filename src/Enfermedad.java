@@ -1,11 +1,12 @@
 public class Enfermedad {
     private String nombre;
 
+    // Constructor
     public Enfermedad(String nombre) {
         this.nombre = nombre;
     }
 
-
+    // Metodos
     public String getNombre() {
         return nombre;
     }

@@ -11,8 +11,6 @@ public class Usuario {
     private Integer id;
 
     //Constructores
-
-
     // Vacio
     public Usuario() {
     }
@@ -28,7 +26,6 @@ public class Usuario {
     }
 
     //Metodos
-
     public String getMail() {
         return mail;
     }
@@ -71,8 +68,6 @@ public class Usuario {
     }
 
     //mostrar historial
-
-
     @Override
     public String toString() {
         return "Usuario{" +

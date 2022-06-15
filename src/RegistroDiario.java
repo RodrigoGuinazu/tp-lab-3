@@ -4,15 +4,29 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RegistroDiario {
+    // Atributos
     private LocalDate fecha;
     protected ArrayList<Registro> listaRegistros;
 
-
+    // Constructores
     public RegistroDiario() {
         this.fecha = Sistema.getFechaDelDia();
         this.listaRegistros = new ArrayList<Registro>();
     }
 
+    // Metodos
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public ArrayList<Registro> getListaRegistros() {
+        return listaRegistros;
+    }
+
+    public void setListaRegistros(ArrayList<Registro> listaRegistros) {
+        this.listaRegistros = listaRegistros;
+    }
 
     public LocalDate getFecha() {
         return fecha;
@@ -52,24 +66,12 @@ public class RegistroDiario {
             }
         }
     }
-
-    public void mostrarRegistros() {
-        Integer num = 0;
-
-        for (Registro a : listaRegistros) {
-            System.out.println(num.toString() + a.mostrarNombresRegistros());
-        }
-        // les mostramos todos los registros del dia y lo hacemos elegir cual quiere modificar, almacenamos el indice en una variable aux;
-
-    }
     public String mostrarRegistrosParaToString() {
         String rta = "";
-
         for (Registro a : listaRegistros) {
             rta += a.toStringParaHistorial();
         }
         return rta;
-
     }
 
     @Override
