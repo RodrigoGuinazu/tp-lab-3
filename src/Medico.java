@@ -84,11 +84,6 @@ public class Medico extends Usuario implements Tratamientos {
     }
 
 
-    /**
-     En el metodo diagnosticarPacientes verificar que haya a quien diagnosticar,
-     en caso de que el medico ya haya atendido a todos sus pacientes devolverlo al menu principal automaticamente
-     */
-
     public void diagnosticarPacientes() throws DniInexistenteException {
 
         try{
