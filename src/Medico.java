@@ -232,6 +232,7 @@ public class Medico extends Usuario implements Tratamientos {
 
                 if (tratamientoAux == null) {
                     System.out.println(Colores.amarillo() + "No se cargo nada..." + Colores.blanco());
+
                 } else {
                     // seteamos fecha de inicio y finde del tratamiento, y debeseratendido en false
                     pacienteAux.tratamientoActual.setIncioDate(Sistema.getFechaDelDia());

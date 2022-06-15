@@ -28,10 +28,16 @@ public class Sistema {
         int opcionMenu = 0;
 
         do {
+
+
+            System.out.println("levantar archivos inicio");
             // generamos la lista de usuarios para poder utilizarla en la logica del login
+            this.usuarios = new ArrayList<Usuario>();
+
             ArrayList<Medico> medicosAux = Persistencia.deserializacion("medicos.json", Medico.class);
             ArrayList<Paciente> pacientesAux = Persistencia.deserializacionPacientes();
             ArrayList<Admin> adminsAux = Persistencia.deserializacion("admins.json", Admin.class);
+
             this.usuarios.addAll(medicosAux);
             this.usuarios.addAll(pacientesAux);
             this.usuarios.addAll(adminsAux);
@@ -210,6 +216,7 @@ public class Sistema {
 
                 case 5:
                     this.logout();
+
                     break;
 
                 default:
@@ -344,6 +351,7 @@ public class Sistema {
 
     public void logout() {
         this.usuarioLogueado = null;
+
     }
 
     public static LocalDate getFechaDelDia() {

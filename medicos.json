@@ -1,13 +1,13 @@
 [
   {
     "pacientesDelMedico": [
-      -1347566995
+      -2073964684
     ],
-    "nombre": "tito",
-    "apellido": "fuentes",
-    "dni": "12345678",
-    "mail": "tito@gmail.com",
-    "password": "1234",
-    "id": -2117191330
+    "nombre": "Juan",
+    "apellido": "Torres",
+    "dni": "4199999",
+    "mail": "juantorres@gmail.com",
+    "password": "Medico1",
+    "id": 1188543223
   }
 ]
