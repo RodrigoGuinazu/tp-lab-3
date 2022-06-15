@@ -15,6 +15,7 @@ public class Admin extends Usuario implements Tratamientos {
     //Metodos
     public void registrarPaciente() {
         Scanner scan = new Scanner(System.in);
+
         Paciente rta;
         // levantar archivo usuarios
 
@@ -23,92 +24,96 @@ public class Admin extends Usuario implements Tratamientos {
         ArrayList<Usuario> aux = new ArrayList<Usuario>();
         aux.addAll(pacientes);
         aux.addAll(medicos);
-        Character opcionDni = 'n';
-        String dni = "";
-        int flagDni;
-        System.out.println("Registrando un paciente:");
-        while(opcionDni != 's'){
-            flagDni = 0;
-            while (flagDni == 0){
-                try{
-                    System.out.println("Ingrese el dni del paciente: ");
-                    dni = scan.nextLine();
-                    dni = validarDni(dni);
-                    System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
-                    opcionDni = scan.nextLine().charAt(0);
-                    flagDni = 1;
-                }catch (DniIncorrectoException w){
+
+
+        if (medicos.isEmpty()) {
+            System.out.println("No puede crear pacientes sin medicos");
+        } else {
+            Character opcionDni = 'n';
+            String dni = "";
+            int flagDni;
+            System.out.println("Registrando un paciente:");
+            while (opcionDni != 's') {
+                flagDni = 0;
+                while (flagDni == 0) {
+                    try {
+                        System.out.println("Ingrese el dni del paciente: ");
+                        dni = scan.nextLine();
+                        dni = validarDni(dni);
+                        System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
+                        opcionDni = scan.nextLine().charAt(0);
+                        flagDni = 1;
+                    } catch (DniIncorrectoException w) {
+                    }
                 }
             }
-        }
-        //fijarse que exista el usuario
-        try {
-            Usuario verificar = this.buscarUsuario(aux, dni);
-            if (verificar instanceof Paciente) {
-                // si existe le cambio el atributo debeSerAtendido a true
-                rta = (Paciente) verificar;
-                // verifico que no tenga un tratamiento en curso
-                if (rta.getTratamientoActual() == null) {
-                    System.out.println(Colores.amarillo() + "El paciente ya existe, asignarle un medico..." + Colores.blanco());
-                    // asignar medico
-                    Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
-                    rta.setIdMedicoAsignado(id);
-                    rta.setDebeSerAtendido(true);
+            //fijarse que exista el usuario
+            try {
+                Usuario verificar = this.buscarUsuario(aux, dni);
+                if (verificar instanceof Paciente) {
+                    // si existe le cambio el atributo debeSerAtendido a true
+                    rta = (Paciente) verificar;
+                    // verifico que no tenga un tratamiento en curso
+                    if (rta.getTratamientoActual() == null) {
+                        System.out.println(Colores.amarillo() + "El paciente ya existe, asignarle un medico..." + Colores.blanco());
+                        // asignar medico
+                        Integer id = asignarMedico(rta.getApellido(), rta.getNombre());
+                        rta.setIdMedicoAsignado(id);
+                        rta.setDebeSerAtendido(true);
 
-                    for (Medico a : medicos){
-                        if(id.equals(a.getId())){
-                            a.agregarPaciente(rta.getId());
+                        for (Medico a : medicos) {
+                            if (id.equals(a.getId())) {
+                                a.agregarPaciente(rta.getId());
+                            }
                         }
+                    } else {
+                        System.out.println(Colores.amarillo() + "El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita" + Colores.blanco());
                     }
-
                 } else {
-                    System.out.println(Colores.amarillo() + "El paciente ya se encuentra con un tratamiento vigente, debe terminar el mismo para generar una nueva visita" + Colores.blanco());
+                    System.out.println(Colores.amarillo() + "El dni que ingresaste pertenece a un medico ya registrado" + Colores.blanco());
                 }
-            } else {
-                System.out.println(Colores.amarillo() + "El dni que ingresaste pertenece a un medico ya registrado" + Colores.blanco());
-            }
-        } catch (UsuarioInexistenteException e) {
-            // si no lo creo y lo agrego
-            int flag = 0;
-            while (flag == 0) {
-                try {
-                    System.out.println("Nombre: ");
-                    String nombre = scan.nextLine();
-                    System.out.println("Apellido: ");
-                    String apellido = scan.nextLine();
+            } catch (UsuarioInexistenteException e) {
+                // si no lo creo y lo agrego
+                int flag = 0;
+                while (flag == 0) {
+                    try {
+                        System.out.println("Nombre: ");
+                        String nombre = scan.nextLine();
+                        System.out.println("Apellido: ");
+                        String apellido = scan.nextLine();
 
-                    int flag2 = 0;
-                    String mail = "";
-                    while (flag2 == 0) {
-                        try {
-                            System.out.println("Mail: ");
-                            mail = this.validarMail(aux, scan.nextLine());
-                            flag2 = 1;
-                        } catch (MailRepetidoException w) {
+                        int flag2 = 0;
+                        String mail = "";
+                        while (flag2 == 0) {
+                            try {
+                                System.out.println("Mail: ");
+                                mail = this.validarMail(aux, scan.nextLine());
+                                flag2 = 1;
+                            } catch (MailRepetidoException w) {
+                            }
                         }
-                    }
-
-                    System.out.println("Password: ");
-                    String password = scan.nextLine();
-                    //asignar medico
-                    Integer id = asignarMedico(apellido, nombre);
-                    flag = 1;
-                    rta = new Paciente(nombre, apellido, dni, mail, password, id);
-                    for (Medico a : medicos){
-                        if(id.equals(a.getId())){
-                            a.agregarPaciente(rta.getId());
+                        System.out.println("Password: ");
+                        String password = scan.nextLine();
+                        //asignar medico
+                        Integer id = asignarMedico(apellido, nombre);
+                        flag = 1;
+                        rta = new Paciente(nombre, apellido, dni, mail, password, id);
+                        for (Medico a : medicos) {
+                            if (id.equals(a.getId())) {
+                                a.agregarPaciente(rta.getId());
+                            }
                         }
+                        pacientes.add(rta);
+                        System.out.println(Colores.verde() + "Creaste el paciente con exito!" + Colores.blanco());
+                    } catch (InputMismatchException f) {
+                        System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     }
-                    pacientes.add(rta);
-                    System.out.println(Colores.verde() + "Creaste el paciente con exito!" + Colores.blanco());
-                } catch (InputMismatchException f) {
-                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 }
             }
+            //persistir
+            Persistencia.serializacionPacientes(pacientes);
+            Persistencia.serializacion(medicos, "medicos.json");
         }
-        //persistir
-        Persistencia.serializacionPacientes(pacientes);
-        Persistencia.serializacion(medicos,"medicos.json");
     }
 
     public void registrarMedico() {
@@ -124,17 +129,17 @@ public class Admin extends Usuario implements Tratamientos {
         Character opcionDni = 'n';
         int flagDni;
         System.out.println("Registrando un Medico:");
-        while(opcionDni != 's'){
+        while (opcionDni != 's') {
             flagDni = 0;
-            while (flagDni == 0){
-                try{
+            while (flagDni == 0) {
+                try {
                     System.out.println("Ingrese el dni del medico: ");
                     dni = scan.nextLine();
                     dni = validarDni(dni);
                     System.out.println("Ingreso este dni: " + dni + " quiere continuar con el? (s/n)");
                     opcionDni = scan.nextLine().charAt(0);
                     flagDni = 1;
-                }catch (DniIncorrectoException w){
+                } catch (DniIncorrectoException w) {
                 }
             }
         }
@@ -197,14 +202,14 @@ public class Admin extends Usuario implements Tratamientos {
                 throw new MailRepetidoException();
             }
         }
-        if(mail.contains("@hotmail.com") || mail.contains("@outlook.com") || mail.contains("@gmail.com")){
+        if (mail.contains("@hotmail.com") || mail.contains("@outlook.com") || mail.contains("@gmail.com")) {
             return mail;
         }
         throw new MailRepetidoException(mail);
     }
 
-    public String validarDni(String dni) throws DniIncorrectoException{
-        if(dni.matches("[0-9]+")){
+    public String validarDni(String dni) throws DniIncorrectoException {
+        if (dni.matches("[0-9]+")) {
             return dni;
         }
         throw new DniIncorrectoException();
