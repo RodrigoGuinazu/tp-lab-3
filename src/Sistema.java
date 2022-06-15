@@ -349,7 +349,11 @@ public class Sistema {
         return fechaDelDia;
     }
 
-    public static boolean comprobarCorrespodenAccion(LocalDate fecha){
+    public static boolean comprobarCorrespodenAccion(LocalDate fecha, int cadaCuanto){
+        while(fecha.isBefore(fechaDelDia)){
+            fecha = fecha.plusDays(cadaCuanto);
+        }
+
         if(fecha.isEqual(Sistema.getFechaDelDia())){
             return true;
         }else{
