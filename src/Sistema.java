@@ -9,7 +9,7 @@ public class Sistema {
     // Atributos
     private ArrayList<Usuario> usuarios;
 //    private static LocalDate fechaDelDia = LocalDate.now(); // mm//dd//aaaa
-    private static LocalDate fechaDelDia = LocalDate.now().plusDays(3);
+    private static LocalDate fechaDelDia = LocalDate.now();
     private Usuario usuarioLogueado;
 
     //Constructor 1
@@ -39,7 +39,8 @@ public class Sistema {
             System.out.println("Fecha del dia: " + fechaDelDia + "(Año/Mes/Dia)");
             System.out.println("[1] Log In");
             System.out.println("[2] Simular dias");
-            System.out.println("[3] Salir del programa");
+            System.out.println("[3] Resetear fecha");
+            System.out.println("[4] Salir del programa");
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
@@ -81,16 +82,22 @@ public class Sistema {
                             scan.nextLine();
                         }
                     }
+                    System.out.println(Colores.amarillo() + "Cambiando la fecha del dia..." + Colores.blanco());
                     break;
 
                 case 3:
+                    fechaDelDia = LocalDate.now();
+                    System.out.println(Colores.amarillo() + "Resetenado la fecha del dia..." + Colores.blanco());
+                    break;
+
+                case 4:
                     System.out.println(Colores.rojo() + "Cerrando el programa..." + Colores.blanco());
                     break;
 
                 default:
                     System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
-        } while (opcionMenu != 3);
+        } while (opcionMenu != 4);
     }
 
 
@@ -351,6 +358,7 @@ public class Sistema {
     }
 
     public static void agregarDias(long x){
+        System.out.println(x);
         fechaDelDia = LocalDate.now().plusDays(x);
     }
 }
