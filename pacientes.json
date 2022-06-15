@@ -1,65 +1,13 @@
 [
   {
     "historialClinico": [],
-    "tratamientoActual": {
-      "enfermedad": {
-        "nombre": "Estres"
-      },
-      "duracion": 7,
-      "inicioDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 15
-      },
-      "finDate": {
-        "year": 2022,
-        "month": 6,
-        "day": 22
-      },
-      "listaAcciones": [
-        {
-          "type": "AccionBooleana",
-          "properties": {
-            "textoPregunta": "Tomar Pastilla",
-            "cadaCuanto": 1,
-            "nombre": "Pastilla"
-          }
-        },
-        {
-          "type": "AccionBooleana",
-          "properties": {
-            "textoPregunta": "Tomar Presion",
-            "cadaCuanto": 1,
-            "nombre": "Presion"
-          }
-        },
-        {
-          "type": "AccionDouble",
-          "properties": {
-            "textoPregunta": "Tomar Temperatura",
-            "cadaCuanto": 1,
-            "nombre": "Temperatura"
-          }
-        },
-        {
-          "type": "AccionDouble",
-          "properties": {
-            "textoPregunta": "Tomar Densidad",
-            "cadaCuanto": 2,
-            "nombre": "Densiometria"
-          }
-        }
-      ],
-      "listaRegistrosDiarios": [],
-      "finalizado": false
-    },
     "idMedicoAsignado": 1188543223,
-    "debeSerAtendido": false,
-    "nombre": "Santi",
-    "apellido": "Torrecillas",
-    "dni": "3453453",
-    "mail": "santi@gmail.com",
-    "password": "santi",
-    "id": -2073964684
+    "debeSerAtendido": true,
+    "nombre": "Tito",
+    "apellido": "Fuentes",
+    "dni": "12345678",
+    "mail": "tito@gmail.com",
+    "password": "123",
+    "id": -2117191330
   }
 ]
