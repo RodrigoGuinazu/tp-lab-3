@@ -38,5 +38,21 @@
       "cadaCuanto": 2,
       "nombre": "Densiometria"
     }
+  },
+  {
+    "type": "AccionBooleana",
+    "properties": {
+      "textoPregunta": "Se vacuno hoy",
+      "cadaCuanto": 2,
+      "nombre": "Vacunarse"
+    }
+  },
+  {
+    "type": "AccionDouble",
+    "properties": {
+      "textoPregunta": "Cual fue el resultado",
+      "cadaCuanto": 1,
+      "nombre": "Azucar en sangre"
+    }
   }
 ]

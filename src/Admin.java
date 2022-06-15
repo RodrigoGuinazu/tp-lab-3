@@ -410,6 +410,87 @@ public class Admin extends Usuario implements Tratamientos {
         return aux;
     }
 
+    public void crearAccion(){
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Accion> acciones = Persistencia.deserializacionAcciones();
+        int opcion = 0;
+
+        System.out.println("Creando una nueva accion...");
+
+        System.out.println("Ingrese el nombre de la accion: ");
+        String nombre = scan.nextLine();
+        if(!verificarAccionRepetida(acciones, nombre)){
+            System.out.println("Ingrese el texto de pregunta para la accion: ");
+            String pregunta = scan.nextLine();
+            int flagCadaCuanto = 0;
+            int cadaCuanto = 0;
+            while(flagCadaCuanto == 0){
+                try{
+                    System.out.println("Ingrese cada cuantos dias debe realizar la accion: ");
+                    cadaCuanto = scan.nextInt();
+                    flagCadaCuanto = 1;
+                }catch (InputMismatchException e){
+                    System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                    scan.nextLine();
+                }
+            }
+        while (opcion != 3){
+                System.out.println("Que tipo de accion es?");
+                System.out.println("[1] Booleana");
+                System.out.println("[2] Double");
+                System.out.println("[3] Cancelar");
+                System.out.println("Ingrese una opcion:");
+
+                int flagSwitch = 0;
+                while (flagSwitch == 0){
+                    try{
+                        opcion = scan.nextInt();
+                        flagSwitch = 1;
+                    }catch (InputMismatchException e){
+                        System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
+                        System.out.println("Ingrese una opcion:");
+                        scan.nextLine();
+                    }
+                }
+
+                switch (opcion) {
+                    case 1:
+                        AccionBooleana accionBooleana = new AccionBooleana(cadaCuanto, nombre, pregunta);
+                        acciones.add(accionBooleana);
+                        Persistencia.serializacionAcciones(acciones);
+                        System.out.println(Colores.verde() + "La accion fue creada con exito!" + Colores.blanco());
+                        opcion = 3;
+                        break;
+
+                    case 2:
+                        AccionDouble accionDouble = new AccionDouble(cadaCuanto, nombre, pregunta);
+                        acciones.add(accionDouble);
+                        Persistencia.serializacionAcciones(acciones);
+                        System.out.println(Colores.verde() + "La accion fue creada con exito!" + Colores.blanco());
+                        opcion = 3;
+                        break;
+
+                    case 3:
+                        System.out.println(Colores.amarillo() + "Se cancelo la creacion de la accion" + Colores.blanco());
+                        break;
+
+                    default:
+                        System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
+                }
+            }
+        }else{
+            System.out.println(Colores.amarillo() + "Esa accion ya existe, volviendo al menu de admin..." + Colores.blanco());
+        }
+    }
+
+    public boolean verificarAccionRepetida(ArrayList<Accion> acciones, String nombre){
+        for(Accion a : acciones){
+            if(a.getNombre().equalsIgnoreCase(nombre)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public String nombreRepetidoEnfermedad(String nuevoNombre) {
         ArrayList<Enfermedad> enfermedades = Persistencia.deserializacion("enfermedades.json", Enfermedad.class);

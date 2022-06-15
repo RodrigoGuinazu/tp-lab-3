@@ -237,7 +237,8 @@ public class Sistema {
             System.out.println("[3] Agregar una nueva enfermedad");
             System.out.println("[4] Crear un nuevo tratamiento");
             System.out.println("[5] Editar un tratamiento");
-            System.out.println("[6] Log Out");
+            System.out.println("[6] Crear una nueva accion");
+            System.out.println("[7] Log Out");
             System.out.println("Ingrese una opcion:");
 
             int flagSwitch = 0;
@@ -280,6 +281,11 @@ public class Sistema {
                 break;
 
                 case 6: {
+                    ((Admin) usuarioLogueado).crearAccion();
+                }
+                break;
+
+                case 7: {
                     this.logout();
                 }
                 break;
@@ -287,7 +293,7 @@ public class Sistema {
                 default:
                     System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
             }
-        } while (opcion != 6);
+        } while (opcion != 7);
     }
 
     public Usuario login() {
