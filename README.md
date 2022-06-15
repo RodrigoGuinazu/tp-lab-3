@@ -2,9 +2,9 @@
 Final project for Programming/Lab III
 
 # LEER ANTES DE CORRER EL PROGRAMA!
-## [Manual de usuario](https://github.com/RodrigoGuinazu/tp-lab-3/blob/main/Guia%20de%20uso%20TP%20LAB%20III%20(Guinazu%20-%20Mantobani%20-%20Torrecillas).docx)
+## [Manual de usuario](Guia de uso TP LAB III (Guinazu - Mantobani - Torrecillas).docx)
 
-## [Aplicaciones de los temas vistos durante la cursada](https://github.com/RodrigoGuinazu/tp-lab-3/blob/main/Aplicaciones%20de%20los%20temas%20visto%20durante%20la%20cursada.docx)
+## [Aplicaciones de los temas vistos durante la cursada](Aplicaciones de los temas visto durante la cursada.docx)
 
 ## [Trello](https://trello.com/b/5AaSYtzw/tp-lab-3)
 
