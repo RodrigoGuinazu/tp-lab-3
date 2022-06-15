@@ -22,7 +22,12 @@ public class Sistema {
     }
 
     public static void agregarDias(long x){
-        fechaDelDia = fechaDelDia.plusDays(x);
+        if(x<0){
+            System.out.println(Colores.amarillo() + "Solo se puede ir a fechas futuras" + Colores.blanco());
+        }else{
+            fechaDelDia = fechaDelDia.plusDays(x);
+            System.out.println(Colores.amarillo() + "Cambiando la fecha del dia..." + Colores.blanco());
+        }
     }
 
     // Metodos
@@ -93,7 +98,6 @@ public class Sistema {
                             scan.nextLine();
                         }
                     }
-                    System.out.println(Colores.amarillo() + "Cambiando la fecha del dia..." + Colores.blanco());
                     break;
 
                 case 3:
