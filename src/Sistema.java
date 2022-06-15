@@ -384,7 +384,7 @@ public class Sistema {
 
     public static void agregarDias(long x){
         System.out.println(x);
-        fechaDelDia = LocalDate.now().plusDays(x);
+        fechaDelDia = fechaDelDia.plusDays(x);
     }
 }
 
