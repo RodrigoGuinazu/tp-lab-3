@@ -52,8 +52,8 @@ public class Usuario {
 
     @Override
     public boolean equals(Object o) {
-        if(this == o) return true;
-        if(o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
         return Objects.equals(dni, usuario.dni) && Objects.equals(mail, usuario.mail); // usa mail y dni ya que estos son unicos para cada usuario
     }

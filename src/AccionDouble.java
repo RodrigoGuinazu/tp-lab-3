@@ -39,7 +39,7 @@ public class AccionDouble extends Accion {
 
     public String toString() {
         return "AccionDouble{" + super.toString() +
-                "seHizo="  +
+                "seHizo=" +
                 '}';
     }
 

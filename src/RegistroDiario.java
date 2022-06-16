@@ -40,32 +40,33 @@ public class RegistroDiario {
         Scanner scan = new Scanner(System.in);
         int flag = 0;
 
-        while (flag == 0){
-            try{
+        while (flag == 0) {
+            try {
                 int i = 1;
-                for(Registro r : listaRegistros){
-                    System.out.println("["+i+"] " + r.mostrarNombresRegistros());
+                for (Registro r : listaRegistros) {
+                    System.out.println("[" + i + "] " + r.mostrarNombresRegistros());
                     i++;
                 }
                 System.out.println("Ingrese el numero del Registro que desea modificar: ");
                 int aux = scan.nextInt();
-                try{
-                    listaRegistros.get(aux-1).modificar();
-                }catch (EliminarRegistroException e){
+                try {
+                    listaRegistros.get(aux - 1).modificar();
+                } catch (EliminarRegistroException e) {
                     // porque no pide la accion de vuelta despues de borrarlo del registro diario?
-                    listaRegistros.remove(aux-1);
+                    listaRegistros.remove(aux - 1);
                 }
                 flag = 1;
-            }catch (IndexOutOfBoundsException e){
+            } catch (IndexOutOfBoundsException e) {
                 System.out.println(Colores.rojo() + "Ingresaste una opcion incorrecta, intentalo nuevamente" + Colores.blanco());
-            }catch (InputMismatchException i) {
+            } catch (InputMismatchException i) {
                 System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                 scan.nextLine();
-            }catch (AccionFallidaException f){
+            } catch (AccionFallidaException f) {
                 flag = 1;
             }
         }
     }
+
     public String mostrarRegistrosParaToString() {
         String rta = "";
         for (Registro a : listaRegistros) {
@@ -77,7 +78,7 @@ public class RegistroDiario {
     @Override
     public String toString() {
         return "Registro de la fecha: " +
-                 fecha +"\n" + mostrarRegistrosParaToString()
+                fecha + "\n" + mostrarRegistrosParaToString()
                 ;
     }
 }

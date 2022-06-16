@@ -410,7 +410,7 @@ public class Admin extends Usuario implements Tratamientos {
         return aux;
     }
 
-    public void crearAccion(){
+    public void crearAccion() {
         Scanner scan = new Scanner(System.in);
         ArrayList<Accion> acciones = Persistencia.deserializacionAcciones();
         int opcion = 0;
@@ -419,22 +419,22 @@ public class Admin extends Usuario implements Tratamientos {
 
         System.out.println("Ingrese el nombre de la accion: ");
         String nombre = scan.nextLine();
-        if(!verificarAccionRepetida(acciones, nombre)){
+        if (!verificarAccionRepetida(acciones, nombre)) {
             System.out.println("Ingrese el texto de pregunta para la accion: ");
             String pregunta = scan.nextLine();
             int flagCadaCuanto = 0;
             int cadaCuanto = 0;
-            while(flagCadaCuanto == 0){
-                try{
+            while (flagCadaCuanto == 0) {
+                try {
                     System.out.println("Ingrese cada cuantos dias debe realizar la accion: ");
                     cadaCuanto = scan.nextInt();
                     flagCadaCuanto = 1;
-                }catch (InputMismatchException e){
+                } catch (InputMismatchException e) {
                     System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                     scan.nextLine();
                 }
             }
-        while (opcion != 3){
+            while (opcion != 3) {
                 System.out.println("Que tipo de accion es?");
                 System.out.println("[1] Booleana");
                 System.out.println("[2] Double");
@@ -442,11 +442,11 @@ public class Admin extends Usuario implements Tratamientos {
                 System.out.println("Ingrese una opcion:");
 
                 int flagSwitch = 0;
-                while (flagSwitch == 0){
-                    try{
+                while (flagSwitch == 0) {
+                    try {
                         opcion = scan.nextInt();
                         flagSwitch = 1;
-                    }catch (InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                         System.out.println("Ingrese una opcion:");
                         scan.nextLine();
@@ -478,14 +478,14 @@ public class Admin extends Usuario implements Tratamientos {
                         System.out.println(Colores.rojo() + "Opcion incorrecta, ingrese otra" + Colores.blanco());
                 }
             }
-        }else{
+        } else {
             System.out.println(Colores.amarillo() + "Esa accion ya existe, volviendo al menu de admin..." + Colores.blanco());
         }
     }
 
-    public boolean verificarAccionRepetida(ArrayList<Accion> acciones, String nombre){
-        for(Accion a : acciones){
-            if(a.getNombre().equalsIgnoreCase(nombre)){
+    public boolean verificarAccionRepetida(ArrayList<Accion> acciones, String nombre) {
+        for (Accion a : acciones) {
+            if (a.getNombre().equalsIgnoreCase(nombre)) {
                 return true;
             }
         }

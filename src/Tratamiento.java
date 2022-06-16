@@ -252,23 +252,23 @@ public class Tratamiento {
         String rta = "";
 
         for (RegistroDiario registroDiario : listaRegistrosDiarios) {
-            rta += registroDiario.getFecha().toString()+ "\n";
+            rta += registroDiario.getFecha().toString() + "\n";
             for (Accion accion : listaAcciones) {
                 int flag = 0;
                 String aux = "";
-                if (!Sistema.comprobarCorrespodiaAccionPasado(this.inicioDate,registroDiario.getFecha(),accion.cadaCuanto)){
-                    rta+= "La accion "+ accion.getNombre() + " no debia realizarce.\n";
-                }else{
-                    for(Registro registroPart : registroDiario.listaRegistros){
-                        if(registroPart.mostrarNombresRegistros().equals(accion.getNombre())){
+                if (!Sistema.comprobarCorrespodiaAccionPasado(this.inicioDate, registroDiario.getFecha(), accion.cadaCuanto)) {
+                    rta += "La accion " + accion.getNombre() + " no debia realizarce.\n";
+                } else {
+                    for (Registro registroPart : registroDiario.listaRegistros) {
+                        if (registroPart.mostrarNombresRegistros().equals(accion.getNombre())) {
                             flag = 1;
                             aux = registroPart.toStringParaHistorial();
                         }
                     }
-                    if(flag == 1){
-                        rta += aux ;
-                    }else{
-                        rta += "La accion "+ accion.getNombre() + " debia realizarce y no se hizo.\n";
+                    if (flag == 1) {
+                        rta += aux;
+                    } else {
+                        rta += "La accion " + accion.getNombre() + " debia realizarce y no se hizo.\n";
                     }
                 }
             }

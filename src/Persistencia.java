@@ -37,7 +37,7 @@ public abstract class Persistencia {
 
     // Clase Pacientes
     // lectura
-    public static ArrayList<Paciente> deserializacionPacientes ()  {
+    public static ArrayList<Paciente> deserializacionPacientes() {
 
         GsonBuilder gsonBilder = new GsonBuilder();
         gsonBilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
@@ -46,7 +46,8 @@ public abstract class Persistencia {
 
         File file = new File("pacientes.json");
         try {
-            Type listType = new TypeToken<ArrayList<Paciente>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Paciente>>() {
+            }.getType();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             listaPacientes = gson.fromJson(bufferedReader, listType);
             return listaPacientes;
@@ -64,7 +65,8 @@ public abstract class Persistencia {
 
         File file = new File("pacientes.json");
         try {
-            Type listType = new TypeToken<ArrayList<Paciente>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Paciente>>() {
+            }.getType();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(arrayPaciente, listType, bufferedWriter);
             bufferedWriter.close();
@@ -75,7 +77,7 @@ public abstract class Persistencia {
 
     // Clase Accion
     // lectura
-    public static ArrayList<Accion> deserializacionAcciones()  {
+    public static ArrayList<Accion> deserializacionAcciones() {
 
         GsonBuilder gsonBilder = new GsonBuilder();
         gsonBilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
@@ -84,7 +86,8 @@ public abstract class Persistencia {
 
         File file = new File("acciones.json");
         try {
-            Type listType = new TypeToken<ArrayList<Accion>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Accion>>() {
+            }.getType();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             listaAcciones = gson.fromJson(bufferedReader, listType);
             return listaAcciones;
@@ -102,7 +105,8 @@ public abstract class Persistencia {
 
         File file = new File("acciones.json");
         try {
-            Type listType = new TypeToken<ArrayList<Accion>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Accion>>() {
+            }.getType();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(arrayAcciones, listType, bufferedWriter);
             bufferedWriter.close();
@@ -113,7 +117,7 @@ public abstract class Persistencia {
 
     // Clase Accion
     // lectura
-    public static ArrayList<Tratamiento> deserializacionTratamientos()  {
+    public static ArrayList<Tratamiento> deserializacionTratamientos() {
         GsonBuilder gsonBilder = new GsonBuilder();
         gsonBilder.registerTypeAdapter(Accion.class, new AbstractAccionAdapter());
         Gson gson = gsonBilder.create();
@@ -121,7 +125,8 @@ public abstract class Persistencia {
 
         File file = new File("tratamientos.json");
         try {
-            Type listType = new TypeToken<ArrayList<Tratamiento>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Tratamiento>>() {
+            }.getType();
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             listaTratamientos = gson.fromJson(bufferedReader, listType);
             return listaTratamientos;
@@ -139,7 +144,8 @@ public abstract class Persistencia {
 
         File file = new File("tratamientos.json");
         try {
-            Type listType = new TypeToken<ArrayList<Tratamiento>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Tratamiento>>() {
+            }.getType();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
             gson.toJson(arrayTratamientos, listType, bufferedWriter);
             bufferedWriter.close();

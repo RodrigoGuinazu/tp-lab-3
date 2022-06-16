@@ -62,51 +62,51 @@ public class Paciente extends Usuario {
 
 
     public void notificarPaciente() {
-        if(this.tratamientoActual!=null && this.tratamientoActual.getFinDate().isAfter(Sistema.getFechaDelDia().minusDays(1))){  //minus day 1 para contemplar la fecha de fin (que sea inclusive esa fecha)
+        if (this.tratamientoActual != null && this.tratamientoActual.getFinDate().isAfter(Sistema.getFechaDelDia().minusDays(1))) {  //minus day 1 para contemplar la fecha de fin (que sea inclusive esa fecha)
             //Chequear igualdades de LocalDate
             if (this.tratamientoActual.listaRegistrosDiarios.empty() || this.tratamientoActual.listaRegistrosDiarios.peek().getFecha().isBefore(Sistema.getFechaDelDia())) {
-                    for (Accion a : this.tratamientoActual.getListaAcciones()) {
-                        if( a.ultimaNoti == null ){
-                            System.out.println("Debe realizar la accion : " + a.getNombre());
+                for (Accion a : this.tratamientoActual.getListaAcciones()) {
+                    if (a.ultimaNoti == null) {
+                        System.out.println("Debe realizar la accion : " + a.getNombre());
 
-                        }else if(Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)){
-                            System.out.println("Debe realizar la accion : " + a.getNombre());
+                    } else if (Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)) {
+                        System.out.println("Debe realizar la accion : " + a.getNombre());
 
-                        }else{
-                            System.out.println("No debe realizar la accion : " + a.getNombre());
-                        }
+                    } else {
+                        System.out.println("No debe realizar la accion : " + a.getNombre());
                     }
+                }
             } else {
-                    int flag = 0;    //por si no hay accion para notificar
-                    for (Accion a : this.tratamientoActual.getListaAcciones()) {
-                        flag = 0;
-                        if(a.ultimaNoti!= null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)){
-                            if(a.ultimaNoti.isEqual(Sistema.getFechaDelDia())){
-                                System.out.println("Ya se realizo la accion : " + a.getNombre());
-                            }else{
-                                System.out.println("Hoy no toca la accion : " + a.getNombre());
-                            }
-                            break;
-                        }
-                        for (Registro x : this.tratamientoActual.listaRegistrosDiarios.peek().listaRegistros) {
-                            if (x.mostrarNombresRegistros().equals(a.getNombre())) {
-                                flag = 1;
-                            }
-                        }
-                        if(flag == 0){
-                            System.out.println("Debe realizar la accion : " + a.getNombre());
-                        }else{
+                int flag = 0;    //por si no hay accion para notificar
+                for (Accion a : this.tratamientoActual.getListaAcciones()) {
+                    flag = 0;
+                    if (a.ultimaNoti != null && !Sistema.comprobarCorrespodenAccion(a.ultimaNoti, a.cadaCuanto)) {
+                        if (a.ultimaNoti.isEqual(Sistema.getFechaDelDia())) {
                             System.out.println("Ya se realizo la accion : " + a.getNombre());
+                        } else {
+                            System.out.println("Hoy no toca la accion : " + a.getNombre());
+                        }
+                        break;
+                    }
+                    for (Registro x : this.tratamientoActual.listaRegistrosDiarios.peek().listaRegistros) {
+                        if (x.mostrarNombresRegistros().equals(a.getNombre())) {
+                            flag = 1;
                         }
                     }
+                    if (flag == 0) {
+                        System.out.println("Debe realizar la accion : " + a.getNombre());
+                    } else {
+                        System.out.println("Ya se realizo la accion : " + a.getNombre());
+                    }
+                }
             }
 
-        }else{
+        } else {
 
-            if(tratamientoActual == null){
+            if (tratamientoActual == null) {
                 System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
-            }else{
-                if(this.tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())){
+            } else {
+                if (this.tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())) {
                     if (tratamientoActual.getFinDate().equals(Sistema.getFechaDelDia()) || tratamientoActual.getFinDate().isBefore(Sistema.getFechaDelDia())) {
                         tratamientoActual.setFinalizado(true);
                         historialClinico.add(tratamientoActual);
@@ -121,9 +121,9 @@ public class Paciente extends Usuario {
     }
 
     public void realizarAcciones() {
-        if(tratamientoActual != null){
+        if (tratamientoActual != null) {
             this.tratamientoActual.realizarAcciones();
-        }else{
+        } else {
             System.out.println(Colores.amarillo() + "El paciente no tiene tratamiento asignado" + Colores.blanco());
         }
     }

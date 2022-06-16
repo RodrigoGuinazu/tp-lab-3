@@ -1,5 +1,6 @@
 
 import com.google.gson.*;
+
 import java.lang.reflect.Type;
 
 public class AbstractAccionAdapter implements JsonSerializer<Accion>, JsonDeserializer<Accion> {

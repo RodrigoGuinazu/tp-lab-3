@@ -21,10 +21,10 @@ public class Sistema {
         return fechaDelDia;
     }
 
-    public static void agregarDias(long x){
-        if(x<0){
+    public static void agregarDias(long x) {
+        if (x < 0) {
             System.out.println(Colores.amarillo() + "Solo se puede ir a fechas futuras" + Colores.blanco());
-        }else{
+        } else {
             fechaDelDia = fechaDelDia.plusDays(x);
             System.out.println(Colores.amarillo() + "Cambiando la fecha del dia..." + Colores.blanco());
         }
@@ -75,7 +75,7 @@ public class Sistema {
 
                 case 1:
                     this.usuarioLogueado = this.login();
-                    if(this.usuarioLogueado != null){
+                    if (this.usuarioLogueado != null) {
                         if (this.usuarioLogueado instanceof Paciente) {
                             this.menuPaciente();
                         } else if (this.usuarioLogueado instanceof Medico) {
@@ -88,12 +88,12 @@ public class Sistema {
 
                 case 2:
                     int flagDias = 0;
-                    while (flagDias == 0){
-                        try{
+                    while (flagDias == 0) {
+                        try {
                             System.out.println("Cuantos dias desea adelantarse?");
                             Sistema.agregarDias(scan.nextLong());
                             flagDias = 1;
-                        }catch (InputMismatchException e){
+                        } catch (InputMismatchException e) {
                             System.out.println(Colores.rojo() + "Ingresaste un tipo de dato incorrecto, intentalo nuevamente" + Colores.blanco());
                             scan.nextLine();
                         }
@@ -352,26 +352,26 @@ public class Sistema {
 
     }
 
-    public static boolean comprobarCorrespodenAccion(LocalDate fecha, int cadaCuanto){
-        while(fecha.isBefore(fechaDelDia)){
+    public static boolean comprobarCorrespodenAccion(LocalDate fecha, int cadaCuanto) {
+        while (fecha.isBefore(fechaDelDia)) {
             fecha = fecha.plusDays(cadaCuanto);
         }
 
-        if(fecha.isEqual(Sistema.getFechaDelDia())){
+        if (fecha.isEqual(Sistema.getFechaDelDia())) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public static boolean comprobarCorrespodiaAccionPasado(LocalDate inicioTratamiento, LocalDate fechaRegistro, int cadaCuanto){
-        while(inicioTratamiento.isBefore(fechaRegistro)){
+    public static boolean comprobarCorrespodiaAccionPasado(LocalDate inicioTratamiento, LocalDate fechaRegistro, int cadaCuanto) {
+        while (inicioTratamiento.isBefore(fechaRegistro)) {
             inicioTratamiento = inicioTratamiento.plusDays(cadaCuanto);
         }
 
-        if(inicioTratamiento.isEqual(fechaRegistro)){
+        if (inicioTratamiento.isEqual(fechaRegistro)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

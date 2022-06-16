@@ -54,7 +54,7 @@ public abstract class Accion {
     }
 
     public String mostrarAccion() {
-        return "Accion : " + this.nombre + " , cada cuanto : " + this.cadaCuanto ;
+        return "Accion : " + this.nombre + " , cada cuanto : " + this.cadaCuanto;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class Medico extends Usuario implements Tratamientos {
         for (Paciente pacientegeneral : listaPacientes) {
             if (pacientegeneral.getDebeSerAtendido()) {
                 for (Integer a : pacientesDelMedico) {
-                    if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null &&  pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
+                    if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null && pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
                         string1.append(pacientegeneral.getinfoPaciente());
                     }
                 }
@@ -40,7 +40,7 @@ public class Medico extends Usuario implements Tratamientos {
         for (Paciente pacientegeneral : listaPacientes) {
             if (pacientegeneral.tratamientoActual != null) {
                 for (Integer a : pacientesDelMedico) {
-                    if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null &&  pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
+                    if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null && pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
                         if (!pacientegeneral.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & pacientegeneral.tratamientoActual.getInicioDate().isBefore(Sistema.getFechaDelDia())) {
                             string2.append(pacientegeneral.getinfoPaciente());
                         } else if (pacientegeneral.tratamientoActual.existeRegistroDiario(Sistema.getFechaDelDia().minusDays(1)) & pacientegeneral.tratamientoActual.getNumeroAccionesNotificables() != pacientegeneral.tratamientoActual.getNumeroAccionesRegistroDiario(Sistema.getFechaDelDia().minusDays(1))) {
@@ -65,14 +65,14 @@ public class Medico extends Usuario implements Tratamientos {
         return pacientesDelMedico;
     }
 
-    public void agregarPaciente (Integer id){
+    public void agregarPaciente(Integer id) {
         pacientesDelMedico.add(id);
     }
 
 
     public void diagnosticarPacientes() throws DniInexistenteException {
 
-        try{
+        try {
             // levantamos de archivo lista pacientes en lista aux (levantar tratamientos,acciones,enfermedades)
             ArrayList<Paciente> listaPacientes = Persistencia.deserializacionPacientes();
             ArrayList<Tratamiento> listaTratamientosGenericos = Persistencia.deserializacionTratamientos();
@@ -84,7 +84,7 @@ public class Medico extends Usuario implements Tratamientos {
             for (Paciente pacientegeneral : listaPacientes) {
                 if (pacientegeneral.getDebeSerAtendido()) {
                     for (Integer a : pacientesDelMedico) {
-                        if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null &&  pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
+                        if (pacientegeneral.getId().equals(a) && pacientegeneral.getIdMedicoAsignado() != null && pacientegeneral.getIdMedicoAsignado().equals(this.getId())) {
                             string.append(pacientegeneral.getinfoPaciente());
                         }
                     }
@@ -97,7 +97,7 @@ public class Medico extends Usuario implements Tratamientos {
 
             System.out.println(string);
 
-            if(flagSinPacientes != 1){
+            if (flagSinPacientes != 1) {
                 Scanner scan = new Scanner(System.in);
                 Paciente pacienteAux = null;
                 int control = 0;
@@ -228,10 +228,10 @@ public class Medico extends Usuario implements Tratamientos {
                     // finalmente persistimos el archivo de pacientes, para que este sufra modificaciones
                     Persistencia.serializacionPacientes(listaPacientes);
                 }
-            }else {
+            } else {
                 System.out.println(Colores.amarillo() + "No tienes pacientes que atender en el dia de hoy" + Colores.blanco());
             }
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println(Colores.amarillo() + "No tienes pacientes asignados por el momento" + Colores.blanco());
         }
     }
@@ -318,13 +318,13 @@ public class Medico extends Usuario implements Tratamientos {
         }
 
         try {
-            if(pacienteAux.getTratamientoActual() != null){
-                if(!pacienteAux.tratamientoActual.listaRegistrosDiarios.isEmpty()){
+            if (pacienteAux.getTratamientoActual() != null) {
+                if (!pacienteAux.tratamientoActual.listaRegistrosDiarios.isEmpty()) {
                     System.out.println(pacienteAux.tratamientoActual.toStringHistorialTratamientoActual());
-                }else{
+                } else {
                     System.out.println(Colores.amarillo() + "El paciente que ingresaste no realizo ninguna accion del tratamiento por el momento!" + Colores.blanco());
                 }
-            }else{
+            } else {
                 System.out.println(Colores.amarillo() + "El paciente que ingresaste no se encuentra realizando ningun tratamiento por el momento!" + Colores.blanco());
             }
         } catch (NullPointerException e) {
